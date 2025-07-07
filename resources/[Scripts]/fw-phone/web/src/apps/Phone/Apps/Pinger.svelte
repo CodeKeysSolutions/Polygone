@@ -25,12 +25,12 @@
 <AppWrapper style="background: url('./images/pingerbg.png') 0% 0% / cover;">
     <div class="phone-ping-banner">🍆 eRPinger 🍑</div>
 
-    <TextField Icon="id-card-alt" Title="BSN" bind:RealValue={TargetId} Type="number" style="width: 55%; margin: 3vh auto 0" />
+    <TextField Icon="id-card-alt" Title="SSN" bind:RealValue={TargetId} Type="number" style="width: 55%; margin: 3vh auto 0" />
 
     <div class="phone-ping-buttons">
         <div use:Ripple={{ surface: true, active: true }} class="phone-ping-buttons-item" on:keyup on:click={SendPing}>
             <i class="fas fa-map-pin" />
-            <h6>Verstuur Ping</h6>
+            <h6>Sent Ping</h6>
         </div>
 
         {#if $HasVpn}

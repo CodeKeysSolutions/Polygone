@@ -99,7 +99,7 @@ function PlayEmote(EmoteName, OverrideData, IsForced)
 
     local Data = OverrideData or Config.Emotes[EmoteName]
     if not Data then
-        return FW.Functions.Notify("Emote '" .. EmoteName .. "' bestaat niet.", "error")
+        return FW.Functions.Notify("Invalid Emote '" .. EmoteName .. ".", "error")
     end
 
     CancelEmote()
@@ -205,7 +205,7 @@ function PlayEmote(EmoteName, OverrideData, IsForced)
     elseif Data.Category == "Shared" then
         local Player, Distance = FW.Functions.GetClosestPlayer()
         if Player == -1 or Distance > 2.5 then
-            return FW.Functions.Notify("Niemand in de buurt. (Misschien dichterbij staan)", "error")
+            return FW.Functions.Notify("Nobody near", "error")
         end
 
         FW.TriggerServer("fw-emotes:Server:SendRequest", Player, EmoteName)

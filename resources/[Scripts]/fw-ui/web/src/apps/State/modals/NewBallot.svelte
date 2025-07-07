@@ -50,7 +50,7 @@
 
 <Modal style="width: 70%;">
     <TextField
-        Title="Stemming Titel"
+        Title="Vote Title"
         Icon="pencil-alt"
         style="width: 100%;"
         bind:RealValue={BallotTitle}
@@ -58,7 +58,7 @@
 
     <div style="width: 100%; display: flex; justify-content: space-between;">
         <TextField
-            Title="Startdatum"
+            Title="Start date"
             Icon="calendar-alt"
             Type="date"
             style="width: 49.5%;"
@@ -66,7 +66,7 @@
         />
     
         <TextField
-            Title="Verloopdatum"
+            Title="Expire date"
             Icon="calendar-alt"
             Type="date"
             style="width: 49.5%;"
@@ -74,10 +74,10 @@
         />
     </div>
 
-    <Checkbox bind:Checked={IsMultipleChoice} Label="Meerkeuze"/>
+    <Checkbox bind:Checked={IsMultipleChoice} Label="Multiple Choice"/>
 
     <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-        <p class="preferences-header">Kandidaten</p>
+        <p class="preferences-header">Candidates</p>
         <div>
             {#if Nominees.length > 2}
                 <Button
@@ -101,7 +101,7 @@
     {#each Nominees as Data, Key}
         <div style="margin-bottom: 1vh; width: 100%; display: flex; justify-content: space-between; border-bottom: 0.1vh solid white;">
             <TextField
-                Title="Kandidaat"
+                Title="Candidate"
                 Icon="user-graduate"
                 MaxLength={50}
                 style="width: 49.5%;"
@@ -123,11 +123,11 @@
             Color="warning"
             style="margin: 0;"
             on:click={Cancel}
-        >Annuleren</Button>
+        >Cancel</Button>
         <Button
             Color="success"
             style="margin: 0;"
             on:click={Submit}
-        >Opslaan</Button>
+        >Save</Button>
     </div>
 </Modal>

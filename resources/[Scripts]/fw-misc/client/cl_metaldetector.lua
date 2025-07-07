@@ -38,7 +38,7 @@ AddEventHandler("fw-misc:Client:UsedMetaldetector", function()
 
     if not MaterialHashes[MaterialHash] then
         IsDetecting = false
-        return FW.Functions.Notify("Ik betwijfel of hier wat ligt..", "error")
+        return FW.Functions.Notify("Nothing found..", "error")
     end
 
     exports['fw-assets']:RequestModelHash("w_am_metaldetector")
@@ -55,7 +55,7 @@ RegisterNetEvent("fw-misc:Client:UsedTrowel")
 AddEventHandler("fw-misc:Client:UsedTrowel", function()
     -- Am I detecting?
     if IsDetecting then
-        return FW.Functions.Notify("Ik zou die metaaldetector maar eerst eens even weg doen..", "error")
+        return FW.Functions.Notify("Beter to put that detector away frist.", "error")
     end
 
     -- Am I near the detection spot?
@@ -68,7 +68,7 @@ AddEventHandler("fw-misc:Client:UsedTrowel", function()
     TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
     exports['fw-inventory']:SetBusyState(true)
 
-    local Finished = FW.Functions.CompactProgressbar(8000, "Graven graven graven...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(8000, "Diggy an hole...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     ClearPedTasks(PlayerPedId())
     exports['fw-inventory']:SetBusyState(false)
 

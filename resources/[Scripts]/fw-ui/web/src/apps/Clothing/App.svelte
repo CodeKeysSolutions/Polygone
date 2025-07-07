@@ -62,7 +62,7 @@
             <div class="clothing-switches">
                 <div
                     class="clothing-switch-item"
-                    data-position="left" data-tooltip="Hoed"
+                    data-position="left" data-tooltip="Hat"
                     on:keyup on:click={() => SendEvent("Clothes/ToggleComponents", {Type: "Hat"})}
                 >
                     <i class="fas fa-hat-cowboy-side" />
@@ -78,7 +78,7 @@
 
                 <div
                     class="clothing-switch-item"
-                    data-position="left" data-tooltip="Bril"
+                    data-position="left" data-tooltip="Glasses"
                     on:keyup on:click={() => SendEvent("Clothes/ToggleComponents", {Type: "Glasses"})}
                 >
                     <i class="fas fa-glasses" />
@@ -94,7 +94,7 @@
 
                 <div
                     class="clothing-switch-item"
-                    data-position="left" data-tooltip="Tas"
+                    data-position="left" data-tooltip="Bag"
                     on:keyup on:click={() => SendEvent("Clothes/ToggleComponents", {Type: "Bags"})}
                 >
                     <i class="fas fa-shopping-bag" />
@@ -102,7 +102,7 @@
 
                 <div
                     class="clothing-switch-item"
-                    data-position="left" data-tooltip="Broek"
+                    data-position="left" data-tooltip="Pants"
                     on:keyup on:click={() => SendEvent("Clothes/ToggleComponents", {Type: "Pants"})}
                 >
                     <i class="fas fa-drumstick-bite" />
@@ -110,7 +110,7 @@
 
                 <div
                     class="clothing-switch-item"
-                    data-position="left" data-tooltip="Schoenen"
+                    data-position="left" data-tooltip="Shoes"
                     on:keyup on:click={() => SendEvent("Clothes/ToggleComponents", {Type: "Shoes"})}
                 >
                     <i class="fas fa-socks" />

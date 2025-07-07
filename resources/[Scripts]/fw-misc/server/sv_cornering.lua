@@ -5,7 +5,7 @@ FW.Functions.CreateCallback("fw-misc:Server:StartCornering", function(Source, Cb
     if Player == nil then return end
 
     if not Config.CornerZones[Zone] then
-        Cb({false, "Niemand koopt hier in de buurt."})
+        Cb({false, "Nobody is buying in this part."})
         return
     end
 
@@ -62,8 +62,8 @@ FW.RegisterServer("fw-illegal:Server:CornerMoney", function(Source)
     if Player == nil then return end
 
     --[[
-        markedbills €500
-        money-roll €280
+        markedbills $500
+        money-roll $280
     ]]
     local RandomValue = math.random(1, 100)
     local Item = 'markedbills'

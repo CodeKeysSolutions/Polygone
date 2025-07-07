@@ -135,7 +135,7 @@
 {#if MenuVisible}
     <div class="menu-wrapper">
         <div class="menu-header">
-            <p>Animaties</p>
+            <p>Animations</p>
         </div>
         <div class="menu-current">
             <p>Emotes List</p>

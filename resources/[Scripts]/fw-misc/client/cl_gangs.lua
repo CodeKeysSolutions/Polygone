@@ -43,7 +43,7 @@ AddEventHandler("fw-misc:Client:OpenGangStash", function(Data)
         if Result and Result.Code then
             local Success = FW.SendCallback("fw-misc:Server:Gangs:IsAuthCodeCorrect", Result.Code, Data.Gang)
             if not Success then
-                return FW.Functions.Notify("Dit is niet de goede code..", "error")
+                return FW.Functions.Notify("Wrong code..", "error")
             end
 
             if exports['fw-inventory']:CanOpenInventory() then
@@ -56,11 +56,11 @@ AddEventHandler("fw-misc:Client:OpenGangStash", function(Data)
 
     local Gang = FW.SendCallback("fw-laptop:Server:Unknown:GetPlayerGang")
     if Gang.Id ~= Data.Gang then
-        return FW.Functions.Notify("Geen toegang..", "error")
+        return FW.Functions.Notify("No access..", "error")
     end
 
     if HasHousingOverdueDebts(exports['fw-misc']:GetAdressByGang(Data.Gang)) then
-        return FW.Functions.Notify("Geen toegang..", "error")
+        return FW.Functions.Notify("No access..", "error")
     end
     
     if exports['fw-inventory']:CanOpenInventory() then

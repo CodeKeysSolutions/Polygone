@@ -211,25 +211,25 @@
                 <Application
                     on:click={() => { SetCurrentApp("details") }}
                     HasUnread={UnreadApps["details"]}
-                    Tooltip="Informatie"
+                    Tooltip="Info"
                     style="background-image: url(./images/details.png)"
                 />
                 <Application
                     on:click={() => { SetCurrentApp("contacts") }}
                     HasUnread={UnreadApps["contacts"]}
-                    Tooltip="Contacten"
+                    Tooltip="Contacts"
                     style="background-image: url(./images/contacts.png)"
                 />
                 <Application
                     on:click={() => { SetCurrentApp("calls") }}
                     HasUnread={UnreadApps["calls"]}
-                    Tooltip="Gesprekken"
+                    Tooltip="Calls"
                     style="background-image: url(./images/calls.png)"
                 />
                 <Application
                     on:click={() => { SetCurrentApp("messages") }}
                     HasUnread={UnreadApps["messages"]}
-                    Tooltip="Berichten"
+                    Tooltip="Messages"
                     style="background-image: url(./images/conversations.png)"
                 />
                 <Application
@@ -259,13 +259,13 @@
                 <Application
                     on:click={() => { SetCurrentApp("vehicles") }}
                     HasUnread={UnreadApps["vehicles"]}
-                    Tooltip="Voertuigen"
+                    Tooltip="Vehicles"
                     style="background-image: url(./images/vehicles.png)"
                 />
                 <Application
                     on:click={() => { SetCurrentApp("debt") }}
                     HasUnread={UnreadApps["debt"]}
-                    Tooltip="Schulden"
+                    Tooltip="Debt"
                     style="background-image: url(./images/debt.png)"
                 />
                 <Application
@@ -277,13 +277,13 @@
                 <Application
                     on:click={() => { SetCurrentApp("documents") }}
                     HasUnread={UnreadApps["documents"]}
-                    Tooltip="Documenten"
+                    Tooltip="Documents"
                     style="background-image: url(./images/documents.png)"
                 />
                 <Application
                     on:click={() => { SetCurrentApp("housing") }}
                     HasUnread={UnreadApps["housing"]}
-                    Tooltip="Huizen"
+                    Tooltip="Housing"
                     Icon="house-user"
                     style="background-color: #46a145"
                 />
@@ -296,13 +296,13 @@
                 <Application
                     on:click={() => { SetCurrentApp("jobcenter") }}
                     HasUnread={UnreadApps["jobcenter"]}
-                    Tooltip="Uitzendbureau"
+                    Tooltip="Employment Agency"
                     style="background-image: url(./images/jobs.png)"
                 />
                 <Application
                     on:click={() => { SetCurrentApp("employment") }}
                     HasUnread={UnreadApps["employment"]}
-                    Tooltip="Werkzaamheden"
+                    Tooltip="Work Activities"
                     style="background-image: url(./images/employment.png)"
                 />
                 <Application
@@ -344,7 +344,7 @@
                 <Application
                     on:click={() => { SetCurrentApp("calculator") }}
                     HasUnread={UnreadApps["calculator"]}
-                    Tooltip="Rekenmachine"
+                    Tooltip="Calculator"
                     style="background-image: url(./images/calculator.png)"
                 />
                 <!-- {#if $HasVpn}

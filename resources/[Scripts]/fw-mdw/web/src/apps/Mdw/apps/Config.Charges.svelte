@@ -61,7 +61,7 @@
                             {#if HasCidPermission("Config.EditCharges")}
                                 <i
                                     class="fas fa-edit"
-                                    data-tooltip="Bewerken"
+                                    data-tooltip="Edit"
                                     on:keyup on:click={() => MdwModalsChargeEditor.set({Show: true, Charge: Data})}
                                 />
                             {/if}
@@ -69,7 +69,7 @@
                             {#if HasCidPermission("Config.DeleteCharges")}
                                 <i
                                     class="fas fa-trash"
-                                    data-tooltip="Verwijderen"
+                                    data-tooltip="Delete"
                                     on:keyup on:click={() => DeleteCharge(Data.id)}
                                 />
                             {/if}

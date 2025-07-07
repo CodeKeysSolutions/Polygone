@@ -26,13 +26,13 @@ AddEventHandler("fw-police:Client:GarageMenu", function(Garage)
     FW.Functions.OpenMenu({
         MainMenuItems = {
             {
-                Title = "Persoonlijke Voertuigen",
-                Desc = "Lijst met persoonlijke voertuigen.",
+                Title = "Personal Vehicles", -- was "Persoonlijke Vehicles"
+                Desc = "List of personal vehicles.", -- was "Lijst met persoonlijke Vehicles."
                 Data = { Event = 'fw-police:Client:OpenGarage', Type = 'Client', Garage = Garage },
             },
             {
-                Title = "Gezamelijke Voertuigen",
-                Desc = "Lijst met gezamelijke voertuigen.",
+                Title = "Shared Vehicles", -- was "Gezamelijke Vehicles"
+                Desc = "List of shared vehicles.", -- was "Lijst met gezamelijke Vehicles."
                 Data = { Event = 'fw-police:Client:OpenGarage', Type = 'Client', Garage = Garage, Owner = GarageToOwner[Garage] },
             }
         }
@@ -52,33 +52,33 @@ AddEventHandler("fw-police:Client:OpenGarage", function(Data)
 
         local VehicleItem = {
             Title = (SharedVehicle and SharedVehicle.Name or GetLabelText(GetDisplayNameFromVehicleModel(GetHashKey(v.vehicle)))) .. " " .. GetVehicleDepartment(v.vehicle, json.decode(v.mods)),
-            Desc = ("Plate: %s | %s"):format(v.plate, v.state == 'in' and 'Binnen' or 'Buiten'),
+            Desc = ("Plate: %s | %s"):format(v.plate, v.state == 'in' and 'In' or 'Out'), -- was 'Binnen' or 'Buiten'
             Data = { Event = 'fw-vehicles:Client:SpawnPreview', Type = 'Client', Vehicle = v },
             SecondMenu = {
                 {
                     CloseMenu = true,
                     Disabled = v.state ~= 'in',
-                    Title = 'Voertuig Meenemen',
+                    Title = 'Take Vehicle', -- was 'Voertuig Meenemen'
                     Data = {Event = "fw-vehicles:Client:SpawnVehicle", Type = "Client", Vehicle = v },
                 },
                 {
-                    Title = 'Voertuig Status',
-                    Desc = ('%s | Engine: %s%% | Body: %s%%'):format(v.state == 'In' and 'Binnen' or 'Buiten', math.ceil(MetaData.Engine / 10), math.ceil(MetaData.Body / 10)),
+                    Title = 'Vehicle Status', -- was 'Voertuig Status'
+                    Desc = ('%s | Engine: %s%% | Body: %s%%'):format(v.state == 'In' and 'In' or 'Out', math.ceil(MetaData.Engine / 10), math.ceil(MetaData.Body / 10)),
                 },
                 {
-                    Title = 'Vehicle Parking Log',
+                    Title = 'Vehicle Parking Log', -- was 'Vehicle Parking Log'
                 }
             },
         }
 
         if ModelToIndex[v.vehicle] then
             table.insert(SortedVehicles[ModelToIndex[v.vehicle]].SecondMenu, VehicleItem)
-            SortedVehicles[ModelToIndex[v.vehicle]].Desc = #SortedVehicles[ModelToIndex[v.vehicle]].SecondMenu .. " Voertuigen"
+            SortedVehicles[ModelToIndex[v.vehicle]].Desc = #SortedVehicles[ModelToIndex[v.vehicle]].SecondMenu .. " Vehicles" -- was "Vehicles"
         else
             local Index = #SortedVehicles + 1
             SortedVehicles[Index] = {
                 Title = SharedVehicle and SharedVehicle.Name or GetLabelText(GetDisplayNameFromVehicleModel(GetHashKey(v.vehicle))),
-                Desc = "1 Voertuig",
+                Desc = "1 Vehicle", -- was "1 Voertuig"
                 SecondMenu = {VehicleItem}
             }
 

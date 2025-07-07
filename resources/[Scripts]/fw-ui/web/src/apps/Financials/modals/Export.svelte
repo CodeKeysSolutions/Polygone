@@ -43,25 +43,25 @@
         <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 3vh 0">
             <h1>{ExportMsg}</h1>
             {#if ExportUrl}
-                <Button Color="success" on:click={CopyUrl}>Kopieer URL</Button>
+                <Button Color="success" on:click={CopyUrl}>Copy URL</Button>
             {:else}
-                <Button Color="warning" on:click={Close}>Sluiten</Button>
+                <Button Color="warning" on:click={Close}>Close</Button>
             {/if}
         </div>
     {:else}
         {#if !Loading}
             <div class="financials-input-title">
-                <p>Transacties Exporteren</p>
+                <p>Export Transactions</p>
             </div>
 
             <TextField
-                Title="Startdatum"
+                Title="Start date"
                 bind:RealValue={StartDate}
                 Type="date"
             />
 
             <TextField
-                Title="Einddatum"
+                Title="End date"
                 bind:RealValue={EndDate}
                 Type="date"
             />
@@ -70,11 +70,11 @@
                 <Button
                     on:click={Close}
                     Color="warning"
-                >Annuleren</Button>
+                >Cancel</Button>
                 <Button
                     on:click={Export}
                     Color="success"
-                >Exporteren</Button>
+                >Export</Button>
             </div>
         {:else}
             <div style="display: flex; justify-content: center; align-items: center; height: 20vh; width: 100%;">

@@ -23,7 +23,7 @@
 
 {#if !ShowPresets}
     <div class="laptop-settings-wrapper">
-        <p>Instellingen</p>
+        <p>Settings</p> <!-- was "Instellingen" -->
         <div class="laptop-settings">
             <TextField Title="Enter Background (16:9)" Icon="images" style="margin-bottom: 0;" bind:RealValue={$LaptopPreferences.background}/>
             <div style="display: flex; justify-content: space-between; width: 85%; margin: 0 auto; margin-bottom: .7vh;">
@@ -46,7 +46,7 @@
             {/each}
         </div>
         <div style="width: 100%; display: flex; justify-content: center; margin-top: 2vh;">
-            <Button click={TogglePresets} Color="warning">Sluiten</Button>
+            <Button click={TogglePresets} Color="warning">Close</Button> <!-- was "Sluiten" -->
         </div>
     </div>
 {/if}

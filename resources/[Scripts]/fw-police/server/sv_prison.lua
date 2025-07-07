@@ -67,7 +67,7 @@
 -- end)
 
 -- FW.Commands.Add("jail", "Stuur een crimineel naar de gevangenis.", {
---     { name = "id", help = "Speler ID" },
+--     { name = "id", help = "player ID" },
 --     { name = "tijd", help = "Hoelang de crimineel moet wegrotten" },
 --     { name = "voorwaardelijk", help = "Hoeveel maanden voorwaardelijk?" }
 -- }, true, function(Source, Args)
@@ -94,7 +94,7 @@
 -- end)
 
 -- FW.Commands.Add("prison:setTime", "Zet iemand zijn gevangenis staf (ADMIN)", {
---     { name = "id", help = "Speler ID" },
+--     { name = "id", help = "player ID" },
 --     { name = "tijd", help = "Hoelang de crimineel moet wegrotten" }
 -- }, true, function(Source, Args)
 --     local Player = FW.Functions.GetPlayer(Source)

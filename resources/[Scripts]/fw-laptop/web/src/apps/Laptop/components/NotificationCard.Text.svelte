@@ -1,6 +1,6 @@
 <script>
     export let Header = 'Suck Cock';
-    export let Text = 'Suck Frans Dobbelen penis for € 10,00!';
+    export let Text = 'Suck Frans Dobbelen penis for $ 10,00!';
 </script>
 
 <div class="laptop-notification-card-text">

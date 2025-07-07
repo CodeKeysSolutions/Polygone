@@ -65,6 +65,6 @@ function AddPlayerToRadio(SiD, ChannelId, RemoveOld)
 end
 
 function GetSubscriberChannel(SiD)
-    return ChannelSubscribers[SiD] or "Uit"
+    return ChannelSubscribers[SiD] or "Off"
 end
 exports("GetSubscriberChannel", GetSubscriberChannel)

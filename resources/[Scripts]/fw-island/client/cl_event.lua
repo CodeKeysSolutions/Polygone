@@ -48,7 +48,7 @@ RegisterNetEvent("fw-island:Client:Foodchain:GetPayments")
 AddEventHandler("fw-island:Client:Foodchain:GetPayments", function(Data)
     FW.Functions.TriggerCallback("fw-island:Server:Foodchain:GetPaymentData", function(Payment)
         if not Payment then
-            FW.Functions.Notify("Er is geen actieve bestelling..", "error")
+            FW.Functions.Notify("No orders yet..", "error")
             return
         end
 
@@ -56,13 +56,13 @@ AddEventHandler("fw-island:Client:Foodchain:GetPayments", function(Data)
             MainMenuItems = {
                 {
                     Icon = 'info-circle',
-                    Title = 'Restaurant Bestelling',
+                    Title = 'Restaurant orders',
                     Desc = exports['fw-businesses']:NumberWithCommas(Payment.Costs) .. ' | ' .. Payment.Order, 
                     Data = { Event = '', Type = '' }
                 },
                 {
                     Icon = 'credit-card',
-                    Title = 'Betalen met Bank',
+                    Title = 'Pay with Bank',
                     CloseMenu = true,
                     Data = {
                         Event = 'fw-island:Server:Foodchain:PayRegister',
@@ -74,7 +74,7 @@ AddEventHandler("fw-island:Client:Foodchain:GetPayments", function(Data)
                 },
                 {
                     Icon = 'money-bill',
-                    Title = 'Betalen met Cash',
+                    Title = 'Pay with Cash',
                     CloseMenu = true,
                     Data = {
                         Event = 'fw-island:Server:Foodchain:PayRegister',
@@ -91,7 +91,7 @@ end)
 
 function canPlayerUseRegister()
     local CitizenId = FW.Functions.GetPlayerData().citizenid
-    if CitizenId == '2449' or CitizenId == '2546' or  CitizenId == '3084' then
+    if CitizenId == '1001'  then-- or CitizenId == '2546' or  CitizenId == '3084' then
         return true
     end
     return false

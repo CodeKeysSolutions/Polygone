@@ -91,7 +91,7 @@
     {#if !$JobManager.CurrentJob && !$JobManager.CurrentGroup}
         <TextField
             Icon="search"
-            Title="Zoeken"
+            Title="Search"
             SubSet={FilterJobs}
             class="phone-misc-input"
         />
@@ -123,7 +123,7 @@
                 
                         <div class="phone-card-actions">
                             <i
-                                data-tooltip="Zet GPS"
+                                data-tooltip="Set GPS"
                                 class="tooltip fas fa-map-marked"
                                 on:keyup on:click={() => { JOB.SetWaypoint(Id + 1) }}
                             />
@@ -133,23 +133,23 @@
             {/each}
         </PaperList>
     {:else if $JobManager.CurrentJob && !$JobManager.CurrentGroup}
-        <div class="phone-jobcenter-groups-info">Word lid van een inactieve groep of maak je eigen groep aan..</div>
+        <div class="phone-jobcenter-groups-info">Join an inactive group or create your own group..</div>
         <div class="phone-jobcenter-groups-info-buttons">
             <Button
                 style="margin: 0;"
                 Color="success"
                 on:click={JOB.CreateGroup}
-            >Groep Aanmaken</Button>
+            >Create Group</Button>
             <Button
                 style="margin: 0;"
                 Color="warning"
                 on:click={JOB.Signout}
-            >Uitklokken</Button>
+            >Sign Out</Button>
         </div>
         
         <PaperList style="top: 13.5vh; height: 71%;">
             {#if IdleGroups.length > 0}
-                <p style="margin-bottom: 1.4vh; font-size: 1.5vh; font-family: Roboto; font-weight: 400; line-height: 1.43; letter-spacing: 0.005vh;">Inactief</p>
+                <p style="margin-bottom: 1.4vh; font-size: 1.5vh; font-family: Roboto; font-weight: 400; line-height: 1.43; letter-spacing: 0.005vh;">Inactive</p>
 
                 {#each IdleGroups as Data (Data.Id)}
                     <div class="phone-card-component">
@@ -162,7 +162,7 @@
                                 <div class="phone-card-text">
                                     <p>
                                         <i
-                                            data-tooltip="Verzoek voor Deelname"
+                                            data-tooltip="Request to Join"
                                             class="tooltip fas fa-sign-in"
                                             on:keyup on:click={() => { JOB.RequestToJoin(Data.Id) }}
                                         />
@@ -176,7 +176,7 @@
             {/if}
 
             {#if BusyGroups.length > 0}
-                <p style="margin-bottom: 1.4vh; font-size: 1.5vh; font-family: Roboto; font-weight: 400; line-height: 1.43; letter-spacing: 0.005vh;">Bezig</p>
+                <p style="margin-bottom: 1.4vh; font-size: 1.5vh; font-family: Roboto; font-weight: 400; line-height: 1.43; letter-spacing: 0.005vh;">Busy</p>
 
                 {#each BusyGroups as Data (Data.Id)}
                     <div class="phone-card-component">

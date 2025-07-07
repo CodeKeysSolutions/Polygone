@@ -192,13 +192,13 @@ on("PolyZone:OnEnter", (Poly: any) => {
     };
 
     if (PersonalStashes.includes(Poly.name)) {
-        exp['fw-ui'].ShowInteraction('[E] Persoonlijke Stash');
+        exp['fw-ui'].ShowInteraction('[E] Personal Stash');
         PersonalStashThread.start();
         return;
     };
 
     if (Shops.includes(Poly.name)) {
-        exp['fw-ui'].ShowInteraction('[E] Winkel / [G] Medicijnenkast');
+        exp['fw-ui'].ShowInteraction('[E] Store / [G] Medicine Cabinet');
         ShopThread.start();
         return;
     };

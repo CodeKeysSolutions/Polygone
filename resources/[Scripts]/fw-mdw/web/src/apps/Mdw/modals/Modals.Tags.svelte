@@ -13,8 +13,8 @@
 
 <div class="mdw-modal-tags">
     <div class="mdw-modal-tags-container">
-        <p>Tag Toevoegen</p>
-        <TextField Title='Zoeken' Icon='search' SubSet={FilterTags} />
+        <p>Add tag</p>
+        <TextField Title='Search' Icon='search' SubSet={FilterTags} />
         <div class="mdw-modal-tags-list">
             {#each FilteredTags as Data, Key}
                 {#if !$MdwModalsTags.IgnoreFilter.includes(Data.id)}

@@ -82,9 +82,9 @@ RegisterNUICallback("Financials/Close", function(Data, Cb)
     exports['fw-ui']:SetUIFocus(false, false)
     exports['fw-ui']:SendUIMessage("Financials", "SetVisibility", { Visible = false })
 
-    local AnimDict, Anim, Text = 'amb@prop_human_atm@male@exit', 'exit', 'Kaart ophalen..'
+    local AnimDict, Anim, Text = 'amb@prop_human_atm@male@exit', 'exit', 'Retrieve card..'
     if NearBank then
-        AnimDict, Anim, Text = 'mp_common', 'givetake1_a', 'Documentatie verzamelen..'
+        AnimDict, Anim, Text = 'mp_common', 'givetake1_a', 'Collect documentation..'
     end
 
     FW.Functions.Progressbar("financial", Text, 1000, false, false, {

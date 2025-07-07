@@ -37,7 +37,7 @@
                 Title={Data.Label}
                 Description={[
                     GetExpirationTime(Data.Time),
-                    GetExpirationTime(Data.Time) != "Verlopen" ? (Data.Claimers.includes($PlayerData.Cid) ? "Geclaimed" : "Beschikbaar") : ""
+                    GetExpirationTime(Data.Time) != "Expired" ? (Data.Claimers.includes($PlayerData.Cid) ? "Claimed" : "Available") : ""
                 ]}
                 HasActions={true}
             >
@@ -50,7 +50,7 @@
                             Inputs: [
                                 {
                                     Type: "Text",
-                                    Text: "Weet je het zeker?",
+                                    Text: "Are you sure?",
                                     Data: {
                                         style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
                                     },

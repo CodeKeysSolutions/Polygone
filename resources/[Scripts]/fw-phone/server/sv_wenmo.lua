@@ -28,19 +28,19 @@ end)
 FW.Functions.CreateCallback("fw-phone:Server:Wenmo:SendMoney", function(Source, Cb, Data)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then
-        Cb({Success = false, Msg = "Ongeldige Speler"})
+        Cb({Success = false, Msg = "Invalid citizen"})
         return
     end
 
     
     local Target = FW.Functions.GetPlayerByPhone(tostring(Data.Phone))
     if Target == nil then
-        Cb({Success = false, Msg = "Ongeldige Speler"})
+        Cb({Success = false, Msg = "Invalid citizen"})
         return
     end
 
     if Player.PlayerData.citizenid == Target.PlayerData.citizenid then
-        Cb({Success = false, Msg = "Je kan jezelf geen Wenmo sturen."})
+        Cb({Success = false, Msg = "Cant sent to you self."})
         return
     end
 
@@ -62,6 +62,6 @@ FW.Functions.CreateCallback("fw-phone:Server:Wenmo:SendMoney", function(Source, 
         })
         Cb({Success = true})
     else
-        Cb({Success = false, Msg = "Niet Genoeg Balans"})
+        Cb({Success = false, Msg = "Not enough money"})
     end
 end)

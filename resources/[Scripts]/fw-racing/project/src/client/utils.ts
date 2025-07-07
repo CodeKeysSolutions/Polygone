@@ -21,18 +21,18 @@ global.exports("HasRacingUsb", HasRacingUsb);
 
 export const CanJoinOrStartRace = async (Id: number): Promise<[boolean, string]> => {
     const Race = await FW.SendCallback("fw-racing:Server:GetRaceData", Id);
-    if (!Race) return [false, "Ongeldige Race!"];
+    if (!Race) return [false, "Invalid Race!"];
 
     const Vehicle = GetVehiclePedIsIn(PlayerPedId(), false);
-    if (!Vehicle) return [false, "Je moet in een voertuig zitten!"];
+    if (!Vehicle) return [false, "Need to be in vehicle"];
 
     const Driver = GetPedInVehicleSeat(Vehicle, -1);
-    if (Driver != PlayerPedId()) return [false, "Je moet in de bestuurdersstoel zitten!"];
+    if (Driver != PlayerPedId()) return [false, "You need to be the driver!"];
 
     const Model = GetEntityModel(Vehicle);
     const VehicleData = FW.Shared.HashVehicles[Model];
-    if (!VehicleData) return [false, "Dit voertuig kan niet gebruikt worden in een race!"];
-    if (Race.Class != "Open" && VehicleData.Class != Race.Class) return [false, `Je moet in een ${Race.Class} klasse voertuig zitten!`]
+    if (!VehicleData) return [false, "This vehicle cant be used!"];
+    if (Race.Class != "Open" && VehicleData.Class != Race.Class) return [false, `You need to have a class ${Race.Class} vehicle!`];
 
     // const [x, y, z] = GetEntityCoords(PlayerPedId(), false);
     // const Distance = new Vector3(Race.Coords.x, Race.Coords.y, Race.Coords.z).getDistance({x, y, z});

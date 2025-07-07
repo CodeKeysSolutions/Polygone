@@ -4,7 +4,7 @@
 
 <AppContainer class="app-bennys-container" AppId="Bennys" App="Bennys Online Shop">
     <div class="app-container">
-        <h1>Coming Soon...</h1>
+        <h1>Coming Soon...</h1> <!-- was "Binnenkort Beschikbaar..." if it was Dutch -->
     </div>
 </AppContainer>
 

@@ -37,7 +37,7 @@ function SetSirenCycle(Vehicle, Cycle)
     end
 end
 
-FW.AddKeybind("lightsQuick", "Hulpdiensten", "Lichten Aan-/uitzetten", "", function(IsPressed)
+FW.AddKeybind("lightsQuick", "emergency services", "Lights on/off", "", function(IsPressed)
     if not CanUseEmergencyLights(IsPressed) then
         return
     end
@@ -60,7 +60,7 @@ FW.AddKeybind("lightsQuick", "Hulpdiensten", "Lichten Aan-/uitzetten", "", funct
     TriggerServerEvent('fw-emergencylights:Server:MuteSirens', NetworkGetNetworkIdFromEntity(Vehicle))
 end)
 
-FW.AddKeybind("sirensQuick", "Hulpdiensten", "Sirenes Aan-/uitzetten", "", function(IsPressed)
+FW.AddKeybind("sirensQuick", "emergency services", "Sirenes On/Off", "", function(IsPressed)
     if not CanUseEmergencyLights(IsPressed) then
         return
     end
@@ -81,7 +81,7 @@ FW.AddKeybind("sirensQuick", "Hulpdiensten", "Sirenes Aan-/uitzetten", "", funct
     end
 end)
 
-FW.AddKeybind("primaryTone", "Hulpdiensten", "Primaire Tone", "", function(IsPressed)
+FW.AddKeybind("primaryTone", "emergency services", "Primaire Horn", "", function(IsPressed)
     if not CanUseEmergencyLights(IsPressed) then
         return
     end
@@ -90,7 +90,7 @@ FW.AddKeybind("primaryTone", "Hulpdiensten", "Primaire Tone", "", function(IsPre
     SetSirenCycle(Vehicle, 1)
 end)
 
-FW.AddKeybind("secondaryTone", "Hulpdiensten", "Secundaire Tone", "", function(IsPressed)
+FW.AddKeybind("secondaryTone", "emergency services", "Secundaire Horn", "", function(IsPressed)
     if not CanUseEmergencyLights(IsPressed) then
         return
     end

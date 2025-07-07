@@ -17,13 +17,13 @@ export let IsCreating = false;
 
 CreationThread.addHook('preStart', async () => {
     if (!IsPedInAnyVehicle(PlayerPedId(), false)) {
-        FW.Functions.Notify("Je moet in een voertuig zitten om een track te maken.", "error")
+        FW.Functions.Notify("You need to be in an vehicle to create.", "error")
         CreationThread.stop();
         return
     };
 
     if (!CanCreateTracks()) {
-        FW.Functions.Notify("Geen toegang..", "error")
+        FW.Functions.Notify("No access..", "error")
         CreationThread.stop();
         return
     };
@@ -125,7 +125,7 @@ CreationThread.addHook('afterStop', async () => {
 
 export const StartCreation = () => {
     if (!CanCreateTracks())  {
-        FW.Functions.Notify("Geen toegang..", "error");
+        FW.Functions.Notify("No access..", "error");
         return
     };
 
@@ -138,12 +138,12 @@ export const StopCreation = () => {
 
 const UpdateInfo = () => {
     global.exports['fw-ui'].ShowInfo({
-        Title: "Race Track Creation (#" + Checkpoints.length + ")",
+        Title: "Race Track Creator (#" + Checkpoints.length + ")",
         Items: [
-            {Text: "⬆️ / ⬇️ = Radius Grootte (" + Radius.toFixed(1) + ")"},
-            {Text: "<b>Q</b> = Checkpoint Render veranderen (" + RenderType + ")"},
-            {Text: "<b>E</b> = Checkpoint Plaatsen"},
-            {Text: "<b>Shift + E</b> = Laatste Checkpoint Verwijderen"},
+            {Text: "⬆️ / ⬇️ = Radius Size (" + Radius.toFixed(1) + ")"},
+            {Text: "<b>Q</b> = Checkpoint Change Render(" + RenderType + ")"},
+            {Text: "<b>E</b> = Checkpoint Add"},
+            {Text: "<b>Shift + E</b> = Undo last Checkpoint"},
         ]
     })
 }

@@ -90,7 +90,7 @@ AddEventHandler('fw-vehicles:Client:Nitrous:Usage', function(IsPressed)
         else
             NitrousStage = NitrousStage + 1
         end
-        FW.Functions.Notify("Nitrous gebruik gezet naar: " .. NitrousStages[NitrousStage])
+        FW.Functions.Notify("Nitrous level set to: " .. NitrousStages[NitrousStage])
     end
 end)
 
@@ -119,7 +119,7 @@ AddEventHandler('fw-vehicles:Client:Nitrous', function(OnPress)
         local NitrousLevel = GetVehicleMeta(Vehicle, 'Nitrous')
         if NitrousLevel ~= nil and NitrousLevel > 0 then
             if not exports['fw-racing']:IsNitrousAllowed() then
-                return FW.Functions.Notify("Je zit in een race waar nitrous niet is toegestaan!", "error")
+                return FW.Functions.Notify("Nitrous not allowed int his race!", "error")
             end
 
             DoingNitrous = true
@@ -294,7 +294,7 @@ function InitNitrous()
     RequestNamedPtfxAsset('core')
     RequestNamedPtfxAsset('veh_xs_vehicle_mods')
 
-    FW.AddKeybind('useNitrous', 'Voertuig', 'Gebruik Nitrous', '', false, 'fw-vehicles:Client:Nitrous')
-    FW.AddKeybind('setNitrous', 'Voertuig', 'Zet Nitrous Gebruik', '', false, 'fw-vehicles:Client:Nitrous:Usage')
-    FW.AddKeybind('swapNitrousMode', 'Voertuig', 'Zet Nitrous Type', '', false, 'fw-vehicles:Client:Nitrous:Type')
+    FW.AddKeybind('useNitrous', 'Vehicle', 'Use Nitrous', '', false, 'fw-vehicles:Client:Nitrous')
+    FW.AddKeybind('setNitrous', 'Vehicle', 'Set Nitrous Level', '', false, 'fw-vehicles:Client:Nitrous:Usage')
+    FW.AddKeybind('swapNitrousMode', 'Vehicle', 'Set Nitrous Type', '', false, 'fw-vehicles:Client:Nitrous:Type')
 end

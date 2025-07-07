@@ -18,14 +18,14 @@ export const StartBoostContract = async (Data: {contract: BoostingContract}) => 
     if (CurrentContract) {
         return {
             success: false,
-            message: "Je bent al met een contract bezig!"
+            message: "You are already working on a contract!" // was "Je bent al met een contract bezig!"
         };
     };
 
     if (TierConfigs[Data.contract.Class].MinCops > exp['fw-police'].GetCurrentCops()) {
         return {
             success: false,
-            message: "Dit contract kan momenteel niet worden gestart!"
+            message: "This contract cannot be started at this time!" // was "Dit contract kan momenteel niet worden gestart!"
         };
     };
 
@@ -267,12 +267,12 @@ onNet("fw-boosting:Client:UseHackingDevice", async (Item: any) => {
 
     const Speed = GetEntitySpeed(Vehicle) * 3.6;
     if (Speed < HackSpeed) {
-        return FW.Functions.Notify("Het voertuig gaat niet snel genoeg..", "error");
+        return FW.Functions.Notify("The vehicle is not going fast enough..", "error"); // was "Het voertuig gaat niet snel genoeg.."
     };
 
     const DriverPed = GetPedInVehicleSeat(Vehicle, -1);
     if (DriverPed == 0 || DriverPed == PlayerPedId()) {
-        return FW.Functions.Notify("De bestuurder kan niet hacken!", "error");
+        return FW.Functions.Notify("The driver cannot hack!", "error"); // was "De bestuurder kan niet hacken!"
     };
 
     const Plate = GetVehicleNumberPlateText(Vehicle);
@@ -284,7 +284,7 @@ onNet("fw-boosting:Client:UseHackingDevice", async (Item: any) => {
     const Success = await exp['minigame-boostinghack'].StartHack(Result.data.HackTypes, Result.data.HackTime);
 
     if (!Success) {
-        FW.Functions.Notify("Mislukt!", "error");
+        FW.Functions.Notify("Failed!", "error"); // was "Mislukt!"
         emitNet("fw-boosting:Server:FailedHack", Plate);
         return;
     };
@@ -295,10 +295,10 @@ onNet("fw-boosting:Client:UseHackingDevice", async (Item: any) => {
 onNet("fw-boosting:Client:PrepareVIN", async () => {
     if (!CurrentContract) return;
     if (!_IsLeader) {
-        return FW.Functions.Notify("Alleen de eigenaar van het contract kan de VIN-scratch doen..", "error")
+        return FW.Functions.Notify("Only the owner of the contract can do the VIN-scratch..", "error") // was "Alleen de eigenaar van het contract kan de VIN-scratch doen.."
     };
 
-    const Finished = await FW.Functions.CompactProgressbar(3000, "Laptop openen..", false, false, {
+    const Finished = await FW.Functions.CompactProgressbar(3000, "Opening laptop..", false, false, { // was "Laptop openen.."
         disableMovement: true,
         disableCarMovement: true,
         disableMouse: false,
@@ -316,7 +316,7 @@ onNet("fw-boosting:Client:PrepareVIN", async () => {
         "fas fa-horse-head",
         [ "white", "transparent" ],
         "PM Boosting",
-        `Prijs bestelling ${CurrentContract.ScratchPrice} ${CurrentContract.Crypto}`,
+        `Order price ${CurrentContract.ScratchPrice} ${CurrentContract.Crypto}`, // was `Prijs bestelling ${CurrentContract.ScratchPrice} ${CurrentContract.Crypto}`
         false,
         true,
         "fw-boosting:Server:ConfirmVINOrder",
@@ -336,7 +336,7 @@ onNet("fw-boosting:Client:ConfirmOrder", async (State: boolean) => {
         return;
     };
 
-    await FW.Functions.CompactProgressbar(5000, "Met netwerk verbinden..", false, false, {
+    await FW.Functions.CompactProgressbar(5000, "Connecting to network..", false, false, { // was "Met netwerk verbinden.."
         disableMovement: true,
         disableCarMovement: true,
         disableMouse: false,
@@ -347,7 +347,7 @@ onNet("fw-boosting:Client:ConfirmOrder", async (State: boolean) => {
         flags: 1,
     }, {}, {}, false);
 
-    await FW.Functions.CompactProgressbar(10000, "Papierwerk wissen..", false, false, {
+    await FW.Functions.CompactProgressbar(10000, "Clearing paperwork..", false, false, { // was "Papierwerk wissen.."
         disableMovement: true,
         disableCarMovement: true,
         disableMouse: false,
@@ -367,10 +367,10 @@ onNet("fw-boosting:Client:ConfirmOrder", async (State: boolean) => {
 onNet("fw-boosting:Client:ScratchVin", async (Entity: number) => {
     if (!CurrentContract || !CurrentContract.Data) return;
     if (!_IsLeader) {
-        return FW.Functions.Notify("Alleen de eigenaar van het contract kan de VIN-scratch doen..", "error")
+        return FW.Functions.Notify("Only the owner of the contract can do the VIN-scratch..", "error") // was "Alleen de eigenaar van het contract kan de VIN-scratch doen.."
     };
 
-    const Finished = await FW.Functions.CompactProgressbar(20000, "VIN wegkrassen..", false, false, {
+    const Finished = await FW.Functions.CompactProgressbar(20000, "Scratching VIN..", false, false, { // was "VIN wegkrassen.."
         disableMovement: true,
         disableCarMovement: true,
         disableMouse: false,

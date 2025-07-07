@@ -23,7 +23,7 @@ export default () => {
             {
                 Name: 'current',
                 Icon: 'fas fa-list',
-                Label: 'Huidige Gevangenen',
+                Label: 'Present Inmates', // was 'Huidige Gevangenen'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:CheckCurrentInmates',
                 EventParams: {},
@@ -73,7 +73,7 @@ export default () => {
             {
                 Name: 'alarm_on',
                 Icon: 'fas fa-circle',
-                Label: 'Lockdown Inschakelen',
+                Label: 'Enable Lockdown', // was 'Lockdown Inschakelen'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:ToggleAlarm',
                 EventParams: { State: true },
@@ -85,7 +85,7 @@ export default () => {
             {
                 Name: 'alarm_off',
                 Icon: 'fas fa-circle',
-                Label: 'Lockdown Uitschakelen',
+                Label: 'Disable Lockdown', // was 'Lockdown Uitschakelen'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:ToggleAlarm',
                 EventParams: {State: false},
@@ -105,10 +105,10 @@ export default () => {
             {
                 Name: 'jail_call',
                 Icon: 'fas fa-phone-alt',
-                Label: 'Iemand bellen (€ 150.00)',
+                Label: 'Call someone ($ 150.00)', // was 'Iemand bellen ($ 150.00)'
                 EventType: 'Client',
                 EventName: 'fw-misc:Client:Payphones:Call',
-                EventParams: { Costs: 150, Caller: 'BOILINGBROKE GEVANGENIS', Phone: "0032498700" },
+                EventParams: { Costs: 150, Caller: 'BOILINGBROKE PRISON', Phone: "0032498700" },
                 Enabled: (Entity: number) => {
                     return true
                 },
@@ -116,7 +116,7 @@ export default () => {
             {
                 Name: 'jail_time',
                 Icon: 'fas fa-clock',
-                Label: 'Check Tijd',
+                Label: 'Check Time', // was 'Check Tijd'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:CheckPrisonTime',
                 EventParams: '',
@@ -130,7 +130,7 @@ export default () => {
             {
                 Name: 'leave_jail',
                 Icon: 'fas fa-sign-out',
-                Label: 'Verlaat Gevangenis',
+                Label: 'Leave Prison', // was 'Verlaat Gevangenis'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:ReleaseJail',
                 EventParams: '',
@@ -147,7 +147,7 @@ export default () => {
             {
                 Name: 'change_task',
                 Icon: 'fas fa-list-alt',
-                Label: 'Verander Taak',
+                Label: 'Change Task', // was 'Verander Taak'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:ChangeTask',
                 EventParams: '',
@@ -158,7 +158,7 @@ export default () => {
             {
                 Name: 'jail_sleep',
                 Icon: 'fas fa-bed',
-                Label: 'Slapen',
+                Label: 'Sleep', // was 'Slapen'
                 EventType: 'Server',
                 EventName: 'fw-apartments:Server:Logout',
                 EventParams: '',
@@ -187,7 +187,7 @@ export default () => {
             {
                 Name: 'jail_slushy',
                 Icon: 'fab fa-gulp',
-                Label: 'Maak een slushy',
+                Label: 'Make a slushy', // was 'Maak een slushy'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:TapJailSlushy',
                 EventParams: {},
@@ -198,7 +198,7 @@ export default () => {
             {
                 Name: 'jail_food',
                 Icon: 'fas fa-utensils',
-                Label: 'Eten Voorbereiden',
+                Label: 'Prepare Food', // was 'Eten Voorbereiden'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:GetJailFood',
                 EventParams: {},
@@ -227,7 +227,7 @@ export default () => {
             {
                 Name: 'jail_task_stack_bricks',
                 Icon: 'fas fa-chess-rook',
-                Label: 'Stapel stenen',
+                Label: 'Stack bricks', // was 'Stapel stenen'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:DoPrisonTask',
                 EventParams: { Task: 'Scrapyard', Job: 'StackBricks' },
@@ -257,7 +257,7 @@ export default () => {
             {
                 Name: 'jail_task_sort_scrap',
                 Icon: 'fas fa-trash-restore',
-                Label: 'Sorteer troep',
+                Label: 'Sort junk', // was 'Sorteer troep'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:DoPrisonTask',
                 EventParams: { Task: 'Scrapyard', Job: 'SortScrap' },
@@ -287,7 +287,7 @@ export default () => {
             {
                 Name: 'jail_task_deliver_scrap',
                 Icon: 'fas fa-inbox',
-                Label: 'Lever materialen in',
+                Label: 'Deliver materials', // was 'Lever materialen in'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:DoPrisonTask',
                 EventParams: { Task: 'Scrapyard', Job: 'DeliverScrap' },
@@ -317,7 +317,7 @@ export default () => {
             {
                 Name: 'jail_task_sort_kitchen',
                 Icon: 'fas fa-sort',
-                Label: 'Sorteren',
+                Label: 'Sort', // was 'Sorteren'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:DoPrisonTask',
                 EventParams: { Task: 'Kitchen', Job: 'SortKitchen' },
@@ -347,7 +347,7 @@ export default () => {
             {
                 Name: 'jail_task_clean_table',
                 Icon: 'fas fa-soap',
-                Label: 'Tafel schoonmaken',
+                Label: 'Clean table', // was 'Tafel schoonmaken'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:DoPrisonTask',
                 EventParams: { Task: 'Kitchen', Job: 'CleanTable' },
@@ -378,7 +378,7 @@ export default () => {
             {
                 Name: 'jail_task_clean_table',
                 Icon: 'fas fa-soap',
-                Label: 'Tafel schoonmaken',
+                Label: 'Clean table', // was 'Tafel schoonmaken'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:DoPrisonTask',
                 EventParams: { Task: 'Kitchen', Job: 'CleanTable' },
@@ -409,7 +409,7 @@ export default () => {
             {
                 Name: 'jail_task_clean_table',
                 Icon: 'fas fa-soap',
-                Label: 'Tafel schoonmaken',
+                Label: 'Clean table', // was 'Tafel schoonmaken'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:DoPrisonTask',
                 EventParams: { Task: 'Kitchen', Job: 'CleanTable' },
@@ -440,7 +440,7 @@ export default () => {
             {
                 Name: 'jail_task_clean_table',
                 Icon: 'fas fa-soap',
-                Label: 'Tafel schoonmaken',
+                Label: 'Clean table', // was 'Tafel schoonmaken'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:DoPrisonTask',
                 EventParams: { Task: 'Kitchen', Job: 'CleanTable' },
@@ -471,7 +471,7 @@ export default () => {
             {
                 Name: 'jail_task_clean_table',
                 Icon: 'fas fa-soap',
-                Label: 'Tafel schoonmaken',
+                Label: 'Clean table', // was 'Tafel schoonmaken'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:DoPrisonTask',
                 EventParams: { Task: 'Kitchen', Job: 'CleanTable' },
@@ -502,7 +502,7 @@ export default () => {
             {
                 Name: 'jail_task_clean_table',
                 Icon: 'fas fa-soap',
-                Label: 'Tafel schoonmaken',
+                Label: 'Clean table', // was 'Tafel schoonmaken'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:DoPrisonTask',
                 EventParams: { Task: 'Kitchen', Job: 'CleanTable' },
@@ -533,7 +533,7 @@ export default () => {
             {
                 Name: 'jail_task_clean_table',
                 Icon: 'fas fa-soap',
-                Label: 'Tafel schoonmaken',
+                Label: 'Clean table', // was 'Tafel schoonmaken'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:DoPrisonTask',
                 EventParams: { Task: 'Kitchen', Job: 'CleanTable' },
@@ -564,7 +564,7 @@ export default () => {
             {
                 Name: 'jail_task_clean_table',
                 Icon: 'fas fa-soap',
-                Label: 'Tafel schoonmaken',
+                Label: 'Clean table', // was 'Tafel schoonmaken'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:DoPrisonTask',
                 EventParams: { Task: 'Kitchen', Job: 'CleanTable' },
@@ -596,7 +596,7 @@ export default () => {
             {
                 Name: 'stash',
                 Icon: 'fas fa-box-open',
-                Label: 'Open',
+                Label: 'Open', // was 'Open'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:KitchenStash',
                 EventParams: {},
@@ -607,7 +607,7 @@ export default () => {
             {
                 Name: 'prepare_food',
                 Icon: 'fas fa-utensils',
-                Label: 'Eten Voorbereiden',
+                Label: 'Prepare Food', // was 'Eten Voorbereiden'
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:PrepareFood',
                 EventParams: { Business: "Prison", DishType: "Dessert" },
@@ -637,7 +637,7 @@ export default () => {
             {
                 Name: 'stash',
                 Icon: 'fas fa-hand-holding',
-                Label: 'Dienblad',
+                Label: 'Tray', // was 'Dienblad'
                 EventType: 'Client',
                 EventName: 'fw-prison:Client:Tray',
                 EventParams: {},
@@ -648,7 +648,7 @@ export default () => {
             {
                 Name: 'menu',
                 Icon: 'fas fa-circle',
-                Label: 'Menukaart Beheren',
+                Label: 'Manage Menu', // was 'Menukaart Beheren'
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:ManageMenu',
                 EventParams: { Business: "Prison" },
@@ -679,7 +679,7 @@ export default () => {
             {
                 Name: 'prepare_food',
                 Icon: 'fas fa-utensils',
-                Label: 'Eten Voorbereiden',
+                Label: 'Prepare Food', // was 'Eten Voorbereiden'
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:PrepareFood',
                 EventParams: { Business: "Prison", DishType: "Main" },
@@ -709,7 +709,7 @@ export default () => {
             {
                 Name: 'prepare_food',
                 Icon: 'fas fa-utensils',
-                Label: 'Eten Voorbereiden',
+                Label: 'Prepare Food', // was 'Eten Voorbereiden'
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:PrepareFood',
                 EventParams: { Business: "Prison", DishType: "Drink" },
@@ -739,7 +739,7 @@ export default () => {
             {
                 Name: 'prepare_food',
                 Icon: 'fas fa-utensils',
-                Label: 'Eten Voorbereiden',
+                Label: 'Prepare Food', // was 'Eten Voorbereiden'
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:PrepareFood',
                 EventParams: { Business: "Prison", DishType: "Side" },

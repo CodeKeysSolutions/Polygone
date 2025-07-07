@@ -27,7 +27,7 @@ FW.Commands.Add("alterprio", "Zet iemand zijn prio level.", {
     Config.PriorityList[Target.PlayerData.steam] = Priority
 end, 'admin')
 
-FW.Commands.Add("checkprio", "Vraag de prio level aan van een speler.", {
+FW.Commands.Add("checkprio", "Vraag de prio level aan van een player.", {
     { name = "id", help = "" },
 }, true, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)

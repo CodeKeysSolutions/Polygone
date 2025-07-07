@@ -90,11 +90,23 @@ on("fw-sync:Server:SetCurrentWeather", (Weather: Weather) => {
 on("fw-sync:Server:SetBlackout", (State: boolean) => {
     BlackoutActive = !BlackoutActive;
     emitNet("fw-sync:Client:SetBlackout", -1, BlackoutActive);
-    emitNet('chatMessage', -1, "LS Water & Elektriciteit", "warning", "De stroom in de stad is momenteel uitgevallen. We zijn bezig om het te herstellen!")
+    emitNet(
+        'chatMessage',
+        -1,
+        "LS Water & Electricity", // was "LS Water & Elektriciteit"
+        "warning",
+        "The power in the city is currently out. We are working to restore it!" // was "De stroom in de stad is momenteel uitgevallen. We zijn bezig om het te herstellen!"
+    );
 
     setTimeout(() => {
         BlackoutActive = false;
-        emitNet('chatMessage', -1, "LS Water & Elektriciteit", "warning", "De stroom in de stad is hersteld!")
+        emitNet(
+            'chatMessage',
+            -1,
+            "LS Water & Electricity", // was "LS Water & Elektriciteit"
+            "warning",
+            "The power in the city has been restored!" // was "De stroom in de stad is hersteld!"
+        );
         emitNet("fw-sync:Client:SetBlackout", -1, BlackoutActive);
     }, (60 * 1000) * 10);
 });

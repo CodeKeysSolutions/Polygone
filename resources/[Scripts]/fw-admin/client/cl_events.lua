@@ -34,7 +34,7 @@ RegisterNetEvent('Admin:Spawn:Vehicle')
 AddEventHandler('Admin:Spawn:Vehicle', function(Result)
     if IsPlayerAdmin() then
         if not IsModelValid(Result['model']) then
-            FW.Functions.Notify("Geen geldig model..", "error")
+            FW.Functions.Notify("Not a valid model..", "error")
             return
         end
         local VehicleCoords = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0, 1.75, 0)

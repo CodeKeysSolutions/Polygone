@@ -36,7 +36,7 @@
         for (let i = 0; i < JobVehicles[Job].length; i++) {
             const Vehicle = JobVehicles[Job][i];
             Retval.push({
-                Text: `Voertuig: ${Vehicle.Label}`,
+                Text: `Vehicle: ${Vehicle.Label}`,
                 Value: Vehicle.Icon,
                 Cb: (Value) => {
                     SendEvent("Dispatch/SetVehicle", { Job, Cid, Icon: Vehicle.Icon, Type: Vehicle.Type });
@@ -85,7 +85,7 @@
 
         if (!UnitData.Busy) {
             Statusses.push({
-                Text: `Markeer als 10-06`,
+                Text: `Mark as 10-06`,
                 Cb: () => {
                     SendEvent("Dispatch/SetStatus", { Job, Cid: Data.Cid, Busy: true, Unavailable: false });
                 },
@@ -94,7 +94,7 @@
 
         if (!UnitData.Unavailable) {
             Statusses.push({
-                Text: `Markeer als 10-07`,
+                Text: `Mark as 10-07`,
                 Cb: () => {
                     SendEvent("Dispatch/SetStatus", { Job, Cid: Data.Cid, Busy: false, Unavailable: true });
                 },
@@ -103,7 +103,7 @@
 
         if (UnitData.Busy || UnitData.Unavailable) {
             Statusses.push({
-                Text: `Markeer als 10-08`,
+                Text: `Mark as 10-08`,
                 Cb: () => {
                     SendEvent("Dispatch/SetStatus", { Job, Cid: Data.Cid, Busy: false, Unavailable: false });
                 },
@@ -138,7 +138,7 @@
             {/if}
         {/each}
     {:else}
-        <h1>Geen eenheden dud</h1>
+        <h1>No units</h1>
     {/if}
 </div>
 

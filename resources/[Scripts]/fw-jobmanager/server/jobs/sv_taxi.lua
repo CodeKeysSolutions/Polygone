@@ -17,14 +17,14 @@ FW.RegisterServer("fw-jobmanager:Server:Taxi:DeletePed", function(Source, NetId,
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
-    -- €0.1 per 1 meter at daytime, €0.15 per 1 meter at nighttime.
+    -- $0.1 per 1 meter at daytime, $0.15 per 1 meter at nighttime.
     local Payout = 0.1
     local Time = exports['fw-sync']:GetCurrentTime()
     if Time.Hour > 21 and Time.Hour < 6 then
         Payout = 0.15
     end
 
-    -- increase with €0.05 per 1 meter
+    -- increase with $0.05 per 1 meter
     if exports['fw-hud']:DoesPlayerHaveBuff(Source, "Salary") then
         Payout = Payout + 0.05
     end

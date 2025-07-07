@@ -1,17 +1,17 @@
 Config = Config or {}
 
 Config.LicensesLocales = {
-    ['driver'] = 'Rijbewijs',
-    ['hunting'] = 'Jaag Vergunning',
-    ['weapon'] = 'Wapen Vergunning',
-    ['fishing'] = 'Vis Vergunning',
-    ['flying'] = 'Vliegbrevet',
-    ['business'] = 'Bedrijfs Vergunning',
+    ['driver'] = 'Driver\'s License',
+    ['hunting'] = 'Hunting License',
+    ['weapon'] = 'Weapon License',
+    ['fishing'] = 'Fishing License',
+    ['flying'] = 'Pilot License',
+    ['business'] = 'Business License',
 }
 
-Config.LicenseTemplate = '<p><strong>Uitgegeven aan</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>%s</td></tr><tr><th>BSN nummer</th><td>%s</td></tr><tr><th>Geslacht</th><td>%s</td></tr></tbody></table></figure><p><strong>Uitgegeven door</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>%s</td></tr><tr><th>Datum</th><td>%s</td></tr></tbody></table></figure><p>&nbsp;</p>'
+Config.LicenseTemplate = '<p><strong>Issued to</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>%s</td></tr><tr><th>SSN number</th><td>%s</td></tr><tr><th>Gender</th><td>%s</td></tr></tbody></table></figure><p><strong>Issued by</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>%s</td></tr><tr><th>Date</th><td>%s</td></tr></tbody></table></figure><p>&nbsp;</p>'
 exports("GetLicenseTemplate", function()
     return Config.LicenseTemplate
 end)
 
-Config.ConfiscateMessage = "Beste %s, we betreuren het u te moeten informeren dat uw eigendom in beslag is genomen door de staat vanwege openstaande schulden. Het spijt ons te moeten zeggen dat als er binnen een bepaalde termijn geen contact wordt opgenomen met het gerechtshof van Los Santos, de staat het ingenomen eigendom mag verkopen om de openstaande schulden te dekken. Neem dus alstublieft zo snel mogelijk contact op met het gerechtshof van Los Santos om verdere stappen te bespreken. Met vriendelijke groet, de Staat van Los Santos."
+Config.ConfiscateMessage = "Dear %s, we regret to inform you that your property has been confiscated by the state due to outstanding debts. We are sorry to say that if no contact is made with the Los Santos courthouse within a certain period, the state may sell the confiscated property to cover the outstanding debts. Please contact the Los Santos courthouse as soon as possible to discuss further steps. Kind regards, the State of Los Santos."

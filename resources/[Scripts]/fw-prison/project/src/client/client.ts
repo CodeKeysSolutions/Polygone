@@ -23,14 +23,14 @@ on("fw-prison:Client:CheckCurrentInmates", async () => {
 
     const MenuItems: any = [
         {
-            Title: `Aanwezige Gevangenen`,
-            Desc: Inmates.length == 0 ? "Alle gevangenen slapen.." : "",
+            Title: `Present Inmates`, // was `Aanwezige Gevangenen`
+            Desc: Inmates.length == 0 ? "All inmates are sleeping.." : "", // was "Alle gevangenen slapen.."
             Disabled: Inmates.length == 0,
             SecondMenu: []
         },
         {
-            Title: `Aanwezige Corrections Officers`,
-            Desc: Officers.length == 0 ? "Momenteel geen Corrections Officer aanwezig!" : "",
+            Title: `Present Corrections Officers`, // was `Aanwezige Corrections Officers`
+            Desc: Officers.length == 0 ? "Currently no Corrections Officer present!" : "", // was "Momenteel geen Corrections Officer aanwezig!"
             Disabled: Officers.length == 0,
             SecondMenu: []
         },
@@ -41,7 +41,7 @@ on("fw-prison:Client:CheckCurrentInmates", async () => {
         
         MenuItems[0].SecondMenu.push({
             Title: `Inmate #${Inmate.Cid} (${Inmate.Name})`,
-            Desc: `Tijd resterend: ${Inmate.TimeLeft}`
+            Desc: `Time remaining: ${Inmate.TimeLeft}` // was `Tijd resterend: ${Inmate.TimeLeft}`
         });
     }
 

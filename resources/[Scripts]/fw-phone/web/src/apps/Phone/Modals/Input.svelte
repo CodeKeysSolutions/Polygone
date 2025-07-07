@@ -76,7 +76,7 @@
                         };
                         
                         if (Data.IsCurrency) {
-                            if (Val.length == 0) return "€ 0,00";
+                            if (Val.length == 0) return "$ 0,00";
                             return FormatCurrency.format(Val);
                         };
 

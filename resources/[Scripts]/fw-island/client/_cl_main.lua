@@ -29,7 +29,7 @@ AddEventHandler("fw-island:Client:CheckFlights", function()
         MenuItems[#MenuItems + 1] = {
             Icon = 'plane',
             Title = "Los Santos -> Cayo Perico",
-            Desc = "Vliegticket prijs: (€5.000)",
+            Desc = "Vliegticket prijs: ($5.000)",
             Data = { Event = 'fw-island:Client:PurchaseFlight', Type = 'Client', Flight = "lsia_to_cayo", Label = "Los Santos -> Cayo Perico" },
             Disabled = not FW.SendCallback("fw-island:Server:IsFlightAvailable", "lsia_to_cayo")
         }
@@ -37,7 +37,7 @@ AddEventHandler("fw-island:Client:CheckFlights", function()
         MenuItems[#MenuItems + 1] = {
             Icon = 'plane',
             Title = "Cayo Perico -> Los Santos",
-            Desc = "Vliegticket prijs: (€5.000)",
+            Desc = "Vliegticket prijs: ($5.000)",
             Data = { Event = 'fw-island:Client:PurchaseFlight', Type = 'Client', Flight = "cayo_to_lsia", Label = "Cayo Perico -> Los Santos" },
             Disabled = not FW.SendCallback("fw-island:Server:IsFlightAvailable", "lsia_to_cayo")
         }
@@ -62,7 +62,7 @@ AddEventHandler("fw-island:Client:PurchaseFlight", function(Data)
 
     MenuItems[#MenuItems + 1] = {
         Icon = 'check-square',
-        Title = "Aankoop Bevestigen (€5.000)",
+        Title = "Aankoop Bevestigen ($5.000)",
         Data = { Event = 'fw-island:Server:BookFlight', Type = 'Server', Flight = Data.Flight },
     }
 

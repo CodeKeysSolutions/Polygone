@@ -3,31 +3,31 @@ local Barriers = {
     {
         Prop = "prop_barrier_work05",
         Label = "Barricade 1",
-        Desc = "Een barricade gemaakt van hout.",
+        Desc = "A barricade made of wood.",
         Jobs = { police = true, storesecurity = true }
     },
     {
         Prop = "robijn_barrier_nolights",
         Label = "Barricade 2",
-        Desc = "Een barricade gemaakt van beton, gebruik alleen met toestemming.",
+        Desc = "A barricade made of concrete, use only with permission.",
         Jobs = { police = true }
     },
     {
         Prop = "robijn_barrier_lights",
         Label = "Barricade 3",
-        Desc = "Een barricade gemaakt van beton en lampjes, gebruik alleen met toestemming.",
+        Desc = "A barricade made of concrete and lights, use only with permission.",
         Jobs = { police = true }
     },
     {
         Prop = "ch_prop_ch_fib_01a",
         Label = "Marker",
-        Desc = "Een marker om te plaatsen bij een crime scene.",
+        Desc = "A marker to place at a crime scene.",
         Jobs = { police = true }
     },
     {
         Prop = "prop_gazebo_01",
         Label = "Tent",
-        Desc = "Welkom in de feesttent.",
+        Desc = "Welcome to the party tent.",
         Jobs = {
             police = true,
             ems = true,
@@ -36,8 +36,8 @@ local Barriers = {
     },
     {
         Prop = "ch_prop_ch_gazebo_01",
-        Label = "Grote Tent",
-        Desc = "De daadwerkelijke feesttent!",
+        Label = "Large Tent",
+        Desc = "The actual party tent!",
         Jobs = {
             police = true,
             ems = true,
@@ -46,8 +46,8 @@ local Barriers = {
     },
     {
         Prop = "delete_closest",
-        Label = "Verwijder barricade",
-        Desc = "Verwijder je dichtstbijzijnde prop.",
+        Label = "Remove barricade",
+        Desc = "Remove your nearest prop.",
         Jobs = {
             police = true,
             ems = true,
@@ -70,11 +70,11 @@ local TrafficBarriers = {
     ["robijn_barrier_lights"] = true,
 }
 
-FW.Commands.Add("barricade", "Plaats een barricade.", {}, false, function(Source, Args)
+FW.Commands.Add("barricade", "Place a barricade.", {}, false, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
     if (Player.PlayerData.job.name ~= "police" and Player.PlayerData.job.name ~= "storesecurity" and Player.PlayerData.job.name ~= "ems") or not Player.PlayerData.job.onduty then
-        return Player.Functions.Notify("Dit mag jij niet, jammer joh..", "error")
+        return Player.Functions.Notify("You are not allowed to do this..", "error")
     end
 
     local Coords = GetEntityCoords(GetPlayerPed(Source))
@@ -136,7 +136,7 @@ FW.RegisterServer("fw-police:Server:DeleteBarricade", function(Source, Barricade
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
     if (Player.PlayerData.job.name ~= "police" and Player.PlayerData.job.name ~= "storesecurity" and Player.PlayerData.job.name ~= "ems") or not Player.PlayerData.job.onduty then
-        return Player.Functions.Notify("Dit mag jij niet, jammer joh..", "error")
+        return Player.Functions.Notify("You are not allowed to do this..", "error")
     end
 
     local Coords = GetEntityCoords(GetPlayerPed(Source))
@@ -149,7 +149,7 @@ FW.RegisterServer("fw-police:Server:DeleteBarricade", function(Source, Barricade
     end
 
     if ClosestId == 0 or ClosestDist > 2.0 then
-        return Player.Functions.Notify("Je bent niet in de buurt van een barricade..", "error")
+        return Player.Functions.Notify("You are not near a barricade..", "error")
     end
 
     DestroyBarricade(ClosestId)

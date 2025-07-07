@@ -27,7 +27,7 @@ setImmediate(() => {
 const GetClosestPlayer = async () => {
     const [Player, Distance] = await FW.Functions.GetClosestPlayer();
     if (!Player || Player < 0 || Distance > 2.0 || IsPedInAnyVehicle(GetPlayerPed(GetPlayerFromServerId(Player)), false)) {
-        FW.Functions.Notify("Geen speler gevonden..", "error")
+        FW.Functions.Notify("No player found..", "error")
         return [false, 0];
     };
     
@@ -38,11 +38,11 @@ on("fw-medical:Client:Medic:Heal", async () => {
     const [ NearPlayer, PlayerId ] = await GetClosestPlayer();
     if (!NearPlayer) return;
 
-    if (!exp['fw-inventory'].HasEnoughOfItem('medkit', 1)) return FW.Functions.Notify("Je mist een medkit..", "error");
+    if (!exp['fw-inventory'].HasEnoughOfItem('medkit', 1)) return FW.Functions.Notify("You are missing a medkit..", "error");
 
     AnimThread.start();
 
-    const Finished = await FW.Functions.CompactProgressbar(4000, "Burger verzorgen", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(4000, "Treating civilian", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {}, {}, {}, false)
 
@@ -56,11 +56,11 @@ on("fw-medical:Client:Medic:Revive", async () => {
     const [ NearPlayer, PlayerId ] = await GetClosestPlayer();
     if (!NearPlayer) return;
 
-    if (!exp['fw-inventory'].HasEnoughOfItem('medkit', 1)) return FW.Functions.Notify("Je mist een medkit..", "error");
+    if (!exp['fw-inventory'].HasEnoughOfItem('medkit', 1)) return FW.Functions.Notify("You are missing a medkit..", "error");
 
     AnimThread.start();
 
-    const Finished = await FW.Functions.CompactProgressbar(8000, "Burger reviven", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(8000, "Reviving civilian", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {}, {}, {}, false)
 
@@ -80,7 +80,7 @@ on("fw-medical:Client:Medic:TakeBlood", async () => {
 
     TriggerEvent("fw-emotes:Client:PlayEmote", "phone2", false, true)
 
-    const Finished = await FW.Functions.CompactProgressbar(GetRandom(8, 15) * 1000, "Bloed afnemen", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(GetRandom(8, 15) * 1000, "Taking blood", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {}, {}, {}, false)
 
@@ -96,7 +96,7 @@ on("fw-medical:Client:Medic:TakeDNA", async () => {
 
     TriggerEvent("fw-emotes:Client:PlayEmote", "phone2", false, true)
 
-    const Finished = await FW.Functions.CompactProgressbar(GetRandom(8, 15) * 1000, "Speeksel afnemen", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(GetRandom(8, 15) * 1000, "Taking saliva", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {}, {}, {}, false)
 

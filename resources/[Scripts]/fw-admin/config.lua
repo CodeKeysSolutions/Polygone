@@ -148,6 +148,7 @@ Config.AdminMenus = {
             },
         },
     },
+
     {
         Category = 'player',
         Id = 'giveMoney',
@@ -586,7 +587,7 @@ Config.AdminMenus = {
             },
             {
                 Id = 'state',
-                Name = 'Blacklist speler om scenes te gebruiken:',
+                Name = 'Blacklist player om scenes te gebruiken:',
                 Type = 'input-choice',
                 Choices = {
                     { Val = 'true', Text = 'Ja' },

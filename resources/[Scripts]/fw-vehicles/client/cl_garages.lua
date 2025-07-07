@@ -81,7 +81,7 @@ Citizen.CreateThread(function()
     }, function(IsInside, Zone, Point)
         if IsInside then
             CurrentGarage = 'depot'
-            exports['fw-ui']:ShowInteraction("[E] Voertuig Depot")
+            exports['fw-ui']:ShowInteraction("[E] Vehicle Depot")
 
             Citizen.CreateThread(function()
                 while CurrentGarage == 'depot' do
@@ -124,7 +124,7 @@ RegisterNetEvent("fw-vehicles:Client:SpawnVehiclePhone")
 AddEventHandler("fw-vehicles:Client:SpawnVehiclePhone", function(Plate)
     local Result = FW.SendCallback("fw-vehicles:Server:CanSpawnVehicle", Plate)
     if not Result then
-        return FW.Functions.Notify("Kan voertuig niet plaatsen, track je voertuig om de locatie te vinden..", "error")
+        return FW.Functions.Notify("Cannot spawn vehicle, track your vehicle to find its location..", "error")
     end
 
     local Vehicle = FW.SendCallback("fw-vehicles:Server:GetVehicleByPlate", Plate)
@@ -173,7 +173,7 @@ AddEventHandler("fw-vehicles:Client:OpenGarage", function(Data)
     end
 
     if HasDebts then
-        return FW.Functions.Notify("Geen toegang..", "error")
+        return FW.Functions.Notify("No access.", "error")
     end
 
     local Vehicles = FW.SendCallback("fw-vehicles:Server:GetGarageVehicles", CurrentGarage, IsGov and Data.Owner or false)
@@ -186,18 +186,18 @@ AddEventHandler("fw-vehicles:Client:OpenGarage", function(Data)
         MenuItems[#MenuItems + 1] = {
             Icon = 'car',
             Title = SharedVehicle and SharedVehicle.Name or GetLabelText(GetDisplayNameFromVehicleModel(GetHashKey(v.vehicle))),
-            Desc = ("Plate: %s | %s"):format(v.plate, v.state == 'in' and 'Binnen' or 'Buiten'),
+            Desc = ("Plate: %s | %s"):format(v.plate, v.state == 'in' and 'Inside' or 'Outside'),
             Data = { Event = 'fw-vehicles:Client:SpawnPreview', Type = 'Client', Vehicle = v },
             SecondMenu = {
                 {
                     CloseMenu = true,
                     Disabled = v.state ~= 'in',
-                    Title = 'Voertuig Meenemen',
+                    Title = 'Take Out Vehicle',
                     Data = {Event = "fw-vehicles:Client:SpawnVehicle", Type = "Client", Vehicle = v },
                 },
                 {
-                    Title = 'Voertuig Status',
-                    Desc = ('%s | Engine: %s%% | Body: %s%%'):format(v.state == 'In' and 'Binnen' or 'Buiten', math.ceil(MetaData.Engine / 10), math.ceil(MetaData.Body / 10)),
+                    Title = 'Vehicle Status',
+                    Desc = ('%s | Engine: %s%% | Body: %s%%'):format(v.state == 'In' and 'Inside' or 'Outside', math.ceil(MetaData.Engine / 10), math.ceil(MetaData.Body / 10)),
                 }
             },
         }
@@ -214,16 +214,16 @@ RegisterNetEvent("fw-vehicles:Client:GarageActions")
 AddEventHandler("fw-vehicles:Client:GarageActions", function()
     Citizen.SetTimeout(10, function()
         local Result = exports['fw-ui']:CreateInput({
-            { Label = 'BSN', Icon = 'fas fa-id-card', Name = 'Cid' },
+            { Label = 'SSN', Icon = 'fas fa-id-card', Name = 'Cid' },
         })
 
         if not Result or not Result.Cid then
-            return FW.Functions.Notify("Geannuleerd.")
+            return FW.Functions.Notify("Cancelled.")
         end
 
         local Vehicles = FW.SendCallback("fw-vehicles:Server:GetVehiclesFromCid", Result.Cid, CurrentGarage)
         if #Vehicles == 0 then
-            return FW.Functions.Notify("Garage is leeg..", "error")
+            return FW.Functions.Notify("Garage is empty..", "error")
         end
 
         local MenuItems = {}
@@ -235,21 +235,21 @@ AddEventHandler("fw-vehicles:Client:GarageActions", function()
             MenuItems[#MenuItems + 1] = {
                 Icon = 'car',
                 Title = SharedVehicle and SharedVehicle.Name or GetLabelText(GetDisplayNameFromVehicleModel(GetHashKey(v.vehicle))),
-                Desc = ("Plate: %s | %s"):format(v.plate, v.state == 'in' and 'Binnen' or 'Buiten'),
+                Desc = ("Plate: %s | %s"):format(v.plate, v.state == 'in' and 'Inside' or 'Outside'),
                 SecondMenu = {
                     {
                         CloseMenu = true,
                         Disabled = v.state == 'depot',
-                        Title = 'Voertuig Meenemen',
+                        Title = 'Take Out Vehicle',
                         Data = {Event = "fw-vehicles:Client:SpawnVehicle", Type = "Client", OnLockdown = true, Vehicle = v },
                     },
                     {
-                        Title = 'Voertuig Status',
-                        Desc = ('%s | Engine: %s%% | Body: %s%%'):format(v.state == 'In' and 'Binnen' or 'Buiten', math.ceil(MetaData.Engine / 10), math.ceil(MetaData.Body / 10)),
+                        Title = 'Vehicle Status',
+                        Desc = ('%s | Engine: %s%% | Body: %s%%'):format(v.state == 'In' and 'Inside' or 'Outside', math.ceil(MetaData.Engine / 10), math.ceil(MetaData.Body / 10)),
                     },
                     {
                         CloseMenu = true,
-                        Title = 'Toggle Voertuig Lockdown',
+                        Title = 'Toggle Vehicle Lockdown',
                         Data = {Event = "fw-vehicles:Server:ToggleLockdown", Type = "Server", Plate = v.plate },
                     },
                 },
@@ -275,16 +275,16 @@ AddEventHandler("fw-vehicles:Client:ParkVehicle", function(Data)
     end
 
     if not IsOwner then
-        FW.Functions.Notify("Voertuig kan hier niet geparkeerd worden..", "error")
+        FW.Functions.Notify("Vehicle cannot be parked here..", "error")
         return
     end
 
     if IsGovGarage and not IsGovVehicle(Data.Entity) then
-        return FW.Functions.Notify("Voertuig kan hier niet geparkeerd worden..", "error")
+        return FW.Functions.Notify("Vehicle cannot be parked here..", "error")
     end
 
     if (IsThisModelAHeli(GetEntityModel(Data.Entity)) or IsThisModelAPlane(GetEntityModel(Data.Entity))) and CurrentGarage ~= 'airport_1' then
-        return FW.Functions.Notify("Hier past geen luchtvaartuig in..", "error")
+        return FW.Functions.Notify("No aircraft can fit here..", "error")
     end
 
     TriggerServerEvent("fw-vehicles:Server:ParkVehicle", VehToNet(Data.Entity), CurrentGarage, FW.VSync.GetVehicleDamage(Data.Entity))
@@ -331,11 +331,11 @@ RegisterNetEvent("fw-vehicles:Client:SpawnVehicle")
 AddEventHandler("fw-vehicles:Client:SpawnVehicle", function(Data)
     local IsVehicleLocked = FW.SendCallback("fw-vehicles:Server:IsVehicleLocked", Data.Vehicle.plate)
     if Data.OnLockdown and not IsVehicleLocked then
-        return FW.Functions.Notify("De valet kan het voertuig niet uit de garage halen zonder bevel..")
+        return FW.Functions.Notify("The valet cannot take the vehicle out of the garage without an order..")
     end
 
     if not Data.OnLockdown and IsVehicleLocked then
-        return FW.Functions.Notify("Het voertuig staat op lockdown en kan niet uit de garage gehaald worden.", "error")
+        return FW.Functions.Notify("The vehicle is on lockdown and cannot be taken out of the garage.", "error")
     end
 
     if HasOverdueDebts(Data.Vehicle.citizenid) and not Data.OnLockdown then
@@ -344,7 +344,7 @@ AddEventHandler("fw-vehicles:Client:SpawnVehicle", function(Data)
             PreviewVehicle = nil
         end
 
-        TriggerServerEvent("fw-phone:Server:Mails:AddMail", "De Staat van Los Santos", "Kennisgeving van inbeslagname", "U heeft onderhoudskosten openstaan voor dit voertuig. Als deze niet worden afbetaald, kan dit leiden tot permanente inbeslagname van eigendom aan de staat van Los Santos. Zodra openstaande onderhoudskosten zijn betaald, worden uw sleutels aan u geretourneerd.")
+        TriggerServerEvent("fw-phone:Server:Mails:AddMail", "The State of Los Santos", "Notice of Seizure", "You have outstanding maintenance costs for this vehicle. If these are not paid, it may result in permanent seizure of property by the state of Los Santos. Once outstanding maintenance costs are paid, your keys will be returned to you.")
         return
     end
 

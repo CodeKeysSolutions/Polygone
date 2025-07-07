@@ -116,13 +116,13 @@ onNet("fw-arcade:Client:ViewLobby", async ({Game, Id}: {Game: string, Id: number
             },
             {
                 Icon: "users",
-                Title: "Spelers",
+                Title: "players",
                 Desc: `${Result.Players.length}/${Result.MaxPlayers}`
             },
             {
                 Icon: "user-plus",
-                Title: "Invite Spelers",
-                Desc: `Nodig nog wat spelers uit om je lobby op gang te brengen!`,
+                Title: "Invite players",
+                Desc: `Nodig nog wat players uit om je lobby op gang te brengen!`,
                 Disabled: Result.Players.length == Result.MaxPlayers,
                 Data: {Event: "fw-arcade:Client:InviteToLobby", Game, Id }
             },
@@ -201,7 +201,7 @@ onNet("fw-arcade:Client:ViewLobbyTeam", async ({Game, Id, TeamId}: {Game: string
         lobbyContext.push({
             Icon: "arrow-right",
             Title: `${Name} ${MyCid == Cid ? "(Jij)" : ""}`,
-            Desc: Result.Matchmaker == MyCid ? "Verplaats de speler naar het andere team door te klikken." : "",
+            Desc: Result.Matchmaker == MyCid ? "Verplaats de player naar het andere team door te klikken." : "",
             Data: Result.Matchmaker == MyCid ? {Event: "fw-arcade:Server:SwapTeam", Game, Id, TeamId, Cid } : undefined,
         })
     }

@@ -72,52 +72,52 @@ Shared.CustomTypes = {
             Price = 45,
         },
         ["Snowball"] = {
-            Label = "Sneeuwbal Ammo x3",
+            Label = "Snowball Ammo x3",
             Image = "ammo-snowball.png",
             Price = 45,
         }
     },
     ["business-bag"] = {
         ["pizzeria"] = {
-            Label = "Pizza Doos",
+            Label = "Pizza Box",
             Image = "pizzeria-box.png",
-            Description = "Een doos, met pizza?",
+            Description = "A box, with pizza?",
         },
         ["duffel"] = {
-            Label = "Duffel Tas",
+            Label = "Duffel Bag",
             Image = "duffel-bag.png",
-            Description = "Hier past wel wat in mag ik hopen..",
+            Description = "I hope you can fit a lot in here..",
         },
         ["policeduffel"] = {
-            Label = "(PD) Duffel Tas",
+            Label = "(PD) Duffel Bag",
             Image = "duffel-bag.png",
-            Description = "Door de overheid (POLITIE/AMBULANCE) uitgegeven apparatuur",
+            Description = "Equipment issued by the government (POLICE/AMBULANCE)",
             Price = 1000,
         },
         ["uwucafe"] = {
             Label = "Bento Box",
             Image = "uwu-bentobox.png",
-            Description = "Zit hier een kat in?",
+            Description = "Is there a cat in here?",
         },
         ["burgershot"] = {
-            Label = "Burger Zak",
+            Label = "Burger Bag",
             Image = "burger-box.png",
-            Description = "Hier zitten lekkere spulletjes in.",
+            Description = "There are tasty things in here.",
         },
         ["dragonsden"] = {
             Label = "Take-away Box",
             Image = "dragonsden-box.png",
-            Description = "Ik zou hem snel openen als ik jou was..",
+            Description = "If I were you, I'd open it quickly..",
         },
         ["petitcroissant"] = {
             Label = "Take-away Box",
             Image = "petitcroissant-box.png",
-            Description = "De petit croissant, de echte bakker.",
+            Description = "The petit croissant, the real bakery.",
         },
         ["cassettebox"] = {
-            Label = "Cassettedoosjes",
+            Label = "Cassette Boxes",
             Image = "cassettebox.png",
-            Description = "Een doos met muziek...",
+            Description = "A box with music...",
             Craft = {
                 { Item = "plastic", Amount = 23 } 
             }
@@ -125,342 +125,328 @@ Shared.CustomTypes = {
     },
     ["heist-usb"] = {
         ["green"] = {
-            Label = "Groene USB",
+            Label = "Green USB",
             Image = "heist-usb-green.png",
         },
         ["blue"] = {
-            Label = "Blauwe USB",
+            Label = "Blue USB",
             Image = "heist-usb-blue.png",
         },
         ["red"] = {
-            Label = "Rode USB",
+            Label = "Red USB",
             Image = "heist-usb-red.png",
         },
         ["yellow"] = {
-            Label = "Gele USB",
+            Label = "Yellow USB",
             Image = "heist-usb-yellow.png",
         },
         ["black"] = {
-            Label = "Zwarte USB",
+            Label = "Black USB",
             Image = "heist-usb-black.png",
-        },
-    },
-    ["heist-laptop"] = {
-        ["green"] = {
-            Image = "heist-laptop-green.png",
-        },
-        ["blue"] = {
-            Image = "heist-laptop-blue.png",
-        },
-        ["red"] = {
-            Image = "heist-laptop-red.png",
-        },
-        ["yellow"] = {
-            Image = "heist-laptop-yellow.png",
         },
     },
     ["heist-loot"] = {
         ["tracked"] = {
-            Label = "Traceerbare Waardevolle Goederen",
+            Label = "Traceable Valuables",
             Image = "tracked-valuable-goods.png",
-            Description = "Ziet hier een GPS-tracker in?"
+            Description = "Do you see a GPS tracker in here?"
         },
     },
     ["fish"] = {
         ["Bass"] = {
-            Label = "Baars",
+            Label = "Bass",
             Image = "fish-bass.png",
-            Description = "Een visje uit het water..",
+            Description = "A fish from the water..",
         },
         ["Blue"] = {
-            Label = "Blauwe Vis",
+            Label = "Blue Fish",
             Image = "fish-bluefish.png",
-            Description = "Degene die deze naam bedacht, was een genie!",
+            Description = "Whoever came up with this name was a genius!",
         },
         ["Cod"] = {
-            Label = "Kabeljauw",
+            Label = "Cod",
             Image = "fish-cod.png",
-            Description = "Lekker kabeljauwtje hoor.",
+            Description = "Nice cod, right.",
         },
         ["Flounder"] = {
             Label = "Flounder",
             Image = "fish-flounder.png",
-            Description = "Ik ging vissen en het enige wat ik kreeg was deze waardeloze vis.",
+            Description = "I went fishing and all I got was this worthless fish.",
         },
         ["Mackerel"] = {
-            Label = "Makreel",
+            Label = "Mackerel",
             Image = "fish-mackerel.png",
-            Description = "Soms heilig.",
+            Description = "Sometimes holy.",
         },
         ["Shark"] = {
-            Label = "Baby Haai",
+            Label = "Baby Shark",
             Image = "fish-shark.png",
-            Description = "Een verdomde haai! Is er misschien iemand die hem wil kopen? Haha grapje. Gooi het terug. Tenzij..?",
+            Description = "A damn shark! Maybe someone wants to buy it? Haha just kidding. Throw it back. Unless..?",
         },
         ["Whale"] = {
-            Label = "Baby Walvis",
+            Label = "Baby Whale",
             Image = "fish-whale.png",
-            Description = "Een verdomde walvis! Is er misschien iemand die hem wil kopen? Haha grapje. Gooi het terug. Tenzij..?",
+            Description = "A damn whale! Maybe someone wants to buy it? Haha just kidding. Throw it back. Unless..?",
         },
     },
     ["ingredient"] = {
         ["Cream"] = {
-            Label = "Slagroom",
+            Label = "Whipped Cream",
             Image = "ingredients_icecream.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Slagroom</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Whipped Cream</b>",
         },
         ["Beans"] = {
-            Label = "Koffiebonen",
+            Label = "Coffee Beans",
             Image = "ingredient-beans.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Koffiebonen</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Coffee Beans</b>",
         },
         ["Beef"] = {
             Label = "Beef",
             Image = "ingredient-beef.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Vlees</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Meat</b>",
         },
         ["Dairy"] = {
-            Label = "Melk",
+            Label = "Milk",
             Image = "ingredient-dairy.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Zuivel</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Dairy</b>",
         },
         ["Cabbage"] = {
-            Label = "Kool",
+            Label = "Cabbage",
             Image = "ingredients_cabbage.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Groenten</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Vegetables</b>",
         },
         ["Carrot"] = {
-            Label = "Wortel",
+            Label = "Carrot",
             Image = "ingredients_carrot.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Groenten</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Vegetables</b>",
         },
         ["Corn"] = {
-            Label = "Maïs",
+            Label = "Corn",
             Image = "ingredients_corn.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Graan</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Grain</b>",
         },
         ["Cucumber"] = {
-            Label = "Komkommer",
+            Label = "Cucumber",
             Image = "ingredients_cucumber.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Groenten</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Vegetables</b>",
         },
         ["Garlic"] = {
-            Label = "Knoflook",
+            Label = "Garlic",
             Image = "ingredients_garlic.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Kruiden</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Herbs</b>",
         },
         ["Onion"] = {
-            Label = "Ui",
+            Label = "Onion",
             Image = "ingredients_onion.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Groenten</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Vegetables</b>",
         },
         ["Potato"] = {
-            Label = "Aardappel",
+            Label = "Potato",
             Image = "ingredient-potato.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Groenten</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Vegetables</b>",
         },
         ["Pumpkin"] = {
-            Label = "Pompoen",
+            Label = "Pumpkin",
             Image = "ingredients_pumpkin.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Suiker</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Sugar</b>",
         },
         ["Radish"] = {
-            Label = "Radijs",
+            Label = "Radish",
             Image = "ingredients_radish.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Groenten</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Vegetables</b>",
         },
         ["RedBeet"] = {
-            Label = "Rode Biet",
+            Label = "Red Beet",
             Image = "ingredients_redbeet.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Groenten</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Vegetables</b>",
         },
         ["Sunflower"] = {
-            Label = "Zonnebloem Olie",
+            Label = "Sunflower Oil",
             Image = "ingredient-sunflower.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Olie</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Oil</b>",
         },
         ["Tomato"] = {
-            Label = "Tomaat",
+            Label = "Tomato",
             Image = "ingredients_tomato.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Groenten</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Vegetables</b>",
         },
         ["Watermelon"] = {
-            Label = "Watermeloen",
+            Label = "Watermelon",
             Image = "ingredient-watermelon.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Suiker</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Sugar</b>",
         },
         ["Wheat"] = {
-            Label = "Graan",
+            Label = "Grain",
             Image = "ingredient-grain.png",
-            Description = "Wordt gebruikt om voedsel te maken.<br/><br/><b>Voedsel categorie: Graan</b>",
+            Description = "Used to make food.<br/><br/><b>Food category: Grain</b>",
         },
         ["Honey"] = {
-            Label = "Honing",
+            Label = "Honey",
             Image = "bee-honey.png",
-            Description = "Dit ruikt lekker.. Ik krijg trek in pannekoeken!<br/><br/><b>Voedsel categorie: Suiker</b>",
+            Description = "This smells good.. Makes me crave pancakes!<br/><br/><b>Food category: Sugar</b>",
         },
     },
     ["cryptostick"] = {
         ["GNE5"] = {
             Label = "GNE Stick",
-            Description = "Een USB met 5 GNE erop."
+            Description = "A USB with  5 GNE On it."
         },
         ["GNE10"] = {
             Label = "GNE Stick",
-            Description = "Een USB met 10 GNE erop."
+            Description = "A USB with  10 GNE On it."
         },
         ["GNE25"] = {
             Label = "GNE Stick",
-            Description = "Een USB met 25 GNE erop."
+            Description = "A USB with  25 GNE On it."
         },
         ["GNE50"] = {
             Label = "GNE Stick",
-            Description = "Een USB met 50 GNE erop."
+            Description = "A USB with  50 GNE On it."
         },
         ["GNE100"] = {
             Label = "GNE Stick",
-            Description = "Een USB met 100 GNE erop."
+            Description = "A USB with  100 GNE On it."
         },
         ["GNE250"] = {
             Label = "GNE Stick",
-            Description = "Een USB met 250 GNE erop."
+            Description = "A USB with  250 GNE On it."
         },
     },
     ["farming-seed"] = {
         ["Cabbage"] = {
-            Label = "Kool Zaadje",
-            Description = "Wat zaadjes om te planten in een tuin..",
+            Label = "cabbage Seed",
+            Description = "Some seed to place in a garden..",
             Image = "farming-seed-cabbage.png",
         },
         ["Carrot"] = {
-            Label = "Wortel Zaadje",
-            Description = "Wat zaadjes om te planten in een tuin..",
+            Label = "Carot Seed",
+            Description = "Some seed to place in a garden..",
             Image = "farming-seed-carrot.png",
         },
         ["Corn"] = {
-            Label = "Maïs Kernel",
-            Description = "Wat zaadjes om te planten in een tuin..",
+            Label = "Corn Kernel",
+            Description = "Some seed to place in a garden..",
             Image = "farming-seed-corn.png",
         },
         ["Cucumber"] = {
-            Label = "Komkommer Zaadje",
-            Description = "Wat zaadjes om te planten in een tuin..",
+            Label = "cucumber Seed",
+            Description = "Some seed to place in a garden..",
             Image = "farming-seed-cucumber.png",
         },
         ["Garlic"] = {
-            Label = "Knoflook Zaadje",
-            Description = "Wat zaadjes om te planten in een tuin..",
+            Label = "Garlic Seed",
+            Description = "Some seed to place in a garden..",
             Image = "weed-seeds.png",
         },
         ["Onion"] = {
-            Label = "Ui Zaadje",
-            Description = "Wat zaadjes om te planten in een tuin..",
+            Label = "Union Seed",
+            Description = "Some seed to place in a garden..",
             Image = "farming-seed-onion.png",
         },
         ["Potato"] = {
-            Label = "Aardappel Zaadje",
-            Description = "Wat zaadjes om te planten in een tuin..",
+            Label = "Potato Seed",
+            Description = "Some seed to place in a garden..",
             Image = "farming-seed-potato.png",
         },
         ["Pumpkin"] = {
-            Label = "Pompoen Zaadje",
-            Description = "Wat zaadjes om te planten in een tuin, voor halloween..",
+            Label = "Pumpkin Seed",
+            Description = "Some seed to place in a garden, voor halloween..",
             Image = "farming-seed-pumpkin.png",
         },
         ["Radish"] = {
-            Label = "Radijs Zaadje",
-            Description = "Wat zaadjes om te planten in een tuin..",
+            Label = "Radish Seed",
+            Description = "Some seed to place in a garden..",
             Image = "farming-seed-radish.png",
         },
         ["RedBeet"] = {
-            Label = "Rode Biet Zaadje",
-            Description = "Wat zaadjes om te planten in een tuin..",
+            Label = "Red Beet Seed",
+            Description = "Some seed to place in a garden..",
             Image = "farming-seed-beetroot.png",
         },
         ["Sunflower"] = {
-            Label = "Zonnebloem Zaadje",
-            Description = "Wat zaadjes om te planten in een tuin..",
+            Label = "Sunflower Seed",
+            Description = "Some seed to place in a garden..",
             Image = "farming-seed-sunflower.png",
         },
         ["Tomato"] = {
-            Label = "Tomaat Zaadje",
-            Description = "Wat zaadjes om te planten in een tuin..",
+            Label = "Tomato Seed",
+            Description = "Some seed to place in a garden..",
             Image = "farming-seed-tomato.png",
         },
         ["Watermelon"] = {
-            Label = "Watermeloen Zaadje",
-            Description = "Wat zaadjes om te planten in een tuin..",
+            Label = "Watermelon Seed",
+            Description = "Some seed to place in a garden..",
             Image = "farming-seed-watermelon.png",
         },
         ["Wheat"] = {
-            Label = "Graan Zaadje",
-            Description = "Wat zaadjes om te planten in een tuin..",
+            Label = "Wheat Seed",
+            Description = "Some seed to place in a garden..",
             Image = "farming-seed-wheat.png",
         },
     },
     ['gang-chain'] = {
         ["bakker"] = {
-            Label = "Ketting: Bakker",
+            Label = "Chain: Bakker",
             Description = "",
             Image = 'gangchain-bakker.png',
         },
         ["banggang"] = {
-            Label = "Ketting: Bang Gang",
-            Description = "Laat zien dat je een trotse member bent van de Bang Gang!",
+            Label = "Chain: Bang Gang",
+            Description = "Shows you part of  de Bang Gang!",
             Image = 'gangchain-banggang.png',
         },
         ["cringeboys"] = {
-            Label = "Ketting: Cringe Boys",
-            Description = "Laat zien dat je een trotse member bent van Cringe Boys!",
+            Label = "Chain: Cringe Boys",
+            Description = "Shows you part of  Cringe Boys!",
             Image = 'gangchain-cringeboys.png',
         },
         ["esh"] = {
-            Label = "Ketting: ESH",
-            Description = "Laat zien dat je een trotse member bent van de East Side Hustlers!",
+            Label = "Chain: ESH",
+            Description = "Shows you part of  de East Side Hustlers!",
             Image = 'gangchain-esh.png',
         },
         -- ["kings"] = {
-        --     Label = "Ketting: Kings",
-        --     Description = "Laat zien dat je een trotse member bent van Kings!",
+        --     Label = "Chain: Kings",
+        --     Description = "Shows you part of  Kings!",
         --     Image = 'gangchain-kings.png',
         -- },
     },
     ['identification-badge'] = {
         ["flightschool"] = {
             Label = "Vliegbrevet",
-            Description = "Kanjer! Je hebt geleerd hoe je moet vliegen, en met dit pasje kan je dat aan al je vrienden laten zien! (Als je die hebt)",
+            Description = "You believe you can fly?",
             Image = "badge-flightschool.png",
         },
         ["doj"] = {
             Label = "Wet & Recht Pas",
-            Description = "Met deze pas kan jij bewijzen dat je een verdachte mag vertegenwoordigen.",
+            Description = "To proof you part of department of justice.",
             Image = "badge-doj.png",
         },
         ["news"] = {
             Label = "Weazel News Pas",
-            Description = "Met deze pas kan jij bewijzen dat je bij Weazel News werkt!",
+            Description = "Press pass!",
             Image = "badge-news.png",
         },
         ["pd"] = {
             Label = "PD Badge",
-            Description = "Alleen échte agenten hebben deze pas, om te laten zien dat ze een agent zijn.",
+            Description = "Badge to indetify you self as PD officer.",
             Image = "badge-pd.png",
         },
         ["ems"] = {
             Label = "EMS Badge",
-            Description = "Een pas om te laten zien dat je een medicus bent!",
+            Description = "Badge to show you are EMS!",
             Image = "badge-ems.png",
         },
         ["doc"] = {
             Label = "DOC Badge",
-            Description = "Een pas om te laten zien dat je in de Department of Corrections zit!",
+            Description = "Badge to show you part of Department of corrections!",
             Image = "badge-doc.png",
         },
     },
     ["goldpan"] = {
         ["small"] = {
-            Label = "Pan voor Goud",
-            Description = "Een kleine pan om mee te gaan goud-vissen.",
+            Label = "Gold pan",
+            Description = "Small  pan to search gold with.",
             Image = "goldpan-small.png",
             Price = 6500,
             Craft = {
@@ -470,8 +456,8 @@ Shared.CustomTypes = {
             }
         },
         ["medium"] = {
-            Label = "Pan voor Goud",
-            Description = "Een middelmatige pan om mee te gaan goud-vissen.",
+            Label = "Gold pan",
+            Description = "Medium pan to search gold with.",
             Image = "goldpan-medium.png",
             Price = 17500,
             Craft = {
@@ -481,8 +467,8 @@ Shared.CustomTypes = {
             }
         },
         ["large"] = {
-            Label = "Pan voor Goud",
-            Description = "Een grote pan om mee te gaan goud-vissen.",
+            Label = "Gold pan",
+            Description = "Big pan to search gold with.",
             Image = "goldpan-large.png",
             Price = 28500,
             Craft = {
@@ -495,7 +481,7 @@ Shared.CustomTypes = {
     ["generic-mechanic-part"] = {
         ["S"] = {
             Image = "generic-mechanic-part-s.png",
-            Label = "Mechanisch Deel (S)",
+            Label = "Generic mechanic part (S)",
             Craft = {
                 { Item = 'aluminum', Amount = 18 },
                 { Item = 'copper', Amount = 18 },
@@ -508,7 +494,7 @@ Shared.CustomTypes = {
         },
         ["A"] = {
             Image = "generic-mechanic-part-a.png",
-            Label = "Mechanisch Deel (A)",
+            Label = "Generic mechanic part (A)",
             Craft = {
                 { Item = 'aluminum', Amount = 9 },
                 { Item = 'copper', Amount = 9 },
@@ -521,7 +507,7 @@ Shared.CustomTypes = {
         },
         ["B"] = {
             Image = "generic-mechanic-part-b.png",
-            Label = "Mechanisch Deel (B)",
+            Label = "Generic mechanic part (B)",
             Craft = {
                 { Item = 'aluminum', Amount = 3 },
                 { Item = 'copper', Amount = 3 },
@@ -534,7 +520,7 @@ Shared.CustomTypes = {
         },
         ["C"] = {
             Image = "generic-mechanic-part-c.png",
-            Label = "Mechanisch Deel (C)",
+            Label = "Generic mechanic part (C)",
             Craft = {
                 { Item = 'aluminum', Amount = 3 },
                 { Item = 'copper', Amount = 3 },
@@ -547,7 +533,7 @@ Shared.CustomTypes = {
         },
         ["D"] = {
             Image = "generic-mechanic-part-d.png",
-            Label = "Mechanisch Deel (D)",
+            Label = "Generic mechanic part (D)",
             Craft = {
                 { Item = 'aluminum', Amount = 3 },
                 { Item = 'copper', Amount = 3 },
@@ -560,7 +546,7 @@ Shared.CustomTypes = {
         },
         ["E"] = {
             Image = "generic-mechanic-part-e.png",
-            Label = "Mechanisch Deel (E)",
+            Label = "Generic mechanic part (E)",
             Craft = {
                 { Item = 'aluminum', Amount = 3 },
                 { Item = 'copper', Amount = 3 },
@@ -573,7 +559,7 @@ Shared.CustomTypes = {
         },
         ["M"] = {
             Image = "generic-mechanic-part-m.png",
-            Label = "Mechanisch Deel (M)",
+            Label = "Generic mechanic part (M)",
             Craft = {
                 { Item = 'aluminum', Amount = 3 },
                 { Item = 'copper', Amount = 3 },
@@ -587,57 +573,57 @@ Shared.CustomTypes = {
     },
     ["vehicle-clutch"] = {
         ["S"] = {
-            Label = "Koppeling (S)",
+            Label = "Clutch (S)",
             Image = "clutch-s.png",
-            Description = "Koppeling Klasse S",
+            Description = "Clutch Klasse S",
             Craft = {
                 { Item = "generic-mechanic-part", CustomType = "S", Amount = 3 },
             }
         },
         ["A"] = {
-            Label = "Koppeling (A)",
+            Label = "Clutch (A)",
             Image = "clutch-a.png",
-            Description = "Koppeling Klasse A",
+            Description = "Clutch Klasse A",
             Craft = {
                 { Item = "generic-mechanic-part", CustomType = "A", Amount = 2 },
             }
         },
         ["B"] = {
-            Label = "Koppeling (B)",
+            Label = "Clutch (B)",
             Image = "clutch-b.png",
-            Description = "Koppeling Klasse B",
+            Description = "Clutch Klasse B",
             Craft = {
                 { Item = "generic-mechanic-part", CustomType = "B", Amount = 4 },
             }
         },
         ["C"] = {
-            Label = "Koppeling (C)",
+            Label = "Clutch (C)",
             Image = "clutch-c.png",
-            Description = "Koppeling Klasse C",
+            Description = "Clutch Klasse C",
             Craft = {
                 { Item = "generic-mechanic-part", CustomType = "C", Amount = 3 },
             }
         },
         ["D"] = {
-            Label = "Koppeling (D)",
+            Label = "Clutch (D)",
             Image = "clutch-d.png",
-            Description = "Koppeling Klasse D",
+            Description = "Clutch Klasse D",
             Craft = {
                 { Item = "generic-mechanic-part", CustomType = "D", Amount = 2 },
             }
         },
         ["E"] = {
-            Label = "Koppeling (E)",
+            Label = "Clutch (E)",
             Image = "clutch-e.png",
-            Description = "Koppeling Klasse E",
+            Description = "Clutch Klasse E",
             Craft = {
                 { Item = "generic-mechanic-part", CustomType = "E", Amount = 3 },
             }
         },
         ["M"] = {
-            Label = "Koppeling (M)",
+            Label = "Clutch (M)",
             Image = "clutch-m.png",
-            Description = "Koppeling Klasse M",
+            Description = "Clutch Klasse M",
             Craft = {
                 { Item = "generic-mechanic-part", CustomType = "M", Amount = 4 },
             }
@@ -935,200 +921,200 @@ Shared.CustomTypes = {
     },
     ["gang-spray"] = {
         ["bakker"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Bakker</b>",
+            Description = "Art.<br/><br/><b>Spray: Bakker</b>",
         },
         -- ["bearly_legal_mc"] = {
-        --     Description = "Kunst.<br/><br/><b>Spray: Bearly Legal MC</b>",
+        --     Description = "Art.<br/><br/><b>Spray: Bearly Legal MC</b>",
         --     Image = "spraycan-bearly_legal_mc.png",
         -- },
         ["flying_dragons"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Flying Dragons</b>",
+            Description = "Art.<br/><br/><b>Spray: Flying Dragons</b>",
             Image = "spraycan-flying_dragons.png",
         },
         ["kings"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Kings</b>",
+            Description = "Art.<br/><br/><b>Spray: Kings</b>",
             Image = "spraycan-kings.png",
         },
         ["los_aztecas"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Los Aztecas</b>",
+            Description = "Art.<br/><br/><b>Spray: Los Aztecas</b>",
             Image = "spraycan-los_aztecas.png",
         },
         ["los_muertos_mc"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Los Muertos MC</b>",
+            Description = "Art.<br/><br/><b>Spray: Los Muertos MC</b>",
             Image = "spraycan-los_muertos_mc.png",
         },
         ["lost_holland"] = {
-            Description = "Kunst.<br/><br/><b>Spray: The Lost Holland</b>",
+            Description = "Art.<br/><br/><b>Spray: The Lost Holland</b>",
             Image = "spraycan-lost_holland.png",
         },
         ["marabunta_perrera"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Marabunta Perrera</b>",
+            Description = "Art.<br/><br/><b>Spray: Marabunta Perrera</b>",
             Image = "spraycan-marabunta_perrera.png",
         },
         ["dark_wolves"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Dark Wolves MC</b>",
+            Description = "Art.<br/><br/><b>Spray: Dark Wolves MC</b>",
             Image = "spraycan-dark_wolves.png",
         },
         ["crimi_clowns"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Crimi Clowns</b>",
+            Description = "Art.<br/><br/><b>Spray: Crimi Clowns</b>",
             Image = "spraycan-crimi_clowns.png",
         },
         -- ["ogs"] = {
-        --     Description = "Kunst.<br/><br/><b>Spray: Original Gangsters</b>",
+        --     Description = "Art.<br/><br/><b>Spray: Original Gangsters</b>",
         --     Image = "spraycan-ogs.png",
         -- },
         ["clutch"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Clutch</b>",
+            Description = "Art.<br/><br/><b>Spray: Clutch</b>",
             Image = "spraycan-clutch.png",
         },
         ["los_lobos"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Los Lobos</b>",
+            Description = "Art.<br/><br/><b>Spray: Los Lobos</b>",
             Image = "spraycan-los_lobos.png",
         },
         -- ["high_table"] = {
-        --     Description = "Kunst.<br/><br/><b>Spray: The High Table</b>",
+        --     Description = "Art.<br/><br/><b>Spray: The High Table</b>",
         --     Image = "spraycan-high_table.png",
         -- },
         -- ["ant"] = {
-        --     Description = "Kunst.<br/><br/><b>Spray: Ain't No Telling</b>",
+        --     Description = "Art.<br/><br/><b>Spray: Ain't No Telling</b>",
         --     Image = "spraycan-ant.png",
         -- },
         ["serpents"] = {
-            Description = "Kunst.<br/><br/><b>Spray: The Serpents</b>",
+            Description = "Art.<br/><br/><b>Spray: The Serpents</b>",
             Image = "spraycan-serpents.png",
         },
         -- ["wanheda"] = {
-        --     Description = "Kunst.<br/><br/><b>Spray: Wanheda</b>",
+        --     Description = "Art.<br/><br/><b>Spray: Wanheda</b>",
         --     Image = "spraycan-wanheda.png",
         -- },
         ["death_sinners"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Death Sinners MC</b>",
+            Description = "Art.<br/><br/><b>Spray: Death Sinners MC</b>",
             Image = "spraycan-death_sinners.png",
         },
         ["white_widow"] = {
-            Description = "Kunst.<br/><br/><b>Spray: White Widow</b>",
+            Description = "Art.<br/><br/><b>Spray: White Widow</b>",
             Image = "spraycan-white_widow.png",
         },
         -- ["skull_gang"] = {
-        --     Description = "Kunst.<br/><br/><b>Spray: Skull Gang</b>",
+        --     Description = "Art.<br/><br/><b>Spray: Skull Gang</b>",
         --     Image = "spraycan-skull_gang.png",
         -- },
         ["grizzley_gang"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Grizzley Gang</b>",
+            Description = "Art.<br/><br/><b>Spray: Grizzley Gang</b>",
             Image = "spraycan-grizzley_gang.png",
         },
         ["seoul_street_gang"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Seoul Street Gang</b>",
+            Description = "Art.<br/><br/><b>Spray: Seoul Street Gang</b>",
             Image = "spraycan-seoul_street_gang.png",
         },
         -- ["vdv"] = {
-        --     Description = "Kunst.<br/><br/><b>Spray: Van Der Veer</b>",
+        --     Description = "Art.<br/><br/><b>Spray: Van Der Veer</b>",
         --     Image = "spraycan-vdv.png",
         -- },
         ["bricksquad"] = {
-            Description = "Kunst.<br/><br/><b>Spray: 1017 Bricksquad</b>",
+            Description = "Art.<br/><br/><b>Spray: 1017 Bricksquad</b>",
             Image = "spraycan-bricksquad.png",
         },
         ["crips"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Crips</b>",
+            Description = "Art.<br/><br/><b>Spray: Crips</b>",
             Image = "spraycan-crips.png",
         },
         ["crocs"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Crocs</b>",
+            Description = "Art.<br/><br/><b>Spray: Crocs</b>",
             Image = "spraycan-crocs.png",
         },
         ["scum"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Scum</b>",
+            Description = "Art.<br/><br/><b>Spray: Scum</b>",
             Image = "spraycan-scum.png",
         },
         ["ballas"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Ballas</b>",
+            Description = "Art.<br/><br/><b>Spray: Ballas</b>",
             Image = "spraycan-ballas.png",
         },
         ["wutang"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Wu-Tang</b>",
+            Description = "Art.<br/><br/><b>Spray: Wu-Tang</b>",
             Image = "spraycan-wutang.png",
         },
         -- ["nameless"] = {
-        --     Description = "Kunst.<br/><br/><b>Spray: The Nameless</b>",
+        --     Description = "Art.<br/><br/><b>Spray: The Nameless</b>",
         --     Image = "spraycan-nameless.png",
         -- },
         -- ["cosanostra"] = {
-        --     Description = "Kunst.<br/><br/><b>Spray: Cosa Nostra</b>",
+        --     Description = "Art.<br/><br/><b>Spray: Cosa Nostra</b>",
         --     Image = "spraycan-cosanostra.png",
         -- },
         ["cringeboys"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Cringe Boys</b>",
+            Description = "Art.<br/><br/><b>Spray: Cringe Boys</b>",
             Image = "spraycan-cringeboys.png",
         },
         ["21"] = {
-            Description = "Kunst.<br/><br/><b>Spray: 21</b>",
+            Description = "Art.<br/><br/><b>Spray: 21</b>",
             Image = "spraycan-21.png",
         },
         ["vatoslocos"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Vatos Loco's</b>",
+            Description = "Art.<br/><br/><b>Spray: Vatos Loco's</b>",
             Image = "spraycan-vatoslocos.png",
         },
         ["bumpergang"] = {
-            Description = "Kunst.<br/><br/><b>Spray: BumperGang</b>",
+            Description = "Art.<br/><br/><b>Spray: BumperGang</b>",
             Image = "spraycan-bumpergang.png",
         },
         ["getbackgang"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Get Back Gang</b>",
+            Description = "Art.<br/><br/><b>Spray: Get Back Gang</b>",
             Image = "spraycan-getbackgang.png",
         },
         ["dimeo"] = {
-            Description = "Kunst.<br/><br/><b>Spray: DiMeo</b>",
+            Description = "Art.<br/><br/><b>Spray: DiMeo</b>",
             Image = "spraycan-dimeo.png",
         },
         ["blackcobras"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Black Cobras</b>",
+            Description = "Art.<br/><br/><b>Spray: Black Cobras</b>",
             Image = "spraycan-blackcobras.png",
         },
         -- ["nls"] = {
-        --     Description = "Kunst.<br/><br/><b>Spray: No Lost Soldiers</b>",
+        --     Description = "Art.<br/><br/><b>Spray: No Lost Soldiers</b>",
         --     Image = "spraycan-nls.png",
         -- },
         ["blacklist"] = {
-            Description = "Kunst.<br/><br/><b>Spray: 626 Blacklist</b>",
+            Description = "Art.<br/><br/><b>Spray: 626 Blacklist</b>",
             Image = "spraycan-blacklist.png",
         },
         ["sopranos"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Sopranos</b>",
+            Description = "Art.<br/><br/><b>Spray: Sopranos</b>",
             Image = "spraycan-sopranos.png",
         },
         ["s2n"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Second2None</b>",
+            Description = "Art.<br/><br/><b>Spray: Second2None</b>",
             Image = "spraycan-s2n.png",
         },
         ["fts"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Fock The System</b>",
+            Description = "Art.<br/><br/><b>Spray: Fock The System</b>",
         },
         ["tffc"] = {
-            Description = "Kunst.<br/><br/><b>Spray: Thieves & Crooks</b>",
+            Description = "Art.<br/><br/><b>Spray: Thieves & Crooks</b>",
             Image = "spraycan-tffc.png",
         },
     },
     ["evidence-collected"] = {
         ["Blood"] = {
-            Description = "Bloed verloren?",
+            Description = "Lost blood?",
             Image = "evidence-red.png",
-            Label = "Bewijs: Bloed",
+            Label = "evidence: Blood",
         },
         ["Finger"] = {
-            Description = "Van wie o wie is deze vingerafdruk?",
+            Description = "Who would those fingerprints be?",
             Image = "evidence-green.png",
-            Label = "Bewijs: Vingerafdruk",
+            Label = "evidence: Vingerafdruk",
         },
         ["Bullet"] = {
-            Description = "Iemand lijkt hier geschoten te hebben..",
+            Description = "Looks like someone fired an weapon..",
             Image = "evidence-orange.png",
-            Label = "Bewijs: Kogelhuls",
+            Label = "evidence: Bullet casings",
         },
     },
     ["customjoint"] = {
         ["1g"] = {
-            Description = "Een joint met 1 gram wiet. 1-time use.",
+            Description = "!g joint.",
             Label = "1g Joint",
             Craft = {
                 { Item = 'rolling-paper', Amount = 1 },
@@ -1136,7 +1122,7 @@ Shared.CustomTypes = {
             }
         },
         ["spacecake"] = {
-            Description = "Spacecakje, legends zeggen dat dit het toetje is van Neil Armstrong.",
+            Description = "Spacecake.",
             Image = "spacecake.png",
             Label = "Spacecake",
             Craft = {
@@ -1159,8 +1145,8 @@ Shared.CustomTypes = {
         },
         ["insideout"] = {
             Image = "joint-insideout.png",
-            Description = "Lekkere jointje, 1-time use.",
-            Label = "(Binnestebuiten) 1g Joint",
+            Description = "Nice joint 1-time use.",
+            Label = "() 1g Joint",
             Craft = {
                 { Item = 'rolling-paper', Amount = 1 },
                 { Item = "weed-bag-1g", Amount = 1 },
@@ -1168,7 +1154,7 @@ Shared.CustomTypes = {
         },
         ["cone"] = {
             Image = "joint-cone.png",
-            Description = "Lekkere jointje, 2-time use.",
+            Description = "Nice joint 2-time use.",
             Label = "(Cone) 2g Joint",
             Craft = {
                 { Item = 'rolling-paper', Amount = 3 },
@@ -1177,7 +1163,7 @@ Shared.CustomTypes = {
         },
         ["splitter"] = {
             Image = "joint-splitter.png",
-            Description = "Lekkere jointje, 2-time use.",
+            Description = "Nice joint 2-time use.",
             Label = "(Splitter) 2g Joint",
             Craft = {
                 { Item = 'rolling-paper', Amount = 3 },
@@ -1186,7 +1172,7 @@ Shared.CustomTypes = {
         },
         ["cross"] = {
             Image = "joint-cross.png",
-            Description = "Lekkere jointje, 3-time use.",
+            Description = "Nice joint 3-time use.",
             Label = "(Cross) 3g Joint",
             Craft = {
                 { Item = 'rolling-paper', Amount = 4 },
@@ -1195,7 +1181,7 @@ Shared.CustomTypes = {
         },
         ["tulp"] = {
             Image = "joint-tulp.png",
-            Description = "Lekkere jointje, 4-time use.",
+            Description = "Nice joint 4-time use.",
             Label = "(Tulp) 4g Joint",
             Craft = {
                 { Item = 'rolling-paper', Amount = 5 },
@@ -1204,7 +1190,7 @@ Shared.CustomTypes = {
         },
         ["windmill"] = {
             Image = "joint-windmill.png",
-            Description = "Lekkere jointje, 5-time use.",
+            Description = "Nice joint 5-time use.",
             Label = "(Windmill) 5g Joint",
             Craft = {
                 { Item = 'rolling-paper', Amount = 6 },

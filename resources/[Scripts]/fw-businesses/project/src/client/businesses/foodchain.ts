@@ -55,7 +55,7 @@ setImmediate(() => {
             {
                 Name: 'payment_interaction',
                 Icon: 'fas fa-circle',
-                Label: 'Salaris Ophalen',
+                Label: 'Collect Salary',
                 EventType: 'Server',
                 EventName: 'fw-financials:Server:ReceivePaycheck',
                 EventParams: {},
@@ -64,7 +64,7 @@ setImmediate(() => {
             {
                 Name: 'payment_ticket',
                 Icon: 'fas fa-circle',
-                Label: 'Bonnetjes inleveren',
+                Label: 'Hand in Receipts',
                 EventType: 'Server',
                 EventName: 'fw-businesses:Server:SellReceipts',
                 EventParams: {},
@@ -77,7 +77,7 @@ setImmediate(() => {
 on("fw-businesses:Client:Foodchain:ShowEmployees", async (Data: {
     Business: string;
 }) => {
-    if (!await IsPlayerInBusiness(Data.Business)) return FW.Functions.Notify("Geen toegang..", "error");
+    if (!await IsPlayerInBusiness(Data.Business)) return FW.Functions.Notify("No access..", "error");
 
     const Result = await FW.SendCallback("fw-businesses:Server:GetClockedInEmployees", Data.Business);
     const ContextItems: Array<{
@@ -93,7 +93,7 @@ on("fw-businesses:Client:Foodchain:ShowEmployees", async (Data: {
         ContextItems.push({
             Icon: 'user-headset',
             Title: `(#${Cid}) ${Name}`,
-            Desc: `${MinutesClockedIn} ${MinutesClockedIn == 1 ? "minuut" : "minuten"} in dienst.`
+            Desc: `${MinutesClockedIn} ${MinutesClockedIn == 1 ? "minute" : "minutes"} on duty.`
         });
     };
 
@@ -116,8 +116,8 @@ on("fw-businesses:Client:Foodchain:OpenStorage", async (Data: {
     Name: string;
 }) => {
     if (!exp['fw-inventory'].CanOpenInventory()) return;
-    if (!await HasRolePermission(Data.Business, "StashAccess")) return FW.Functions.Notify("Geen toegang..", "error");
-    if (await IsBusinessOnLockdown(Data.Business)) return FW.Functions.Notify("Bedrijf is in lockdown..", "error");
+    if (!await HasRolePermission(Data.Business, "StashAccess")) return FW.Functions.Notify("No access..", "error");
+    if (await IsBusinessOnLockdown(Data.Business)) return FW.Functions.Notify("Business is on lockdown..", "error");
 
     let Slots = 105;
     let Weight = 1600;
@@ -166,7 +166,7 @@ const loadFoodchainZones = async () => {
             options.push({
                 Name: 'pay_payment',
                 Icon: 'fas fa-hand-holding-usd',
-                Label: 'Betalen',
+                Label: 'Pay',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:GetPayments',
                 EventParams: ZoneData.data,
@@ -193,7 +193,7 @@ const loadFoodchainZones = async () => {
             options.push({
                 Name: 'clock_in',
                 Icon: 'fas fa-clock',
-                Label: 'Inklokken',
+                Label: 'Clock in',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:SetClock',
                 EventParams: { ...ZoneData.data, ClockedIn: true },
@@ -207,7 +207,7 @@ const loadFoodchainZones = async () => {
             options.push({
                 Name: 'clock_out',
                 Icon: 'fas fa-clock',
-                Label: 'Uitklokken',
+                Label: 'Clock out',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:SetClock',
                 EventParams: { ...ZoneData.data, ClockedIn: false },
@@ -223,7 +223,7 @@ const loadFoodchainZones = async () => {
             options.push({
                 Name: 'check_employees',
                 Icon: 'fas fa-user-check',
-                Label: 'Aanwezige Werknemers',
+                Label: 'Onduty employees',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:ShowEmployees',
                 EventParams: ZoneData.data,
@@ -239,7 +239,7 @@ const loadFoodchainZones = async () => {
             options.push({
                 Name: 'grab_bag',
                 Icon: 'fas fa-box',
-                Label: 'Bestelling Zak Pakken',
+                Label: 'Take order bag',
                 EventType: 'Server',
                 EventName: 'fw-businesses:Server:Foodchain:GrabBusinessBag',
                 EventParams: ZoneData.data,
@@ -255,7 +255,7 @@ const loadFoodchainZones = async () => {
             options.push({
                 Name: 'grab_gift',
                 Icon: 'fas fa-box',
-                Label: 'Bestelling Cadeau Pakken',
+                Label: 'Grab Mystery Gift',
                 EventType: 'Server',
                 EventName: 'fw-businesses:Server:Foodchain:GrabBusinessGift',
                 EventParams: ZoneData.data,
@@ -271,7 +271,7 @@ const loadFoodchainZones = async () => {
             options.push({
                 Name: 'stash',
                 Icon: 'fas fa-box-open',
-                Label: 'Toonbank',
+                Label: 'Open tray',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:Counter',
                 EventParams: ZoneData.data,
@@ -283,7 +283,7 @@ const loadFoodchainZones = async () => {
             options.push({
                 Name: 'stash',
                 Icon: 'fas fa-box-open',
-                Label: 'Open',
+                Label: 'Cold strorage',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:OpenStorage',
                 EventParams: {Type: "Cold", ...ZoneData.data},
@@ -299,7 +299,7 @@ const loadFoodchainZones = async () => {
             options.push({
                 Name: 'stash',
                 Icon: 'fas fa-box-open',
-                Label: 'Open',
+                Label: 'Self storage',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:OpenStorage',
                 EventParams: {Type: "Shelf", ...ZoneData.data},
@@ -315,7 +315,7 @@ const loadFoodchainZones = async () => {
             options.push({
                 Name: 'prepareFood',
                 Icon: 'fas fa-utensils',
-                Label: `${ZoneData.data.DishType == "Drinks" ? "Drinken" : "Eten"} Voorbereiden`,
+                Label: `${ZoneData.data.DishType == "Drinks" ? "Drinks" : "Food"} Prepare`,
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:PrepareFood',
                 EventParams: ZoneData.data,
@@ -331,7 +331,7 @@ const loadFoodchainZones = async () => {
             options.push({
                 Name: 'menuManagement',
                 Icon: 'fas fa-circle',
-                Label: 'Menukaart Beheren',
+                Label: 'Manage Menu',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:ManageMenu',
                 EventParams: ZoneData.data,

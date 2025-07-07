@@ -49,8 +49,8 @@
 
 <MdwPanel class="filled" style="width: 50%">
     <MdwPanelHeader>
-        <h6>Eigendommen</h6>
-        <TextField Title='Zoeken' Icon='search' SubSet={FilterProperties} />
+        <h6>Properties</h6>
+        <TextField Title='Search' Icon='search' SubSet={FilterProperties} />
     </MdwPanelHeader>
 
     <MdwPanelList>
@@ -65,15 +65,15 @@
 
 <MdwPanel class="filled" style="width: 50%">
     <MdwPanelHeader>
-        <h6>Eigendom</h6>
+        <h6>Property</h6>
     </MdwPanelHeader>
 
     <div style="width: 97%; margin-left: auto; margin-right: auto;">
-        <TextField ReadOnly={true} bind:RealValue={$CurrentProperty.id} Title='Eigendom ID' Icon='user' />
-        <TextField ReadOnly={true} bind:RealValue={$CurrentProperty.adress} Title='Straatnaam & Huisnummer' Icon='user' />
-        <TextField ReadOnly={true} bind:RealValue={$CurrentProperty.owned} Title='Verkocht' Icon='user' />
+        <TextField ReadOnly={true} bind:RealValue={$CurrentProperty.id} Title='Property ID' Icon='user' />
+        <TextField ReadOnly={true} bind:RealValue={$CurrentProperty.adress} Title='Street Name & House Number' Icon='user' />
+        <TextField ReadOnly={true} bind:RealValue={$CurrentProperty.owned} Title='Sold' Icon='user' />
         {#if $IsGov || $IsJudge}
-            <Button Color={$CurrentProperty.id ? "default" : "disabled"} click={SetHousingGps}>Lokaliseren</Button>
+            <Button Color={$CurrentProperty.id ? "default" : "disabled"} click={SetHousingGps}>Locate</Button>
         {/if}
     </div>
 </MdwPanel>

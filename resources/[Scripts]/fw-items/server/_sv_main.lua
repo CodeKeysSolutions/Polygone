@@ -157,7 +157,7 @@ FW.Functions.CreateUsableItem("inkedmoneybag", function(Source, Item)
                 Player.Functions.AddMoney("cash", 60000, 'Money from Inked Money Bag.')
             end
         else
-            Player.Functions.Notify("De tas is te recentelijk gestolen, misschien nog even wachten?", "error")
+            Player.Functions.Notify("The bag was stolen too recently, maybe wait a bit longer?", "error")
         end
     end
 end)
@@ -308,10 +308,10 @@ FW.Functions.CreateUsableItem("cryptostick", function(Source, Item)
         if Crypto and Amount > 0 then
             if Player.Functions.RemoveItem('cryptostick', 1, Item.Slot, true, Item.CustomType) then
                 Player.Functions.AddCrypto(Crypto, Amount)
-                Player.Functions.Notify("Je hebt crypto toegevoegd aan je wallet!")
+                Player.Functions.Notify("You have added crypto to your wallet!")
             end
         else
-            Player.Functions.Notify("Lijkt erop dat deze crypto stick nep is..", "error")
+            Player.Functions.Notify("Looks like this crypto stick is fake..", "error")
         end
     end
 end)
@@ -688,12 +688,12 @@ end)
 
 -- Lighter
 FW.Functions.CreateUsableItem("lighter", function(Source, Item)
-	local Player = FW.Functions.GetPlayer(Source)
-	if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
+    local Player = FW.Functions.GetPlayer(Source)
+    if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
         TriggerClientEvent('fw-items:client:use:lighter', Source)
         if math.random(1, 100) <= 21 then
             Player.Functions.RemoveItem('lighter', 1)
-            TriggerClientEvent('FW:Notify', Source, "Je aansteker brak sukkel..", "error", 3500)
+            TriggerClientEvent('FW:Notify', Source, "Your lighter broke, dummy..", "error", 3500)
         end
     end
 end)
@@ -815,10 +815,10 @@ function OnMoneycaseUse(Source, Item)
                     TriggerEvent('fw-logs:Server:Log', 'moneycase', 'Money Case Emptied', ("User: [%s] - %s - %s \nData: ```json\n %s ```"):format(Player.PlayerData.Source, Player.PlayerData.citizenid, Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname, json.encode({
                         Slot = Item.Slot,
                         Worth = Item.Info.Worth,
-                        Code = 'Koffer heeft geen code.',
+                        Code = 'Case has no code.',
                     }, {indent = 2})), 'orange')
                 else
-                    Player.Functions.Notify("Waar is je koffer dan?", "error")
+                    Player.Functions.Notify("Where is your case then?", "error")
                 end
             end
         else
@@ -838,12 +838,12 @@ AddEventHandler("fw-items:Server:OpenMoneycase", function(Slot, IsAdv, Code)
     local ItemName = IsAdv and 'advmoneycase' or 'moneycase'
 
     if Item == nil or Item.Item ~= ItemName then
-        Player.Functions.Notify("Waar wil je het geld uit halen dan?", "error")
+        Player.Functions.Notify("Where do you want to take the money from then?", "error")
         return
     end
 
     if Item.Info.Code ~= Code then
-        Player.Functions.Notify("De koffer doet niks..", "error")
+        Player.Functions.Notify("The case does nothing..", "error")
         return
     end
 
@@ -856,7 +856,7 @@ AddEventHandler("fw-items:Server:OpenMoneycase", function(Slot, IsAdv, Code)
             Code = Code,
         }, {indent = 2})), 'red')
     else
-        Player.Functions.Notify("Waar wil je het geld uit halen dan?", "error")
+        Player.Functions.Notify("Where do you want to take the money from then?", "error")
     end
 end)
 
@@ -869,19 +869,19 @@ AddEventHandler("fw-items:Server:GiveMoneyCase", function(Slot, IsAdv, Worth, Co
     local ItemName = IsAdv and 'advmoneycase' or 'moneycase'
 
     if Item == nil or Item.Item ~= ItemName then
-        Player.Functions.Notify("Waar wil je het geld in stoppen dan?", "error")
+        Player.Functions.Notify("Where do you want to put the money then?", "error")
         return
     end
 
     if Item.Info.Worth or Item.Info.Code then
-        Player.Functions.Notify("Hier zit al geld in..", "error")
+        Player.Functions.Notify("There is already money in here..", "error")
         return
     end
 
-    if Player.Functions.RemoveMoney("cash", tonumber(Worth), "In geld koffer gestopt") then
+    if Player.Functions.RemoveMoney("cash", tonumber(Worth), "Put in money case") then
         Player.Functions.SetItemKV(ItemName, Slot, "worth", tonumber(Worth))
         Player.Functions.SetItemKV(ItemName, Slot, "code", Code ~= "" and Code or false)
-        Player.Functions.Notify("Je hebt het geld in de koffer geduwd..", "success")
+        Player.Functions.Notify("You pushed the money into the case..", "success")
     
         TriggerEvent('fw-logs:Server:Log', 'moneycase', 'Money Case Filled', ("User: [%s] - %s - %s \nData: ```json\n %s ```"):format(Player.PlayerData.Source, Player.PlayerData.citizenid, Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname, json.encode({
             Slot = Slot,
@@ -927,17 +927,17 @@ FW.Functions.CreateUsableItem("id_card", function(Source, Item)
 		if dist < 3.0 then
 			local gender = "Man"
 			if Item.Info.gender == 1 then
-				gender = "Vrouw"
+				gender = "Woman"
 			end
 			TriggerClientEvent('chat:addMessage', v,  {
-					template = '<div class="chat-message advert"><div class="chat-message-body"><strong>{0}:</strong><br><br> <strong>BSN:</strong> {1} <br><strong>Voornaam:</strong> {2} <br><strong>Achternaam:</strong> {3} <br><strong>Geboortedag:</strong> {4} <br><strong>Geslacht:</strong> {5} <br><strong>Nationaliteit:</strong> {6}</div></div>',
+					template = '<div class="chat-message advert"><div class="chat-message-body"><strong>{0}:</strong><br><br> <strong>BSN:</strong> {1} <br><strong>First Name:</strong> {2} <br><strong>Last Name:</strong> {3} <br><strong>Date of Birth:</strong> {4} <br><strong>Gender:</strong> {5} <br><strong>Nationality:</strong> {6}</div></div>',
 					args = {
-						"Identiteitskaart",
+						"Identification Card",
 						Item.Info.citizenid,
 						Item.Info.firstname,
 						Item.Info.lastname,
 						Item.Info.birthdate,
-						Item.Info.gender == 0 and "Man" or "Vrouw",
+						Item.Info.gender == 0 and "Man" or "Woman",
 						Item.Info.nationality
 					}
 				}
@@ -948,27 +948,27 @@ end)
 
 FW.Functions.CreateUsableItem("driver_license", function(Source, Item)
     for k, v in pairs(FW.Functions.GetPlayers()) do
-		local PlayerPed = GetPlayerPed(Source)
-		local TargetPed = GetPlayerPed(v)
-		local dist = #(GetEntityCoords(PlayerPed) - GetEntityCoords(TargetPed))
-		if dist < 3.0 then
-			TriggerClientEvent('chat:addMessage', v,  {
-					template = '<div class="chat-message advert"><div class="chat-message-body"><strong>{0}:</strong><br><br> <strong>BSN:</strong> {1} <br><strong>Voornaam:</strong> {2} <br><strong>Achternaam:</strong> {3} <br><strong>Geboortedag:</strong> {4} <br><strong>Rijbewijzen:</strong> {5}</div></div>',
-					args = {
-						"Rijbewijs",
-						Item.Info.citizenid,
-						Item.Info.firstname,
-						Item.Info.lastname,
-						Item.Info.birthdate,
-						Item.Info.type
-					}
-				}
-			)
-		end
-	end
+        local PlayerPed = GetPlayerPed(Source)
+        local TargetPed = GetPlayerPed(v)
+        local dist = #(GetEntityCoords(PlayerPed) - GetEntityCoords(TargetPed))
+        if dist < 3.0 then
+            TriggerClientEvent('chat:addMessage', v,  {
+                    template = '<div class="chat-message advert"><div class="chat-message-body"><strong>{0}:</strong><br><br> <strong>BSN:</strong> {1} <br><strong>First Name:</strong> {2} <br><strong>Last Name:</strong> {3} <br><strong>Date of Birth:</strong> {4} <br><strong>Licenses:</strong> {5}</div></div>',
+                    args = {
+                        "Driver License",
+                        Item.Info.citizenid,
+                        Item.Info.firstname,
+                        Item.Info.lastname,
+                        Item.Info.birthdate,
+                        Item.Info.type
+                    }
+                }
+            )
+        end
+    end
 end)
 
-FW.Commands.Add("dobbel", "Lekker dobbelen", {{name="aantal", help="Aantal dobbelsteentjes"}, {name="zijdes", help="Aantal zijdes van dobbelsteentje"}}, true, function(Source, Args)
+FW.Commands.Add("dobbel", "Roll some dice", {{name="aantal", help="Number of dice"}, {name="zijdes", help="Number of sides on the die"}}, true, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)
     local DiceItems = Player.Functions.GetItemByName("dice")
     if Args[1] ~= nil and Args[2] ~= nil then 
@@ -978,10 +978,10 @@ FW.Commands.Add("dobbel", "Lekker dobbelen", {{name="aantal", help="Aantal dobbe
             if (Sides > 0 and Sides <= 20) and (Amount > 0 and Amount <= 5) then 
                 TriggerClientEvent('fw-items:client:dobbel', Source, Amount, Sides)
             else
-                TriggerClientEvent('FW:Notify', Source, "Teveel aantal kanten of 0 (max: 5) of teveel aantal dobbelstenen of 0 (max: 20)", "error", 3500)
+                TriggerClientEvent('FW:Notify', Source, "Too many sides or 0 (max: 5) or too many dice or 0 (max: 20)", "error", 3500)
             end
         else
-            TriggerClientEvent('FW:Notify', Source, "Je hebt geen eens dobbelstenen..", "error", 3500)
+            TriggerClientEvent('FW:Notify', Source, "You don't even have dice..", "error", 3500)
         end
     end
 end)
@@ -993,7 +993,7 @@ FW.Functions.CreateUsableItem("goldbanana", function(Source, Item)
     end
 end)
 
-FW.Commands.Add("duikpakuit", "Doe je duikpak uit", {}, false, function(Source, args)
+FW.Commands.Add("duikpakuit", "Take off your scuba suit", {}, false, function(Source, args)
     TriggerClientEvent('fw-items:client:takeoff:scuba', Source)
 end)
 

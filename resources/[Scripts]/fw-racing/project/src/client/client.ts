@@ -20,17 +20,17 @@ const OpenAliasTextbox = async (Slot: number) => {
     ])
 
     if (!Textbox.Alias || Textbox.Alias.length == 0) {
-        return FW.Functions.Notify("Geen alias ingevuld!", "error");
+        return FW.Functions.Notify("No alias given!", "error");
     };
 
     const Result = await FW.SendCallback("fw-racing:Server:SetAlias", Slot, Textbox.Alias)
     if (Result.Success) {
-        emit("fw-phone:Client:Notification", "racing-new-event", "fas fa-flag-checkered", [ "white", "#039380" ], 'Racing', `Welkom in de onderwereld, ${Textbox.Alias}`)
+        emit("fw-phone:Client:Notification", "racing-new-event", "fas fa-flag-checkered", [ "white", "#039380" ], 'Racing', `Welcome to the underworld, ${Textbox.Alias}`)
         return
     }
 
-    FW.Functions.Notify(Result.Msg || "Alias kon niet worden aangepast..", "error")
-    if (Result.Msg == "Alias is al bezet!") {
+    FW.Functions.Notify(Result.Msg || "Couldnt edit alias..", "error")
+    if (Result.Msg == "Alias already taken!") {
         OpenAliasTextbox(Slot);
     };
 };

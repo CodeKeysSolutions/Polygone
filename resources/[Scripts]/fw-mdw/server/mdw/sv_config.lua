@@ -383,5 +383,5 @@ FW.Functions.CreateCallback("fw-mdw:Server:Config:DeleteCharge", function(Source
     end
 
     local Result = exports['ghmattimysql']:executeSync("UPDATE `mdw_charges` SET `deleted` = 1 WHERE `id` = ?", {Data.Id})
-    Cb({Success = Result.affectedRows > 0, Msg = "Database fout opgetreden!" })
+    Cb({Success = Result.affectedRows > 0, Msg = "Database error!!!!" })
 end)

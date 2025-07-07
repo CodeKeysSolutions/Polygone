@@ -95,7 +95,7 @@ Citizen.CreateThread(function()
 
             if not ShowingInteraction then
                 ShowingInteraction = true
-                exports['fw-ui']:ShowInteraction("[E] Notitie Openen / [F] Notitie Verwijderen")
+                exports['fw-ui']:ShowInteraction("[E] Open note / [F] Delete note")
             end
 
             if IsControlJustPressed(0, 38) then

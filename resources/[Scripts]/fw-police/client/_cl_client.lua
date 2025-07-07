@@ -30,11 +30,11 @@ Citizen.CreateThread(function()
             if PlayerJob.name ~= 'police' then return end
             InsideLogout = IsInside
             if InsideLogout then
-                exports['fw-ui']:ShowInteraction("[E] Slapen")
+                exports['fw-ui']:ShowInteraction("[E] Sleep") -- was "[E] Slapen"
             else
                 exports['fw-ui']:HideInteraction()
             end
-    
+
             Citizen.CreateThread(function()
                 while InsideLogout do    
                     if IsControlJustReleased(0, 38) then    
@@ -155,7 +155,7 @@ end
 RegisterNetEvent("fw-police:Client:OpenClosedCompartment")
 AddEventHandler("fw-police:Client:OpenClosedCompartment", function()
     local Vehicle = GetVehiclePedIsIn(PlayerPedId())
-    FW.Functions.Progressbar("rifle-rack", "Slotje open draaien...", 1000, false, true, {
+    FW.Functions.Progressbar("rifle-rack", "Unlocking compartment...", 1000, false, true, { -- was "Slotje open draaien..."
         disableMovement = false,
         disableCarMovement = false,
         disableMouse = false,
@@ -163,7 +163,7 @@ AddEventHandler("fw-police:Client:OpenClosedCompartment", function()
     }, {}, {}, {}, function() -- Done
         FW.TriggerServer('fw-inventory:Server:OpenInventory', 'Stash', "riflerack_" .. GetVehicleNumberPlateText(Vehicle), 10, 75)
     end, function()
-        FW.Functions.Notify("Geannuleerd..", "error")
+        FW.Functions.Notify("Cancelled..", "error") -- was "Geannuleerd.."
     end)
 end)
 
@@ -200,7 +200,7 @@ AddEventHandler('fw-police:Client:OpenTowMenu', function(Groups)
         ContextItems[#ContextItems + 1] = {
             Icon = "fas fa-phone",
             Title = v.Name,
-            Desc = "Impound worker bellen (" .. v.State .. ")",
+            Desc = "Call impound worker (" .. v.State .. ")", -- was "Impound worker bellen"
             Data = {
                 Event = 'fw-misc:Client:DialPhone', 
                 CallerName = 'San Andreas Law Enforcement', CalleeName = 'Impound Worker',

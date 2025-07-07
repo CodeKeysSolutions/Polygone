@@ -92,14 +92,14 @@
                 },
                 {
                     Type: "Text",
-                    Text: `Verkoop: ${FormatCurrency.format(VehicleData.Price * (1.0 + ($Tax['Vehicle Sales'] / 100)))}`,
+                    Text: `Sale: ${FormatCurrency.format(VehicleData.Price * (1.0 + ($Tax['Vehicle Sales'] / 100)))}`,
                     Data: { style: "font-size: 1.3vh;" }
                 },
                 {
                     Id: "Cid",
                     Type: "TextField",
                     Data: {
-                        Title: "BSN",
+                        Title: "SSN",
                         Icon: "id-card",
                     },
                 },
@@ -108,9 +108,9 @@
                     Type: "TextField",
                     IsCurrency: true,
                     Data: {
-                        Title: "Prijs (Incl. BTW)",
+                        Title: "Price (Incl. TAX)",
                         Icon: "dollar-sign",
-                        Sub: "€ 0,00"
+                        Sub: "$ 0,00"
                     },
                 },
             ],
@@ -157,19 +157,19 @@
     {#if TestData}
         <div class="phone-misc-icons">
             <i
-                data-tooltip="Voertuig Parkeren"
+                data-tooltip="Park vehicle"
                 data-position="left"
                 class="fas fa-car-alt"
                 on:keyup on:click={ParkVehicle}
             />
             <i
-                data-tooltip="Preset Opslaan"
+                data-tooltip="Save preset"
                 data-position="left"
                 class="fas fa-spray-can"
                 on:keyup on:click={SavePreset}
             />
             <i
-                data-tooltip="Voertuig Verkopen"
+                data-tooltip="Sell vehicle"
                 data-position="left"
                 class="fas fa-dollar-sign"
                 on:keyup on:click={SellVehicle}
@@ -178,7 +178,7 @@
     {/if}
 
     <TextField
-        Title="Zoeken"
+        Title="Search"
         Icon="search"
         SubSet={FilterCars}
         class="phone-misc-input"
@@ -209,17 +209,17 @@
                     <div class="phone-card-actions">
                         {#if Data.Stock <= 0}
                             <i
-                                data-tooltip="Niet op Voorraad"
+                                data-tooltip="Out of stock"
                                 class="fas fa-times-circle"
                             />
                         {:else}
                             <i
-                                data-tooltip="Testrit"
+                                data-tooltip="testDrive"
                                 class="fas fa-car-alt"
                                 on:keyup on:click={() => { TestVehicle(Data); }}
                             />
                             <i
-                                data-tooltip="Weergeven"
+                                data-tooltip="View"
                                 class="fas fa-eye"
                                 on:keyup on:click={() => { PreviewVehicle(Data); }}
                             />

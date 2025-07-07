@@ -53,7 +53,7 @@
     <div class="tax-container">
         <p>{Data.Label} ({Data.Current}%)</p>
         <p>
-            {#if Data.New && Data.Current != Data.New} Percentage na Tsunami: {Data.New}% {/if}
+            {#if Data.New && Data.Current != Data.New} Percentage after Tsunami: {Data.New}% {/if}
             <i
                 class="fas fa-ellipsis-v"
                 on:keyup
@@ -61,7 +61,7 @@
                     const IconPosition = event.target.getBoundingClientRect();
                     const Left = IconPosition.left + 5;
                     const Top = IconPosition.top - 40;
-                    SetDropdown(true,  [{ Text: "Belasting Veranderen", Cb: () => ChangeTax(Data.Label)}], { Left, Top });
+                    SetDropdown(true,  [{ Text: "Edit Tax", Cb: () => ChangeTax(Data.Label)}], { Left, Top });
                 }}
             />
         </p>

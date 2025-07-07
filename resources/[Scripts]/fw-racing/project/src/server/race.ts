@@ -27,7 +27,7 @@ FW.Functions.CreateCallback("fw-racing:Server:GetRaceData", async (Source: numbe
 
 FW.Functions.CreateCallback("fw-racing:Server:CreateRace", async (Source: number, Cb: Function, Data: CreateRaceData, IsGov: boolean) => {
     const Player = FW.Functions.GetPlayer(Source);
-    if (!Player) return Cb({ Success: false, Msg: "Ongeldige Speler!" })
+    if (!Player) return Cb({ Success: false, Msg: "Ongeldige player!" })
 
     const Track: false | Track = await GetTrackById(Data.TrackId);
     if (!Track) return Cb({ Success: false, Msg: "Ongeldige Track" })
@@ -94,7 +94,7 @@ FW.Functions.CreateCallback("fw-racing:Server:CreateRace", async (Source: number
 
 FW.Functions.CreateCallback("fw-racing:Server:StartRace", async (Source: number, Cb: Function, RaceId: number) => {
     const Player = FW.Functions.GetPlayer(Source);
-    if (!Player) return Cb({ Success: false, Msg: "Ongeldige Speler!" })
+    if (!Player) return Cb({ Success: false, Msg: "Ongeldige player!" })
 
     const Race: Race = GetRaceById(RaceId);
     if (!Race) return Cb({Success: false, Msg: "Ongeldige Race!"});
@@ -133,7 +133,7 @@ FW.Functions.CreateCallback("fw-racing:Server:GetPosition", async (Source: numbe
 
 FW.Functions.CreateCallback("fw-racing:Server:JoinRace", async (Source: number, Cb: Function, RaceId: number, Password: string) => {
     const Player = FW.Functions.GetPlayer(Source);
-    if (!Player) return Cb({ Success: false, Msg: "Ongeldige Speler!" })
+    if (!Player) return Cb({ Success: false, Msg: "Ongeldige player!" })
 
     const Race: Race = GetRaceById(RaceId);
     if (!Race) return Cb({Success: false, Msg: "Ongeldige Race!"});
@@ -174,7 +174,7 @@ FW.Functions.CreateCallback("fw-racing:Server:JoinRace", async (Source: number, 
 
 FW.Functions.CreateCallback("fw-racing:Server:LeaveRace", async (Source: number, Cb: Function, RaceId: number) => {
     const Player = FW.Functions.GetPlayer(Source);
-    if (!Player) return Cb({ Success: false, Msg: "Ongeldige Speler!" })
+    if (!Player) return Cb({ Success: false, Msg: "Ongeldige player!" })
 
     const Race: Race = GetRaceById(RaceId);
     if (!Race) return Cb({Success: false, Msg: "Ongeldige Race!"});

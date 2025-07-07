@@ -25,7 +25,7 @@
                 const Cb = $MdwModalsPermissions.Cb
                 MdwModalsPermissions.set({ Show: false });
                 Cb($MdwModalsPermissions.Role.permissions)
-            }}>Opslaan</Button>
+            }}>Save</Button>
             <Button Color="warning" click={() => {
                 MdwModalsPermissions.set({
                     Show: false,

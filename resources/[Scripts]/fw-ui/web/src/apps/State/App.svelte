@@ -49,11 +49,11 @@
                 <div class="state-navbar" style="width: 25%">
                     <NavbarItem
                         Id="Taxes"
-                        Name="Belasting"
+                        Name="Taxes"
                     />
                     <NavbarItem
                         Id="Ballots"
-                        Name="Stembussen"
+                        Name="Ballots"
                     />
                 </div>
 
@@ -62,7 +62,7 @@
                         <Button
                             Color="success"
                             on:click={() => SendEvent("state/Save", {state: $Mystate})}
-                        >Opslaan</Button>
+                        >Save</Button>
                     </div> -->
 
                     <div class="state-page-container">

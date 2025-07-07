@@ -44,10 +44,10 @@ AddEventHandler('FW:client:spawn:vehicle', function(Veh, Model)
 			SetVehRadioStation(Vehicle, "OFF")
 			SetVehicleOnGroundProperly(Vehicle)
 			DoScreenFadeIn(250)
-			FW.Functions.Notify(Model..' ingespawned!', 'success')
+			FW.Functions.Notify(Model..' Spawned in!', 'success')
 		end)
 	else
-		FW.Functions.Notify('Model bestaat niet..', 'error')
+		FW.Functions.Notify('Model doesnt exist..', 'error')
 	end
 end)
 
@@ -92,7 +92,7 @@ AddEventHandler('FW:Command:DeleteVehicle', function()
 			FW.Functions.DeleteVehicle(Vehicle)
 		end
 	end
-	FW.Functions.Notify('Succesvol voertuig verwijderd!', 'error')
+	FW.Functions.Notify('Succesvol vehicle deleted!', 'error')
 end)
 
 RegisterNetEvent('FW:Command:Revive')

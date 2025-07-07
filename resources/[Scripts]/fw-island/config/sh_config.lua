@@ -91,7 +91,7 @@ Config.IslandItems = {
             {
                 Name = 'pay_payment',
                 Icon = 'fas fa-hand-holding-usd',
-                Label = 'Betalen',
+                Label = 'Pay',
                 EventType = 'Client',
                 EventName = 'fw-island:Client:Foodchain:GetPayments',
                 EventParams = { Foodchain = "island", RegisterId = 1 },
@@ -129,7 +129,7 @@ Config.IslandItems = {
             {
                 Name = 'pay_payment',
                 Icon = 'fas fa-hand-holding-usd',
-                Label = 'Betalen',
+                Label = 'Pay',
                 EventType = 'Client',
                 EventName = 'fw-island:Client:Foodchain:GetPayments',
                 EventParams = { Foodchain = "island", RegisterId = 2 },
@@ -167,7 +167,7 @@ Config.IslandItems = {
             {
                 Name = 'pay_payment',
                 Icon = 'fas fa-hand-holding-usd',
-                Label = 'Betalen',
+                Label = 'Pay',
                 EventType = 'Client',
                 EventName = 'fw-island:Client:Foodchain:GetPayments',
                 EventParams = { Foodchain = "island", RegisterId = 3 },

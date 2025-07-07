@@ -1,4 +1,4 @@
-FW.AddKeybind("openMDW", "Hulpdiensten", "MDW Openen", "", function(IsPressed)
+FW.AddKeybind("openMDW", "emergency services", "Open MDW", "", function(IsPressed)
     if not IsPressed then return end
     if not LoggedIn then return end
 

@@ -38,7 +38,7 @@
                     Id: "Cid",
                     Type: "TextField",
                     Data: {
-                        Title: "BSN",
+                        Title: "SSN",
                         Icon: "id-card",
                     },
                 },
@@ -46,7 +46,7 @@
                     Id: "Amount",
                     Type: "TextField",
                     Data: {
-                        Title: "Prijs",
+                        Title: "Price",
                         Icon: "dollar-sign",
                         Type: "number",
                     },
@@ -86,7 +86,7 @@
 
 <AppWrapper>
     <TextField
-        Title="Zoeken"
+        Title="Search"
         Icon="search"
         SubSet={FilterVehicles}
         class="phone-misc-input"
@@ -150,7 +150,7 @@
 
         {#if FilteredVehicles.length > ShowingLimit}
             <div style="display: flex; justify-content: center; width: 100%;">
-                <Button Color="success" on:click={LoadMore}>Laad Meer</Button>
+                <Button Color="success" on:click={LoadMore}>Load more</Button>
             </div>
         {/if}
     </PaperList>

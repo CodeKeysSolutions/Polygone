@@ -1,8 +1,9 @@
 local ServerRootPath = GetResourcePath("fw-admin"):match("(.+)resources"):sub(1, -2)
 local RepositoryDirectory = {
     ServerRootPath,
-    ServerRootPath .. "/resources/[Clothing]",
-    ServerRootPath .. "/resources/[Vehicles]"
+    ServerRootPath .. "/resources/[Assets]/[Clothing]",
+     ServerRootPath .. "/resources/[Assets]",
+    ServerRootPath .. "/resources/[Assets]]/[Vehicles]"
 }
 
 function PullRepositories()

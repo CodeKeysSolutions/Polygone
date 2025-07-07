@@ -21,7 +21,7 @@
 
 <div class="mdw-modal-profiles">
     <div class="mdw-modal-profiles-container">
-        <TextField Title='Zoeken' Icon='user' SubSet={FilterProfiles} />
+        <TextField Title='Search' Icon='user' SubSet={FilterProfiles} />
 
         <div class="mdw-profile-modal-result">
             {#each FilteredProfiles as Data (Data.id)}

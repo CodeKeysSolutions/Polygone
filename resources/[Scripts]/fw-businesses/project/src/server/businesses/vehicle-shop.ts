@@ -4,7 +4,8 @@ import { NumberWithCommas, exp } from "../../shared/utils";
 import { FW } from "../server";
 import { GetBusinessAccount, HasPlayerBusinessPermission } from "../utils";
 
-export const VehicleRegistration = `<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Naam</th><td>%s</td></tr><tr><th>Model</th><td>%s</td></tr><tr><th>Kenteken</th><td>%s</td></tr><tr><th>Vin</th><td>%s</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Eigendom Geschiedenis</h3><figure class="table"><table><thead><tr><th>Eigenaar</th><th>Verkoper</th><th>Datum</th><th>Prijs</th></tr></thead><tbody><tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr></tbody></table></figure>`;
+// Vehicle registration template (translated)
+export const VehicleRegistration = `<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Name</th><td>%s</td></tr><tr><th>Model</th><td>%s</td></tr><tr><th>License Plate</th><td>%s</td></tr><tr><th>Vin</th><td>%s</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Ownership History</h3><figure class="table"><table><thead><tr><th>Owner</th><th>Seller</th><th>Date</th><th>Price</th></tr></thead><tbody><tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr></tbody></table></figure>`;
 exp("GetVehicleRegistration", () => VehicleRegistration);
 
 const GetShopData = (ShopName: string) => exp['fw-config'].GetModuleConfig("bus-vehicleshop").ShopData[ShopName];
@@ -95,22 +96,22 @@ FW.RegisterServer("fw-businesses:Server:QuicksellVehicle", async (Source: number
     if (!Player) return;
 
     const Shared = FW.Shared.HashVehicles[Model]
-    if (!Shared) return Player.Functions.Notify("Dit voertuig kan niet gequickselled worden!");
+    if (!Shared) return Player.Functions.Notify("This vehicle cannot be quicksold!");
 
     const Vehicle = await exp['ghmattimysql'].executeSync("SELECT `citizenid`, `metadata`, `vinscratched` FROM `player_vehicles` WHERE `plate` = ?", [Plate]);
-    if (!Vehicle[0]) return Player.Functions.Notify("Dit voertuig kan niet gequickselled worden!");
-    if (Vehicle[0].citizenid != Player.PlayerData.citizenid) return Player.Functions.Notify("Dit voertuig kan niet gequickselled worden!");
-    if (Vehicle[0].vinscratched && Vehicle[0].vinscratched == 1) return Player.Functions.Notify("Dit voertuig kan niet gequickselled worden!");
+    if (!Vehicle[0]) return Player.Functions.Notify("This vehicle cannot be quicksold!");
+    if (Vehicle[0].citizenid != Player.PlayerData.citizenid) return Player.Functions.Notify("This vehicle cannot be quicksold!");
+    if (Vehicle[0].vinscratched && Vehicle[0].vinscratched == 1) return Player.Functions.Notify("This vehicle cannot be quicksold!");
 
     DeleteEntity(NetworkGetEntityFromNetworkId(NetId))
 
     const Metadata = JSON.parse(Vehicle[0].metadata)
     if (Metadata.Gifted) {
-        Player.Functions.Notify("Je hebt je cadeau-voertuig gratis verkocht.")
+        Player.Functions.Notify("You sold your gift vehicle for free.")
     } else {
         const [Reward, _] = FW.Shared.DeductTax("Vehicle Registration Tax", Shared.Price * 0.65);
-        exp['fw-financials'].AddMoneyToAccount('1001', '1', Player.PlayerData.charinfo.account, Reward, 'TRANSFER', `Voertuig quick-sell ${Shared.Vehicle} [${Plate}]`);
-        Player.Functions.Notify("Toegevoegd op bank balans.");
+        exp['fw-financials'].AddMoneyToAccount('1001', '1', Player.PlayerData.charinfo.account, Reward, 'TRANSFER', `Vehicle quick-sell ${Shared.Vehicle} [${Plate}]`);
+        Player.Functions.Notify("Added to bank balance.");
     };
 
     exp['ghmattimysql'].executeSync("DELETE FROM `player_vehicles` WHERE `plate` = ? and `citizenid` = ?",[
@@ -159,7 +160,7 @@ onNet("fw-businesses:Server:VehicleShop:SellVehicle", async (
     if (!ShopData) return;
     
     if (!await HasPlayerBusinessPermission(ShopData.BusinessName, Source, 'VehicleSales')) return;
-    emitNet("fw-phone:Client:Notification", Target.PlayerData.source, `purchase-vehicle-${Data.Cid}`, "fas fa-car", [ "white", "rgb(38, 50, 56)" ], "Voertuig Kopen", `${NumberWithCommas(Number(Data.Amount))} incl. tax`, false, true, "fw-businesses:Server:VehicleShop:Purchase", "fw-phone:Client:RemoveNotificationById", { Id: `purchase-vehicle-${Data.Cid}`, Cid: Data.Cid, Seller: Source, Business: VehicleData.Shop, Amount: Data.Amount, NetId: NetId, Model: VehicleData.Vehicle });
+    emitNet("fw-phone:Client:Notification", Target.PlayerData.source, `purchase-vehicle-${Data.Cid}`, "fas fa-car", [ "white", "rgb(38, 50, 56)" ], "Buy Vehicle", `${NumberWithCommas(Number(Data.Amount))} incl. tax`, false, true, "fw-businesses:Server:VehicleShop:Purchase", "fw-phone:Client:RemoveNotificationById", { Id: `purchase-vehicle-${Data.Cid}`, Cid: Data.Cid, Seller: Source, Business: VehicleData.Shop, Amount: Data.Amount, NetId: NetId, Model: VehicleData.Vehicle });
 });
 
 onNet("fw-businesses:Server:VehicleShop:Purchase", (Data: {
@@ -183,15 +184,15 @@ onNet("fw-businesses:Server:VehicleShop:Purchase", (Data: {
 
     const ShopData = GetShopData(Data.Business);
 
-    emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Kopen...", true)
+    emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Buying...", true)
     setTimeout(async () => {
         const BusinessAccount = await GetBusinessAccount(ShopData.BusinessName)
-        if (!await exp['fw-financials'].RemoveMoneyFromAccount(Seller.PlayerData.citizenid, BusinessAccount, Player.PlayerData.charinfo.account, Data.Amount, "PURCHASE", `Betaling zakelijke dienstverlening: ${Data.Model} gekocht!`)) {
-            emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Transactie Geweigerd!", true);
+        if (!await exp['fw-financials'].RemoveMoneyFromAccount(Seller.PlayerData.citizenid, BusinessAccount, Player.PlayerData.charinfo.account, Data.Amount, "PURCHASE", `Business service payment: ${Data.Model} purchased!`)) {
+            emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Transaction Denied!", true);
             return;
         };
 
-        emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Transactie voltooid!", true)
+        emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Transaction completed!", true)
 
         const Plate = await FW.Functions.GeneratePlate();
         const VIN = await FW.Functions.GenerateVin();
@@ -219,7 +220,7 @@ onNet("fw-businesses:Server:VehicleShop:Purchase", (Data: {
         const Minutes = _Date.getMinutes();
 
         const Profit = Data.Amount - SharedData.Price;
-        exp['fw-financials'].AddMoneyToAccount(Seller.PlayerData.citizenid, Seller.PlayerData.charinfo.account, BusinessAccount, SharedData.Price + Math.min(Profit, SharedData.Price * 0.05), 'PURCHASE', `Betaling zakelijke dienstverlening: ${Data.Model} [${Plate}] verkocht!`);
+        exp['fw-financials'].AddMoneyToAccount(Seller.PlayerData.citizenid, Seller.PlayerData.charinfo.account, BusinessAccount, SharedData.Price + Math.min(Profit, SharedData.Price * 0.05), 'PURCHASE', `Business service payment: ${Data.Model} [${Plate}] sold!`);
         emit("fw-logs:Server:Log", Data.Business, "Vehicle Sold", `User: [${Seller.PlayerData.source}] - ${Seller.PlayerData.citizenid} - ${Seller.PlayerData.charinfo.firstname} ${Seller.PlayerData.charinfo.lastname}\nBuyer: [${Player.PlayerData.source}] - ${Player.PlayerData.citizenid} - ${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname}\nModel: ${Data.Model} [${Plate}]\nSold Price: ${NumberWithCommas(Data.Amount)}\nRetail Price: ${NumberWithCommas(SharedData.Price)}`, "green");
 
         let TemplateData: string[] = [
@@ -240,7 +241,7 @@ onNet("fw-businesses:Server:VehicleShop:Purchase", (Data: {
             Title: `${SharedData.Name} - ${Plate}`,
             Content: VehicleRegistration.replace(/%s/g, () => TemplateData.shift() || ''),
             Signatures: [
-                { Signed: true, Name: 'De Staat', Timestamp: _Date.getTime(), Cid: '1001' },
+                { Signed: true, Name: 'The State', Timestamp: _Date.getTime(), Cid: '1001' },
                 { Signed: true, Name: `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname}`, Timestamp: _Date.getTime(), Cid: Player.PlayerData.citizenid },
             ],
             Sharees: [ Player.PlayerData.citizenid ],

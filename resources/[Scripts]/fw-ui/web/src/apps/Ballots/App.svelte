@@ -30,7 +30,7 @@
         <div class="voting-container" style="height: {VoteSent ? 25 : 86 }vh">
             <div class="voting-header">
                 {#if !VoteSent}
-                    <p>Je stemt voor:</p>
+                    <p>You are voting for:</p> <!-- was "Je stemt voor:" -->
                 {:else}
                     <p></p>
                 {/if}
@@ -42,15 +42,15 @@
 
             {#if VoteSent}
                 <div style="width: calc(100% - 2vh); top: 50%; transform: translateY(-50%); position: absolute;">
-                    <p style="text-align: center; font-family: Roboto; font-size: 1.5vh; color: white;">JE STEMOPTIES ZIJN OPGESLAGEN</p>
-                    <p style="text-align: center; font-family: Roboto; font-size: 2.5vh; color: white; ">BEDANKT VOOR HET STEMMEN!</p>
+                    <p style="text-align: center; font-family: Roboto; font-size: 1.5vh; color: white;">YOUR VOTE OPTIONS HAVE BEEN SAVED</p> <!-- was "JE STEMOPTIES ZIJN OPGESLAGEN" -->
+                    <p style="text-align: center; font-family: Roboto; font-size: 2.5vh; color: white; ">THANK YOU FOR VOTING!</p> <!-- was "BEDANKT VOOR HET STEMMEN!" -->
                 </div>
             {:else}
                 <hr style="margin-top: .5vh"/>
 
                 <div style="display: flex; justify-content: space-between">
                     <p style="margin-top: 1.3vh; color: white; font-family: Roboto; font-weight: bold; font-size: 1.2vh;">{$Ballots[$CurrentBallot].Name}</p>
-                    <p style="margin-top: 1.3vh; color: white; font-family: Roboto; font-size: 1.2vh;">{$Ballots[$CurrentBallot].MultipleChoice ? "SELECTEER TEN MINSTE EEN" : "SELECTEER UW KEUZE"}</p>
+                    <p style="margin-top: 1.3vh; color: white; font-family: Roboto; font-size: 1.2vh;">{$Ballots[$CurrentBallot].MultipleChoice ? "SELECT AT LEAST ONE" : "SELECT YOUR CHOICE"}</p> <!-- was "SELECTEER TEN MINSTE EEN" / "SELECTEER UW KEUZE" -->
                 </div>
 
                 <div class="voting-list">
@@ -61,13 +61,13 @@
                 
                 <div style="width: 100%;">
                     {#if $CurrentBallot > 0}
-                        <Button style="float: left" Color="warning" on:click={() => { CurrentBallot.set($CurrentBallot - 1) }}>Vorige Stemming</Button>
+                        <Button style="float: left" Color="warning" on:click={() => { CurrentBallot.set($CurrentBallot - 1) }}>Previous Ballot</Button> <!-- was "Vorige Stemming" -->
                     {/if}
 
                     {#if $Ballots[$CurrentBallot + 1]}
                         <Button style="float: right" Color={$Ballots[$CurrentBallot].Voted ? "success" : "disabled"} on:click={() => {
                             if ($Ballots[$CurrentBallot].Voted) CurrentBallot.set($CurrentBallot + 1);
-                        }}>Volgende Stemming</Button>
+                        }}>Next Ballot</Button> <!-- was "Volgende Stemming" -->
                     {:else}
                     <Button style="float: right" Color={$Ballots[$CurrentBallot].Voted ? "success" : "disabled"} on:click={() => {
                         if ($Ballots[$CurrentBallot].Voted) {
@@ -83,7 +83,7 @@
                             }
                             SendEvent("Ballots/SaveBallots", {Votes})
                         };
-                    }}>Stemming Bevestigen</Button>
+                    }}>Confirm Ballot</Button> <!-- was "Stemming Bevestigen" -->
                     {/if}
                 </div>
             {/if}

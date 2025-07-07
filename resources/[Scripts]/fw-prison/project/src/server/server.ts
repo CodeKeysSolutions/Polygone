@@ -44,7 +44,7 @@ onNet("fw-prison:Server:PurchaseVehicle", async (Data: any) => {
     const Plate = await FW.Functions.GeneratePlate();
     const VehicleIdentiticationNumber = await FW.Functions.GenerateVin();
 
-    if (await exp['fw-financials'].RemoveMoneyFromAccount("1001", "1", Player.PlayerData.charinfo.account, FW.Shared.CalculateTax("Vehicle Registration Tax", SharedData.Price), "PURCHASE", `Voertuig aankoop ${SharedData.Name}`, false)) {
+    if (await exp['fw-financials'].RemoveMoneyFromAccount("1001", "1", Player.PlayerData.charinfo.account, FW.Shared.CalculateTax("Vehicle Registration Tax", SharedData.Price), "PURCHASE", `Bought vehicle ${SharedData.Name}`, false)) {
         exp['ghmattimysql'].execute("INSERT INTO `player_vehicles` (`citizenid`, `vehicle`, `plate`, `garage`, `vinnumber`) VALUES (?, ?, ?, ?, ?)", [
             Data.Shared ? "gov_doc" : Player.PlayerData.citizenid,
             Data.Vehicle,
@@ -63,7 +63,8 @@ onNet("fw-prison:Server:PurchaseVehicle", async (Data: any) => {
 
         TriggerClientEvent('FW:Notify', Player.PlayerData.source, `Je hebt een ${SharedData.Name} gekocht..`, "success");
     } else {
-        Player.Functions.Notify("Niet genoeg geld..", "error")
+        
+         Player.Functions.Notify("Not enough cash..", "error")
     };
 });
 
@@ -95,7 +96,7 @@ setImmediate(() => {
                 Retval.push({
                     Name: `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname}`,
                     Cid: Player.PlayerData.citizenid,
-                    TimeLeft: Player.PlayerData.metadata.islifer ? `levenslang` : `${Player.PlayerData.metadata.jailtime} maand(en)`
+                    TimeLeft: Player.PlayerData.metadata.islifer ? `lifer` : `${Player.PlayerData.metadata.jailtime} Month(s)`
                 })
             };
         }

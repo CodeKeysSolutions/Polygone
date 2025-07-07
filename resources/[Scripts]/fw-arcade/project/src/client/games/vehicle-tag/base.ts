@@ -7,7 +7,7 @@ import { currentLobby } from "../../lobby/utils";
 import { IsSpectator, ToggleFreecam } from "../../lobby/spectate";
 
 export const Vehicles = [
-    {Name: "Off Road voertuigen", Models: [ "yosemite3", "brawler", "kamacho", "caracara2", "hellion", "everon", "freecrawler" ] },
+    {Name: "Off Road Vehicles", Models: [ "yosemite3", "brawler", "kamacho", "caracara2", "hellion", "everon", "freecrawler" ] },
     {Name: "Sports", Models: [ "seven70", "coquette4", "italigto", "neo", "pariah", "corsita", "tenf2", "comet5", "sentinel4" ] },
     {Name: "Caddy", Models: [ "caddy" ] },
     {Name: "Motoren", Models: [ "esskey", "nemesis", "pcj", "vader" ] },
@@ -252,7 +252,7 @@ export const VehicleTag = {
                 Type: "number"
             },
             {
-                Label: 'Voertuig groep',
+                Label: 'Group vehicles',
                 Name: 'Vehicles',
                 Choices: Vehicles.map((Val) => {
                     return { Text: Val.Name }

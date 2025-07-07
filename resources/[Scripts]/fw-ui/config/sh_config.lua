@@ -54,7 +54,7 @@ Config.EyeEntries = {
             {
                 Name = "sell_meth",
                 Icon = "fas fa-comment-dollar",
-                Label = "Verkopen",
+                Label = "Sell",
                 EventType = "Client",
                 EventName = "fw-misc:Client:CorneringSale",
                 EventParams = {},
@@ -76,7 +76,7 @@ Config.EyeEntries = {
             {
                 Name = "boosting-vin-scratch",
                 Icon = "fas fa-eye-slash",
-                Label = "VIN Wegkrassen",
+                Label = "Scratch VIN",
                 EventType = "Client",
                 EventName = "fw-boosting:Client:ScratchVin",
                 EventParams = {},
@@ -87,7 +87,7 @@ Config.EyeEntries = {
             {
                 Name = "chop_vehicle",
                 Icon = "fas fa-boxes",
-                Label = "Voertuig Scrappen",
+                Label = "Scrap vehicle",
                 EventType = "Client",
                 EventName = "fw-jobmanager:Client:StartChopProcess",
                 EventParams = {},
@@ -97,7 +97,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'sanitation_throw_trash',
-                Label = 'Vuilniszak Weggooien',
+                Label = 'Throw in Trash',
                 Icon = 'fas fa-trash-restore',
                 EventType = 'Client',
                 EventName = 'fw-jobmanager:Client:Sanitation:ThrowInTrash',
@@ -121,7 +121,7 @@ Config.EyeEntries = {
             {
                 Name = "autocare_check_vehicle",
                 Icon = "fas fa-cog",
-                Label = "Voertuig Controleren",
+                Label = "Check Vehicle",
                 EventType = "Client",
                 EventName = "fw-businesses:Client:AutoCare:CheckVehicle",
                 EventParams = {},
@@ -131,7 +131,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'postop_grab_goods',
-                Label = 'Goederen Pakken',
+                Label = 'Open package',
                 Icon = 'fas fa-box-open',
                 EventType = 'Client',
                 EventName = 'fw-jobmanager:Client:PostOp:GrabGoods',
@@ -148,7 +148,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'oxy_deliver_package',
-                Label = 'Goederen Afleveren',
+                Label = 'Deliver Package',
                 Icon = 'fas fa-cubes',
                 EventType = 'Client',
                 EventName = 'fw-jobmanager:Client:Oxy:DeliverGoods',
@@ -169,7 +169,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'scan_plate',
-                Label = 'Kenteken Nakijken',
+                Label = 'Check plate',
                 Icon = 'fas fa-closed-captioning',
                 EventType = 'Client',
                 EventName = 'fw-police:Client:ScanPlate',
@@ -181,7 +181,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'check_for_tampering',
-                Label = 'Controleer op Sabotage',
+                Label = 'Check for Tampering',
                 Icon = 'fas fa-unlink',
                 EventType = 'Client',
                 EventName = 'fw-police:Client:CheckTampering',
@@ -193,7 +193,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'vehicle_refuel',
-                Label = 'Voertuig Tanken',
+                Label = 'Fuel Vehicle',
                 Icon = 'fas fa-gas-pump',
                 EventType = 'Client',
                 EventName = 'fw-vehicles:Client:Fuel:RefuelVehicle',
@@ -204,7 +204,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'enter_trunk',
-                Label = 'In Kofferbak Liggen',
+                Label = 'Put in trunk',
                 Icon = 'fas fa-user-secret',
                 EventType = 'Client',
                 EventName = 'fw-assets:client:getin:trunk',
@@ -215,7 +215,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'open_trunk',
-                Label = 'Kofferbak Openen',
+                Label = 'Open trunk',
                 Icon = 'fas fa-truck-loading',
                 EventType = 'Client',
                 EventName = 'fw-inventory:Client:OpenTrunk',
@@ -227,7 +227,7 @@ Config.EyeEntries = {
 
             {
                 Name = 'seat_in_vehicle',
-                Label = 'Zet in Voertuig',
+                Label = 'Put in vehicle',
                 Icon = 'fas fa-chevron-circle-left',
                 EventType = 'Client',
                 EventName = 'fw-police:Client:SeatVehicle',
@@ -243,7 +243,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'unseat_from_vehicle',
-                Label = 'Haal uit Voertuig',
+                Label = 'Take out vehicle',
                 Icon = 'fas fa-chevron-circle-right',
                 EventType = 'Client',
                 EventName = 'fw-police:Client:UnseatVehicle',
@@ -260,7 +260,7 @@ Config.EyeEntries = {
 
             {
                 Name = 'pickup_bicycle',
-                Label = 'Fiets Oppakken',
+                Label = 'Pickup Bicycle',
                 Icon = 'fas fa-spinner',
                 EventType = 'Client',
                 EventName = 'fw-vehicles:client:carry:bicycle',
@@ -271,7 +271,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'save_outfit',
-                Label = 'Huidige Outfit Opslaan',
+                Label = 'Save current outfit',
                 Icon = 'fas fa-plus',
                 EventType = 'Client',
                 EventName = 'fw-bennys:Client:SaveOutfit',
@@ -283,7 +283,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'swap_outfit',
-                Label = 'Huidige Outfit Veranderen',
+                Label = 'Edit current outfit',
                 Icon = 'fas fa-redo',
                 EventType = 'Client',
                 EventName = 'fw-bennys:Client:SwapOutfit',
@@ -295,7 +295,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'steal_rim',
-                Label = 'Velg Stelen',
+                Label = 'Steal rim',
                 Icon = 'fas fa-cog',
                 EventType = 'Client',
                 EventName = 'fw-vehicles:Client:StealRim',
@@ -324,7 +324,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'tow_vehicle',
-                Label = 'Voertuig Takelen',
+                Label = 'Tow vehicle',
                 Icon = 'fas fa-trailer',
                 EventType = 'Client',
                 EventName = 'fw-jobmanager:Client:TowVehicle',
@@ -337,7 +337,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'untow_vehicle',
-                Label = 'Voertuig Aftakelen',
+                Label = 'Untow vehicle',
                 Icon = 'fas fa-trailer',
                 EventType = 'Client',
                 EventName = 'fw-jobmanager:Client:UntowVehicle',
@@ -350,7 +350,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'methrun_dropoff_goods',
-                Label = 'Goederen Afleveren',
+                Label = 'Dropoff goods',
                 Icon = 'fas fa-boxes',
                 EventType = 'Client',
                 EventName = 'fw-illegal:Client:MethrunDropoffGoods',
@@ -364,7 +364,7 @@ Config.EyeEntries = {
             -- Meth Cornering
             {
                 Name = 'sell_meth',
-                Label = 'Start Methverkoop',
+                Label = 'Start selling meth',
                 Icon = 'fas fa-handshake',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:StartCornering',
@@ -375,7 +375,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'stop_meth_cornering',
-                Label = 'Stop Methverkoop',
+                Label = 'Stop selling meth',
                 Icon = 'fas fa-handshake',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:StopCornering',
@@ -388,7 +388,7 @@ Config.EyeEntries = {
             -- Weed Cornering
             {
                 Name = 'sell_weed',
-                Label = 'Start Wietverkoop',
+                Label = 'Start selling weed',
                 Icon = 'fas fa-handshake',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:StartCornering',
@@ -399,7 +399,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'stop_weed_cornering',
-                Label = 'Stop Wietverkoop',
+                Label = 'Stop selling weed',
                 Icon = 'fas fa-handshake',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:StopCornering',
@@ -410,7 +410,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'attach_rope',
-                Label = 'Koppel sleeptouw aan voertuig',
+                Label = 'Attach tow rope',
                 Icon = 'fas fa-cog',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:AttachRope',
@@ -421,7 +421,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'detach_rope',
-                Label = 'Ontkoppel sleeptouw',
+                Label = 'Detach tow rope',
                 Icon = 'fas fa-cog',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:DetachRope',
@@ -432,7 +432,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'inspect_vin',
-                Label = 'Controleer VIN',
+                Label = 'Inspect VIN',
                 Icon = 'fas fa-sim-card',
                 EventType = 'Client',
                 EventName = 'fw-vehicles:Client:InspectVIN',
@@ -451,7 +451,7 @@ Config.EyeEntries = {
         Options = {
             {
                 Name = 'vehicle_refuel',
-                Label = 'Voertuig Tanken',
+                Label = 'Fuel Vehicle',
                 Icon = 'fas fa-gas-pump',
                 EventType = 'Client',
                 EventName = 'fw-vehicles:Client:Fuel:RefuelVehicle',
@@ -463,7 +463,7 @@ Config.EyeEntries = {
             {
                 Name = "autocare_check_vehicle",
                 Icon = "fas fa-cog",
-                Label = "Voertuig Controleren",
+                Label = "Inespect Vehicle",
                 EventType = "Client",
                 EventName = "fw-businesses:Client:AutoCare:CheckVehicle",
                 EventParams = {},
@@ -473,7 +473,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'scan_plate',
-                Label = 'Kenteken Nakijken',
+                Label = 'Scan plate',
                 Icon = 'fas fa-closed-captioning',
                 EventType = 'Client',
                 EventName = 'fw-police:Client:ScanPlate',
@@ -485,7 +485,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'save_outfit',
-                Label = 'Huidige Outfit Opslaan',
+                Label = 'Save current outfit',
                 Icon = 'fas fa-plus',
                 EventType = 'Client',
                 EventName = 'fw-bennys:Client:SaveOutfit',
@@ -497,7 +497,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'swap_outfit',
-                Label = 'Huidige Outfit Veranderen',
+                Label = 'Edit current outfit',
                 Icon = 'fas fa-redo',
                 EventType = 'Client',
                 EventName = 'fw-bennys:Client:SwapOutfit',
@@ -509,7 +509,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'steal_rim',
-                Label = 'Velg Stelen',
+                Label = 'Steal rim',
                 Icon = 'fas fa-cog',
                 EventType = 'Client',
                 EventName = 'fw-vehicles:Client:StealRim',
@@ -538,7 +538,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'seat_in_vehicle',
-                Label = 'Zet in Voertuig',
+                Label = 'Put in vehicle',
                 Icon = 'fas fa-chevron-circle-left',
                 EventType = 'Client',
                 EventName = 'fw-police:Client:SeatVehicle',
@@ -554,7 +554,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'unseat_from_vehicle',
-                Label = 'Haal uit Voertuig',
+                Label = 'Take out vehicle',
                 Icon = 'fas fa-chevron-circle-right',
                 EventType = 'Client',
                 EventName = 'fw-police:Client:UnseatVehicle',
@@ -570,7 +570,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'check_for_tampering',
-                Label = 'Controleer op Sabotage',
+                Label = 'Check for tampering',
                 Icon = 'fas fa-unlink',
                 EventType = 'Client',
                 EventName = 'fw-police:Client:CheckTampering',
@@ -582,7 +582,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'inspect_vin',
-                Label = 'Controleer VIN',
+                Label = 'Inspect VIN',
                 Icon = 'fas fa-sim-card',
                 EventType = 'Client',
                 EventName = 'fw-vehicles:Client:InspectVIN',
@@ -601,7 +601,7 @@ Config.EyeEntries = {
         Options = {
             {
                 Name = 'anchor-down',
-                Label = 'Anker Zakken',
+                Label = 'Lower Anchor', -- was 'Anker Zakken'
                 Icon = 'fas fa-anchor',
                 EventType = 'Client',
                 EventName = 'fw-items:use:item:anker',
@@ -612,7 +612,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'anchor-up',
-                Label = 'Anker Oppakken',
+                Label = 'Raise Anchor', -- was 'Anker Oppakken'
                 Icon = 'fas fa-anchor',
                 EventType = 'Client',
                 EventName = 'fw-items:use:item:anker:tilt',
@@ -630,7 +630,7 @@ Config.EyeEntries = {
         Options = {
             {
                 Name = 'vehicle_refuel',
-                Label = 'Voertuig Tanken',
+                Label = 'Refuel Vehicle', -- was 'Voertuig Tanken'
                 Icon = 'fas fa-gas-pump',
                 EventType = 'Server',
                 EventName = 'fw-vehicles:Server:FuelHelicopter',
@@ -641,7 +641,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'seat_in_vehicle',
-                Label = 'Zet in Voertuig',
+                Label = 'Put in vehicle',
                 Icon = 'fas fa-chevron-circle-left',
                 EventType = 'Client',
                 EventName = 'fw-police:Client:SeatVehicle',
@@ -657,7 +657,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'unseat_from_vehicle',
-                Label = 'Haal uit Voertuig',
+                Label = 'Take out vehicle',
                 Icon = 'fas fa-chevron-circle-right',
                 EventType = 'Client',
                 EventName = 'fw-police:Client:UnseatVehicle',

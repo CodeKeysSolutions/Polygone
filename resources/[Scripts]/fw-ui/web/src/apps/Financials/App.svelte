@@ -131,7 +131,7 @@
 
                     <div class="financials-accounts">
                         <div class="financials-accounts-title">
-                            <p>Rekeningen</p>
+                            <p>Accounts</p> <!-- was "Rekeningen" -->
                         </div>
 
                         <div class="financials-accounts-list">
@@ -143,7 +143,7 @@
                         <div style="display: flex; align-items: flex-end;">
                             <p
                                 style="color: white; font-size: 1.6vh; font-family: Roboto; font-weight: 400; line-height: 1.5; letter-spacing: 0.015008vh;"
-                            >Contant: {FormatCurrency.format($Cash)}</p>
+                            >Cash: {FormatCurrency.format($Cash)}</p> <!-- was "Contant:" -->
                         </div>
                     </div>
 
@@ -152,8 +152,8 @@
                             class="financials-accounts-title"
                             style="height: 3.5vh; display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 0.8vh; width: 100%;"
                         >
-                            <p>Transactie Geschiedenis</p>
-                            <Button Color="default" on:click={() => ModalData.set({AccountId: $CurrentAccount.AccountId, Type: "Export", Show: true})}>Exporteer</Button>
+                            <p>Transaction History</p> <!-- was "Transactie Geschiedenis" -->
+                            <Button Color="default" on:click={() => ModalData.set({AccountId: $CurrentAccount.AccountId, Type: "Export", Show: true})}>Export</Button> <!-- was "Exporteer" -->
                             <p>
                                 <i class="fas fa-university" style="font-size: 3vh; margin-right: 2vh;"></i>Chafe Bank
                             </p>
@@ -163,7 +163,7 @@
                             {#if !$CurrentAccount?.Permissions?.Transactions || $CurrentTransactions.length == 0}
                                 <div class="financials-misc-empty">
                                     <i class="fas fa-frown"></i> 
-                                    <p>GEEN TRANSACTIES BESCHIKBAAR.</p>
+                                    <p>NO TRANSACTIONS AVAILABLE.</p> <!-- was "GEEN TRANSACTIES BESCHIKBAAR." -->
                                 </div>
                             {:else}
                                 {#each $CurrentTransactions.slice(0, TransactionsLimit) as Data (Data.Id)}
@@ -171,8 +171,8 @@
                                 {/each}
                                 
                                 {#if $CurrentTransactions.length > 5 && $CurrentTransactions.length > TransactionsLimit}
-                                    <div style="display: flex; justify-content: center; width: 100%;">
-                                        <Button Color="success" on:click={() => TransactionsLimit = TransactionsLimit + 50}>Laad Meer</Button>
+                                    <div style="display: flex; justify-content: center; width: 100%">
+                                        <Button Color="success" on:click={() => TransactionsLimit = TransactionsLimit + 50}>Load More</Button> <!-- was "Load more" -->
                                     </div>
                                 {/if}
                             {/if}

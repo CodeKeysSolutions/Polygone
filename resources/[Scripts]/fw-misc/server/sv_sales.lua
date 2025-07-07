@@ -51,7 +51,7 @@ AddEventHandler("fw-misc:Server:SellMaterials", function()
     if Player == nil then return end
 
     if FW.Throttled("sell-materials-" .. Player.PlayerData.citizenid, 5000) then
-        return Player.Functions.Notify("Niet zo snel jij.. Ik moet het nog tellen!", "error")
+        return Player.Functions.Notify("Not so fast.. I still need to count it!", "error")
     end
 
     local TotalReceive, ItemsSold = 0, {}
@@ -82,6 +82,7 @@ AddEventHandler("fw-misc:Server:SellMaterials", function()
         end
     end
 end)
+
 RegisterNetEvent("fw-misc:Server:SellIngredients")
 AddEventHandler("fw-misc:Server:SellIngredients", function()
     local Source = source
@@ -89,7 +90,7 @@ AddEventHandler("fw-misc:Server:SellIngredients", function()
     if Player == nil then return end
 
     if FW.Throttled("sell-ingredients-" .. Player.PlayerData.citizenid, 5000) then
-        return Player.Functions.Notify("Niet zo snel jij.. Ik moet het nog tellen!", "error")
+        return Player.Functions.Notify("Not so fast.. I still need to count it!", "error")
     end
 
     local TotalReceive, ItemsSold = 0, {}

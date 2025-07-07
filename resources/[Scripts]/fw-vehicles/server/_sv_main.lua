@@ -34,18 +34,18 @@ FW.Functions.CreateCallback("fw-vehicles:Server:GetVIN", function(Source, Cb, Pl
     Cb(Result[1] and Result[1].vinnumber or false)
 end)
 
-FW.Commands.Add("seat", "Verander van stoel (-1 tot 6)", {{name="id", help="Stoel Nummer (-1 tot 6)"}}, true, function(Source, Args)
+FW.Commands.Add("seat", "Change seat (-1 to 6)", {{name="id", help="Seat Number (-1 to 6)"}}, true, function(Source, Args)
     TriggerClientEvent('fw-vehicles:Client:Switch:Seat', Source, tonumber(Args[1]))
 end)
 
-FW.Commands.Add("callsignv", "Verander voertuig roepnummer", {
-    { name = "Nummer", help = "Roepnummer (3 getallen)" }
+FW.Commands.Add("callsignv", "Change vehicle callsign", {
+    { name = "Number", help = "Callsign (3 digits)" }
 }, true, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
     if Args[1]:len() ~= 3 then
-        return Player.Functions.Notify("Het roepnummer moet 3 getallen zijn.", "error")
+        return Player.Functions.Notify("The callsign must be 3 digits.", "error")
     end
 
     if (Player.PlayerData.job.name ~= 'police' and Player.PlayerData.job.name ~= 'doc' and Player.PlayerData.job.name ~= 'ems') or not Player.PlayerData.job.onduty then

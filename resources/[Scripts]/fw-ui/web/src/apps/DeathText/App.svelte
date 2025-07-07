@@ -3,11 +3,15 @@
     import AppWrapper from "../../components/AppWrapper.svelte";
 
     let ShowDeathText: boolean = false;
-    let DeathText: string = 'HOUDT ~r~E~w~ (5) INGEDRUKT OM TE ~r~RESPAWNEN~w~ OF WACHT OP ~r~EMS~w~'.replaceAll('~r~', "<span style='color: red'>").replaceAll("~w~", "</span>");
+    let DeathText: string = 'HOLD ~r~E~w~ (5) TO ~r~RESPAWN~w~ OR WAIT FOR ~r~EMS~w~'
+        .replaceAll('~r~', "<span style='color: red'>")
+        .replaceAll("~w~", "</span>");
 
     OnEvent("DeathText", "Set", (Data: { Visible: boolean, Text?: string }) => {
         ShowDeathText = Data.Visible;
-        DeathText = Data.Text.replaceAll('~r~', "<span style='color: #df3232'>").replaceAll("~w~", "</span>");
+        DeathText = Data.Text
+            .replaceAll('~r~', "<span style='color: #df3232'>")
+            .replaceAll("~w~", "</span>");
     });
 </script>
 

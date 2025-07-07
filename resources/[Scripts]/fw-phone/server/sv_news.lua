@@ -1,6 +1,6 @@
 local NetworkLabels = {
     weazelnews = "WeazelNews",
-    bin = "Binsbergen International Network"
+    bin = "International Network"
 }
 
 FW.Functions.CreateCallback("fw-phone:Server:News:GetArticles", function(Source, Cb, Data)

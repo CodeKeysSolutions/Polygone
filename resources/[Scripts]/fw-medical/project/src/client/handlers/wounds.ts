@@ -26,17 +26,17 @@ const BodyParts: {[key: number]: string} = {
 }
 
 const BodyHealth: {[key: string]: BoneHealth} = {
-    HEAD:  { Name: 'hoofd',        Health: 100.0 },
-    NECK:  { Name: 'nek',          Health: 100.0 },
-    SPINE: { Name: 'rug',          Health: 100.0 },
-    LARM:  { Name: 'linker arm',   Health: 100.0 },
-    RARM:  { Name: 'rechter arm',  Health: 100.0 },
-    LHAND: { Name: 'linker hand',  Health: 100.0 },
-    RHAND: { Name: 'rechter hand', Health: 100.0 },
-    LLEG:  { Name: 'linker been',  Health: 100.0 },
-    RLEG:  { Name: 'rechter been', Health: 100.0 },
-    LFOOT: { Name: 'linker voet',  Health: 100.0 },
-    RFOOT: { Name: 'rechter voet', Health: 100.0 },
+    HEAD:  { Name: 'head',        Health: 100.0 },
+    NECK:  { Name: 'neck',        Health: 100.0 },
+    SPINE: { Name: 'back',        Health: 100.0 },
+    LARM:  { Name: 'left arm',    Health: 100.0 },
+    RARM:  { Name: 'right arm',   Health: 100.0 },
+    LHAND: { Name: 'left hand',   Health: 100.0 },
+    RHAND: { Name: 'right hand',  Health: 100.0 },
+    LLEG:  { Name: 'left leg',    Health: 100.0 },
+    RLEG:  { Name: 'right leg',   Health: 100.0 },
+    LFOOT: { Name: 'left foot',   Health: 100.0 },
+    RFOOT: { Name: 'right foot',  Health: 100.0 },
 }
 
 const BleedingIgnoreWeapons: string[] = [
@@ -84,9 +84,9 @@ BleedingThread.addHook("active", () => {
     if (OnOxy && GetRandom(1, 100) > Config.OxyBloodThreshold) return;
 
     if (IsRunning) {
-        FW.Functions.Notify("Je voelt het bloed uit je lichaam lopen naarmate je meer beweegt..", "error")
+        FW.Functions.Notify("You feel the blood leaving your body as you move more..", "error")
     } else {
-        FW.Functions.Notify("Je voelt het bloed uit je lichaam lopen..", "error")
+        FW.Functions.Notify("You feel the blood leaving your body..", "error")
     };
 
     if (!DoBleed) return;
@@ -142,9 +142,9 @@ export const ApplyBoneDamage = (Bone: number) => {
         SetEntityHealth(PlayerPedId(), Health - GetRandom(3, 5));
 
         if (BodyHealth[BodyPart].Health > 65 || OnOxy) {
-            FW.Functions.Notify(`Je ${BodyHealth[BodyPart].Name} voelt pijnlijk aan.`, "error")
+            FW.Functions.Notify(`Your ${BodyHealth[BodyPart].Name} feels painful.`, "error")
         } else {
-            FW.Functions.Notify(`Je ${BodyHealth[BodyPart].Name} voelt enorm pijnlijk aan.`, "error")
+            FW.Functions.Notify(`Your ${BodyHealth[BodyPart].Name} feels extremely painful.`, "error")
             SetEntityHealth(PlayerPedId(), Health - GetRandom(3, 5));
         };
     }

@@ -3,7 +3,7 @@ RegisterNUICallback("News/IsJournalist", function(Data, Cb)
         local Job = FW.Functions.GetPlayerData().job
         return Cb(Job.name == "news")
     elseif Data.Network == 'bin' then
-        local IsJournalist = exports['fw-businesses']:IsPlayerInBusiness("Binsbergen International Network")
+        local IsJournalist = exports['fw-businesses']:IsPlayerInBusiness("International Network")
         return Cb(IsJournalist)
     end
 

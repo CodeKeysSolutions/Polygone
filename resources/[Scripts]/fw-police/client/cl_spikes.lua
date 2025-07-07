@@ -4,12 +4,12 @@ AddEventHandler("fw-police:Client:Used:Spikestrip", function()
         return
     end
 
-    local Finished = FW.Functions.CompactProgressbar(500, "Spijkermat plaatsen...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "weapons@first_person@aim_rng@generic@projectile@thermal_charge@", anim = "plant_floor", flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(500, "Placing spikestrip...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "weapons@first_person@aim_rng@generic@projectile@thermal_charge@", anim = "plant_floor", flags = 49 }, {}, {}, false)
     if not Finished then return end
 
     local DidRemove = FW.SendCallback("FW:RemoveItem", 'spikestrip', 1)
     if not DidRemove then
-        return FW.Functions.Notify("Welke spijkermatten wou je plaatsen dan?", "error")
+        return FW.Functions.Notify("You have no spikestrips", "error")
     end
 
     local SpikeData = {

@@ -40,7 +40,9 @@
     <div class="app-container">
         <!-- <iframe title="yeet" style="pointer-events: none; width: 100%; height: 100%;" src="https://www.youtube.com/embed/{RandomVideos[VideoId]}?controls=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
         <i style="width: 100%; text-align: center; font-size: 3.6vh; color: rgba(255, 255, 255, 0.5); margin-top: 20vh;" class="fas fa-frown"></i>
-        <p style="width: 100%; text-align: center; font-size: 1.8vh; color: rgba(255, 255, 255, 0.5); font-family: Roboto; margin-top: 2vh;">De site die je probeert te bereiken is momenteel niet beschikbaar..</p>
+        <p style="width: 100%; text-align: center; font-size: 1.8vh; color: rgba(255, 255, 255, 0.5); font-family: Roboto; margin-top: 2vh;">
+            The site you are trying to reach is currently unavailable..
+        </p> <!-- was "De site die je probeert te bereiken is momenteel niet beschikbaar.." -->
     </div>
 </AppContainer>
 

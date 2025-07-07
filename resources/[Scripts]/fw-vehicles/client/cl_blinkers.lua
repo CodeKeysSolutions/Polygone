@@ -1,16 +1,16 @@
-FW.AddKeybind("indicatorLeft", "Voertuigen", "Knipperlicht Aan-/uitzetten (Right)", "", function(IsPressed)
+FW.AddKeybind("indicatorLeft", "Vehicles", "Knipperlicht Aan-/uitzetten (Right)", "", function(IsPressed)
     if not CurrentVehicle or not IsPressed then return end
     if not IsVehicleDriver() then return end
 	SetLightIndicators(GetVehiclePedIsIn(PlayerPedId()), 2)
 end)
 
-FW.AddKeybind("indicatorRight", "Voertuigen", "Knipperlicht Aan-/uitzetten (Left)", "", function(IsPressed)
+FW.AddKeybind("indicatorRight", "Vehicles", "Knipperlicht Aan-/uitzetten (Left)", "", function(IsPressed)
     if not CurrentVehicle or not IsPressed then return end
     if not IsVehicleDriver() then return end
 	SetLightIndicators(GetVehiclePedIsIn(PlayerPedId()), 3)
 end)
 
-FW.AddKeybind("indicatorHazard", "Voertuigen", "Knipperlicht Aan-/uitzetten (Hazard)", "", function(IsPressed)
+FW.AddKeybind("indicatorHazard", "Vehicles", "Knipperlicht Aan-/uitzetten (Hazard)", "", function(IsPressed)
     if not CurrentVehicle or not IsPressed then return end
     if not IsVehicleDriver() then return end
 	SetLightIndicators(GetVehiclePedIsIn(PlayerPedId()), 1)

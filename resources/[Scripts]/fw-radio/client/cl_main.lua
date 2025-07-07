@@ -83,17 +83,17 @@ end)
 
 function ConnectToChannel(Channel)
     if Channel <= 100 and not DoIHaveAStateJob() then
-        FW.Functions.Notify('Dit zijn geCODEERDE kanalen..', 'error')
+        FW.Functions.Notify('These are ENCRYPTED channels..', 'error')
         return
     end
 
     if Channel > 100 and not exports['fw-inventory']:HasEnoughOfItem('radio', 1) then
-        FW.Functions.Notify("PD Radio kan niet verbinden met andere kanalen!", "error")
+        FW.Functions.Notify("PD Radio cannot connect to other channels!", "error")
         return
     end
 
     if Channel > Config.MaxFrequency then
-        FW.Functions.Notify('Nou dat denk ik niet..', 'error')
+        FW.Functions.Notify('Well, I don\'t think so..', 'error')
         return
     end
 
@@ -101,7 +101,7 @@ function ConnectToChannel(Channel)
     TriggerServerEvent('fw-voice:Server:Add:Player:To:Radio', Channel, true)
 
     local RadioVisibility = exports['fw-hud']:GetPreferenceById('Status.RadioVisibility')
-    if RadioVisibility ~= 'Nooit' then
+    if RadioVisibility ~= 'Never' then
         exports['fw-hud']:SetHudData(exports['fw-hud']:GetHudId('Voice'), 'InsideText', RadioChannel)
 
         if RadioVisibility == 'Relevant' then
@@ -114,9 +114,9 @@ function ConnectToChannel(Channel)
     end
 
     if SplitStr(tostring(Channel), ".")[2] ~= nil and SplitStr(tostring(Channel), ".")[2] ~= "" then
-        FW.Functions.Notify('Je bent verbonden met: '..Channel..' MHz', 'success')
+        FW.Functions.Notify('You are connected to: '..Channel..' MHz', 'success')
     else
-        FW.Functions.Notify('Je bent verbonden met: '..Channel..'.00 MHz', 'success')
+        FW.Functions.Notify('You are connected to: '..Channel..'.00 MHz', 'success')
     end
 
     exports['fw-hud']:SetHudIcon(exports['fw-hud']:GetHudId('Voice'), 'headset')
@@ -127,7 +127,7 @@ function DisconnectFromChannel(ClearCache)
     RadioChannel = 0 ExecuteCommand("-radiotalk")
 
     if ClearCache then
-        FW.Functions.Notify('Frequentie verlaten' , 'error')
+        FW.Functions.Notify('Left frequency' , 'error')
         ChannelCache = 0
     end
     exports['fw-hud']:SetHudIcon(exports['fw-hud']:GetHudId('Voice'), 'microphone')
@@ -158,7 +158,7 @@ function SplitStr(inputstr, sep)
     return t
 end
 
-FW.AddKeybind("radioUp", "Radio", "Frequentie Omhoog", "", function(IsPressed)
+FW.AddKeybind("radioUp", "Radio", "Frequency Up", "", function(IsPressed)
     if not IsPressed then return end
     
     local PlayerData = FW.Functions.GetPlayerData()
@@ -166,7 +166,7 @@ FW.AddKeybind("radioUp", "Radio", "Frequentie Omhoog", "", function(IsPressed)
     ConnectToChannel(RadioChannel + 1)
 end)
 
-FW.AddKeybind("radioDown", "Radio", "Frequentie Omlaag", "", function(IsPressed)
+FW.AddKeybind("radioDown", "Radio", "Frequency Down", "", function(IsPressed)
     if not IsPressed then return end
 
     local PlayerData = FW.Functions.GetPlayerData()
@@ -175,7 +175,7 @@ FW.AddKeybind("radioDown", "Radio", "Frequentie Omlaag", "", function(IsPressed)
     ConnectToChannel(RadioChannel - 1)
 end)
 
-FW.AddKeybind("radioVolumeUp", "Radio", "Volume Omhoog", "", function(IsPressed)
+FW.AddKeybind("radioVolumeUp", "Radio", "Volume Up", "", function(IsPressed)
     if not IsPressed then return end
 
     local PlayerData = FW.Functions.GetPlayerData()
@@ -188,10 +188,10 @@ FW.AddKeybind("radioVolumeUp", "Radio", "Volume Omhoog", "", function(IsPressed)
     end
 
     exports['fw-hud']:SetPreferenceById('Audio.RadioVolume', CurrentVolume + 0.1)
-    FW.Functions.Notify('Nieuw volume: '..math.ceil((CurrentVolume + 0.1) * 100) .. '%', 'success')
+    FW.Functions.Notify('New volume: '..math.ceil((CurrentVolume + 0.1) * 100) .. '%', 'success')
 end)
 
-FW.AddKeybind("radioVolumeDown", "Radio", "Volume Omlaag", "", function(IsPressed)
+FW.AddKeybind("radioVolumeDown", "Radio", "Volume Down", "", function(IsPressed)
     if not IsPressed then return end
 
     local PlayerData = FW.Functions.GetPlayerData()
@@ -204,10 +204,10 @@ FW.AddKeybind("radioVolumeDown", "Radio", "Volume Omlaag", "", function(IsPresse
     end
 
     exports['fw-hud']:SetPreferenceById('Audio.RadioVolume', CurrentVolume - 0.1)
-    FW.Functions.Notify('Nieuw volume: '..math.ceil((CurrentVolume - 0.1) * 100) .. '%', 'success')
+    FW.Functions.Notify('New volume: '..math.ceil((CurrentVolume - 0.1) * 100) .. '%', 'success')
 end)
 
-FW.AddKeybind("openRadio", "Radio", "Openen", "", function(IsPressed)
+FW.AddKeybind("openRadio", "Radio", "Open", "", function(IsPressed)
     if not IsPressed then return end
     OpenRadio()
 end)

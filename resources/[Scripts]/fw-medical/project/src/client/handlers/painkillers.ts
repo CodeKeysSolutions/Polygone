@@ -17,7 +17,7 @@ onNet("fw-medical:Client:UsedHeal", async (ItemName: string) => {
 
     exp['fw-assets'].AddProp("HealthPack")
     
-    const Finished = await FW.Functions.CompactProgressbar(3000, ItemName == "ifak" ? "IFAK gebruiken" : "Verbandje omdoen...", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(3000, ItemName == "ifak" ? "USE IFAK" : "Applying bandage...", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {
         animDict: "amb@world_human_clipboard@male@idle_a", anim: "idle_c", flags: 49
@@ -49,12 +49,12 @@ onNet("fw-medical:Client:UsedHeal", async (ItemName: string) => {
 });
 
 onNet("fw-medical:Client:UsedOxy", async () => {
-    if (OnOxy) return FW.Functions.Notify("Je wilt geen overdose toch?", "error");
+    if (OnOxy) return FW.Functions.Notify("You don't want to overdose, right?", "error");
 
     if (exp['fw-progressbar'].GetTaskBarStatus()) return;
     exp['fw-inventory'].SetBusyState(true)
     
-    const Finished = await FW.Functions.CompactProgressbar(3000, "Pilletje slikken", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(3000, "Taking pills", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {
         animDict: "mp_suicide", anim: "pill", flags: 49
@@ -83,9 +83,9 @@ onNet("fw-medical:Client:UsedOxy", async () => {
 });
 
 onNet("fw-medical:Client:UsedAdrenaline", async () => {
-    if (OnAdrenaline) return FW.Functions.Notify("Je zit al aardig aan de adrenaline..", "error");
+     return FW.Functions.Notify("You're already on quite a bit of adrenaline..", "error");
 
-    const Finished = await FW.Functions.CompactProgressbar(3000, "Injecteren", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(3000, "Injecting", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {
         animDict: "clear@custom_anim", anim: "adrenaline_clip", flags: 49
@@ -101,7 +101,7 @@ onNet("fw-medical:Client:UsedAdrenaline", async () => {
     SetRunSprintMultiplierForPlayer(PlayerId(), 1.2);
     ResetPlayerStamina(PlayerId())
     await Delay((Config.AdrenalineTimer - 2) * 1000)
-    FW.Functions.Notify("Je voelt de adrenaline kick langzaam wegzakken..", "error")
+    FW.Functions.Notify("You feel the adrenaline rush slowly fading away..", "error")
     SetRunSprintMultiplierForPlayer(PlayerId(), 1.1);
     await Delay(2000);
     SetRunSprintMultiplierForPlayer(PlayerId(), 1.0);
@@ -109,9 +109,9 @@ onNet("fw-medical:Client:UsedAdrenaline", async () => {
 });
 
 onNet("fw-medical:Client:UsedIbuprofen", async () => {
-    if (OnIbuprofen) return FW.Functions.Notify("Je zit al aardig aan de ibuprofen..", "error");
+     return FW.Functions.Notify("You're already on quite a bit of ibuprofen..", "error");
 
-    const Finished = await FW.Functions.CompactProgressbar(3000, "Pilletje slikken", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(3000, "Taking pills", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {
         animDict: "mp_suicide", anim: "pill", flags: 49
@@ -136,9 +136,9 @@ onNet("fw-medical:Client:UsedIbuprofen", async () => {
 });
 
 onNet("fw-medical:Client:UsedKetamine", async () => {
-    if (OnKetamine) return FW.Functions.Notify("Je zit al aardig aan de ketamine..", "error");
+    return FW.Functions.Notify("You're already on quite a bit of ketamine..", "error");
 
-    const Finished = await FW.Functions.CompactProgressbar(3000, "Pilletje slikken", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(3000, "Taking pills", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {
         animDict: "mp_suicide", anim: "pill", flags: 49
@@ -173,9 +173,9 @@ onNet("fw-medical:Client:UsedKetamine", async () => {
 });
 
 onNet("fw-medical:Client:UsedMelatonin", async () => {
-    if (OnMelatonin) return FW.Functions.Notify("Je zit al aardig aan de melatonine..", "error");
+     return FW.Functions.Notify("You're already on quite a bit of melatonin..", "error");
 
-    const Finished = await FW.Functions.CompactProgressbar(3000, "Pilletje slikken", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(3000, "Taking pills", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {
         animDict: "mp_suicide", anim: "pill", flags: 49
@@ -201,7 +201,7 @@ onNet("fw-medical:Client:UsedMelatonin", async () => {
 
     DoScreenFadeOut(1000);
     emit('fw-emotes:Client:PlayEmote', "sleep", null, true)
-    FW.Functions.Notify("Je bent in slaap gevallen...", "error");
+    FW.Functions.Notify("You felt asleep...", "error");
     await Delay(5000);
     DoScreenFadeIn(15000);
 
@@ -212,9 +212,9 @@ onNet("fw-medical:Client:UsedMelatonin", async () => {
 });
 
 onNet("fw-medical:Client:UsedMorphine", async () => {
-    if (OnMorphine) return FW.Functions.Notify("Je zit al aardig aan de morfine..", "error");
+     return FW.Functions.Notify("You're already on quite a bit of morphine..", "error");
 
-    const Finished = await FW.Functions.CompactProgressbar(3000, "Pilletje slikken", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(3000, "Taking pills", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {
         animDict: "mp_suicide", anim: "pill", flags: 49
@@ -236,9 +236,9 @@ onNet("fw-medical:Client:UsedMorphine", async () => {
 });
 
 onNet("fw-medical:Client:UsedPainkillers", async () => {
-    if (OnPainkillers) return FW.Functions.Notify("Je zit al aardig aan de paracetamol..", "error");
+     return FW.Functions.Notify("You're already on quite a bit of paracetamol..", "error");
 
-    const Finished = await FW.Functions.CompactProgressbar(3000, "Pilletje slikken", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(3000, "Taking pills", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {
         animDict: "mp_suicide", anim: "pill", flags: 49

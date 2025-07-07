@@ -18,7 +18,7 @@ setImmediate(() => {
                 {
                     Name: 'lay_down',
                     Icon: 'fas fa-bed',
-                    Label: 'Liggen',
+                    Label: 'Lie Down', // was 'Liggen'
                     EventType: 'Client',
                     EventName: 'fw-medical:Client:LayBed',
                     EventParams: Prop == "gn_med_xray_3_prop" ? { Heading: -90 } : {},
@@ -46,7 +46,7 @@ setImmediate(() => {
             {
                 Name: 'cabin',
                 Icon: 'fas fa-archive',
-                Label: 'HC Stash',
+                Label: 'HC Stash', // already English
                 EventType: 'Client',
                 EventName: 'fw-police:Client:OpenHCStash',
                 EventParams: { Department: "CRUSADE" },
@@ -58,7 +58,7 @@ setImmediate(() => {
             {
                 Name: 'highcommand_badge',
                 Icon: 'fas fa-id-badge',
-                Label: 'Medicus Pas Maken',
+                Label: 'Create Medic Badge', // was 'Medicus Pas Maken'
                 EventType: 'Client',
                 EventName: 'fw-ui:Client:CreateBadge',
                 EventParams: { Badge: 'ems', Job: 'ems', Department: "Los Santos Medical Group" },
@@ -70,7 +70,7 @@ setImmediate(() => {
             {
                 Name: 'highcommand_employees',
                 Icon: 'fas fa-users',
-                Label: 'EMS Medewerkerslijst',
+                Label: 'EMS Employee List', // was 'EMS Medewerkerslijst'
                 EventType: 'Client',
                 EventName: 'fw-police:Client:OpenEmployeelist',
                 EventParams: { Job: 'ems' },
@@ -82,7 +82,7 @@ setImmediate(() => {
             {
                 Name:'usb',
                 Icon:'fas fa-road',
-                Label:'Time Trial USB Pakken',
+                Label:'Take Time Trial USB', // was 'Time Trial USB Pakken'
                 EventType:'Client',
                 EventName:'fw-police:Client:GrabTimeTrialUSB',
                 EventParams:{ Job:'police' },
@@ -142,7 +142,7 @@ setImmediate(() => {
 on("PolyZone:OnEnter", async (Poly: any) => {
     if (Poly.name != "crusade-medical-check-in" && Poly.name != "viceroy-medical-check-in" && Poly.name != "sandy-medical-check-in" && Poly.name != "paleto-medical-check-in") return;
     NearCheckin = await FW.SendCallback("fw-medical:Server:CanCheckIn");
-    exp['fw-ui'].ShowInteraction(`[F1] Checkin (€${Dead ? Config.MedicalFee * Config.FeeMultiplier : Config.MedicalFee})`);
+    exp['fw-ui'].ShowInteraction(`[F1] Checkin ($${Dead ? Config.MedicalFee * Config.FeeMultiplier : Config.MedicalFee})`);
 });
 
 on("PolyZone:OnExit", () => {

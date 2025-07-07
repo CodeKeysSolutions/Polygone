@@ -12,7 +12,7 @@ Config.Card = {
     body = { 
         {
             type = "TextBlock",
-            text = "Clarity Roleplay",
+            text = "Polygone",
             fontType = "Default",
             weight = "Bolder",
             size = "ExtraLarge",

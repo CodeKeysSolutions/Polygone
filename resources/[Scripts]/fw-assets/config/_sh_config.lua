@@ -16,13 +16,13 @@ Config.Keys = {
 }
 
 Config.DiscordSettings = {
-    ['AppId'] = 1125496943607566406,
-    ['Text'] = 'Clarity Roleplay',
+    ['AppId'] = 697738805243019295,
+    ['Text'] = 'Bloodbullet',
 }
 
 Config.DisabledTrunk = {
     [GetHashKey("penetrator")] = true,
-    [GetHashKey("vacca")] = true,
+    [GetHashKey("vacca")] = true,   
     [GetHashKey("monroe")] = true,
     [GetHashKey("turismor")] = true,
     [GetHashKey("osiris")] = true,

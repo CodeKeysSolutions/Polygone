@@ -44,11 +44,14 @@ end
 function DoGraffitiPlacer(Model, MaxDistance, StickToGround, PlayerHeading, ZMin, Cb)
     local HashEntity = GetHashKey(Model)
     exports['fw-assets']:RequestModelHash(HashEntity)
-
+    print(HashEntity)
+    print("PlacingObject", PlacingObject)
     local MaxDistance = MaxDistance ~= nil and MaxDistance or 5.0
     local CenterCoords = GetEntityCoords(PlayerPedId()) + (GetEntityForwardVector(PlayerPedId()) * 1.5)
     PlacingObject = CreateObject(HashEntity, CenterCoords, false, false, false)
+
     if PlacingObject ~= false then
+        print(1);
         IsPlacing = true
         SetEntityCollision(PlacingObject, false)
         SetEntityAlpha(PlacingObject, 0.3, true)

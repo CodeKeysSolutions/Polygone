@@ -34,20 +34,20 @@ AddEventHandler("fw-mdw:Client:DutyAction", function(Data)
             {
                 Icon = 'info-circle',
                 Title = Config.DutyActions[Data.Job],
-                Desc = "Ga in- of uit dienst.",
+                Desc = "Go on or off duty.",
                 Data = { Event = '', Type = 'Client' },
                 SecondMenu = {
                     {
                         Icon = 'sign-in',
-                        Title = 'In dienst gaan',
-                        Desc = "Ga in dienst als " .. Config.DutyActions[Data.Job],
+                        Title = 'Go on duty',
+                        Desc = "Go on duty as " .. Config.DutyActions[Data.Job],
                         CloseMenu = true,
                         Data = { Event = 'fw-mdw:Server:SetDuty', Type = 'Server', Duty = true, Job = Data.Job }
                     },
                     {
                         Icon = 'sign-out',
-                        Title = 'Uit dienst gaan',
-                        Desc = "Ga uit dienst.",
+                        Title = 'Go off duty',
+                        Desc = "Go off duty.",
                         CloseMenu = true,
                         Data = { Event = 'fw-mdw:Server:SetDuty', Type = 'Server', Duty = false, Job = Data.Job }
                     },

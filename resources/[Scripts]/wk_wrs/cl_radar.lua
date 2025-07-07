@@ -135,9 +135,9 @@ AddEventHandler( 'startSpeedo', function()
             radarEnabled = not radarEnabled
 
             if ( radarEnabled ) then
-                Notify( "Radar ingeschakeld.", "primary" )
+                Notify( "Radar enabled.", "primary" )
             else
-                Notify( "Radar uitgeschakeld.", "primary" )
+                Notify( "Radar disabled.", "primary" )
             end
 
             ResetFrontAntenna()
@@ -173,9 +173,9 @@ AddEventHandler( 'wk:toggleRadar', function()
             radarEnabled = not radarEnabled
 
             if ( radarEnabled ) then
-                Notify( "Radar ingeschakeld.", "primary" )
+                Notify( "Radar enabled.", "primary" )
             else
-                Notify( "Radar uitgeschakeld.", "primary" )
+                Notify( "Radar disabled.", "primary" )
             end
 
             ResetFrontAntenna()
@@ -190,7 +190,7 @@ AddEventHandler( 'wk:toggleRadar', function()
             })
 
     else
-        Notify( "Je zit niet in een voertuig.", "error" )
+        Notify( "You are not in a vehicle.", "error" )
     end
 end )
 
@@ -288,20 +288,20 @@ end
 function ToggleSpeedType()
     if radarInfo.speedType == "mph" then
         radarInfo.speedType = "kmh"
-        Notify( "Speedtype gezet naar KMH.", "error" )
+        Notify( "Speed type set to KMH.", "error" )
     else
         radarInfo.speedType = "mph"
-        Notify( "Speedtype gezet naar MPH.", "error" )
+        Notify( "Speed type set to MPH.", "error" )
     end
 end
 
 function ToggleLockBeep()
     if ( radarInfo.lockBeep ) then
         radarInfo.lockBeep = false
-        Notify( "Radar beep uitgeschakeld.", "error" )
+        Notify( "Radar beep disabled.", "error" )
     else
         radarInfo.lockBeep = true
-        Notify( "Radar ingeschakeld.", "error" )
+        Notify( "Radar enabled.", "error" )
     end
 end
 
@@ -568,15 +568,15 @@ AddEventHandler( 'radar:alarm', function()
     Citizen.Wait(100)
 end)
 
-FW.AddKeybind("radarLockplates", "Radar", "Kenteken Unlock/Lock", "", function(IsPressed)
+FW.AddKeybind("radarLockplates", "Radar", "License Plate Unlock/Lock", "", function(IsPressed)
     if not IsPressed and not IsCop then return end
     if not IsPedSittingInAnyVehicle(PlayerPedId()) then return end
 
     lockplates = not lockplates
     if lockplates then
-        FW.Functions.Notify("Kenteken locked", "primary")
+        FW.Functions.Notify("License plate locked", "primary")
     else
-        FW.Functions.Notify("Kenteken unlocked", "primary")
+        FW.Functions.Notify("License plate unlocked", "primary")
     end
 end)
 
@@ -586,39 +586,35 @@ FW.AddKeybind("radarFastlockreset", "Radar", "Lockfast Reset", "", function(IsPr
 
     ResetFrontFast()
     ResetRearFast()
-    FW.Functions.Notify("Lockfast Gereset", "primary")
+    FW.Functions.Notify("Lockfast Reset", "primary")
 end)
 
-FW.AddKeybind("radarMenu", "Radar", "Instellingen", "", function(IsPressed)
+FW.AddKeybind("radarMenu", "Radar", "Settings", "", function(IsPressed)
     if not IsPressed and not IsCop then return end
     if not IsPedSittingInAnyVehicle(PlayerPedId()) then return end
 
     TriggerEvent( 'wk:radarRC' )
 end)
 
-Citizen.CreateThread(function()
-    while true do
-        local ped = PlayerPedId()
-        local inVeh = IsPedSittingInAnyVehicle(ped)
-
-        if inVeh and IsCop then
-            if (radarEnabled and hidden) then
-                hidden = false
-                SendNUIMessage( { hideradar = false } )
-            end
-        else
-            if ((IsPauseMenuActive() and radarEnabled) or (not inVeh and radarEnabled)) then
-                hidden = true
-                SendNUIMessage( { hideradar = true } )
-            end
-            Citizen.Wait(1100)
-        end
-
-        Citizen.Wait(1000)
+function ToggleSpeedType()
+    if radarInfo.speedType == "mph" then
+        radarInfo.speedType = "kmh"
+        Notify( "Speed type set to KMH.", "error" )
+    else
+        radarInfo.speedType = "mph"
+        Notify( "Speed type set to MPH.", "error" )
     end
-end)
+end
 
-
+function ToggleLockBeep()
+    if ( radarInfo.lockBeep ) then
+        radarInfo.lockBeep = false
+        Notify( "Radar beep disabled.", "error" )
+    else
+        radarInfo.lockBeep = true
+        Notify( "Radar enabled.", "error" )
+    end
+end
 --[[------------------------------------------------------------------------
     Menu Control Lock - Prevents certain actions
     Thanks to the authors of the ES Banking script.

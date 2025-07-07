@@ -6,7 +6,7 @@
 
 <p class="preferences-header">Misc</p>
 <TextField
-    Title="Merk"
+    Title="Brand"
     bind:RealValue={$MyPreferences['Phone.Brand']}
     Select={[
         { Text: "Android", Value: "Android" },
@@ -15,54 +15,54 @@
 />
 
 <TextField
-    Title="Achtergrond URL (1:2.2 res)"
+    Title="Background URL (1:2.2 res)"
     Icon="images"
     bind:RealValue={$MyPreferences['Phone.Background']}
 />
 
 <TextField
-    Title="Telefoon Animatie"
+    Title="Phone Animation"
     bind:RealValue={$MyPreferences['Phone.Animation']}
     Select={[
-        { Text: "Rechteroor (Standaard)", Value: "Rechteroor" },
-        { Text: "Linkeroor", Value: "Linkeroor" }
+        { Text: "Right Ear (Default)", Value: "Rechteroor" },
+        { Text: "Left Ear", Value: "Linkeroor" }
     ]}
 />
 
 <TextField
-    Title="Radio Animatie"
+    Title="Radio Animation"
     bind:RealValue={$MyPreferences['Radio.Animation']}
     Select={[
-        { Text: "Schouder (Standaard)", Value: "Schouder" },
-        { Text: "Borst", Value: "Borst" }
+        { Text: "Shoulder (Default)", Value: "Schouder" },
+        { Text: "Chest", Value: "Borst" }
     ]}
 />
 
 <Checkbox
-    Label="Movement uitschakelen (Aanbevolen)"
+    Label="Disable movement (Recommended)"
     bind:Checked={$MyPreferences['Phone.DisableMovement']}
 />
 
 <hr/>
-<p class="preferences-header">Notificaties</p>
+<p class="preferences-header">Notifications</p>
 
 <Checkbox
-    Label="SMS Ontvangen"
+    Label="Receive SMS"
     bind:Checked={$MyPreferences['Notifications.SMS']}
 />
 <Checkbox
-    Label="Nieuwe Twat"
+    Label="New Twat"
     bind:Checked={$MyPreferences['Notifications.Tweet']}
 />
 <Checkbox
-    Label="Email Ontvangen"
+    Label="Receive Email"
     bind:Checked={$MyPreferences['Notifications.Email']}
 />
 
 <hr/>
-<p class="preferences-header">Afbeeldingen</p>
+<p class="preferences-header">Images</p>
 
 <Checkbox
-    Label="Twitter/Bericht Bijlages Ingeschakeld"
+    Label="Twitter/Message Attachments Enabled"
     bind:Checked={$MyPreferences['Images.Embedded']}
 />

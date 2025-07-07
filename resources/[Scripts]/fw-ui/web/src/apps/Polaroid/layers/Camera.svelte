@@ -9,21 +9,21 @@
     <div class="polaroid-camera-bar-left">
 
         <div class="polaroid-camera-help">
-            <span>Hoe werkt het</span>
+            <span>How to use ?</span>
             <div class="polaroid-camera-help-entry">
-                <kbd>E</kbd> om een foto te maken.
+                <kbd>E</kbd> to make picturen.
             </div>
             <div class="polaroid-camera-help-entry">
-                <kbd>LMB</kbd> om een filter te selecteren.
+                <kbd>LMB</kbd> to select filter.
             </div>
             <div class="polaroid-camera-help-entry">
-                <kbd>ESC</kbd> of <kbd>RMB</kbd> om te stoppen.
+                <kbd>ESC</kbd> of <kbd>RMB</kbd> to cancel.
             </div>
         </div>
 
     </div>
     <div class="polaroid-camera-center">
-        <div class="polaroid-camera-top-left-corner">🔴 Clarity Polaroid</div>
+        <div class="polaroid-camera-top-left-corner">🔴 Polygone Polaroid</div>
         <div class="polaroid-camera-bottom-left-corner">{innerHeight}x{innerHeight}px</div>
         <div class="polaroid-camera-top-right-corner">📷 {FilmsLeft} over</div>
         <div class="polaroid-camera-bottom-right-corner">1:1 Aspect Ratio</div>

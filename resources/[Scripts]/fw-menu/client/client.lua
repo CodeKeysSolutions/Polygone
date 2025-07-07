@@ -48,7 +48,7 @@ AddEventHandler('fw-menu:client:flip:vehicle', function()
 
     local Vehicle, Distance = FW.Functions.GetClosestVehicle()
     if Vehicle ~= 0 and Distance < 1.7 then
-        FW.Functions.Progressbar("flip-vehicle", "Voertuig omduwen..", math.random(10000, 15000), false, true, {
+        FW.Functions.Progressbar("flip-vehicle", "Pushing vehicle over..", math.random(10000, 15000), false, true, {
             disableMovement = true,
             disableCarMovement = false,
             disableMouse = false,
@@ -59,12 +59,12 @@ AddEventHandler('fw-menu:client:flip:vehicle', function()
             flags = 49,
         }, {}, {}, function() -- Done
             SetVehicleOnGroundProperly(Vehicle)
-            FW.Functions.Notify("Gelukt", "success")
+            FW.Functions.Notify("Success", "success")
         end, function()
-            FW.Functions.Notify("Geannuleerd..", "error")
+            FW.Functions.Notify("Cancelled..", "error")
         end, true)
     else
-        FW.Functions.Notify("Geen voertuig gevonden..", "error")
+        FW.Functions.Notify("No vehicle found..", "error")
     end
 end)
 
@@ -73,7 +73,7 @@ AddEventHandler("fw-menu:client:send:panic:button",function()
     local HasRadio = FW.SendCallback('FW:HasItem', "radio")
     local HasPDRadio = FW.SendCallback('FW:HasItem', "pdradio")
     if not HasRadio and not HasPDRadio then
-        return FW.Functions.Notify("Je hebt geen portofoon op zak.. Een noodknop is nu niet mogelijk..", "error")
+        return FW.Functions.Notify("You don't have a radio on you.. A panic button is not possible now..", "error")
     end
 
     local Player = FW.Functions.GetPlayerData()
@@ -86,7 +86,7 @@ RegisterNetEvent("fw-menu:client:send:down")
 AddEventHandler("fw-menu:client:send:down",function(Type)
     local HasPDRadio = FW.SendCallback('FW:HasItem', "pdradio")
     if not HasPDRadio then
-        return FW.Functions.Notify("Je hebt geen portofoon op zak.. een noodknop is nu niet mogelijk..", "error")
+        return FW.Functions.Notify("You don't have a radio on you.. a panic button is not possible now..", "error")
     end
 
     local Player = FW.Functions.GetPlayerData()
@@ -121,16 +121,16 @@ AddEventHandler('fw-menu:client:setExtra', function(data)
             if DoesExtraExist(veh, extra) then 
                 if IsVehicleExtraTurnedOn(veh, extra) then
                     SetVehicleExtra(veh, extra, 1)
-                    FW.Functions.Notify('Extra ' .. extra .. ' is uitgezet op dit voertuig', 'error', 2500)
+                    FW.Functions.Notify('Extra ' .. extra .. ' has been turned off on this vehicle', 'error', 2500)
                 else
                     SetVehicleExtra(veh, extra, 0)
-                    FW.Functions.Notify('Extra ' .. extra .. ' is aangezet op dit voertuig', 'success', 2500)
+                    FW.Functions.Notify('Extra ' .. extra .. ' has been turned on on this vehicle', 'success', 2500)
                 end
             else
-                FW.Functions.Notify('Extra ' .. extra .. ' is niet beschikbaar op dit voertuig', 'error', 2500)
+                FW.Functions.Notify('Extra ' .. extra .. ' is not available on this vehicle', 'error', 2500)
             end
         else
-            FW.Functions.Notify("Je bent niet de bestuurder van dit voertuig.", 'error', 2500)
+            FW.Functions.Notify("You are not the driver of this vehicle.", 'error', 2500)
         end
     end
 end)

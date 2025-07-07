@@ -48,7 +48,7 @@
 >
     <p
         class="financials-accountcard-name"
-        data-tooltip="Bankrekeningnaam / Bankrekeningnummer"
+        data-tooltip="Bank account name / number"
     >{Name} / {AccountId}</p>
 
     <div class="financials-accountcard-details">
@@ -67,7 +67,7 @@
             >{FormatCurrency.format(Balance)}</p>
             <p
                 style="font-size: 1.6vh; font-family: Roboto; font-weight: 400; letter-spacing: 0.015008vh; text-align: right;"
-            >Beschikbaar Balans</p>
+            >Available balance</p>
         </div>
     </div>
 

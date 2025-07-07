@@ -97,9 +97,9 @@
 <div class="mdw-modal-charges">
     <div class="mdw-modal-charges-container">
         <div style="display: flex; justify-content: space-between;">
-            <p>Huidige Straffen</p>
+            <p>Current Charges</p>
             <div>
-                <Button click={() => { $MdwModalsCharges.Show = false }} Color="warning">Sluiten</Button>
+                <Button click={() => { $MdwModalsCharges.Show = false }} Color="warning">Close</Button>
                 <Button click={() => {
                     $MdwModalsCharges.Cb($MdwModalsCharges.Charges)
                     MdwModalsCharges.set({
@@ -107,13 +107,13 @@
                         Charges: [],
                         Cb: () => {},
                     })
-                }} Color="success">Opslaan</Button>
+                }} Color="success">Save</Button>
             </div>
         </div>
 
         <div style="margin-top: 0.5vh; display: flex; flex-wrap: wrap; box-sizing: border-box;">
             {#each $MdwModalsCharges.Charges as Data, Key}
-                <MdwChip Text={(Data.Type != "Principal" ? (Data.Type == "Accomplice" ? "(Mp) " : "(Pt) ") : "") + GetChargeById(Data.Id).name} Color="#000000" SuffixIcon="times-circle" on:click={() => {
+                <MdwChip Text={(Data.Type != "Principal" ? (Data.Type == "Accomplice" ? "(Accomplice) " : "(Attempted) ") : "") + GetChargeById(Data.Id).name} Color="#000000" SuffixIcon="times-circle" on:click={() => {
                     let NewCharges = [...$MdwModalsCharges.Charges];
                     NewCharges.splice(Key, 1);
                     $MdwModalsCharges.Charges = NewCharges;
@@ -126,8 +126,8 @@
         <MdwPanel style="width: 100%; margin-right: 0">
             <MdwPanel class="filled" style="width: 100%; margin: 0.5vh auto 0px; height: 6vh;">
                 <MdwPanelHeader style="width: 98.6%;">
-                    <h6>Straffen</h6>
-                    <TextField Title='Zoeken' Icon='search' SubSet={FilterCharges} style="width: 20%;" />
+                    <h6>Charges</h6>
+                    <TextField Title='Search' Icon='search' SubSet={FilterCharges} style="width: 20%;" />
                 </MdwPanelHeader>
             </MdwPanel>
 

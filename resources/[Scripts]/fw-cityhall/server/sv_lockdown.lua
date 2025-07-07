@@ -3,16 +3,16 @@ FW.RegisterServer("fw-cityhall:Server:SetLockdownState", function(Source, Id, La
     if Player == nil then return end
 
     if Player.PlayerData.job.name ~= "police" and Player.PlayerData.job.name ~= "judge" then
-        return Player.Functions.Notify("Geen toegang..", "error")
+        return Player.Functions.Notify("No access..", "error")
     end
 
     local Result = exports['ghmattimysql']:executeSync("SELECT * FROM `police_lockdowns` WHERE `lockdown_id` = ?", {Id})
     if Result[1] and State == false then
         exports['ghmattimysql']:executeSync("DELETE FROM `police_lockdowns` WHERE `lockdown_id` = ?", {Id})
-        Player.Functions.Notify("Lockdown status veranderd voor " .. Label .. ": uitgeschakeld")
+        Player.Functions.Notify("Lockdown status changed for " .. Label .. ": uitgeschakeld")
     elseif not Result[1] and State == true then
         exports['ghmattimysql']:executeSync("INSERT INTO `police_lockdowns` (`cid`, `lockdown_id`, `timestamp`) VALUES(?, ?, ?)", {Player.PlayerData.citizenid, Id, os.time()})
-        Player.Functions.Notify("Lockdown status veranderd voor " .. Label .. ": ingeschakeld")
+        Player.Functions.Notify("Lockdown status changed for " .. Label .. ": ingeschakeld")
     else
         Player.Functions.Notify("Lockdown status is hetzelfde..", "error")
     end
@@ -49,7 +49,7 @@ FW.Functions.CreateCallback("fw-vehicles:Server:GetGaragesByStateId", function(S
         local Garage = Garages[v.garage]
         if Garage then
             Retval[#Retval + 1] = {
-                Label = Garage.IsHouse and "Huis Garage" or Garage.Name,
+                Label = Garage.IsHouse and "House Garage" or Garage.Name,
                 Garage = v.garage,
                 Coords = Garage.Spots[1]
             }

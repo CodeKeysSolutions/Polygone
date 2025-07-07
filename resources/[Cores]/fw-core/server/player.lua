@@ -17,7 +17,7 @@ FW.Player.Login = function(Source, IsCharNew, CitizenId, newData)
             PlayerData.metadata = { islifer = newData.isLifer }
             PlayerData.skin = exports['fw-clothes']:GetDefaultClothes(newData.gender)
             FW.Player.CheckPlayerData(Source, PlayerData)
-            exports['fw-financials']:CreateFinancialAccount('Standaard', PlayerData.citizenid, 'Persoonlijke Rekening', 3500, PlayerData.charinfo.account)
+            exports['fw-financials']:CreateFinancialAccount('Default', PlayerData.citizenid, 'Personal account', 3500, PlayerData.charinfo.account)
             return true
         else
             local Player = FW.Functions.GetPlayerByCitizenId(CitizenId)
@@ -41,7 +41,7 @@ FW.Player.Login = function(Source, IsCharNew, CitizenId, newData)
                     PlayerData.skin = json.decode(PlayerData.skin)
 
                     if exports['fw-financials']:GetFinancialAccountById(PlayerData.charinfo.account) == nil then
-                        exports['fw-financials']:CreateFinancialAccount('Standaard', PlayerData.citizenid, 'Persoonlijke Rekening', 3500, PlayerData.charinfo.account)
+                        exports['fw-financials']:CreateFinancialAccount('Default', PlayerData.citizenid, 'Persoonlijke Rekening', 3500, PlayerData.charinfo.account)
                         print("Financial account did not exist for player, generating a fresh one.")
                     end
                 end    
@@ -603,7 +603,7 @@ end
 
 FW.Player.CreateCitizenId = function()
     local Result = exports['ghmattimysql']:executeSync("SELECT AUTO_INCREMENT AS `CitizenId` FROM information_schema.TABLES WHERE TABLE_SCHEMA = @Database AND TABLE_NAME = 'players'", {
-        ['@Database'] = 'fivem-clarity',
+        ['@Database'] = 'polygone',
     })
     return Result[1].CitizenId
 end

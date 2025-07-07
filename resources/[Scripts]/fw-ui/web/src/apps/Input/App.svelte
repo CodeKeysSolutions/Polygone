@@ -75,17 +75,17 @@
 
         const Image = await GetImageMeta(Data._urlValue);
         if (Data._MinWidth && Image.naturalWidth < Data._MinWidth) {
-            Inputs[Id].Sub = `Je pagina's moeten minstens ${Data._MinWidth}x${Data._MinHeight} zijn!`
+            Inputs[Id].Sub = `Your pages must be at least ${Data._MinWidth}x${Data._MinHeight}!`
             return;
         };
 
         if (Data._MinHeight && Image.naturalHeight < Data._MinHeight) {
-            Inputs[Id].Sub = `Je pagina's moeten minstens ${Data._MinWidth}x${Data._MinHeight} zijn!`
+            Inputs[Id].Sub = `Your pages must be at least ${Data._MinWidth}x${Data._MinHeight}!`
             return;
         };
 
         if (Values[Data.Name] && Values[Data.Name].length > 0 && !AreImagesApproxSameSize(await GetImageMeta(Values[Data.Name][0]), Image)) {
-            Inputs[Id].Sub = `Je pagina's moeten allemaal ongeveer even groot zijn!`
+            Inputs[Id].Sub = `All your pages must be approximately the same size!`
             return;
         };
 

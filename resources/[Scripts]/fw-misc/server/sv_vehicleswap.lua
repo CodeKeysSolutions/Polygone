@@ -37,7 +37,7 @@ AddEventHandler("fw-misc:Server:SetVehicleSwap", function(Data)
     })
 
     if Result[1] == nil then
-        return Player.Functions.Notify("Je kan dit voertuig niet omruilen!", "error")
+        return Player.Functions.Notify("You cant swap this vehicle!", "error")
     end
 
     if Data.Swap == "Refund" then

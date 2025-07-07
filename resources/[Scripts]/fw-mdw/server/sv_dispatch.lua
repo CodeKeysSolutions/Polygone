@@ -190,18 +190,18 @@ AddEventHandler("fw-mdw:Server:SetDuty", function(Data)
                 end
             end
 
-            Player.Functions.Notify("Uitgeklokt als dispatcher.")
+            Player.Functions.Notify("Clocked out as dispatcher.")
             return
         end
 
         table.insert(CurrentDispatchers, Player.PlayerData.charinfo.phone)
-        Player.Functions.Notify("Je bent nu ingeklokt als dispatcher.")
+        Player.Functions.Notify("You are now clocked in as dispatcher.")
 
         return
     end
 
     if Player.PlayerData.job.name ~= Data.Job:lower() then
-        return Player.Functions.Notify("Ze herkennen je niet..", "error")
+        return Player.Functions.Notify("They don't recognize you..", "error")
     end
 
     local UnitId, MemberId = GetUnitByCid(Data.Job, Player.PlayerData.citizenid)

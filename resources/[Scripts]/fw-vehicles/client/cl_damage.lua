@@ -3,7 +3,7 @@ local CurrentBodyEject, InEjectVehicle = 0, false
 local Stalled = false
 
 -- Seatbelt
-FW.AddKeybind("toggleBelt", "Voertuigen", "Gordel om/af doen", "G", function(IsPressed)
+FW.AddKeybind("toggleBelt", "Vehicles", "Gordel om/af doen", "G", function(IsPressed)
     if not IsPressed then return end
 
     local Ped = PlayerPedId()

@@ -1,7 +1,7 @@
 local IsCuffing = false
 
 -- Cuffs
-FW.AddKeybind("hardCuff", "Politie", "Hardcuff / Ontboeien", "", function(IsPressed)
+FW.AddKeybind("hardCuff", "Police", "Hardcuff / Uncuff", "", function(IsPressed)
     if not IsPressed then return end
     if Config.Handcuffed or Config.Escorted then return end
 
@@ -107,7 +107,7 @@ AddEventHandler("fw-police:Client:Cuff", function(IsHardcuff)
 
     local Player, Distance = FW.Functions.GetClosestPlayer()
     if Player == -1 or Distance > 2.5 then
-        return FW.Functions.Notify("Niemand in de buurt. (Misschien dichterbij staan)", "error")
+        return FW.Functions.Notify("No one nearby. (Maybe stand closer)", "error")
     end
 
     -- Don't allow running players to be softcuffed.
@@ -132,7 +132,7 @@ AddEventHandler("fw-police:Client:Cuff", function(IsHardcuff)
     Citizen.SetTimeout(Bool and 0 or 3000, function()
         FW.TriggerServer("fw-police:Server:CuffPlayer", Player, Bool, IsHardcuff)
         if Bool then
-            FW.Functions.Notify(IsHardcuff and "Je hebt iemand gehardcuffed." or "Je hebt iemand geboeid.", IsHardcuff and "error" or "primary")
+            FW.Functions.Notify(IsHardcuff and "You hardcuffed someone." or "You cuffed someone.", IsHardcuff and "error" or "primary")
         end
     end)
     
@@ -172,7 +172,7 @@ AddEventHandler("fw-police:Client:DoCuff", function(Cuffer, State, IsHardcuff)
         SetTimeout(2600, function()
             Config.Handcuffed, Config.Hardcuffed = true, IsHardcuff
             TriggerServerEvent("FW:Server:SetMetaData", 'ishandcuffed', true)
-            FW.Functions.Notify("Je bent geboeid.")
+            FW.Functions.Notify("You are cuffed.")
         end)
         return
     end
@@ -180,7 +180,7 @@ AddEventHandler("fw-police:Client:DoCuff", function(Cuffer, State, IsHardcuff)
     local TimeTable = IsHardcuff and { 1000, 1100 } or { 1500, 1600 }
     local Outcome = exports['fw-ui']:StartSkillTest(1, { 5, 10 }, TimeTable, true)
     if not Outcome then
-        FW.Functions.Notify("Je bent gefaald, je zit in de boeien.", "error")
+        FW.Functions.Notify("You failed, you are now cuffed.", "error")
         SetTimeout(2600 - TimeTable[2], function()
             Config.Handcuffed, Config.Hardcuffed = true, IsHardcuff
             TriggerServerEvent("FW:Server:SetMetaData", 'ishandcuffed', true)
@@ -199,7 +199,7 @@ AddEventHandler("fw-police:Client:Escort", function()
 
     local IsCuffed, IsDead = IsPlayerHandcuffed(Player)
     if not IsCuffed and not IsDead then
-        return FW.Functions.Notify("Persoon is niet geboeid of bewusteloos.", "error")
+        return FW.Functions.Notify("Person is not cuffed or unconscious.", "error")
     end
 
     if IsPedInAnyVehicle(GetPlayerPed(GetPlayerFromServerId(Player))) then
@@ -235,20 +235,20 @@ RegisterNetEvent("fw-police:Client:SeatVehicle")
 AddEventHandler("fw-police:Client:SeatVehicle", function(Data, Entity)
     local Player, Distance = FW.Functions.GetClosestPlayer()
     if Player == -1 or Distance > 2.5 then
-        return FW.Functions.Notify("Niemand in de buurt. (Misschien dichterbij staan)", "error")
+        return FW.Functions.Notify("No one nearby. (Maybe stand closer)", "error")
     end
 
     local IsCuffed, IsDead = IsPlayerHandcuffed(Player)
     if not IsCuffed and not IsDead then
-        return FW.Functions.Notify("Persoon is niet geboeid of bewusteloos.", "error")
+        return FW.Functions.Notify("Person is not cuffed or unconscious.", "error")
     end
 
-    local Finished = FW.Functions.CompactProgressbar(7000, "Persoon in voertuig zetten...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, true)
+    local Finished = FW.Functions.CompactProgressbar(7000, "Putting person in vehicle...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, true)
     if not Finished then return end
 
     local SeatId = GetFreeSeat(Entity)
     if not SeatId then
-        return FW.Functions.Notify("Geen plek meer..", "error")
+        return FW.Functions.Notify("Not enough place..", "error")
     end
 
     FW.TriggerServer("fw-police:Server:SeatVehicle", Player, NetworkGetNetworkIdFromEntity(Entity), true, SeatId)
@@ -256,17 +256,17 @@ end)
 
 RegisterNetEvent("fw-police:Client:UnseatVehicle")
 AddEventHandler("fw-police:Client:UnseatVehicle", function(Data, Entity)
-    local Finished = FW.Functions.CompactProgressbar(7000, "Persoon uit voertuig halen...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, true)
+    local Finished = FW.Functions.CompactProgressbar(7000, "Getting person out of vehicle...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, true)
     if not Finished then return end
 
     local Player = GetFirstPlayerInVehicle(Entity)
     if not Player then
-        return FW.Functions.Notify("Niemand in de auto..", "error")
+        return FW.Functions.Notify("No one in the car..", "error")
     end
 
     local IsCuffed, IsDead = IsPlayerHandcuffed(Player)
     if not IsCuffed and not IsDead then
-        return FW.Functions.Notify("Persoon is niet geboeid of bewusteloos.", "error")
+        return FW.Functions.Notify("Person is not cuffed or unconscious.", "error")
     end
 
     FW.TriggerServer("fw-police:Server:SeatVehicle", Player, NetworkGetNetworkIdFromEntity(Entity), false, SeatId)
@@ -293,7 +293,7 @@ RegisterNetEvent('fw-police:Client:RobPlayer')
 AddEventHandler('fw-police:Client:RobPlayer', function()
     local Player, Distance = FW.Functions.GetClosestPlayer()
     if Player == -1 or Distance > 2.5 then
-        return FW.Functions.Notify("Niemand in de buurt. (Misschien dichterbij staan)", "error")
+        return FW.Functions.Notify("No one nearby. (Maybe stand closer)", "error")
     end
 
     local IsCuffed, IsDead = IsPlayerHandcuffed(Player)
@@ -311,7 +311,7 @@ RegisterNetEvent('fw-police:Client:SearchPlayer')
 AddEventHandler('fw-police:Client:SearchPlayer', function()
     local Player, Distance = FW.Functions.GetClosestPlayer()
     if Player == -1 or Distance > 2.5 then
-        return FW.Functions.Notify("Niemand in de buurt. (Misschien dichterbij staan)", "error")
+        return FW.Functions.Notify("No one nearby. (Maybe stand closer)", "error")
     end
     
     TriggerServerEvent("fw-police:Server:SearchPlayer", Player)
@@ -410,7 +410,7 @@ AddEventHandler("fw-police:Client:OpenLab", function()
 
     local Items = FW.SendCallback("fw-police:Server:GetCasingEvidence")
     if #Items == 0 then
-        return FW.Functions.Notify("Je hebt geen bewijs op zak..", "error")
+        return FW.Functions.Notify("You have no evidence bags..", "error")
     end
 
     local MenuItems = {}
@@ -468,11 +468,11 @@ RegisterNetEvent("fw-police:Client:CheckBank")
 AddEventHandler("fw-police:Client:CheckBank", function()
     local Player, Distance = FW.Functions.GetClosestPlayer()
     if Player == -1 or Distance > 2.5 then
-        return FW.Functions.Notify("Niemand in de buurt. (Misschien dichterbij staan)", "error")
+        return FW.Functions.Notify("No one nearby. (Maybe stand closer)", "error")
     end
 
     if IsPedInAnyVehicle(PlayerPedId()) or IsPedInAnyVehicle(GetPlayerPed(Player)) then
-        FW.Functions.Notify("Dit kan je niet in een voertuig doen..", "error")
+        FW.Functions.Notify("You can't do this in a vehicle..", "error")
     end
 
     TriggerServerEvent("fw-police:Server:CheckBank", Player)
@@ -482,11 +482,11 @@ RegisterNetEvent("fw-police:Client:SeizePossesionsClosest")
 AddEventHandler("fw-police:Client:SeizePossesionsClosest", function()
     local Player, Distance = FW.Functions.GetClosestPlayer()
     if Player == -1 or Distance > 2.5 then
-        return FW.Functions.Notify("Niemand in de buurt. (Misschien dichterbij staan)", "error")
+        return FW.Functions.Notify("No one nearby. (Maybe stand closer)", "error")
     end
 
     if IsPedInAnyVehicle(PlayerPedId()) or IsPedInAnyVehicle(GetPlayerPed(Player)) then
-        FW.Functions.Notify("Dit kan je niet in een voertuig doen..", "error")
+        FW.Functions.Notify("You can't do this in a vehicle..", "error")
     end
 
     TriggerServerEvent("fw-police:Server:SeizePossesions", Player)
@@ -501,21 +501,21 @@ AddEventHandler("fw-police:Client:CheckFingerprint", function(Data)
 
     local Player, Distance = FW.Functions.GetClosestPlayer()
     if Player == -1 or Distance > 2.5 then
-        return FW.Functions.Notify("Niemand in de buurt. (Misschien dichterbij staan)", "error")
+        return FW.Functions.Notify("No one nearby. (Maybe stand closer)", "error")
     end
 
     if IsPedInAnyVehicle(PlayerPedId()) or IsPedInAnyVehicle(GetPlayerPed(Player)) then
-        FW.Functions.Notify("Dit kan je niet in een voertuig doen..", "error")
+        FW.Functions.Notify("You can't do this in a vehicle..", "error")
     end
 
     TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_STAND_MOBILE", 0, 1)
-    local Finished = FW.Functions.CompactProgressbar(5000, "Vingerafdruk scannen...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(5000, "Scanning fingerprint...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     ClearPedTasks(PlayerPedId())
 
     if not Finished then return end
 
     local Fingerprint = FW.SendCallback("fw-police:Server:GetFingerprintResult", Player)
-    TriggerEvent('chatMessage', "Vingerafdruk resultaat", "error", Fingerprint)
+    TriggerEvent('chatMessage', "Fingerprint result", "error", Fingerprint)
 end)
 
 RegisterNetEvent("fw-police:Client:RemoveFacewear")
@@ -527,11 +527,11 @@ AddEventHandler("fw-police:Client:RemoveFacewear", function(Data)
 
     local Player, Distance = FW.Functions.GetClosestPlayer()
     if Player == -1 or Distance > 2.5 then
-        return FW.Functions.Notify("Niemand in de buurt. (Misschien dichterbij staan)", "error")
+        return FW.Functions.Notify("No one nearby. (Maybe stand closer)", "error")
     end
 
     if IsPedInAnyVehicle(PlayerPedId()) or IsPedInAnyVehicle(GetPlayerPed(Player)) then
-        FW.Functions.Notify("Dit kan je niet in een voertuig doen..", "error")
+        FW.Functions.Notify("You can't do this in a vehicle..", "error")
     end
 
     FW.TriggerServer("fw-police:Server:RemoveFaceWear", Player)
@@ -552,21 +552,18 @@ AddEventHandler("fw-police:Client:OpenEmployeelist", function(Data)
     local MenuItems = {
         {
             Icon = 'users',
-            Title = 'Medewerkers (' .. #Players .. ')',
-            Desc = 'Bekijk alle medewerkers.',
-            Data = { Event = "fw-police:Client:ShowEmployeesList", Type = "Client", Job = Data.Job },
+            Title = 'Employees (' .. #Players .. ')',
+            Desc = 'View all employees.',
         },
         {
             Icon = 'user-plus',
-            Title = 'Persoon Aannemen',
-            Desc = 'Neem iemand aan yeet',
-            Data = { Event = "fw-police:Client:HireEmployee", Type = "Client", Job = Data.Job },
+            Title = 'Hire Person',
+            Desc = 'Hire someone',
         },
         {
             Icon = 'fire',
-            Title = 'Persoon Ontslaan met BSN',
-            Desc = 'Ontsla iemand d.m.v BSN',
-            Data = { Event = "fw-police:Client:FireEmployee", Type = "Client", Job = Data.Job },
+            Title = 'Fire Person with ID',
+            Desc = 'Fire someone using ID',
         },
     }
 
@@ -585,7 +582,7 @@ AddEventHandler("fw-police:Client:FireEmployee", function(Data)
     Citizen.Wait(50)
 
     local Result = exports['fw-ui']:CreateInput({
-        { Label = 'BSN', Icon = 'fas fa-id-card', Name = 'Cid' },
+        { Label = 'ID', Icon = 'fas fa-id-card', Name = 'Cid' },
     })
 
     if Result and Result.Cid then
@@ -627,7 +624,7 @@ AddEventHandler("fw-police:Client:ShowEmployeesList", function(Data)
 
     local MenuItems = {
         {
-            Title = "Terug",
+            Title = "Back",
             Data = { Event = "fw-police:Client:OpenEmployeelist", Type = "Client", Job = Data.Job },
         },
     }
@@ -640,35 +637,35 @@ AddEventHandler("fw-police:Client:ShowEmployeesList", function(Data)
             SecondMenu = {
                 {
                     Icon = 'user',
-                    Title = 'Medewerker',
+                    Title = 'Employee',
                     Desc = v.Name,
                 },
                 {
                     Icon = 'info-circle',
-                    Title = 'Informatie',
-                    Desc = 'Callsign: ' .. v.Callsign .. '; Highcommand: ' .. (v.Highcommand and 'Ja' or 'Nee') .. '<br/>Baan: ' .. v.Job .. '; Rang: ' .. v.Rank,
+                    Title = 'Information',
+                    Desc = 'Callsign: ' .. v.Callsign .. '; Highcommand: ' .. (v.Highcommand and 'Yes' or 'No') .. '<br/>Job: ' .. v.Job .. '; Rank: ' .. v.Rank,
                 },
                 {
                     Icon = 'dollar-sign',
-                    Title = 'Salaris',
-                    Desc = 'Huidige Salaris: ' .. exports['fw-businesses']:NumberWithCommas(v.Salary),
+                    Title = 'Salary',
+                    Desc = 'Current Salary: ' .. exports['fw-businesses']:NumberWithCommas(v.Salary),
                 },
                 {
                     Icon = 'clock',
-                    Title = 'Laatste keer gezien',
+                    Title = 'Last seen',
                     Desc = v.LastSeen,
                 },
                 {
                     Icon = 'university',
-                    Title = 'Bankrekening Toegang',
-                    Desc = Data.Job ~= "ems" and Data.Job ~= "police" and Data.Job ~= "news" and 'Je hebt geen rekening om te beheren.' or 'Beheer rekening permissies van.',
+                    Title = 'Bank Account Access',
+                    Desc = Data.Job ~= "ems" and Data.Job ~= "police" and Data.Job ~= "news" and 'You have no account to manage.' or 'Manage account permissions.',
                     Data = { Event = "fw-police:Client:ManageBankaccount", Type = "Client", Job = Data.Job, Cid = v.Cid },
                     Disabled = Data.Job ~= "ems" and Data.Job ~= "police" and Data.Job ~= "news",
                     CloseMenu = true,
                 },
                 {
                     Icon = 'fire',
-                    Title = 'Medewerker Ontslaan',
+                    Title = 'Fire Employee',
                     Data = { Event = "fw-police:Server:FireEmployee", Type = "Server", Job = Data.Job, Cid = v.Cid },
                 },
             }
@@ -690,8 +687,8 @@ AddEventHandler("fw-police:Client:ManageBankaccount", function(Data)
     Citizen.Wait(50)
 
     local TrueOrFalse = {
-        { Text = 'Nee', Value = false },
-        { Text = 'Ja', Value = true },
+        { Text = 'No', Value = false },
+        { Text = 'Yes', Value = true },
     }
 
     local AccountId = FW.SendCallback("fw-police:Server:GetAccountId", Data)
@@ -702,11 +699,11 @@ AddEventHandler("fw-police:Client:ManageBankaccount", function(Data)
     end
 
     local Result = exports['fw-ui']:CreateInput({
-        { Label = 'Balans', Icon = 'fas fa-dollar-sign', Name = 'Balance', Value = GetPermissionValue('Balance'), Choices = TrueOrFalse },
-        { Label = 'Storten', Icon = 'fas fa-inbox-in', Name = 'Deposit', Value = GetPermissionValue('Deposit'), Choices = TrueOrFalse },
-        { Label = 'Opnemen', Icon = 'fas fa-inbox-out', Name = 'Withdraw', Value = GetPermissionValue('Withdraw'), Choices = TrueOrFalse },
-        { Label = 'Overmaken', Icon = 'fas fa-exchange', Name = 'Transfer', Value = GetPermissionValue('Transfer'), Choices = TrueOrFalse },
-        { Label = 'Transacties', Icon = 'fas fa-list', Name = 'Transactions', Value = GetPermissionValue('Transactions'), Choices = TrueOrFalse },
+        { Label = 'Balance', Icon = 'fas fa-dollar-sign', Name = 'Balance', Value = GetPermissionValue('Balance'), Choices = TrueOrFalse },
+        { Label = 'Deposit', Icon = 'fas fa-inbox-in', Name = 'Deposit', Value = GetPermissionValue('Deposit'), Choices = TrueOrFalse },
+        { Label = 'Withdraw', Icon = 'fas fa-inbox-out', Name = 'Withdraw', Value = GetPermissionValue('Withdraw'), Choices = TrueOrFalse },
+        { Label = 'Transfer', Icon = 'fas fa-exchange', Name = 'Transfer', Value = GetPermissionValue('Transfer'), Choices = TrueOrFalse },
+        { Label = 'Transactions', Icon = 'fas fa-list', Name = 'Transactions', Value = GetPermissionValue('Transactions'), Choices = TrueOrFalse },
     })
 
     if Result then
@@ -718,7 +715,7 @@ AddEventHandler("fw-police:Client:ManageBankaccount", function(Data)
 
         local SetFinancials = FW.SendCallback('fw-financials:Server:SetFinancialAccess', {AccountId = AccountId, Employee = Data.Cid, Permissions = Result})
         if SetFinancials.Success then
-            FW.Functions.Notify("Opgeslagen!")
+            FW.Functions.Notify("Saved!")
         end
     end
 end)

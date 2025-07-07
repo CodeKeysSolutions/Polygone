@@ -12,7 +12,7 @@ function InitMethruns()
             {
                 Name = 'inventory',
                 Icon = 'fas fa-box',
-                Label = 'Goederen Overhandigen',
+                Label = 'Handover Goods',
                 EventType = 'Client',
                 EventName = 'fw-illegal:Client:OpenMethruns',
                 EventParams = {},
@@ -23,7 +23,7 @@ function InitMethruns()
             {
                 Name = 'tasks',
                 Icon = 'fas fa-tasks',
-                Label = 'Opdracht Starten',
+                Label = 'Start methrun',
                 EventType = 'Server',
                 EventName = 'fw-illegal:Server:Methruns:GetTasks',
                 EventParams = {},
@@ -35,7 +35,7 @@ function InitMethruns()
             {
                 Name = 'reward',
                 Icon = 'fas fa-tasks',
-                Label = 'Beloning Ophalen',
+                Label = 'Collect Reward',
                 EventType = 'Server',
                 EventName = 'fw-illegal:Server:Methruns:GetReward',
                 EventParams = {},
@@ -58,7 +58,7 @@ function InitMethruns()
             {
                 Name = 'collect',
                 Icon = 'fas fa-box',
-                Label = 'Goederen Pakken',
+                Label = 'Pack goods',
                 EventType = 'Server',
                 EventName = 'fw-illegal:Server:MethrunCollect',
                 EventParams = {},
@@ -82,7 +82,7 @@ end)
 
 RegisterNetEvent("fw-illegal:Client:SetMethVehicle")
 AddEventHandler("fw-illegal:Client:SetMethVehicle", function(NetId, Data)
-    CreateDropoffBlip("Voertuig", Data.Vehicle)
+    CreateDropoffBlip("Vehicle", Data.Vehicle)
 
     while not NetworkDoesEntityExistWithNetworkId(NetId) do Citizen.Wait(100) end
     local Vehicle = NetToVeh(NetId)
@@ -103,7 +103,7 @@ AddEventHandler("fw-vehicles:Client:OnLockpickSuccess", function(Entity, InVehic
     local IsMethVehicle = FW.SendCallback("fw-illegal:Server:IsMethVehicle", NetworkGetNetworkIdFromEntity(Entity))
     if not IsMethVehicle then return end
 
-    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "The Boss", "Dropoff", "Je hebt de auto zo te zien, ga naar de volgende locatie met deze auto, neem de spullen mee en leg het in de kofferbak. Je krijgt zometeen van mij een locatie waar je het voertuig moet inleveren.")
+    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "The Boss", "Dropoff", "You got the car i see, Put the stuff in the trunk and wait for orders after completion i will give you location to deliver the vehicle.")
 
     local SupplierCoords = FW.SendCallback("fw-illegal:Server:GetMethSupplier")
     CreateDropoffBlip("Supplier", SupplierCoords)
@@ -128,7 +128,7 @@ AddEventHandler("fw-illegal:Client:VehicleTracker", function(Coords)
     SetBlipFlashes(Blip, true)
     SetBlipHighDetail(Blip, true)
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString("GPS Tracker Locatie")
+    AddTextComponentString("GPS Tracker location")
     EndTextCommandSetBlipName(Blip)
 
     Citizen.Wait(45000)
@@ -137,7 +137,7 @@ end)
 
 RegisterNetEvent("fw-illegal:Client:SetMethDropoff")
 AddEventHandler("fw-illegal:Client:SetMethDropoff", function(Coords)
-    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "The Boss", "Dropoff", "Je hebt de locatie op je GPS, kom er zo snel mogelijk naar toe, houdt de politie uit de buurt!")
+    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "The Boss", "Dropoff", "You got the location of the dropoff, go there and deliver the goods. Be careful, keep the police of you back.")
     CreateDropoffBlip("Dropoff", Coords)
     MethDropoff = Coords
 end)
@@ -146,7 +146,7 @@ RegisterNetEvent("fw-illegal:Client:MethrunDropoffGoods")
 AddEventHandler("fw-illegal:Client:MethrunDropoffGoods", function(Data, Entity)
     local IsFloorCleanerInTrunk = FW.SendCallback("fw-illegal:Server:IsFloorCleanerInTrunk")
     if not IsFloorCleanerInTrunk then
-        return FW.Functions.Notify("Waar is het spul heen?", "error")
+        return FW.Functions.Notify("Where did the stuff go ?", "error")
     end
 
     local Finished = FW.Functions.CompactProgressbar(40000, "Goederen afleveren...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", anim = "machinic_loop_mechandplayer", flags = 1 }, {}, {}, false)

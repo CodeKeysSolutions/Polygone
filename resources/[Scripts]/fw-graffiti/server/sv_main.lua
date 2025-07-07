@@ -39,8 +39,10 @@ end
 
 FW.Functions.CreateUsableItem("gang-spray", function(Source, Item)
     local Player = FW.Functions.GetPlayer(Source)
+    
 	if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
-        TriggerClientEvent('fw-graffiti:Client:PlaceSpray', Source, Item.CustomType)
+        
+        TriggerClientEvent('fw-graffiti:Client:PlaceSpray', Source, Item.CustomType, false)
     end
 end)
 
@@ -116,7 +118,7 @@ FW.RegisterServer("fw-graffiti:Server:CreateSpray", function(Source, Type, Coord
 
         TriggerClientEvent("fw-graffiti:Client:AddSpray", -1, SprayId, Config.Graffitis[SprayId])
     else
-        Player.Functions.Notify("Waar is je spray gebleven?", "error")
+        Player.Functions.Notify("Where did your spray go?", "error")
     end
 end)
 
@@ -167,9 +169,9 @@ FW.RegisterServer("fw-graffiti:Server:AlertSprayer", function(Source, GangId, Ty
 
     local Content = ""
     if Type == "Scrub" then
-        Content = "Iemand is onze graffiti aan het schrobben! " .. StreetName
+        Content = "Someone is scrubbing our graffiti! " .. StreetName
     elseif Type == "Contest" then
-        Content = Gang.Label .. " is onze graffiti aan het veroveren! Toggle Contested Sprays in de app!"
+        Content = Gang.Label .. " is contesting our graffiti! Toggle Contested Sprays in de app!"
     end
 
     -- ToDo: Use fw-laptop `TriggerGangEvent` export.
@@ -206,12 +208,12 @@ FW.Functions.CreateCallback("fw-graffiti:Server:SetSprayContested", function(Sou
     if not Gang then return end
 
     if Config.Graffitis[SprayId].Contested then
-        Player.Functions.Notify("Graffiti wordt al veroverd door iemand anders..")
+        Player.Functions.Notify("Graffiti is already being contested by someone else..")
         return Cb(false)
     end
 
     if ContestedSprays[Config.Graffitis[SprayId].Type] then
-        Player.Functions.Notify("Dit kan nu niet..")
+        Player.Functions.Notify("This can't be done right now..")
         return Cb(false)
     end
 
@@ -312,12 +314,12 @@ AddEventHandler("fw-graffiti:Server:PurchaseSpray", function(Data)
     if Config.Sprays[Data.Spray].IsGang then
         local Gang = exports['fw-laptop']:GetGangByPlayer(Player.PlayerData.citizenid)
         if not Gang or Gang.Id ~= Data.Spray then
-            return Player.Functions.Notify("Deze spray lijkt niet geschikt voor jou..", "error")
+            return Player.Functions.Notify("This spray doesn't seem suitable for you..", "error")
         end
     end
 
     if not Player.Functions.RemoveMoney('cash', Cost) then
-        return Player.Functions.Notify("Niet genoeg cash", "error")
+        return Player.Functions.Notify("Not enough cash", "error")
     end
 
     Player.Functions.AddItem('gang-spray', 1, false, false, true, Data.Spray)
@@ -330,7 +332,7 @@ AddEventHandler("fw-graffiti:Server:PurchaseScrubCloth", function(Data)
     if Player == nil then return end
 
     if not Player.Functions.RemoveMoney('cash', Config.ScrubPrice) then
-        return Player.Functions.Notify("Niet genoeg cash", "error")
+        return Player.Functions.Notify("Not enough cash", "error")
     end
 
     Player.Functions.AddItem('scrubbingcloth', 1, false, false, true)

@@ -145,7 +145,7 @@
 
                 <div class="catalog-key-container">
                     <div class="catalog-key">W</div>
-                    <div class="catalog-key-text">- Motorgeluid</div>
+                    <div class="catalog-key-text">- Engine Sound</div> <!-- was "- Motorgeluid" -->
                 </div>
     
                 <div class="catelog-vehicles-amount">{CurrentVehicle + 1} / {Vehicles.length}</div>
@@ -181,12 +181,12 @@
                         on:keyup on:click={() => {
                             if (CurrentVehicle - 1 >= 0) SetCurrentVehicle(CurrentVehicle - 1);
                         }}
-                    >Vorige</p>
+                    >Previous</p> <!-- was "Vorige" -->
                     <p
                         on:keyup on:click={() => {
                             if (CurrentVehicle + 1 < Vehicles.length) SetCurrentVehicle(CurrentVehicle + 1)
                         }}
-                    >Volgende</p>
+                    >Next</p> <!-- was "Volgende" -->
                 </div>
             {/if}
         </div>

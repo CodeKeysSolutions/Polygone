@@ -14,7 +14,7 @@
     <div class="component-image-container">
         <div>
             <p class="component-image-text" style="word-break: break-word;">
-                Aantal bijlages: {Attachments.length}
+                Attachement lenght: {Attachments.length}
             </p>
             {#if !Hidden}
                 <div>
@@ -24,7 +24,7 @@
                         on:click={ToggleHide}
                         style="text-decoration: underline;"
                     >
-                        Verbergen (klik om de URL te kopiëren)
+                        Hide (click to copy)
                     </p>
                 </div>
             {/if}
@@ -37,14 +37,13 @@
                         class="component-image-click-hint"
                         style="word-break: break-word;"
                     >
-                        Klik om te Bekijken
+                        Click to view
                     </p>
                     <p
                         class="component-image-text"
                         style="text-align: center; margin-top: .8vh;"
                     >
-                        Bekijk alleen afbeeldingen van mensen waarvan je weet dat ze
-                        geen eikels zijn
+                        View images if you sure they arnt dpicks
                     </p>
                 </div>
             {:else}

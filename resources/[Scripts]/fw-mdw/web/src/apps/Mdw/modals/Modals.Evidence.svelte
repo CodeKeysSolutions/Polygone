@@ -8,29 +8,29 @@
 
 <div class="mdw-modal-evidence">
     <div class="mdw-modal-evidence-container">
-        <p>Bewijs Toevoegen</p>
-        <TextField style="margin-bottom: .5vh;" Title='Bewijs ID' Icon='fingerprint' Type="number" bind:RealValue={EvidenceId} />
+        <p>Add Evidence</p>
+        <TextField style="margin-bottom: .5vh;" Title='Evidence ID' Icon='fingerprint' Type="number" bind:RealValue={EvidenceId} />
         <div style="width: 100%; display: flex; justify-content: end;">
             <Button Color="success" click={() => {
                 if (Number(EvidenceId) > 0) {
                     $MdwModalsEvidence.Cb(false, {Id: Number(EvidenceId)})
                     MdwModalsEvidence.set({ Show: false, Form: $MdwModalsEvidence.Form, Cb: () => {} });
                 }
-            }}>Toevoegen</Button>
+            }}>Add</Button>
         </div>
 
-        <p>Nieuw Bewijs Aanmaken</p>
+        <p>Create New Evidence</p>
         <TextField style="margin-bottom: .5vh;" Title='Type' bind:RealValue={$MdwModalsEvidence.Form.Type} Select={$MdwEvidence} />
         <TextField style="margin-bottom: .5vh;" Title='Identifier' Icon='pencil-alt' bind:RealValue={$MdwModalsEvidence.Form.Identifier} />
-        <TextField style="margin-bottom: .5vh;" Title='Beschrijving' Icon='clipboard' bind:RealValue={$MdwModalsEvidence.Form.Description} />
-        <TextField style="margin-bottom: .5vh;" Title='BSN' Icon='user' bind:RealValue={$MdwModalsEvidence.Form.Cid} />
+        <TextField style="margin-bottom: .5vh;" Title='Description' Icon='clipboard' bind:RealValue={$MdwModalsEvidence.Form.Description} />
+        <TextField style="margin-bottom: .5vh;" Title='SSN' Icon='user' bind:RealValue={$MdwModalsEvidence.Form.Cid} />
         <div style="width: 100%; display: flex; justify-content: end;">
             <Button Color="success" click={() => {
                 if ($MdwModalsEvidence.Form.Type && $MdwModalsEvidence.Form.Identifier && $MdwModalsEvidence.Form.Description) {
                     if ($MdwModalsEvidence.Form.Identifier.includes(".discordapp.")) {
                         MdwModalsExport.set({
                             Show: true,
-                            Msg: `cdn.discordapp.com kan niet gebruikt worden als identifier.`,
+                            Msg: `cdn.discordapp.com cannot be used as an identifier.`,
                         });
 
                         return;
@@ -39,13 +39,13 @@
                     $MdwModalsEvidence.Cb(true, $MdwModalsEvidence.Form)
                     MdwModalsEvidence.set({ Show: false, Form: $MdwModalsEvidence.Form, Cb: () => {} });
                 }
-            }}>Opslaan</Button>
+            }}>Save</Button>
         </div>
 
         <div style="width: 100%; display: flex; justify-content: center; margin-top: 2.4vh;">
             <Button Color="warning" click={() => {
                 MdwModalsEvidence.set({ Show: false, Form: $MdwModalsEvidence.Form, Cb: () => {} });
-            }}>Sluiten</Button>
+            }}>Close</Button>
         </div>
     </div>
 </div>

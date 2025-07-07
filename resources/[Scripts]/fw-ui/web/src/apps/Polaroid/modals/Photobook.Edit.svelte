@@ -40,11 +40,11 @@
 
         {#if EditDescription}
             <div class="polaroid-edit-description">
-                <div class="polaroid-edit-description-header">Foto Beschrijving</div>
-                <div class="polaroid-edit-description-subheader">Beschrijving is permanent en kan niet aangepast worden.</div>
+                <div class="polaroid-edit-description-header">Picture description</div>
+                <div class="polaroid-edit-description-subheader">Description is permanent and cant be edited later.</div>
 
                 <TextArea
-                    Title="Beschrijving"
+                    Title="Description"
                     MaxLength={200}
                     Rows={2}
                     bind:Value={Description}
@@ -54,11 +54,11 @@
                     <Button
                         Color="warning"
                         on:click={() => EditDescription = false}
-                    >Annuleren</Button>
+                    >Cancel</Button>
                     <Button
                         Color="success"
                         on:click={() => SaveDescription()}
-                    >Opslaan</Button>
+                    >Save</Button>
                 </div> 
             </div>
         {/if}
@@ -74,7 +74,7 @@
                     Color="warning"
                     style="border-radius: 2vh; left: 50%; transform: translateX(-50%)"
                     on:click={() => EditDescription = true}
-                ><i class="fas fa-pen-alt"/> Beschrijving Toevoegen</Button>
+                ><i class="fas fa-pen-alt"/> Add description</Button>
             {/if}
         </PolaroidPhoto>
 
@@ -83,17 +83,17 @@
                 Color="success"
                 style="border-radius: 2vh;"
                 on:click={() => Share()}
-            ><i class="fas fa-share"/> Delen</Button>
+            ><i class="fas fa-share"/> Share</Button>
             <Button
                 Color="warning"
                 style="border-radius: 2vh;"
                 on:click={() => MoveToInventory()}
-            ><i class="fas fa-archive"/> Verplaats naar Inventaris</Button>
+            ><i class="fas fa-archive"/> Place in inventory</Button>
             <Button
                 Color="error"
                 style="border-radius: 2vh;"
                 on:click={() => Delete()}
-            ><i class="fas fa-trash"/> Verwijderen</Button>
+            ><i class="fas fa-trash"/> Delete</Button>
         </div>
     </div>
 </div>

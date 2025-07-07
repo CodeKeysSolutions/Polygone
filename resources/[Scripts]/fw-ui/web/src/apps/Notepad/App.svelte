@@ -41,7 +41,7 @@
                         <Button
                             Color={NotepadText.trim().length > 0 ? "success" : "disabled"}
                             on:click={() => SaveNote()}
-                        >Opslaan</Button>
+                        >Save</Button>
                     </div>
                 {/if}
 

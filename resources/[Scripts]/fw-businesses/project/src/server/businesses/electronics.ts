@@ -102,9 +102,9 @@ onNet("fw-businesses:Server:Electronics:RepairElectronic", async (Data: {
 
     if (await Player.Functions.RemoveItemByName('electronics', Data.Materials, true)) {
         exp['fw-inventory'].IncreaseQualityItemFromInventory(`ply-${Player.PlayerData.citizenid}`, Item.Item, 100.0, Data.Slot);
-        Player.Functions.Notify("Gerepareerd!")
+        Player.Functions.Notify("Repaired!")
     } else {
-        Player.Functions.Notify("Je hebt niet genoeg eletronica..", "error")
+        Player.Functions.Notify("Not enough electronics..", "error")
     };
 });
 
@@ -117,11 +117,11 @@ onNet("fw-businesses:Server:Electronics:RemoveMusicEntry", async (Data: {
     if (!Player) return;
 
     if (!HasPlayerBusinessPermission(Data.Business, Source, "CraftAccess")) {
-        return Player.Functions.Notify("Geen toegang.", "error")
+        return Player.Functions.Notify("No access.", "error")
     };
 
     await exp['ghmattimysql'].executeSync("DELETE FROM `musictapes` WHERE `id` = ?", [Data.TrackId]);
-    Player.Functions.Notify("Track verwijderd!")
+    Player.Functions.Notify("Track removed!")
 
     setTimeout(() => {
         emitNet("fw-businesses:Client:Electronics:ManageMusicEntries", Source, {Business: Data.Business})
@@ -161,11 +161,11 @@ FW.RegisterServer("fw-businesses:Server:Electronics:CreateCassetteTapes", async 
     if (!Player) return;
 
     if (!HasPlayerBusinessPermission(Data.Business, Source, "CraftAccess")) {
-        return Player.Functions.Notify("Geen toegang.", "error")
+        return Player.Functions.Notify("No access.", "error")
     };
 
     const Result = await exp['ghmattimysql'].executeSync('SELECT * FROM `musictapes` WHERE `id` = ?', [Data.TrackId]);
-    if (!Result[0]) return Player.Functions.Notify("Track bestaat niet..");
+    if (!Result[0]) return Player.Functions.Notify("Invalid track..");
 
     for (let i = 0; i < Data.Copies; i++) {
         Player.Functions.AddItem("musictape", 1, undefined, {

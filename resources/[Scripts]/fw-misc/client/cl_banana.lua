@@ -43,7 +43,7 @@ RegisterNetEvent("fw-misc:Client:TransformMonkey")
 AddEventHandler("fw-misc:Client:TransformMonkey", function()
     local Cid = FW.Functions.GetPlayerData().citizenid
     if not AllowedCid[Cid] then
-        return FW.Functions.Notify("Hoe pel ik zo'n gouden banaan?", "error")
+        return FW.Functions.Notify("How do i peel this", "error")
     end
 
     TriggerServerEvent("fw-misc:Server:BananaSwitchFx", GetEntityCoords(PlayerPedId()) + vector3(0, 0, 1))
@@ -79,7 +79,7 @@ RegisterNetEvent("fw-misc:Client:TakeBananas")
 AddEventHandler("fw-misc:Client:TakeBananas", function()
     local Cid = FW.Functions.GetPlayerData().citizenid
     if not AllowedCid[Cid] then
-        return FW.Functions.Notify("Hoe pluk ik die boom?", "error")
+        return FW.Functions.Notify("How you going to do this?", "error")
     end
 
     local CanPluckBananas = FW.SendCallback("fw-misc:Server:CanPluckBananas")
@@ -87,7 +87,7 @@ AddEventHandler("fw-misc:Client:TakeBananas", function()
         return FW.Functions.Notify(CanPluckBananas.Msg, "error")
     end
 
-    local Finished = FW.Functions.CompactProgressbar(5000, "Oogsten...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = "plant_floor", animDict = "weapons@first_person@aim_rng@generic@projectile@thermal_charge@", flags = 48 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(5000, "Havest...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = "plant_floor", animDict = "weapons@first_person@aim_rng@generic@projectile@thermal_charge@", flags = 48 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "weapons@first_person@aim_rng@generic@projectile@thermal_charge@", "plant_floor", 1.0)
 
     if not Finished then return end
@@ -103,24 +103,24 @@ AddEventHandler("fw-misc:Client:WaterBananaTree", function()
     end
 
     local HasWateringCan = exports['fw-inventory']:HasEnoughOfItem("farming-wateringcan", 1)
-    if not HasWateringCan then return FW.Functions.Notify("Je mist een gieter..", "error") end
+    if not HasWateringCan then return FW.Functions.Notify("You need wateringcan..", "error") end
 
     local WateringCan = exports['fw-inventory']:GetItemByName("farming-wateringcan")
     if WateringCan == nil then return end
 
     if WateringCan.Info.Capacity ~= nil and WateringCan.Info.Capacity < 1.0 then
-        return FW.Functions.Notify("De gieter is leeg..", "error")
+        return FW.Functions.Notify("Wateringcan is empty..", "error")
     end
 
     local WaterValue = FW.SendCallback("fw-misc:Server:GetBananaTreeWater")
     if WaterValue > 75 then
-        return FW.Functions.Notify("Boom heeft al genoeg water..", "error")
+        return FW.Functions.Notify("Enough ie enough..", "error")
     end
 
     exports['fw-inventory']:SetBusyState(true)
     exports['fw-assets']:AddProp('wateringcan')
 
-    local Finished = FW.Functions.CompactProgressbar(7000, "Boom water geven...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = 'fire', animDict = 'weapon@w_sp_jerrycan', flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(7000, "Watering...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = 'fire', animDict = 'weapon@w_sp_jerrycan', flags = 49 }, {}, {}, false)
     exports['fw-inventory']:SetBusyState(false)
     exports['fw-assets']:RemoveProp()
 
@@ -139,13 +139,13 @@ AddEventHandler("fw-misc:Client:CheckBananaWater", function()
 
     local WaterValue = FW.SendCallback("fw-misc:Server:GetBananaTreeWater")
     if WaterValue > 75 then
-        FW.Functions.Notify("De bananenboom is aardig nat.")
+        FW.Functions.Notify("Tree is really wet, you should stop watering it.")
     elseif WaterValue > 50 then
-        FW.Functions.Notify("De bananenboom is vochtig.")
+        FW.Functions.Notify("Tree is mediaum wet.")
     elseif WaterValue > 25 then
-        FW.Functions.Notify("De bananenboom is bijna droog.")
+        FW.Functions.Notify("DTree is almost dry.")
     else
-        FW.Functions.Notify("Ik zou de bananboom wel wat water geven als ik jou was..")
+        FW.Functions.Notify("I would give this some water if i was you..")
     end
 end)
 
@@ -170,7 +170,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'banana',
                 Icon = 'fas fa-monkey',
-                Label = 'Bananen plukken',
+                Label = 'Havest bananas',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:TakeBananas',
                 EventParams = {},
@@ -181,7 +181,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'check_water',
                 Icon = 'fas fa-circle',
-                Label = 'Water controleren',
+                Label = 'Check water level',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:CheckBananaWater',
                 EventParams = {},
@@ -192,7 +192,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'water',
                 Icon = 'fas fa-faucet',
-                Label = 'Water geven',
+                Label = 'Give water',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:WaterBananaTree',
                 EventParams = {},
@@ -229,7 +229,7 @@ AddEventHandler("fw-misc:Client:UsedTrowel", function()
 
     if not MaterialHashes[MaterialHash] then
         IsDetecting = false
-        return FW.Functions.Notify("Ik betwijfel of hier wat ligt..", "error")
+        return FW.Functions.Notify("Dont think its here..", "error")
     end
 
     ClearPedTasks(PlayerPedId())

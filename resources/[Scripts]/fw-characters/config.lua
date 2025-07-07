@@ -23,7 +23,7 @@ Config.PedCoords = {
     vector3(2856.286, -1441.481, 13.92243),
 }
 
--- Array of STEAM IDs of players that may ingore character limit.
+-- Array of STEAM IDs of players that may ignore character limit.
 Config.LimitOverride = {
     ['STEAM_ID'] = true,
 }
@@ -33,7 +33,7 @@ Config.LimitOverride = {
 Config.SpawnLocations = {
     {
         Id = "lastlocation",
-        Name = "Laatste Locatie",
+        Name = "Last Location", -- was "Laatste Locatie"
         Icon = 'fas fa-map-pin',
         Coords = { X = 0.0, Y = 0.0, Z = 0.0 },
         Type = 'Location',
@@ -41,7 +41,7 @@ Config.SpawnLocations = {
     },
     {
         Id = "apartment",
-        Name = "No3 Appartement",
+        Name = "No3 Apartment", -- was "No3 Appartement"
         Icon = 'fas fa-building',
         Color = '#f2a365',
         Coords = { X = -271.15, Y = -957.91, Z = 31.22 },

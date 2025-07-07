@@ -48,7 +48,7 @@
                 };
             };
 
-            CurrentRank = GetRankById(Data.rank)?.rank || 'Niet Bekend';
+            CurrentRank = GetRankById(Data.rank)?.rank || 'Unknown';
         });
     };
 
@@ -103,8 +103,8 @@
 
 <MdwPanel class="filled">
     <MdwPanelHeader>
-        <h6>Personeel</h6>
-        <TextField Title='Zoeken' Icon='search' SubSet={FilterStaff} />
+        <h6>Staff</h6>
+        <TextField Title='Search' Icon='search' SubSet={FilterStaff} />
     </MdwPanelHeader>
 
     <MdwPanelList>
@@ -121,7 +121,7 @@
 
 <MdwPanel class="filled">
     <MdwPanelHeader>
-        <h6>Profiel</h6>
+        <h6>Profile</h6>
     </MdwPanelHeader>
 
     <div style="display: flex; flex-direction: row; width: 97%; height: 19.4vh; margin-left: auto; margin-right: auto;">
@@ -130,13 +130,13 @@
         </div>
 
         <div style="margin-left: 0.7vh; width: 100%;">
-            <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={$CurrentStaff.citizenid} Title='BSN' Icon='id-card' />
-            <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={$CurrentStaff.name} Title='Naam' Icon='user' />
-            <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={$CurrentStaff.callsign} Title='Roepnummer' Icon='tag' />
+            <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={$CurrentStaff.citizenid} Title='SSN' Icon='id-card' />
+            <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={$CurrentStaff.name} Title='Name' Icon='user' />
+            <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={$CurrentStaff.callsign} Title='Callsign' Icon='tag' />
             <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={$CurrentStaff.alias} Title='Alias' Icon='mask' />
-            <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={$CurrentStaff.phonenumber} Title='Telefoonnummer' Icon='mobile-alt' />
-            <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={$CurrentStaff.department} Title='Eenheid' Icon='house-user' />
-            <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={CurrentRank} Title='Rang' Icon='certificate' />
+            <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={$CurrentStaff.phonenumber} Title='Phone Number' Icon='mobile-alt' />
+            <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={$CurrentStaff.department} Title='Unit' Icon='house-user' />
+            <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={CurrentRank} Title='Rank' Icon='certificate' />
             <TextField ReadOnly={true} style="margin-bottom: 0px;" bind:RealValue={AmountOfStrikes} Title='Strikes' Icon='times-circle' />
         </div>
     </div>
@@ -145,7 +145,7 @@
 <MdwPanel>
     <MdwPanel class="filled" style="width: 100%; height: max-content; margin-bottom: 0.5vh;">
         <MdwPanelHeader>
-            <h6>Rollen</h6>
+            <h6>Roles</h6>
     
             {#if !$IsPublic && $IsHighcommand}
                 <div class="mdw-box-title-icons">
@@ -171,7 +171,7 @@
 
     <MdwPanel class="filled" style="width: 100%; height: max-content; margin-bottom: 0.5vh;">
         <MdwPanelHeader>
-            <h6>Specialisaties</h6>
+            <h6>Certifications</h6>
     
             {#if !$IsPublic}
                 <div class="mdw-box-title-icons">
@@ -207,7 +207,7 @@
                         {#if !Data.Deleted || $IsHighcommand}
                             <MdwCard Information={[
                                 [Data.Reason, (Data.Points > 1 ? `${Data.Points} strikes` : `${Data.Points} strike`)],
-                                [`ID: ${Key + 1} ${Data.Deleted ? "(Ingetrokken)" : ""}`, `${Data.Issuer} - ${GetTimeLabel(Data.Timestamp)}`]
+                                [`ID: ${Key + 1} ${Data.Deleted ? "(Revoked)" : ""}`, `${Data.Issuer} - ${GetTimeLabel(Data.Timestamp)}`]
                             ]} />
                         {/if}
                     {/each}

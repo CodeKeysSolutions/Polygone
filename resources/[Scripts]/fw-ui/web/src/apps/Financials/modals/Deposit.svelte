@@ -38,12 +38,12 @@
         </div>
 
         <TextField
-            Title="Aantal"
+            Title="Amount"
             Icon="$"
             IconText={true}
             bind:RealValue={Amount}
             Type="number"
-            Sub="€ 0,00"
+            Sub="$ 0,00"
             SubSet={() => FormatCurrency.format(Amount)}
         />
 
@@ -58,11 +58,11 @@
             <Button
                 on:click={() => ModalData.set({})}
                 Color="warning"
-            >Annuleren</Button>
+            >Cancel</Button>
             <Button
                 on:click={Deposit}
                 Color="success"
-            >Storten</Button>
+            >Deposit</Button>
         </div>
     {:else}
         <div style="display: flex; justify-content: center; align-items: center; height: 20vh; width: 100%;">

@@ -38,7 +38,7 @@ export const Menu = {
             Menu.SetMenuItems([
                 {
                     Label: "Repair",
-                    Subtext: `€${Costs}`,
+                    Subtext: `$${Costs}`,
                     Data: {
                         Id: "RepairVehicle",
                         Costs

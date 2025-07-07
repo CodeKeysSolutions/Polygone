@@ -37,7 +37,8 @@ Citizen.CreateThread(function()
 end)
 
 local PickingUpSnow = false
-FW.AddKeybind("pickupSnowball", 'Wereld', 'Sneeuwbal maken', '', function(IsPressed)
+-- Change keybind and labels to English
+FW.AddKeybind("pickupSnowball", 'World', 'Make Snowball', '', function(IsPressed)
     if not IsPressed or PickingUpSnow then return end
     if not exports['fw-sync']:SnowActive() then return end
 
@@ -84,7 +85,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = "sell_illegal",
                 Icon = "fas fa-dollar-sign",
-                Label = "Verkoop Iets",
+                Label = "Sell Something",
                 EventType = "Client",
                 EventName = "fw-misc:Client:SellSomething",
                 EventParams = {},
@@ -103,7 +104,7 @@ AddEventHandler("fw-ui:Ready", function()
         Options = {
             {
                 Name = "open_crafting",
-                Label = "Craften",
+                Label = "Craft",
                 EventType = "Client",
                 EventName = "fw-misc:Client:OpenCrafting",
                 EventParams = {},
@@ -167,9 +168,9 @@ AddEventHandler("fw-ui:Ready", function()
         Model = 'g_m_y_korean_02',
         Options = {
             {
-                Name = "talk",
+                Name = "Talk",
                 Icon = "fas fa-comment",
-                Label = "Praten",
+                Label = "Talk",
                 EventType = "Client",
                 EventName = "fw-misc:Client:TalkToWeaponDealer",
                 EventParams = {},
@@ -206,7 +207,7 @@ AddEventHandler("fw-misc:Client:OpenIllegalBench", function()
 
         local GetCraftingName = FW.SendCallback("fw-laptop:Server:Unknown:GetCraftingName")
         if not GetCraftingName then
-            return FW.Functions.Notify("Je groep is nog niet bekend genoeg..", "error")
+            return FW.Functions.Notify("Unknown group..", "error")
         end
 
         FW.TriggerServer('fw-inventory:Server:OpenInventory', 'Crafting', 'Illegal' .. GetCraftingName)
@@ -217,16 +218,16 @@ RegisterNetEvent("fw-misc:Client:SellSomething")
 AddEventHandler("fw-misc:Client:SellSomething", function(Data, Entity)
     local AlreadySold = FW.SendCallback("fw-misc:Server:CanSellIllegal")
     if AlreadySold then
-        return FW.Functions.Notify("Je hebt al iets verkocht.. Kom later terug..", "error")
+        return FW.Functions.Notify("You already sold something.. Come back later..", "error")
     end
 
-    local Finished = FW.Functions.CompactProgressbar(15000, "Aan het verkopen, niet bewegen..", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(15000, "Selling do not move..", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     if not Finished then
         return
     end
 
     if #(GetEntityCoords(PlayerPedId()) - GetEntityCoords(Entity)) > 2.0 then
-        return FW.Functions.Notify("Je bent te ver weg idioot..", "error")
+        return FW.Functions.Notify("You are too far away, idiot..", "error")
     end
 
     TriggerServerEvent("fw-misc:Server:SellSomething")
@@ -305,7 +306,7 @@ RegisterNetEvent("fw-misc:Client:TalkToWeaponDealer")
 AddEventHandler("fw-misc:Client:TalkToWeaponDealer", function()
     local Gang = FW.SendCallback("fw-laptop:Server:Unknown:GetPlayerGang")
     if not Gang or not next(Gang) then
-        return FW.Functions.Notify("Kijkt je verward aan..", "error")
+        return FW.Functions.Notify("Looks at you confused..", "error")
     end
 
     local MenuItems = {}
@@ -313,25 +314,25 @@ AddEventHandler("fw-misc:Client:TalkToWeaponDealer", function()
 
     MenuItems[#MenuItems + 1] = {
         Icon = 'info-circle',
-        Title = "Wat zou je willen kopen?",
+        Title = "What would you like to buy?",
     }
 
     MenuItems[#MenuItems + 1] = {
-        Title = "<div style='display: flex; justify-content: space-between;'><span>Rifle Body 1x</span><span>€" .. Prices.Rifle .. "</span></div>",
+        Title = "<div style='display: flex; justify-content: space-between;'><span>Rifle Body 1x</span><span>$" .. Prices.Rifle .. "</span></div>",
         Data = { Event = 'fw-misc:Client:PurchaseWeaponBody', Type = 'Client', BodyType = "Rifle" },
         -- Disabled = true,
     }
     MenuItems[#MenuItems + 1] = {
-        Title = "<div style='display: flex; justify-content: space-between;'><span>SMG Body 1x</span><span>€" .. Prices.Smg .. "</span></div>",
+        Title = "<div style='display: flex; justify-content: space-between;'><span>SMG Body 1x</span><span>$" .. Prices.Smg .. "</span></div>",
         Data = { Event = 'fw-misc:Client:PurchaseWeaponBody', Type = 'Client', BodyType = "Smg" },
         -- Disabled = true,
     }
     MenuItems[#MenuItems + 1] = {
-        Title = "<div style='display: flex; justify-content: space-between;'><span>Pistool Onderdelen 1x</span><span>€" .. Prices.Pistol .. "</span></div>",
+        Title = "<div style='display: flex; justify-content: space-between;'><span>Pistol Parts 1x</span><span>$" .. Prices.Pistol .. "</span></div>",
         Data = { Event = 'fw-misc:Client:PurchaseWeaponBody', Type = 'Client', BodyType = "Pistol" },
     }
     MenuItems[#MenuItems + 1] = {
-        Title = "<div style='display: flex; justify-content: space-between;'><span>Shotgun Body 1x</span><span>€" .. Prices.Shotgun .. "</span></div>",
+        Title = "<div style='display: flex; justify-content: space-between;'><span>Shotgun Body 1x</span><span>$" .. Prices.Shotgun .. "</span></div>",
         Data = { Event = 'fw-misc:Client:PurchaseWeaponBody', Type = 'Client', BodyType = "Shotgun" },
     }
 
@@ -342,11 +343,11 @@ RegisterNetEvent("fw-misc:Client:PurchaseWeaponBody")
 AddEventHandler("fw-misc:Client:PurchaseWeaponBody", function(Data)
     Citizen.Wait(100)
     local Result = exports['fw-ui']:CreateInput({
-        { Label = 'Aantal', Name = 'Amount', Type = 'Number' }
+        { Label = 'Amount', Name = 'Amount', Type = 'Number' }
     })
 
     if not Result or not tonumber(Result.Amount) then
-        return FW.Functions.Notify("Ongeldig aantal..", "error")
+        return FW.Functions.Notify("Invalid amount..", "error")
     end
 
     FW.TriggerServer('fw-misc:Server:PurchaseWeaponBody', Data.BodyType, tonumber(Result.Amount))

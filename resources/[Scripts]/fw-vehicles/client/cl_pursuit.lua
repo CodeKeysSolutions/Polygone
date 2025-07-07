@@ -1,7 +1,7 @@
 local HudPercentages = { 33, 66, 100 }
 local CurrentPursuit = 1
 
-FW.AddKeybind('switchPursuit', 'Hulpdiensten', 'Pursuit Modus Veranderen', '', function(IsPressed)
+FW.AddKeybind('switchPursuit', 'Emergency Services', 'Change Pursuit Mode', '', function(IsPressed)
     if not IsPressed then return end
     local Vehicle = GetVehiclePedIsIn(PlayerPedId())
     if Vehicle == 0 or Vehicle == -1 or GetPedInVehicleSeat(Vehicle, -1) ~= PlayerPedId() then return end
@@ -15,7 +15,7 @@ FW.AddKeybind('switchPursuit', 'Hulpdiensten', 'Pursuit Modus Veranderen', '', f
     local NewPursuit = PursuitModes[CurrentPursuit]
 
     exports['fw-hud']:SetHudValue(exports['fw-hud']:GetHudId('PursuitMode'), GetPursuitPercentage(GetEntityModel(Vehicle)))
-    FW.Functions.Notify(("Pursuit modus: %s"):format(NewPursuit))
+    FW.Functions.Notify(("Pursuit mode: %s"):format(NewPursuit))
     SetPursuitMode(Vehicle, NewPursuit)
 end)
 

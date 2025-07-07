@@ -114,21 +114,21 @@ FW.Functions.CreateCallback("fw-mdw:Server:Staff:RemoveRole", function(Source, C
     Cb(true)
 end)
 
-FW.Commands.Add("strike", "Deel een strike uit.", {
-    { name = "bsn", help = "BSN van degene die gestriked wordt." },
-    { name = "punten", help = "Hoeveelheid strike punten" },
-    { name = "reden", help = "Reden voor de strike" },
+FW.Commands.Add("strike", "Issue a strike.", {
+    { name = "bsn", help = "SSN of the person to be striked." },
+    { name = "punten", help = "Amount of strike points" },
+    { name = "reden", help = "Reason for the strike" },
 }, false, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
     if Player.PlayerData.job.name ~= 'police' or not Player.PlayerData.metadata.ishighcommand then
-        return Player.Functions.Notify("Ze herkennen je niet..", "error")
+        return Player.Functions.Notify("They don't recognize you..", "error")
     end
 
     local Result = exports['ghmattimysql']:executeSync("SELECT `id`, `strikes` FROM `mdw_staff` WHERE `citizenid` = @Cid", { ['@Cid'] = Args[1] })
     if Result[1] == nil then
-        return Player.Functions.Notify("Profiel bestaat niet in het personeelsysteem..", "error")
+        return Player.Functions.Notify("Profile does not exist in the staff system..", "error")
     end
 
     local Strikes = json.decode(Result[1].strikes)
@@ -145,7 +145,7 @@ FW.Commands.Add("strike", "Deel een strike uit.", {
         Deleted = false
     }
 
-    Player.Functions.Notify(Target .. " gestriked met " .. Points .. " strike punt(en)!")
+    Player.Functions.Notify(Target .. " striked with " .. Points .. " strike point(s)!")
 
     exports['ghmattimysql']:executeSync("UPDATE `mdw_staff` SET `strikes` = @Strikes WHERE `id` = @Id", {
         ['@Strikes'] = json.encode(Strikes),
@@ -153,30 +153,30 @@ FW.Commands.Add("strike", "Deel een strike uit.", {
     })
 end)
 
-FW.Commands.Add("verwijderstrike", "Verwijder een strike van iemand.", {
-    { name = "bsn", help = "BSN van degene die gestriked wordt." },
-    { name = "strikeId", help = "Strike ID die je wilt verwijderen" },
+FW.Commands.Add("verwijderstrike", "Remove a strike from someone.", {
+    { name = "bsn", help = "SSN of the person whose strike will be removed." },
+    { name = "strikeId", help = "Strike ID you want to remove" },
 }, false, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
     if Player.PlayerData.job.name ~= 'police' or not Player.PlayerData.metadata.ishighcommand then
-        return Player.Functions.Notify("Ze herkennen je niet..", "error")
+        return Player.Functions.Notify("They don't recognize you..", "error")
     end
 
     local Result = exports['ghmattimysql']:executeSync("SELECT `id`, `strikes` FROM `mdw_staff` WHERE `citizenid` = @Cid", { ['@Cid'] = Args[1] })
     if Result[1] == nil then
-        return Player.Functions.Notify("Profiel bestaat niet in het personeelsysteem..", "error")
+        return Player.Functions.Notify("Profile does not exist in the staff system..", "error")
     end
 
     local Strikes = json.decode(Result[1].strikes)
 
     if not Strikes[tonumber(Args[2])] or Strikes[tonumber(Args[2])].Deleted then
-        return Player.Functions.Notify("Ongeldige strike ID.", "error")
+        return Player.Functions.Notify("Invalid strike ID.", "error")
     end
 
     Strikes[tonumber(Args[2])].Deleted = true
-    Player.Functions.Notify("Strike verwijderd van " .. Args[1])
+    Player.Functions.Notify("Strike removed from " .. Args[1])
 
     exports['ghmattimysql']:executeSync("UPDATE `mdw_staff` SET `strikes` = @Strikes WHERE `id` = @Id", {
         ['@Strikes'] = json.encode(Strikes),

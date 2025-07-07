@@ -40,7 +40,7 @@
                     IsPhone: true,
                     ContactPicker: true,
                     Data: {
-                        Title: "Telefoonnummer",
+                        Title: "Phone Number",
                         Icon: "phone",
                         Value: Data.phone,
                         Select: await GetContactsSelect(),
@@ -52,7 +52,7 @@
                     Type: "TextField",
                     IsCurrency: true,
                     Data: {
-                        Title: "Aantal",
+                        Title: "Amount",
                         Icon: "dollar-sign",
                         Type: "number",
                     },
@@ -61,14 +61,14 @@
                     Id: "Comment",
                     Type: "TextArea",
                     Data: {
-                        Title: "Commentaar",
+                        Title: "Comment",
                     },
                 },
             ],
             OnSubmit: (Result) => {
                 if (Result.Phone.length <= 0) return;
                 if (Result.Amount <= 0) return;
-                if (Result.Comment.length <= 0) Result.Comment = "Geen Commentaar";
+                if (Result.Comment.length <= 0) Result.Comment = "No Comment";
 
                 LoaderModal.set(true);
                 SendEvent("Wenmo/SendMoney", { ...Result }, (Success, Data) => {
@@ -126,7 +126,7 @@
     </div>
 
     <TextField
-        Title="Zoeken"
+        Title="Search"
         Icon="search"
         SubSet={FilterTransactions}
         class="phone-misc-input"
@@ -198,7 +198,7 @@
 
         {#if FilteredTransactions.length > 5}
             <div style="display: flex; justify-content: center; width: 100%;">
-                <Button Color="success" on:click={LoadMore}>Laad Meer</Button>
+                <Button Color="success" on:click={LoadMore}>Load more</Button>
             </div>
         {/if}
     </PaperList>

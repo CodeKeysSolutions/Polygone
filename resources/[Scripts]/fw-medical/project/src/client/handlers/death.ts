@@ -312,18 +312,18 @@ const StartDeathTimer = async () => {
             if (Timer > 0) {
                 Timer--;
                 if (IsMinor) {
-                    DrawTxt(true, `BEWUSTELOOS: ~r~${Timer}~w~ SECONDEN OVER`);
+                    DrawTxt(true, `UNCONSCIOUS: ~r~${Timer}~w~ SECONDS LEFT`);
                 } else {
-                    DrawTxt(true, `DOOD: ~r~${Timer}~w~ SECONDEN OVER`);
+                    DrawTxt(true, `DEAD: ~r~${Timer}~w~ SECONDS LEFT`);
                 }
             } else {
                 if (IsEventActive) {
-                    DrawTxt(true, `HOUDT ~r~E~w~ (${PressTimer}) INGEDRUKT OM ~r~OP TE STAAN~w~`);
+                    DrawTxt(true, `HOLD ~r~E~w~ (${PressTimer}) TO ~r~GET UP~w~`);
                 } else {
                     if (IsMinor) {
-                        DrawTxt(true, `HOUDT ~r~E~w~ (${PressTimer}) INGEDRUKT OM ~r~OP TE STAAN~w~`);
+                        DrawTxt(true, `HOLD ~r~E~w~ (${PressTimer}) TO ~r~GET UP~w~`);
                     } else {
-                        DrawTxt(true, `HOUDT ~r~E~w~ (${PressTimer}) INGEDRUKT OM TE ~r~RESPAWNEN~w~ OF WACHT OP ~r~EMS~w~`);
+                        DrawTxt(true, `HOLD ~r~E~w~ (${PressTimer}) TO ~r~RESPAWN~w~ OR WAIT FOR ~r~EMS~w~`);
                     }
                 }
             };
@@ -383,7 +383,7 @@ export const RevivePlayer = async (PlayAnimation: boolean = false) => {
     Dead = false;
     IsMinor = false;
 
-    FW.Functions.Notify("Je bent geholpen..");
+    FW.Functions.Notify("You have been helped..");
     emitNet("fw-medical:Server:SetDeathState", false)
     emit('fw-medical:Client:PlayerRevived');
 

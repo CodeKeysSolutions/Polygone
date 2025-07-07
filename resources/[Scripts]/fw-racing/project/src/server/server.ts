@@ -12,11 +12,11 @@ FW.Functions.CreateUsableItem("racing-usb", async (Source: number, Item: any) =>
     if (!await Player.Functions.GetItemBySlot(Item.Slot)) return;
 
     if (Item.Info._Owner && Item.Info._Owner != Player.PlayerData.citizenid) {
-        return Player.Functions.Notify("Dit is niet jouw USB!", "error")
+        return Player.Functions.Notify("This is not your USB!", "error")
     };
 
     if (Item.Info.Alias) {
-        return Player.Functions.Notify("Alias kan niet veranderd worden voor deze USB..", "error")
+        return Player.Functions.Notify("Alias cannot be changed for this USB..", "error")
     };
 
     emitNet("fw-racing:Client:OpenAliasTextbox", Source, Item.Slot);
@@ -33,7 +33,7 @@ FW.Functions.CreateCallback("fw-racing:Server:SetAlias", async (Source: number, 
         `%"Alias":"${Alias}"%`
     ]);
 
-    if (Result.length > 0) return Cb({Success: false, Msg: "Alias is al bezet!"});
+    if (Result.length > 0) return Cb({Success: false, Msg: "Alias is already taken!"});
 
     await Player.Functions.SetItemKV('racing-usb', Slot, "_Owner", Player.PlayerData.citizenid);
     await Player.Functions.SetItemKV('racing-usb', Slot, "Alias", Alias);

@@ -1,0 +1,12 @@
+cache/**
+secret.cfg
+resources/\[Assets]/**
+resources/\[Clothing]/**
+resources/\[Maps]/**
+**/node_modules/**
+*package-lock.json
+resources/\[Vehicles]/**
+resources/\[Weapons]/**
+
+# Ignore all .log files
+*.log

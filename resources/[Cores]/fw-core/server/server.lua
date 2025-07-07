@@ -23,11 +23,11 @@ end
 AddEventHandler("playerConnecting", function(Name, KickReason, Deferral)
     local Source = source
     local Name, SteamId = GetPlayerName(Source), GetPlayerIdentifiers(Source)[1]
-    local SpecialMessage = Config.SpecialMessage[SteamId] ~= nil and Config.SpecialMessage[SteamId] or ('👋 Welkom %s, alles is gecontroleerd en we kijken voor een plekje...'):format(Name)
+    local SpecialMessage = Config.SpecialMessage[SteamId] ~= nil and Config.SpecialMessage[SteamId] or ('👋 Welcome %s, Lets check everything and see if their is space...'):format(Name)
 
     Deferral.defer()
     
-    Config.ConnectCard.body[2].text = 'Je naam wordt gecontroleerd..'
+    Config.ConnectCard.body[2].text = 'Checking you name..'
     Deferral.presentCard(Config.ConnectCard, function(data, rawData) end)
     Deferral.update()
 
@@ -39,18 +39,18 @@ AddEventHandler("playerConnecting", function(Name, KickReason, Deferral)
         CancelEvent() return
     end
 
-    Config.ConnectCard.body[2].text = 'Je whitelist wordt gecontroleerd..'
+    Config.ConnectCard.body[2].text = 'Checking whitelist..'
     Deferral.presentCard(Config.ConnectCard, function(data, rawData) end)
     Deferral.update()
 
     Citizen.Wait(1000)
 
     if not exports['fw-queue']:CheckDiscordRole(Source) then
-        Deferral.done('Het lijkt erop dat je geen whitelist hebt..')
+        Deferral.done('You do not have a whitelist join discord https://discord.gg/gGYt5mbrTW..')
         CancelEvent() return
     end
 
-    Config.ConnectCard.body[2].text = 'Je steam wordt gecontroleerd..'
+    Config.ConnectCard.body[2].text = 'Cheaking steam id..'
     Deferral.presentCard(Config.ConnectCard, function(data, rawData) end)
     Deferral.update()
 
@@ -58,11 +58,11 @@ AddEventHandler("playerConnecting", function(Name, KickReason, Deferral)
     local Identifiers = GetPlayerIdentifiers(Source)[1]
 
     if Identifiers == nil or (Identifiers:sub(1,6) == "steam:") == false then
-        Deferral.done('We konden geen steam vinden, je hebt steam nodig om te kunnen spelen..')
+        Deferral.done('No steamid found make sure steam is running..')
         CancelEvent() return
     end
 
-    Config.ConnectCard.body[2].text = 'We controleren de laatste dingen nog even..'
+    Config.ConnectCard.body[2].text = 'Just a few more checks !..'
     Deferral.presentCard(Config.ConnectCard, function(data, rawData) end)
     Deferral.update()
 
@@ -72,7 +72,7 @@ AddEventHandler("playerConnecting", function(Name, KickReason, Deferral)
 
     if FW.AreLicensesUsed(Steam, License) then
         TriggerEvent('fw-logs:Server:Log', 'anticheat', 'Player Join Canceled', ('%s (%s / %s) joined the server but has an client already active.'):format(Name, Steam, License), 'orange')
-        Deferral.done('Je zit al op de server met een andere FiveM-client..')
+        Deferral.done('You already have a active session on the server..')
         CancelEvent() return
     end
 

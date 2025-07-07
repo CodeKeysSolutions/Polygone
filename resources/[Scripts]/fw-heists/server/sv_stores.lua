@@ -52,7 +52,7 @@ FW.RegisterServer("fw-heists:Store:SetSafeState", function(Source, SafeId, State
     Config.Safes[SafeId].State = State
 
     if State == 2 then
-        Player.Functions.Notify("Je hebt de kluis gekraakt, je kan hem zometeen openen.")
+        Player.Functions.Notify("Safe cracked it will open soon.")
 
         Citizen.SetTimeout((1000 * 60) * math.random(3, 8), function()
             CrackedSafes[SafeId] = true
@@ -76,11 +76,11 @@ AddEventHandler("fw-heists:Server:RewardSafe", function(Data)
     end
 
     if Config.Safes[Data.SafeId].State ~= 2 then
-        return Player.Functions.Notify("De kluis zit op slot.")
+        return Player.Functions.Notify("Safe is locked.")
     end
 
     if not CrackedSafes[Data.SafeId] then
-        return Player.Functions.Notify("Wacht nog even..")
+        return Player.Functions.Notify("Sir, please wait an minute..")
     end
 
     CrackedSafes[Data.SafeId] = false

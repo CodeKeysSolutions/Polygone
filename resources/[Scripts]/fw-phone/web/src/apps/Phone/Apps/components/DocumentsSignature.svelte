@@ -2,7 +2,7 @@
     import { GetLongTimeLabel, GetTimeLabel } from "../../../../utils/Utils";
 
     export let Index = 1;
-    export let Name = 'Niet Ondertekend';
+    export let Name = 'Not Signed';
     export let Signed = false;
     export let Timestamp = 0;
 </script>
@@ -14,7 +14,7 @@
         {#if Signed}
             <p data-tooltip={GetLongTimeLabel(Timestamp)} data-position="bottom">{GetTimeLabel(Timestamp)}</p>
         {:else if Timestamp && !Signed}
-            <p>Aangevraagd</p>
+            <p>Requested</p>
         {/if}
     </div>
 </div>

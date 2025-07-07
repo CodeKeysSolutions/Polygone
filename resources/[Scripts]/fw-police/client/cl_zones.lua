@@ -54,8 +54,8 @@ local LockerActions = {
 local LockerItems = {
     PersonalStash = {
         Icon = 'box-open',
-        Title = "Persoonlijke Stash",
-        Desc = "Voor je persoonlijke spullen.",
+        Title = "Personal Stash", -- was "Persoonlijke Stash"
+        Desc = "For your personal belongings.", -- was "Voor je persoonlijke spullen."
         Data = {
             Event = "fw-police:Client:OpenPersonalStash",
             Type = "Client",
@@ -63,8 +63,8 @@ local LockerItems = {
     },
     Evidence = {
         Icon = 'archive',
-        Title = "Bewijskuis",
-        Desc = "Sla bewijs op.",
+        Title = "Evidence Locker", -- was "Bewijskuis"
+        Desc = "Store evidence.", -- was "Sla bewijs op."
         Data = {
             Event = "fw-police:Client:OpenEvidence",
             Type = "Client",
@@ -72,8 +72,8 @@ local LockerItems = {
     },
     Trash = {
         Icon = 'trash',
-        Title = "Prullenbak",
-        Desc = "Gooi jezelf er maar in, hier hoor je thuis.",
+        Title = "Trashcan", -- was "Prullenbak"
+        Desc = "Just throw yourself in, this is where you belong.", -- was "Gooi jezelf er maar in, hier hoor je thuis."
         Data = {
             Event = "fw-police:Client:OpenTrash",
             Type = "Client",
@@ -81,8 +81,8 @@ local LockerItems = {
     },
     Lab = {
         Icon = 'microscope',
-        Title = "Laboratorium",
-        Desc = "Serienummers ontdekken.",
+        Title = "Laboratory", -- was "Laboratorium"
+        Desc = "Discover serial numbers.", -- was "Serienummers ontdekken."
         Data = {
             Event = "fw-police:Client:OpenLab",
             Type = "Client",
@@ -90,8 +90,8 @@ local LockerItems = {
     },
     Armory = {
         Icon = 'shield-alt',
-        Title = "Wapenkluis",
-        Desc = "Voor je wapens en andere benodigdheden.",
+        Title = "Armory", -- was "Wapenkluis"
+        Desc = "For your weapons and other necessities.", -- was "Voor je wapens en andere benodigdheden."
         Data = {
             Event = "fw-police:Client:OpenArmory",
             Type = "Client",
@@ -99,8 +99,8 @@ local LockerItems = {
     },
     HC = {
         Icon = 'graduation-cap',
-        Title = "Leidinggevende Wapenkluis",
-        Desc = "Zeldzaam ding dit, denk ik.",
+        Title = "High Command Armory", -- was "Leidinggevende Wapenkluis"
+        Desc = "Rare thing this, I think.", -- was "Zeldzaam ding dit, denk ik."
         Data = {
             Event = "fw-police:Client:OpenHCStore",
             Type = "Client",
@@ -178,7 +178,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_badge',
                 Icon = 'fas fa-id-badge',
-                Label = 'Politie Pas Maken',
+                Label = 'Police Pass Creation', -- was 'Politie Pas Maken'
                 EventType = 'Client',
                 EventName = 'fw-ui:Client:CreateBadge',
                 EventParams = { Badge = 'pd', Job = 'police' },
@@ -190,7 +190,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_employees',
                 Icon = 'fas fa-users',
-                Label = 'PD Medewerkerslijst',
+                Label = 'PD Employee List', -- was 'PD Medewerkerslijst'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:OpenEmployeelist',
                 EventParams = { Job = 'police' },
@@ -202,7 +202,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'usb',
                 Icon = 'fas fa-road',
-                Label = 'Time Trial USB Pakken',
+                Label = 'Pick up Time Trial USB', -- was 'Time Trial USB Pakken'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:GrabTimeTrialUSB',
                 EventParams = { Job = 'police' },
@@ -240,7 +240,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] Bewijskluis", function()
+        CheckForKeypress(38, "[E] Evidence Locker", function() -- was "[E] Bewijskluis"
             TriggerEvent('fw-police:Client:OpenEvidence')
         end)
     end)
@@ -260,7 +260,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] Laboratorium", function()
+        CheckForKeypress(38, "[E] Laboratory", function() -- was "[E] Laboratorium"
             TriggerEvent('fw-police:Client:OpenLab')
         end)
     end)
@@ -280,7 +280,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] Wapenkluis", function()
+        CheckForKeypress(38, "[E] Armory", function() -- was "[E] Wapenkluis"
             if exports['fw-inventory']:CanOpenInventory() then
                 FW.TriggerServer('fw-inventory:Server:OpenInventory', 'Store', 'PoliceArmory')
             end
@@ -302,7 +302,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] PD Acties", function()
+        CheckForKeypress(38, "[E] PD Actions", function() -- was "[E] PD Acties"
             local MenuItems = {}
 
             if LockerActions['MRPD'].PersonalStash then
@@ -366,7 +366,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_badge',
                 Icon = 'fas fa-id-badge',
-                Label = 'Politie Pas Maken',
+                Label = 'Police Pass Creation', -- was 'Politie Pas Maken'
                 EventType = 'Client',
                 EventName = 'fw-ui:Client:CreateBadge',
                 EventParams = { Badge = 'pd', Job = 'police' },
@@ -378,7 +378,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_employees',
                 Icon = 'fas fa-users',
-                Label = 'PD Medewerkerslijst',
+                Label = 'PD Employee List', -- was 'PD Medewerkerslijst'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:OpenEmployeelist',
                 EventParams = { Job = 'police' },
@@ -390,7 +390,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'usb',
                 Icon = 'fas fa-road',
-                Label = 'Time Trial USB Pakken',
+                Label = 'Pick up Time Trial USB', -- was 'Time Trial USB Pakken'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:GrabTimeTrialUSB',
                 EventParams = { Job = 'police' },
@@ -417,7 +417,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] Bewijskluis", function()
+        CheckForKeypress(38, "[E] Evidence Locker", function() -- was "[E] Bewijskluis"
             TriggerEvent('fw-police:Client:OpenEvidence')
         end)
     end)
@@ -437,7 +437,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] PD Acties", function()
+        CheckForKeypress(38, "[E] PD Actions", function() -- was "[E] PD Acties"
             local MenuItems = {}
 
             if LockerActions['LaMesa'].PersonalStash then
@@ -501,7 +501,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_badge',
                 Icon = 'fas fa-id-badge',
-                Label = 'Politie Pas Maken',
+                Label = 'Police Pass Creation', -- was 'Politie Pas Maken'
                 EventType = 'Client',
                 EventName = 'fw-ui:Client:CreateBadge',
                 EventParams = { Badge = 'pd', Job = 'police' },
@@ -513,7 +513,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_employees',
                 Icon = 'fas fa-users',
-                Label = 'PD Medewerkerslijst',
+                Label = 'PD Employee List', -- was 'PD Medewerkerslijst'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:OpenEmployeelist',
                 EventParams = { Job = 'police' },
@@ -525,7 +525,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'usb',
                 Icon = 'fas fa-road',
-                Label = 'Time Trial USB Pakken',
+                Label = 'Pick up Time Trial USB', -- was 'Time Trial USB Pakken'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:GrabTimeTrialUSB',
                 EventParams = { Job = 'police' },
@@ -552,7 +552,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] Bewijskluis", function()
+        CheckForKeypress(38, "[E] Evidence Locker", function() -- was "[E] Bewijskluis"
             TriggerEvent('fw-police:Client:OpenEvidence')
         end)
     end)
@@ -572,7 +572,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] Laboratorium", function()
+        CheckForKeypress(38, "[E] Laboratory", function() -- was "[E] Laboratorium"
             TriggerEvent('fw-police:Client:OpenLab')
         end)
     end)
@@ -592,7 +592,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] PD Acties", function()
+        CheckForKeypress(38, "[E] PD Actions", function() -- was "[E] PD Acties"
             local MenuItems = {}
 
             if LockerActions['Davis'].PersonalStash then
@@ -656,7 +656,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_badge',
                 Icon = 'fas fa-id-badge',
-                Label = 'Politie Pas Maken',
+                Label = 'Police Pass Creation', -- was 'Politie Pas Maken'
                 EventType = 'Client',
                 EventName = 'fw-ui:Client:CreateBadge',
                 EventParams = { Badge = 'pd', Job = 'police' },
@@ -668,7 +668,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_employees',
                 Icon = 'fas fa-users',
-                Label = 'PD Medewerkerslijst',
+                Label = 'PD Employee List', -- was 'PD Medewerkerslijst'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:OpenEmployeelist',
                 EventParams = { Job = 'police' },
@@ -680,7 +680,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'usb',
                 Icon = 'fas fa-road',
-                Label = 'Time Trial USB Pakken',
+                Label = 'Pick up Time Trial USB', -- was 'Time Trial USB Pakken'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:GrabTimeTrialUSB',
                 EventParams = { Job = 'police' },
@@ -707,7 +707,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] PD Acties", function()
+        CheckForKeypress(38, "[E] PD Actions", function() -- was "[E] PD Acties"
             local MenuItems = {}
 
             if LockerActions['VBPD'].PersonalStash then
@@ -771,7 +771,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_badge',
                 Icon = 'fas fa-id-badge',
-                Label = 'Politie Pas Maken',
+                Label = 'Police Pass Creation', -- was 'Politie Pas Maken'
                 EventType = 'Client',
                 EventName = 'fw-ui:Client:CreateBadge',
                 EventParams = { Badge = 'pd', Job = 'police' },
@@ -783,7 +783,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_employees',
                 Icon = 'fas fa-users',
-                Label = 'PD Medewerkerslijst',
+                Label = 'PD Employee List', -- was 'PD Medewerkerslijst'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:OpenEmployeelist',
                 EventParams = { Job = 'police' },
@@ -795,7 +795,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'usb',
                 Icon = 'fas fa-road',
-                Label = 'Time Trial USB Pakken',
+                Label = 'Pick up Time Trial USB', -- was 'Time Trial USB Pakken'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:GrabTimeTrialUSB',
                 EventParams = { Job = 'police' },
@@ -822,7 +822,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] Bewijskluis", function()
+        CheckForKeypress(38, "[E] Evidence Locker", function() -- was "[E] Bewijskluis"
             TriggerEvent('fw-police:Client:OpenEvidence')
         end)
     end)
@@ -842,7 +842,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] PD Acties", function()
+        CheckForKeypress(38, "[E] PD Actions", function() -- was "[E] PD Acties"
             local MenuItems = {}
 
             if LockerActions['SDSO'].PersonalStash then
@@ -906,7 +906,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_badge',
                 Icon = 'fas fa-id-badge',
-                Label = 'Politie Pas Maken',
+                Label = 'Police Pass Creation', -- was 'Politie Pas Maken'
                 EventType = 'Client',
                 EventName = 'fw-ui:Client:CreateBadge',
                 EventParams = { Badge = 'pd', Job = 'police' },
@@ -918,7 +918,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_employees',
                 Icon = 'fas fa-users',
-                Label = 'PD Medewerkerslijst',
+                Label = 'PD Employee List', -- was 'PD Medewerkerslijst'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:OpenEmployeelist',
                 EventParams = { Job = 'police' },
@@ -930,7 +930,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'usb',
                 Icon = 'fas fa-road',
-                Label = 'Time Trial USB Pakken',
+                Label = 'Pick up Time Trial USB', -- was 'Time Trial USB Pakken'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:GrabTimeTrialUSB',
                 EventParams = { Job = 'police' },
@@ -957,7 +957,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] Bewijskluis", function()
+        CheckForKeypress(38, "[E] Evidence Locker", function() -- was "[E] Bewijskluis"
             TriggerEvent('fw-police:Client:OpenEvidence')
         end)
     end)
@@ -977,7 +977,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] PD Acties", function()
+        CheckForKeypress(38, "[E] PD Actions", function() -- was "[E] PD Acties"
             local MenuItems = {}
 
             if LockerActions['PBSO'].PersonalStash then
@@ -1041,7 +1041,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_badge',
                 Icon = 'fas fa-id-badge',
-                Label = 'Politie Pas Maken',
+                Label = 'Police Pass Creation', -- was 'Politie Pas Maken'
                 EventType = 'Client',
                 EventName = 'fw-ui:Client:CreateBadge',
                 EventParams = { Badge = 'pd', Job = 'police' },
@@ -1053,7 +1053,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'highcommand_employees',
                 Icon = 'fas fa-users',
-                Label = 'PD Medewerkerslijst',
+                Label = 'PD Employee List', -- was 'PD Medewerkerslijst'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:OpenEmployeelist',
                 EventParams = { Job = 'police' },
@@ -1065,7 +1065,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'usb',
                 Icon = 'fas fa-road',
-                Label = 'Time Trial USB Pakken',
+                Label = 'Pick up Time Trial USB', -- was 'Time Trial USB Pakken'
                 EventType = 'Client',
                 EventName = 'fw-police:Client:GrabTimeTrialUSB',
                 EventParams = { Job = 'police' },
@@ -1092,7 +1092,7 @@ AddEventHandler("fw-ui:Ready", function()
             return
         end
 
-        CheckForKeypress(38, "[E] PD Acties", function()
+        CheckForKeypress(38, "[E] PD Actions", function() -- was "[E] PD Acties"
             local MenuItems = {}
 
             if LockerActions['SAPR'].PersonalStash then
@@ -1144,7 +1144,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'return_seized',
                 Icon = 'fas fa-circle',
-                Label = 'Spullen terugvragen',
+                Label = 'Retrieve Seized Items', -- was 'Spullen terugvragen'
                 EventType = 'Client',
                 EventName = 'fw-prison:Client:OpenSeizedPossessions',
                 EventParams = {},
@@ -1173,7 +1173,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'return_seized',
                 Icon = 'fas fa-circle',
-                Label = 'Spullen terugvragen',
+                Label = 'Retrieve Seized Items', -- was 'Spullen terugvragen'
                 EventType = 'Client',
                 EventName = 'fw-prison:Client:OpenSeizedPossessions',
                 EventParams = {},

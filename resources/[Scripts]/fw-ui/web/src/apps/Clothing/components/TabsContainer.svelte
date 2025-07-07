@@ -44,7 +44,7 @@
                 on:click={() => SendEvent("Clothing/CloseMenu", {Pay: true, Type: "Cash"}) }
                 Color="success"
                 style="padding: .8vh 1.8vh; margin: 0; border-top-right-radius: 0; border-bottom-right-radius: 0;"
-            >Betalen</Button>
+            >Pay</Button>
             <Button
                 on:click={() => SendEvent("Clothing/CloseMenu", {Pay: false}) }
                 Color="warning"

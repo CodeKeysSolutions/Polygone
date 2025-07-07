@@ -64,7 +64,7 @@
 <MdwPanel style="margin-top: 1vh; height: 72.5vh; width: 100%;">
     <MdwPanelHeader style="height: 6vh; width: 98.6%;">
         <h6>Roles</h6>
-        <TextField Title="Zoeken" Icon="search" SubSet={FilterRoles} />
+        <TextField Title="Search" Icon="search" SubSet={FilterRoles} />
     </MdwPanelHeader>
 
     <div style="border-top: 0.3vh solid rgb(30, 30, 30); margin-bottom: 1vh;">

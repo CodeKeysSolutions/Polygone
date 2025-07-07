@@ -28,15 +28,15 @@ FW.Functions.CreateCallback("fw-racing:Server:GetTracks", async (Source: number,
 
 FW.Functions.CreateCallback("fw-racing:Server:SaveRaceTrack", async (Source: number, Cb: Function, Data: { Name: string, Type: string, MinLaps: number }, Checkpoints: Checkpoint[], IsGov: boolean) => {
     const Player = FW.Functions.GetPlayer(Source);
-    if (!Player) return Cb({ Success: false, Msg: "Ongeldige Speler." });
+    if (!Player) return Cb({ Success: false, Msg: "Invalid Citizen." });
 
     if (!IsRacingCreator(Player.PlayerData.citizenid)) {
-        Cb({ Success: false, Msg: "Geen toegang om race tracks te maken." });
+        Cb({ Success: false, Msg: "No permission." });
         return;
     };
 
     if (Checkpoints.length < 3) {
-        Cb({ Success: false, Msg: "Een race track moet minimaal 3 checkpoints hebben." });
+        Cb({ Success: false, Msg: "Need min of 3 checkpoints." });
         return;
     };
 
@@ -51,6 +51,6 @@ FW.Functions.CreateCallback("fw-racing:Server:SaveRaceTrack", async (Source: num
     if (Result.affectedRows >= 1) {
         Cb({ Success: true })
     } else {
-        Cb({ Success: false, Msg: "Database fout opgetreden." })
+        Cb({ Success: false, Msg: "Database Error." })
     };
 });

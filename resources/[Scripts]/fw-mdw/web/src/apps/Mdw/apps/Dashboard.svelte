@@ -56,7 +56,7 @@
             let formattedScums = Data.scums;
             for (let i = 0; i < formattedScums.length; i++) {
                 if (!formattedScums[i].ReductionString) {
-                    formattedScums[i].ReductionString = "0% / 0 maanden / € 0,00"
+                    formattedScums[i].ReductionString = "0% / 0 maanden / $ 0,00"
                 };
             };
             $CurrentReport.scums = formattedScums;
@@ -118,8 +118,8 @@
 {#if HasCidPermission("Dashboard.ShowWarrents")}
     <MdwPanel class="filled" style="width: {HasCidPermission("Dashboard.ShowBulletin") ? 50 : 100}%">
         <MdwPanelHeader>
-            <h6>Arrestatiebevelen</h6>
-            <TextField Title='Zoeken' Icon='search' SubSet={FilterWarrents} />
+            <h6>Warrents</h6>
+            <TextField Title='Search' Icon='search' SubSet={FilterWarrents} />
         </MdwPanelHeader>
 
         <MdwPanelList>
@@ -145,8 +145,8 @@
 {#if HasCidPermission("Dashboard.ShowBulletin")}
     <MdwPanel class="filled" style="width: {HasCidPermission("Dashboard.ShowWarrents") ? 50 : 100}%">
         <MdwPanelHeader>
-            <h6>Prikbord</h6>
-            <TextField Title='Zoeken' Icon='search' SubSet={FilterBulletin} />
+            <h6>Clipboard</h6>
+            <TextField Title='Search' Icon='search' SubSet={FilterBulletin} />
         </MdwPanelHeader>
     
         <MdwPanelList>

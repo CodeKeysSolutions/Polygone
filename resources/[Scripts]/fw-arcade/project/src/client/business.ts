@@ -24,13 +24,13 @@ onNet("fw-arcade:Client:OpenTokenMenu", async () => {
                     {
                         Icon: "dollar-sign",
                         Title: "Betaal met Cash",
-                        Desc: `€${ticketPrice}`,
+                        Desc: `$${ticketPrice}`,
                         Data: { Event: "fw-arcade:Client:PurchaseToken", Payment: "Cash" }
                     },
                     {
                         Icon: "credit-card",
                         Title: "Betaal met Bank",
-                        Desc: `€${ticketPrice}`,
+                        Desc: `$${ticketPrice}`,
                         Data: { Event: "fw-arcade:Client:PurchaseToken", Payment: "Card" }
                     },
                 ]

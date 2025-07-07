@@ -10,7 +10,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'grab_usb',
                 Icon = 'fas fa-usb-drive',
-                Label = 'Oppakken',
+                Label = 'Pickup',
                 EventType = 'Server',
                 EventName = 'fw-heists:Server:Paleto:GrabUSB',
                 EventParams = {},
@@ -40,7 +40,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'plug_usb',
                 Icon = 'fas fa-laptop-code',
-                Label = 'USB Inpluggen',
+                Label = 'Insert USB',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Paleto:PlugUsb',
                 EventParams = { PC = 1 },
@@ -70,7 +70,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'plug_usb',
                 Icon = 'fas fa-laptop-code',
-                Label = 'USB Inpluggen',
+                Label = 'Eject USB',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Paleto:PlugUsb',
                 EventParams = { PC = 2 },
@@ -100,7 +100,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'try_code',
                 Icon = 'fas fa-terminal',
-                Label = 'Kluis alarm paneel',
+                Label = 'Alarm terminal',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Paleto:TryCode',
                 EventParams = { Panel = 1 },
@@ -130,7 +130,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'try_code',
                 Icon = 'fas fa-terminal',
-                Label = 'Kluis alarm paneel',
+                Label = 'Alarm terminal',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Paleto:TryCode',
                 EventParams = { Panel = 2 },
@@ -191,7 +191,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'get_loot',
                     Icon = 'fas fa-th',
-                    Label = 'Overvallen',
+                    Label = 'Rob',
                     EventType = 'Client',
                     EventName = 'fw-heists:Client:RobPaletoLoot',
                     EventParams = { LootId = v.Id },
@@ -208,15 +208,15 @@ RegisterNetEvent("fw-items:Clent:Used:HeavyThermite")
 AddEventHandler("fw-items:Clent:Used:HeavyThermite", function()
     if NearPaletoPowerbox then
         if Config.Paleto.State ~= 0 then
-            return FW.Functions.Notify("Ziet er verbrand uit..", "error")
+            return FW.Functions.Notify("Looks burned..", "error")
         end
         
         if DataManager.Get("HeistsDisabled", 0) == 1 then
-            return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            return FW.Functions.Notify("Cant do this right now..", "error")
         end
     
         if CurrentCops < Config.RequiredCopsPaleto then
-            return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            return FW.Functions.Notify("Cant do this right now..", "error")
         end
 
         if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -238,11 +238,11 @@ end)
 RegisterNetEvent("fw-heists:Client:HeistLaptopUsed")
 AddEventHandler("fw-heists:Client:HeistLaptopUsed", function(Laptop)
     if #(GetEntityCoords(PlayerPedId()) - vector3(-102.22, 6463.17, 31.63)) > 1.5 then return end
-    if Laptop ~= "blue" then return FW.Functions.Notify("Dit lijkt niet de goeie laptop te zijn...", "error") end
-    if Config.Paleto.State ~= 3 then return FW.Functions.Notify("Schakel eerst het alarm uit van de kluis...", "error") end
+    if Laptop ~= "blue" then return FW.Functions.Notify("Seems like wrong laptop...", "error") end
+    if Config.Paleto.State ~= 3 then return FW.Functions.Notify("Turn off the alarm system first...", "error") end
 
     local Item = exports["fw-inventory"]:GetItemByName('heist-laptop', 'blue')
-    if Item == nil then return FW.Functions.Notify("Dit lijkt niet de goeie laptop te zijn...", "error") end
+    if Item == nil then return FW.Functions.Notify("Looks like wrong laptop...", "error") end
     TriggerServerEvent('fw-inventory:Server:DecayItem', 'heist-laptop', Item.Slot, 33.33)
 
     if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -253,15 +253,15 @@ AddEventHandler("fw-heists:Client:HeistLaptopUsed", function(Laptop)
     if not Outcome then return end
 
     TriggerServerEvent('fw-heists:Server:SetPaletoState', 4)
-    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "Dark Market", "#Paleto-563", "De kluis van de Blaine Countys Savings Bank wordt zometeen geopend...")
+    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "Dark Market", "#Paleto-563", "The vault will be opening soon...")
 end)
 
 RegisterNetEvent("fw-heists:Client:Paleto:PlugUsb")
 AddEventHandler("fw-heists:Client:Paleto:PlugUsb", function(Data, Entity)
-    if not exports['fw-inventory']:HasEnoughOfItem('heist-usb', 1, 'black') then return FW.Functions.Notify("Ik mis een zwarte USB...", "error") end
+    if not exports['fw-inventory']:HasEnoughOfItem('heist-usb', 1, 'black') then return FW.Functions.Notify("Missing black USB...", "error") end
 
     if not exports['fw-inventory']:HasEnoughOfItem('heist-decrypter-adv', 1) then
-        return FW.Functions.Notify("Je mist een Advanced Decrypter!", "Error")
+        return FW.Functions.Notify("You need Advanced Decrypter!", "Error")
     end
 
     if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -277,10 +277,10 @@ AddEventHandler("fw-heists:Client:Paleto:PlugUsb", function(Data, Entity)
 
     if Success then
         local DidRemove = FW.SendCallback("FW:RemoveItem", 'heist-usb', 1, nil, 'black')
-        if not DidRemove then return FW.Functions.Notify("Ik mis een zwarte USB...", "error") end
+        if not DidRemove then return FW.Functions.Notify("I am missing an USB...", "error") end
 
         local PCCode = FW.SendCallback("fw-heists:Server:Paleto:GetPCCode", Data.PC)
-        if not PCCode or PCCode.Shown then return FW.Functions.Notify("De computer reageert niet op de USB...", "error") end
+        if not PCCode or PCCode.Shown then return FW.Functions.Notify("The computer doesnt respond...", "error") end
     
         exports['fw-ui']:SetTextDisplay(PCCode.Code)
     end
@@ -295,7 +295,7 @@ AddEventHandler("fw-heists:Client:Paleto:TryCode", function(Data, Entity)
     end
 
     if not exports['fw-inventory']:HasEnoughOfItem('heist-electronic-kit-adv', 1) then
-        return FW.Functions.Notify("Je mist een Advanced Electronic Kit!", "Error")
+        return FW.Functions.Notify("Missing Advanced Electronic Kit!", "Error")
     end
 
     TriggerServerEvent('fw-inventory:Server:DecayItem', 'heist-electronic-kit-adv', nil, 33.33)
@@ -308,7 +308,7 @@ AddEventHandler("fw-heists:Client:Paleto:TryCode", function(Data, Entity)
 
     if Result and Result.Code then
         local PCCode = FW.SendCallback("fw-heists:Server:Paleto:GetPCCode", Data.Panel)
-        if not PCCode then return FW.Functions.Notify("Kluis alarm is uitgeschakeld...", "error") end
+        if not PCCode then return FW.Functions.Notify("Alarm system disabled...", "error") end
         if PCCode.Code ~= Result.Code then
             return PlaySoundFrontend(-1, "Pin_Bad", "DLC_HEIST_BIOLAB_PREP_HACKING_SOUNDS")
         end

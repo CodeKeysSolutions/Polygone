@@ -6,7 +6,7 @@ const selectedLang = TRANSLATIONS.SELECTED_LANGUAGE
 if(!TRANSLATIONS.LANGUAGES.includes(selectedLang)) console.log(`LANGUAGE NOT SUPPORTED\nSELECTED: ${TRANSLATIONS.SELECTED_LANGUAGE}\nAVAILABLE: ${TRANSLATIONS.LANGUAGES}`)
 const LANG = TRANSLATIONS[selectedLang]
 
-const SHAPES = ["vierkant", "driehoek", "rechthoek", "cirkel"]
+const SHAPES = ["Square", "Triangle", "rectangle", "Circle"]
 const COLORABLE = ['background', 'text', 'number', 'shape']
 
 const COLOR_CODES = ['black', 'white','#1991F9','#8C0C00','#FFE335','#FF9900','#46A04F','#A43AB5']
@@ -24,13 +24,13 @@ const COLORS = {
     'purple' : '#A43AB5',
 }
 const QUESTIONS = {
-    'achtergrond kleur' : (d) => d.colors['background'],
-    'achtergrond kleur tekst' : (d) => d.colors['text'],
-    'getal kleur' : (d) => d.colors['number'],
-    'vorm kleur' : (d) => d.colors['shape'],
-    'kleur tekst' : (d) => d.text[0],
-    'tekst vorm' : (d) => d.text[1],
-    'vorm' : (d) => d.shape
+    'Background color' : (d) => d.colors['background'],
+    'Color text' : (d) => d.colors['text'],
+    'Color number' : (d) => d.colors['number'],
+    'Color shape' : (d) => d.colors['shape'],
+    'Color name' : (d) => d.text[0],
+    'Color shape' : (d) => d.text[1],
+    'shape' : (d) => d.shape
 }
 
 class PuzzleData {

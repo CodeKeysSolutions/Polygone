@@ -25,7 +25,7 @@ AddEventHandler("fw-ui:Server:CreateBadge", function(Data, Badge)
     Player.Functions.AddItem("identification-badge", 1, false, ItemInfo, true, Data.Badge)
 end)
 
-FW.Commands.Add("ui-r", "Restart het ui script", {}, false, function(source, args)
+FW.Commands.Add("ui-r", "Blink you eyes (restart)", {}, false, function(source, args)
     TriggerClientEvent('fw-ui:Client:refresh', source)
     TriggerClientEvent('FW:Client:CloseNui', source)
     TriggerClientEvent('fw-phone:Client:ClosePhone', source)
@@ -33,8 +33,8 @@ FW.Commands.Add("ui-r", "Restart het ui script", {}, false, function(source, arg
     TriggerClientEvent('fw-inventory:Client:CloseInventory', source)
 end)
 
-FW.Commands.Add("players", "Kijk hoeveel spelers er online zijn", {}, false, function(Source, args)
-    TriggerClientEvent('chatMessage', Source, "SYSTEM", "normal", "Online Spelers: "..#GetPlayers().." / "..GetConvarInt('sv_maxclients', 64))
+FW.Commands.Add("players", "Check players online", {}, false, function(Source, args)
+    TriggerClientEvent('chatMessage', Source, "SYSTEM", "normal", "Online players: "..#GetPlayers().." / "..GetConvarInt('sv_maxclients', 64))
 end)
 
 RegisterServerEvent('fw-ui:Server:gain:stress')

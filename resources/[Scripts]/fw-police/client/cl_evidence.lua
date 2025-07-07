@@ -2,22 +2,22 @@ local NextMeleeAction, NextStabbingAction, NextShootingAction = GetCloudTimeAsIn
 local Evidence, EvidenceEnabled, CanCollect, CurrentStatusList = {}, false, true, {}
 
 local StatusList = {
-    ['fight'] = { Text = 'Rode Handen', Show = true },
-    ['redeyes'] = { Text = 'Rode Ogen', Show = true },
-    ['sweat'] = { Text = 'Lichaamszweet', Show = true },
-    ['confused'] = { Text = 'Verward', Show = false },
-    ['widepupils'] = { Text = 'Brede Pupillen', Show = true },
-    ['sworebody'] = { Text = 'Pijnlijk Lichaam', Show = false },
-    ['wellfed'] = { Text = 'Ziet er gevoed uit', Show = true },
-    ['huntbleed'] = { Text = 'Bloederige Handen', Show = true },
-    ['gasoline'] = { Text = 'Ruikt naar Benzine', Show = true },
-    ['heavybreath'] = { Text = 'Moeizame Ademhaling', Show = false },
-    ['chemicals'] = { Text = 'Geuren van Chemicaliën', Show = false },
-    ['weedsmell'] = { Text = 'Ruikt naar Marihuana', Show = true },
-    ['gunpowder'] = { Text = 'Buskruit Residu', Show = false },
-    ['alcohol'] = { Text = 'Adem ruikt naar Alcohol', Show = false },
-    ['heavyalcohol'] = { Text = 'Adem ruikt heel erg naar Alcohol', Show = true },
-    ['explosive'] = { Text = 'Sporen van plastic en explosievenresten', Show = false }
+    ['fight'] = { Text = 'Red Hands', Show = true },                -- was 'Rode Handen'
+    ['redeyes'] = { Text = 'Red Eyes', Show = true },               -- was 'Rode Ogen'
+    ['sweat'] = { Text = 'Body Sweat', Show = true },               -- was 'Lichaamszweet'
+    ['confused'] = { Text = 'Confused', Show = false },             -- was 'Verward'
+    ['widepupils'] = { Text = 'Dilated Pupils', Show = true },      -- was 'Brede Pupillen'
+    ['sworebody'] = { Text = 'Sore Body', Show = false },           -- was 'Pijnlijk Lichaam'
+    ['wellfed'] = { Text = 'Looks well fed', Show = true },         -- was 'Ziet er gevoed uit'
+    ['huntbleed'] = { Text = 'Bloody Hands', Show = true },         -- was 'Bloederige Handen'
+    ['gasoline'] = { Text = 'Smells like Gasoline', Show = true },  -- was 'Ruikt naar Benzine'
+    ['heavybreath'] = { Text = 'Labored Breathing', Show = false }, -- was 'Moeizame Ademhaling'
+    ['chemicals'] = { Text = 'Smells of Chemicals', Show = false }, -- was 'Geuren van Chemicaliën'
+    ['weedsmell'] = { Text = 'Smells like Marijuana', Show = true },-- was 'Ruikt naar Marihuana'
+    ['gunpowder'] = { Text = 'Gunpowder Residue', Show = false },   -- was 'Buskruit Residu'
+    ['alcohol'] = { Text = 'Breath smells of Alcohol', Show = false }, -- was 'Adem ruikt naar Alcohol'
+    ['heavyalcohol'] = { Text = 'Breath smells strongly of Alcohol', Show = true }, -- was 'Adem ruikt heel erg naar Alcohol'
+    ['explosive'] = { Text = 'Traces of plastic and explosive residue', Show = false } -- was 'Sporen van plastic en explosievenresten'
 }
 
 -- // Loops \\ --
@@ -117,10 +117,10 @@ RegisterNetEvent('fw-police:Client:CheckStatus')
 AddEventHandler('fw-police:Client:CheckStatus', function()
     local Player, Distance = FW.Functions.GetClosestPlayer()
     if Player == -1 or Distance > 2.5 then
-        return FW.Functions.Notify("Niemand in de buurt. (Misschien dichterbij staan)", "error")
+        return FW.Functions.Notify("No one nearby. (Maybe stand closer)", "error") -- was "Niemand in de buurt. (Misschien dichterbij staan)"
     end
 
-    local Finished = FW.Functions.CompactProgressbar(3000, "Status controleren...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = false}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(3000, "Checking status...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = false}, {}, {}, {}, false) -- was "Status controleren..."
     if not Finished then return end
     TriggerServerEvent('fw-police:Server:GetTargetStatus', Player)
 end)
@@ -134,15 +134,15 @@ AddEventHandler('fw-police:Client:TakeGSRTest', function()
 
     local Player, Distance = FW.Functions.GetClosestPlayer()
     if Player == -1 or Distance > 2.5 then
-        return FW.Functions.Notify("Niemand in de buurt. (Misschien dichterbij staan)", "error")
+        return FW.Functions.Notify("No one nearby. (Maybe stand closer)", "error") -- was "Niemand in de buurt. (Misschien dichterbij staan)"
     end
 
     if IsPedInAnyVehicle(PlayerPedId()) or IsPedInAnyVehicle(GetPlayerPed(Player)) then
-        FW.Functions.Notify("Dit kan je niet in een voertuig doen..", "error")
+        FW.Functions.Notify("You can't do this in a vehicle..", "error") -- was "Dit kan je niet in een voertuig doen.."
     end
 
     TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_STAND_MOBILE", 0, 1)
-    local Finished = FW.Functions.CompactProgressbar(5000, "GSR-test afnemen...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(5000, "Taking GSR test...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false) -- was "GSR-test afnemen..."
     ClearPedTasks(PlayerPedId())
 
     if not Finished then return end
@@ -199,21 +199,21 @@ AddEventHandler("fw-inventory:Client:OnItemInsert", function(FromItem, ToItem)
 
     local PlayerData = FW.Functions.GetPlayerData()
     if PlayerData.job.name ~= 'ems' then
-        return FW.Functions.Notify("Je kan dit apperaat niet gebruiken..", "error")
+        return FW.Functions.Notify("You can't use this device..", "error") -- was "Je kan dit apperaat niet gebruiken.."
     end
 
     exports['fw-assets']:AddProp('Tablet')
     exports['fw-assets']:RequestAnimationDict('amb@code_human_in_bus_passenger_idles@female@tablet@base')
     TaskPlayAnim(PlayerPedId(), "amb@code_human_in_bus_passenger_idles@female@tablet@base", "base", 3.0, 3.0, -1, 49, 0, 0, 0, 0)
 
-    local Finished = FW.Functions.CompactProgressbar(15000, "DNA uitlezen...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = false}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(15000, "Reading DNA...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = false}, {}, {}, {}, false) -- was "DNA uitlezen..."
     ClearPedTasks(PlayerPedId())
 
     if not Finished then return end
 
     exports['fw-assets']:RemoveProp()
     StopAnimTask(PlayerPedId(), "amb@code_human_in_bus_passenger_idles@female@tablet@base", "base", 1.0)
-    TriggerEvent('chatMessage', "DNA-lezer resultaat", "error", FromItem.Info._EvidenceData.BloodId)
+    TriggerEvent('chatMessage', "DNA-reader result", "error", FromItem.Info._EvidenceData.BloodId) -- was "DNA-lezer resultaat"
 end)
 
 -- // Functions \\ --

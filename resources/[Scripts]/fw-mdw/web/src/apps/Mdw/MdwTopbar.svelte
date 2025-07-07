@@ -16,7 +16,7 @@
         {#if $MdwProfile.name}
             {$MdwProfile.name}
         {:else}
-            Geen Profiel Gevonden
+            No profile found
         {/if}
     </p>
 </div>

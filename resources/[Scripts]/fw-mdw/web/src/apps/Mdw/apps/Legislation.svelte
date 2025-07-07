@@ -121,8 +121,8 @@
 
 <MdwPanel class="filled">
     <MdwPanelHeader>
-        <h6>Wetgeving</h6>
-        <TextField Title='Zoeken' Icon='search' SubSet={FilterLegislation} />
+        <h6>Legislation</h6>
+        <TextField Title='Search' Icon='search' SubSet={FilterLegislation} />
     </MdwPanelHeader>
 
     <MdwPanelList>
@@ -138,26 +138,26 @@
 <MdwPanel class="filled">
     <MdwPanelHeader>
         {#if $CurrentLegislation.id}
-            <h6>Wetgeving Bewerken (#{$CurrentLegislation.id})</h6>
+            <h6>Edit Legislation (#{$CurrentLegislation.id})</h6>
         {:else}
-            <h6>Wetgeving Toevoegen</h6>
+            <h6>Add Legislation</h6>
         {/if}
 
         {#if !$IsPublic}
             <div class="mdw-box-title-icons">
                 {#if $CurrentLegislation.id}
-                    {#if HasCidPermission("Legislation.Create")} <i on:keyup on:click={() => { OnLegislationAction("Reset") }} data-tooltip="Nieuw" class="fas fa-sync"></i> {/if}
-                    {#if HasCidPermission("Legislation.Delete")} <i on:keyup on:click={() => { OnLegislationAction("Delete") }} data-tooltip="Verwijderen" class="fas fa-trash"></i> {/if}
-                    {#if HasCidPermission("Legislation.Edit")} <i on:keyup on:click={() => { OnLegislationAction("Save") }} data-tooltip="Opslaan" class="fas fa-save"></i> {/if}
+                    {#if HasCidPermission("Legislation.Create")} <i on:keyup on:click={() => { OnLegislationAction("Reset") }} data-tooltip="New" class="fas fa-sync"></i> {/if}
+                    {#if HasCidPermission("Legislation.Delete")} <i on:keyup on:click={() => { OnLegislationAction("Delete") }} data-tooltip="Delete" class="fas fa-trash"></i> {/if}
+                    {#if HasCidPermission("Legislation.Edit")} <i on:keyup on:click={() => { OnLegislationAction("Save") }} data-tooltip="Save" class="fas fa-save"></i> {/if}
                 {:else}
-                    {#if HasCidPermission("Legislation.Create")} <i on:keyup on:click={() => { OnLegislationAction("Save") }} data-tooltip="Opslaan" class="fas fa-save"></i> {/if}
+                    {#if HasCidPermission("Legislation.Create")} <i on:keyup on:click={() => { OnLegislationAction("Save") }} data-tooltip="Save" class="fas fa-save"></i> {/if}
                 {/if}
             </div>
         {/if}
     </MdwPanelHeader>
 
     <div style="width: 97%; margin-left: auto; margin-right: auto;">
-        <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentLegislation.title} Title='Titel' Icon='pencil-alt' />
+        <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentLegislation.title} Title='Title' Icon='pencil-alt' />
     </div>
 
     <div bind:this={LegislationEditor} class="mdw-legislation-editor"></div>

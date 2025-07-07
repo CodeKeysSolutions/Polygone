@@ -35,11 +35,11 @@ AddEventHandler("fw-illegal:Server:Meth:PurchaseTable", function()
     if Player == nil then return end
 
     if not Player.Functions.RemoveItemByName('methusb', 1, true) then
-        return Player.Functions.Notify("Je mist een USB..", "error")
+        return Player.Functions.Notify("Missing USB..", "error")
     end
 
     if not Player.Functions.RemoveCrypto('SHUNG', 150) then
-        return Player.Functions.Notify("Je hebt niet genoeg SHUNG, arme sloeber.", "error")
+        return Player.Functions.Notify("Not enough SHUNG.", "error")
     end
 
     Player.Functions.SetMetaData('lastmethpayment', os.time() + ((3600 * 24) * 7))
@@ -54,11 +54,11 @@ FW.RegisterServer("fw-illegal:Server:PlaceMethTable", function(Source, Coords, R
     if not Item then return end
 
     if IsMethTablePlacedWithCid(Player.PlayerData.citizenid) then
-        return Player.Functions.Notify("Je hebt al een tafel geplaatst..", "error")
+        return Player.Functions.Notify("You already place a table..", "error")
     end
     
     if not Player.Functions.RemoveItemByName('methtable', 1, true) then
-        return Player.Functions.Notify("Je mist een tafel.", "error")
+        return Player.Functions.Notify("Missing table.", "error")
     end
     
     local TableId = TablesPlaced + 1
@@ -226,11 +226,11 @@ FW.Functions.CreateUsableItem("methtable", function(Source, Item)
     local LastTablePayment = Player.PlayerData.metadata['lastmethpayment']
     if os.time() > LastTablePayment then -- 7 days
         if not Player.Functions.RemoveCrypto('SHUNG', 50) then
-            return Player.Functions.Notify("Je hebt niet genoeg Shungite om de ingredienten aan te vullen..", "error")
+            return Player.Functions.Notify("Not enough SHUNG to restock..", "error")
         end
 
         Player.Functions.SetMetaData('lastmethpayment', os.time() + ((3600 * 24) * 7))
-        TriggerEvent('fw-phone:Server:Mails:AddMail', "Dark Market", "#M-1001", "We hebben de ingredienten aangevuld voor je.. ijskraam. Er is 50 SHUNG van je wallet afgehaald.", Source)
+        TriggerEvent('fw-phone:Server:Mails:AddMail', "Dark Market", "#M-1001", "We have restocked.. we removed 50 SHUNG.", Source)
     end
 
     TriggerClientEvent("fw-illegal:Client:Meth:PlaceTable", Source, Item)
@@ -245,11 +245,11 @@ FW.Functions.CreateUsableItem("methcured", function(Source, Item)
     end
 
     if Player.Functions.GetItemByName('emptybaggies') == nil then
-        return FW.Functions.Notify("In welke zakjes wil je het stoppen dan?", "error")
+        return FW.Functions.Notify("Missing bags?", "error")
     end
 
     if Player.Functions.GetItemByName('scales') == nil then
-        return FW.Functions.Notify("Je hebt een weegschaal nodig.", "error")
+        return FW.Functions.Notify("You need an scale.", "error")
     end
 
     TriggerClientEvent("fw-illegal:Client:CutMeth", Source, Item)

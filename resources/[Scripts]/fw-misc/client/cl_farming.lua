@@ -101,13 +101,13 @@ AddEventHandler("fw-misc:Client:Farming:UsedSeed", function(Item)
     local _, Hit, _, _, MaterialHash, _ = GetShapeTestResultIncludingMaterial(RayHandle)
 
     if not IsPlantMaterial(MaterialHash) then
-        return FW.Functions.Notify("Hier kan je geen plantje plaatsen..", "error")
+        return FW.Functions.Notify("You can't plant here..", "error")
     end
 
     -- Is the plant nearby another plant?
     local IsNearPlant = GetPlantByCoords(Coords)
     if IsNearPlant then
-        return FW.Functions.Notify("Hier is al iets geplant..", "error")
+        return FW.Functions.Notify("Something is already planted here..", "error")
     end
 
     exports['fw-inventory']:SetBusyState(true)
@@ -142,7 +142,7 @@ AddEventHandler("fw-misc:Client:Farming:PlantMenu", function(Data, Entity)
             goto Skip
         end
 
-        return FW.Functions.Notify("Dit moestuintje is niet van jou..", "error")
+        return FW.Functions.Notify("This garden plot is not yours..", "error")
     end
 
     ::Skip::
@@ -160,7 +160,7 @@ AddEventHandler("fw-misc:Client:Farming:PlantMenu", function(Data, Entity)
     MenuItems[#MenuItems + 1] = {
         Icon = "tint",
         Title = "Water",
-        Desc = "Geef je plant wat water.",
+        Desc = "Give your plant some water.",
         Disabled = not exports['fw-inventory']:HasEnoughOfItem('farming-wateringcan', 1),
         Data = {
             Event = 'fw-misc:Client:Farming:WaterPlant',
@@ -173,8 +173,8 @@ AddEventHandler("fw-misc:Client:Farming:PlantMenu", function(Data, Entity)
     if CurrentStage == TotalStages then
         MenuItems[#MenuItems + 1] = {
             Icon = "shovel",
-            Title = "Oogsten",
-            Desc = CurrentStage < TotalStages and "Je plant is nog klaar om te oogsten!" or "",
+            Title = "Harvest",
+            Desc = CurrentStage < TotalStages and "Your plant is not ready to harvest yet!" or "",
             Disabled = CurrentStage < TotalStages,
             Data = {
                 Event = 'fw-misc:Client:Farming:HarvestPlant',
@@ -186,7 +186,7 @@ AddEventHandler("fw-misc:Client:Farming:PlantMenu", function(Data, Entity)
     else
         MenuItems[#MenuItems + 1] = {
             Icon = "angry",
-            Title = "Verwoesten",
+            Title = "Destroy",
             Data = {
                 Event = 'fw-misc:Client:Farming:DestroyPlant',
                 Type = 'Client',
@@ -207,17 +207,17 @@ AddEventHandler("fw-misc:Client:Farming:WaterPlant", function(Data)
     local PlantData = Plants[Key]
 
     local HasWateringCan = exports['fw-inventory']:HasEnoughOfItem("farming-wateringcan", 1)
-    if not HasWateringCan then return FW.Functions.Notify("Je mist een gieter..", "error") end
+    if not HasWateringCan then return FW.Functions.Notify("You are missing a watering can..", "error") end
 
     local WateringCan = exports['fw-inventory']:GetItemByName("farming-wateringcan")
     if WateringCan == nil then return end
 
     if WateringCan.Info.Capacity ~= nil and WateringCan.Info.Capacity < 1.0 then
-        return FW.Functions.Notify("De gieter is leeg..", "error")
+        return FW.Functions.Notify("The watering can is empty..", "error")
     end
 
     if PlantData.Water > 50 then
-        return FW.Functions.Notify("Dit plantje heeft al genoeg water..", "error")
+        return FW.Functions.Notify("This plant already has enough water..", "error")
     end
 
     TaskTurnPedToFaceEntity(PlayerPedId(), Data.Entity, 1000)
@@ -225,7 +225,7 @@ AddEventHandler("fw-misc:Client:Farming:WaterPlant", function(Data)
     exports['fw-inventory']:SetBusyState(true)
     exports['fw-assets']:AddProp('wateringcan')
 
-    local Finished = FW.Functions.CompactProgressbar(7000, "Plantje water geven...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = 'fire', animDict = 'weapon@w_sp_jerrycan', flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(7000, "Watering plant...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = 'fire', animDict = 'weapon@w_sp_jerrycan', flags = 49 }, {}, {}, false)
     exports['fw-inventory']:SetBusyState(false)
     exports['fw-assets']:RemoveProp()
 
@@ -248,7 +248,7 @@ AddEventHandler("fw-misc:Client:Farming:HarvestPlant", function(Data)
     ClearPedTasks(PlayerPedId())
     TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
 
-    local Finished = FW.Functions.CompactProgressbar(7000, "Plantje oogsten...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(7000, "Harvesting plant...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     ClearPedTasks(PlayerPedId())
 
     exports['fw-inventory']:SetBusyState(false)
@@ -272,7 +272,7 @@ AddEventHandler("fw-misc:Client:Farming:DestroyPlant", function(Data)
     ClearPedTasks(PlayerPedId())
     TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
 
-    local Finished = FW.Functions.CompactProgressbar(7000, "Plantje verwoesten...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(7000, "Destroying plant...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     ClearPedTasks(PlayerPedId())
 
     exports['fw-inventory']:SetBusyState(false)
@@ -287,12 +287,12 @@ RegisterNetEvent("fw-misc:Client:Farming:RentGarden")
 AddEventHandler("fw-misc:Client:Farming:RentGarden", function(Data, Entity)
     local GardenId = GetGardenIdByCoords(GetEntityCoords(Entity))
     if not GardenId then
-        return FW.Functions.Notify("Dit tuintje kan niet gehuurd worden..", "error")
+        return FW.Functions.Notify("This garden cannot be rented..", "error")
     end
 
     local IsGardenRentable = FW.SendCallback("fw-misc:Server:IsGardenRentable", GardenId)
     if not IsGardenRentable then
-        return FW.Functions.Notify("Je kan dit tuintje momenteel niet huren..", "error")
+        return FW.Functions.Notify("You cannot rent this garden at the moment..", "error")
     end
 
     FW.TriggerServer("fw-misc:Server:Farming:RentGarden", GardenId, Data.RentPrice, Data.RentHours)
@@ -305,27 +305,27 @@ AddEventHandler("fw-misc:Client:Farming:UsedWateringcan", function(Item)
     if IsPedSwimming(PlayerPedId()) or IsPedSwimmingUnderWater(PlayerPedId()) then return end
 
     local Quality = exports['fw-inventory']:CalculateQuality(Item.Item, Item.CreateDate)
-    if Quality <= 10 then return FW.Functions.Notify("Dat ding is lekker verroest.. Weg ermee!", "error") end
+    if Quality <= 10 then return FW.Functions.Notify("That thing is completely rusted.. Throw it away!", "error") end
 
     exports['fw-inventory']:SetBusyState(true)
     exports['fw-assets']:AddProp('wateringcan')
 
-    local Finished = FW.Functions.CompactProgressbar(8500, "Gieter vullen met water...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = 'fire', animDict = 'weapon@w_sp_jerrycan', flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(8500, "Filling watering can with water...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = 'fire', animDict = 'weapon@w_sp_jerrycan', flags = 49 }, {}, {}, false)
     exports['fw-inventory']:SetBusyState(false)
     exports['fw-assets']:RemoveProp()
 
     if Finished then
         TriggerServerEvent("fw-misc:Server:Farming:SetWateringCanCapacity", Item.Slot, 100.0)
-        FW.Functions.Notify("Die gieter zit weer vol!", "success")
+        FW.Functions.Notify("The watering can is full again!", "success")
     else
-        FW.Functions.Notify("Je water viel eruit..", "error")
+        FW.Functions.Notify("You spilled the water..", "error")
     end
 end)
 
 RegisterNetEvent("fw-misc:Client:Farming:UsedPitchfork")
 AddEventHandler("fw-misc:Client:Farming:UsedPitchfork", function(Item)
     if UsingPitchfork then
-        return FW.Functions.Notify("Je gebruikt je hooivork al!", "error")
+        return FW.Functions.Notify("You are already using your pitchfork!", "error")
     end
 
     local Hit, Pos, Entity = nil, nil, nil
@@ -355,7 +355,7 @@ AddEventHandler("fw-misc:Client:Farming:UsedPitchfork", function(Item)
         local CanHarvestPlant = true
         for k, v in pairs(PlantIds) do
             if not exports['fw-inventory']:HasEnoughOfItem('farming-pitchfork', 1) then
-                FW.Functions.Notify("Je hooivork is kapot gegaan..", "error")
+                FW.Functions.Notify("Your pitchfork broke..", "error")
                 break
             end
 
@@ -369,7 +369,7 @@ AddEventHandler("fw-misc:Client:Farming:UsedPitchfork", function(Item)
                 local GardenRenter = FW.SendCallback("fw-misc:Server:GetGardenRenter", GardenId)
                 if GardenRenter and GardenRenter ~= FW.Functions.GetPlayerData().citizenid then
                     CanHarvestPlant = false
-                    FW.Functions.Notify("Er kon een plant niet geoogst worden! (Dit moestuintje is niet van jou..)")
+                    FW.Functions.Notify("A plant could not be harvested! (This garden plot is not yours..)")
                 end
             end
 
@@ -380,7 +380,7 @@ AddEventHandler("fw-misc:Client:Farming:UsedPitchfork", function(Item)
                 ClearPedTasks(PlayerPedId())
                 TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
 
-                local Finished = FW.Functions.CompactProgressbar(5000, "Plantje oogsten...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+                local Finished = FW.Functions.CompactProgressbar(5000, "Harvesting plant...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
                 ClearPedTasks(PlayerPedId())
 
                 if Finished then
@@ -404,7 +404,7 @@ AddEventHandler("fw-inventory:Client:OnItemInsert", function(FromItem, ToItem)
     if ToItem.Item ~= 'farming-hoe' then return end
 
     if UsingHoe then
-        return FW.Functions.Notify("Je gebruikt je schoffel al!", "error")
+        return FW.Functions.Notify("You are already using your hoe!", "error")
     end
 
     UsingHoe = true
@@ -498,12 +498,12 @@ AddEventHandler("fw-inventory:Client:OnItemInsert", function(FromItem, ToItem)
 
         for k, PlantCoords in pairs(CropCoords) do
             if not exports['fw-inventory']:HasEnoughOfItem('farming-seed', 1, FromItem.CustomType) then
-                FW.Functions.Notify("Je zaadjes zijn op..", "error")
+                FW.Functions.Notify("You are out of seeds..", "error")
                 break
             end
 
             if not exports['fw-inventory']:HasEnoughOfItem('farming-hoe', 1) then
-                FW.Functions.Notify("Je schoffel is kapot gegaan..", "error")
+                FW.Functions.Notify("Your hoe broke..", "error")
                 break
             end
 
@@ -513,7 +513,7 @@ AddEventHandler("fw-inventory:Client:OnItemInsert", function(FromItem, ToItem)
             local _, Hit, _, _, MaterialHash, _ = GetShapeTestResultIncludingMaterial(RayHandle)
 
             if not IsPlantMaterial(MaterialHash) then
-                FW.Functions.Notify("Er kon een plant niet geplaats worden! (Hier kan je geen plantje plaatsen..)")
+                FW.Functions.Notify("A plant could not be placed! (You can't plant here..)")
                 CanPlacePlant = false
             end
 
@@ -532,13 +532,13 @@ AddEventHandler("fw-inventory:Client:OnItemInsert", function(FromItem, ToItem)
                 local GardenRenter = FW.SendCallback("fw-misc:Server:GetGardenRenter", GardenId)
                 if GardenRenter and GardenRenter ~= FW.Functions.GetPlayerData().citizenid then
                     CanPlacePlant = false
-                    FW.Functions.Notify("Er kon een plant niet geplaats worden! (Dit moestuintje is niet van jou..)")
+                    FW.Functions.Notify("A plant could not be placed! (This garden plot is not yours..)")
                 end
             end
 
             local IsNearPlant = GetPlantByCoords(PlantCoords)
             if IsNearPlant then
-                FW.Functions.Notify("Er kon een plant niet geplaats worden! (Hier is al iets geplant..)")
+                FW.Functions.Notify("A plant could not be placed! (Something is already planted here..)")
                 CanPlacePlant = false
             end
 
@@ -555,7 +555,7 @@ AddEventHandler("fw-inventory:Client:OnItemInsert", function(FromItem, ToItem)
 
                 TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
 
-                local Finished = FW.Functions.CompactProgressbar(5000, "Zaadje plaatsen...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+                local Finished = FW.Functions.CompactProgressbar(5000, "Placing seed...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
                 ClearPedTasks(PlayerPedId())
 
                 if Finished then
@@ -718,7 +718,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'rent_3',
                 Icon = 'fas fa-dollar-sign',
-                Label = 'Tuintje huren voor 3 uur (€ 250,00)',
+                Label = 'Rent garden for 3 hours ($ 250.00)',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:Farming:RentGarden',
                 EventParams = { RentHours = 3, RentPrice = 250 },
@@ -729,7 +729,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'rent_6',
                 Icon = 'fas fa-dollar-sign',
-                Label = 'Tuintje huren voor 6 uur (€ 500,00)',
+                Label = 'Rent garden for 6 hours ($ 500.00)',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:Farming:RentGarden',
                 EventParams = { RentHours = 6, RentPrice = 500 },
@@ -740,7 +740,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'rent_12',
                 Icon = 'fas fa-dollar-sign',
-                Label = 'Tuintje huren voor 12 uur (€ 1.000,00)',
+                Label = 'Rent garden for 12 hours ($ 1,000.00)',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:Farming:RentGarden',
                 EventParams = { RentHours = 12, RentPrice = 1000 },
@@ -762,7 +762,7 @@ AddEventHandler("fw-ui:Ready", function()
                     {
                         Name = 'details',
                         Icon = 'fas fa-seedling',
-                        Label = 'Controleer',
+                        Label = 'Inspect',
                         EventType = 'Client',
                         EventName = 'fw-misc:Client:Farming:PlantMenu',
                         EventParams = {},

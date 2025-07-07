@@ -10,7 +10,7 @@ AddEventHandler('FW:Client:OnPlayerLoaded', function()
 
         RequestStreamedTextureDict('fw_sprites')
         if FW.GetCustomizedKey("eyePeek") ~= "L Alt" then
-            FW.Functions.Notify("Je hebt de sneltoets van het oogje veranderd, hierdoor zal het oogje niet correct functioneren. (Standaard: Left Alt)", "error", 10000)
+            FW.Functions.Notify("You have changed you keybind for eyes", "error", 10000)
         end
 
         InitUI()
@@ -54,10 +54,10 @@ end)
 RegisterNetEvent("fw-ui:Client:CreateBadge")
 AddEventHandler("fw-ui:Client:CreateBadge", function(Data)
     local Inputs = {
-        { Label = 'Naam', Icon = 'fas fa-user', Name = 'Name' },
-        { Label = 'Functie', Icon = 'fas fa-mask', Name = 'Rank' },
-        { Label = 'Roepnummer (optioneel)', Icon = 'fas fa-tag', Name = 'Callsign' },
-        { Label = 'Foto URL (.png/.jpg/.jpeg)', Icon = 'fas fa-heading', Name = 'Image' },
+        { Label = 'Name', Icon = 'fas fa-user', Name = 'Name' },
+        { Label = 'Rank', Icon = 'fas fa-mask', Name = 'Rank' },
+        { Label = 'Calsign (optioneel)', Icon = 'fas fa-tag', Name = 'Callsign' },
+        { Label = 'Picture URL (.png/.jpg/.jpeg)', Icon = 'fas fa-heading', Name = 'Image' },
     }
 
     if Data.Badge == 'pd' then
@@ -80,7 +80,7 @@ AddEventHandler("fw-ui:Client:CreateBadge", function(Data)
     if Result and #Result.Name > 0 and #Result.Rank > 0 and #Result.Image > 0 then
         TriggerServerEvent("fw-ui:Server:CreateBadge", Data, Result)
     else
-        FW.Functions.Notify("Je moet een naam, rang en foto aangeven!", "error")
+        FW.Functions.Notify("You need to fill in all info!", "error")
     end
 end)
 
@@ -159,7 +159,7 @@ AddEventHandler("fw-ui:Client:ToggleCompass", function()
     ShowCompass = not ShowCompass
     SetResourceKvpInt("fw-hide-compass", ShowCompass and 1 or 0)
 
-    FW.Functions.Notify("Je hebt het kompas " .. (ShowCompass and "geactiveerd" or "gedeactiveerd") .. "!", ShowCompass and "success" or "error")
+    FW.Functions.Notify("You have compass " .. (ShowCompass and "activated" or "deactivated") .. "!", ShowCompass and "success" or "error")
 
     if IsPedInAnyVehicle(PlayerPedId()) and CompassState ~= ShowCompass then
         CompassState = ShowCompass

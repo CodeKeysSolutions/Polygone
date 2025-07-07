@@ -12,7 +12,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'pdm-job-store',
                 Icon = 'fas fa-car',
-                Label = 'Voertuigen',
+                Label = 'Vehicles',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:OpenJobVehicleStore',
                 EventParams = {},
@@ -104,7 +104,7 @@ AddEventHandler("fw-misc:Client:SpawnJobVehicle", function(Model, Plate)
     exports['fw-vehicles']:SetFuelLevel(Vehicle, 100.0)
 
     Citizen.SetTimeout(1000, function()
-        FW.Functions.Notify("Het voertuig staat klaar achter de PDM")
+        FW.Functions.Notify("Vehicle is ready behinde pdm")
         NetworkRegisterEntityAsNetworked(Vehicle)
         FW.Functions.SetVehiclePlate(Vehicle, Plate)
         TriggerServerEvent("fw-businesses:Server:AutoCare:LoadParts", Plate, { Engine = 100, Axle = 100, Transmission = 100, FuelInjectors = 100, Clutch = 100, Brakes = 100 })

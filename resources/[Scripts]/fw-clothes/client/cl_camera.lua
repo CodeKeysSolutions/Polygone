@@ -28,15 +28,20 @@ function CreateClothingCamera(Bool, WithBlur, ForceStage)
 
         CameraController()
     else
-        RenderScriptCams(false, false, 500, false, false)
+        RenderScriptCams(false, false, 0, true, true)
+        -- RenderScriptCams(false, false, 500, false, false)
+        if camera then 
         DestroyCam(Camera, true)
-
+        camera = nil
+        end
+        SetFocusEntity(PlayerPedId())
         SetGameplayCamRelativeHeading(0)
         SetGameplayCamRelativePitch(0, 1)
 
         Camera = nil
         StopAnimTask(PlayerPedId(), 'mp_sleep', 'bind_pose_180', 3.0)
-        SetFocusEntity(PlayerPedId())
+        
+        
     end
 end
 

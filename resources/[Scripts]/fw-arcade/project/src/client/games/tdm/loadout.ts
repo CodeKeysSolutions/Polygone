@@ -26,11 +26,11 @@ export const OpenLoadoutMenu = (Respawn: boolean) => {
             Title: "Loadout"
         },
         {
-            Title: Respawn ? "Spawn" : "Terug naar spel",
+            Title: Respawn ? "Spawn" : "Back to game",
             Data: {Event: "fw-arcade:Client:TDM:Spawn", Respawn}
         },
         {
-            Title: "Verwijder huidige wapens",
+            Title: "Delete current weapons",
             CloseMenu: false,
             Data: {Event: "fw-arcade:Server:TDM:RemoveLoadout" }
         }

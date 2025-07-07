@@ -27,26 +27,26 @@
 <div data-tooltip={description || ' '} class="mdw-charge-container charge-{type.toLowerCase()}" on:click on:keyup>
     <p class="mdw-charge-header">{name}</p>
     <div class="mdw-charge-info">
-        <p>{jail} maand(en)</p>
+        <p>{jail} month(s)</p>
         <p>{FormatCurrency.format(fine)}</p>
-        <p>{points} punt(en)</p>
+        <p>{points} point(s)</p>
     </div>
     {#if IsChargeValid(accomplice)}
         <hr style="border-top: none; border-right: none; border-bottom: 0.1vh solid black; border-left: none; border-image: initial;">
-        <p class="mdw-charge-subheader">Medeplichtigheid</p>
+        <p class="mdw-charge-subheader">Accomplice</p>
         <div class="mdw-charge-info">
-            <p>{accomplice.jail} maand(en)</p>
+            <p>{accomplice.jail} month(s)</p>
             <p>{FormatCurrency.format(accomplice.fine)}</p>
-            <p>{accomplice.points} punt(en)</p>
+            <p>{accomplice.points} point(s)</p>
         </div>
     {/if}
     {#if IsChargeValid(attempted)}
         <hr style="border-top: none; border-right: none; border-bottom: 0.1vh solid black; border-left: none; border-image: initial;">
-        <p class="mdw-charge-subheader">Poging Tot</p>
+        <p class="mdw-charge-subheader">Attempted</p>
         <div class="mdw-charge-info">
-            <p>{attempted.jail} maand(en)</p>
+            <p>{attempted.jail} month(s)</p>
             <p>{FormatCurrency.format(attempted.fine)}</p>
-            <p>{attempted.points} punt(en)</p>
+            <p>{attempted.points} point(s)</p>
         </div>
     {/if}
 </div>

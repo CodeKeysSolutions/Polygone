@@ -117,10 +117,10 @@ function Process(action, start, tick, finish)
                 end
             end)
         else
-            FW.Functions.Notify("Je bent al met iets bezig!", "error")
+            FW.Functions.Notify("Your bussy!", "error")
         end
     else
-        FW.Functions.Notify("Kan actie niet uitvoeren!", "error")
+        FW.Functions.Notify("Invalid action!", "error")
     end
 end
 

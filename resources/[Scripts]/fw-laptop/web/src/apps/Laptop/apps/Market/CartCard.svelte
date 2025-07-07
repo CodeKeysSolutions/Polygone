@@ -1,7 +1,7 @@
 <script>
     import Ripple from "@smui/ripple";
     export let Image = 'https://i.imgur.com/C7BzBQ4.png';
-    export let Name = 'Een Holle-Bolle Kitten';
+    export let Name = 'A Holle-Bolle Kitten'; // was 'Een Holle-Bolle Kitten'
     export let Price = 5;
 </script>
 
@@ -16,7 +16,7 @@
         class="cart-button"
         on:keyup on:click
     >
-        Verwijderen van Winkelmandje
+        Remove from Cart <!-- was "Verwijderen van Winkelmandje" -->
     </div>
 </div>
 

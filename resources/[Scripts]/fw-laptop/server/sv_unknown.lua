@@ -77,6 +77,7 @@ end
 exports("SetGangMetadata", SetGangMetadata)
 
 function SetGangLeader(GangId, Cid)
+    print("Setting gang leader for GangId: " .. GangId .. " to Cid: " .. Cid)
     if Config.Gangs[GangId] == nil then return false end
     Config.Gangs[GangId].Leader = { Cid = Cid, Name = FW.Functions.GetPlayerCharName(Cid) }
     exports['ghmattimysql']:executeSync("UPDATE `laptop_gangs` SET `gang_leader` = ? WHERE `gang_id` = ?", {
@@ -89,6 +90,7 @@ end
 exports("SetGangLeader", SetGangLeader)
 
 function GetGangMetadata(GangId, MetaDataId)
+   
     if Config.Gangs[GangId] == nil then return false end
     return Config.Gangs[GangId].MetaData[MetaDataId]
 end
@@ -204,7 +206,7 @@ end)
 
 FW.Functions.CreateCallback("fw-laptop:Server:Unknown:SendMessage", function(Source, Cb, Data)
     local Player = FW.Functions.GetPlayer(Source)
-    if Player == nil then Cb({Success = false, Msg = "Ongeldige Speler"}) return end
+    if Player == nil then Cb({Success = false, Msg = "Invalid civ"}) return end
 
     local Gang = GetGangByPlayer(Player.PlayerData.citizenid)
     if not Gang then return end

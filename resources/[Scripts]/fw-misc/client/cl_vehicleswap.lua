@@ -4,8 +4,8 @@ AddEventHandler('FW:Client:OnPlayerLoaded', function()
     local ContextItems = {
         {
             Icon = "info-circle",
-            Title = "Voertuig Swap",
-            Desc = "Swap je voertuigen bij de Vapid Dealership naast appartementen."
+            Title = "Vehicle Swap",
+            Desc = "Select a vehicle to swap",
         }
     }
 
@@ -42,7 +42,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'pdm-job-store',
                 Icon = 'fas fa-car',
-                Label = 'Verwijderde Voertuig Swappen',
+                Label = 'Deleleted vehicle swap',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:OpenVehicleSwap',
                 EventParams = {},
@@ -59,12 +59,12 @@ AddEventHandler("fw-misc:Client:OpenVehicleSwap", function()
     local ContextItems = {
         -- {
         --     Icon = "info-circle",
-        --     Title = "Geruilde voertuigen",
+        --     Title = "Geruilde Vehicles",
         --     SecondMenu = {}
         -- },
         {
             Icon = "info-circle",
-            Title = "Ruil voertuig",
+            Title = "Swap Vehicle",
             SecondMenu = {}
         }
     }
@@ -153,7 +153,7 @@ AddEventHandler("fw-misc:Client:OpenSwapCatalog", function(Data)
         table.insert(ContextItems, {
             Icon = "folder-times",
             Title = "Refund",
-            Desc = ("Kon geen voertuigen vinden binnen prijsklasse, klik om %s te ontvangen."):format(exports['fw-businesses']:NumberWithCommas(SharedData.Price)),
+            Desc = ("Counlnt find vehicles with same price range, you will receive %s."):format(exports['fw-businesses']:NumberWithCommas(SharedData.Price)),
             Data = {
                 Event = "fw-misc:Client:ConfirmVehicleSwap",
                 Plate = Data.Plate,
@@ -167,7 +167,7 @@ AddEventHandler("fw-misc:Client:OpenSwapCatalog", function(Data)
             table.insert(ContextItems, {
                 Icon = "money-bill-wave",
                 Title = "Refund",
-                Desc = "Lever je voertuig in, voor GNE refund maak een ticket aan.",
+                Desc = "Deliver you vehicle for refund, make ticket if you want crypto.",
                 Data = {
                     Event = "fw-misc:Client:ConfirmVehicleSwap",
                     Plate = Data.Plate,
@@ -180,7 +180,7 @@ AddEventHandler("fw-misc:Client:OpenSwapCatalog", function(Data)
             table.insert(ContextItems, {
                 Icon = "money-bill-wave",
                 Title = "Refund",
-                Desc = ("Ruil je voertuig in voor %s op je bank."):format(exports['fw-businesses']:NumberWithCommas(SharedData.Price)),
+                Desc = ("Swap vehicle for %s bank."):format(exports['fw-businesses']:NumberWithCommas(SharedData.Price)),
                 Data = {
                     Event = "fw-misc:Client:ConfirmVehicleSwap",
                     Plate = Data.Plate,
@@ -206,11 +206,11 @@ AddEventHandler("fw-misc:Client:ConfirmVehicleSwap", function(Data)
         FW.Functions.OpenMenu({
             MainMenuItems = {
                 {
-                    Title = ("Voertuig Ruilen (%s)"):format(Data.VIN),
-                    Desc = Data.Swap == "Refund " and "Weet je zeker dat je het voertuig wilt refunden?" or ("Weet je zeker dat je %s wilt omruilen voor een %s?"):format(Data.Vehicle, Data.Swap)
+                    Title = ("Swap vehicle (%s)"):format(Data.VIN),
+                    Desc = Data.Swap == "Refund " and "You sure you want an refund?" or ("You sure you wanna refund %s for %s?"):format(Data.Vehicle, Data.Swap)
                 },
                 {
-                    Title = "Bevestigen",
+                    Title = "Confirm",
                     Data = {
                         Event = "fw-misc:Server:SetVehicleSwap",
                         Plate = Data.Plate,
@@ -220,7 +220,7 @@ AddEventHandler("fw-misc:Client:ConfirmVehicleSwap", function(Data)
                     }
                 },
                 {
-                    Title = "Annuleren",
+                    Title = "Cancel",
                     Data = { Event = "" }
                 },
             },

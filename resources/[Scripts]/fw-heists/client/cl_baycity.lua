@@ -8,11 +8,11 @@ AddEventHandler("fw-items:Clent:Used:HeavyThermite", function()
         end
     
         if CurrentCops < Config.RequiredCopsBaycity or DataManager.Get("GlobalCooldown", false) == true then
-            return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            return FW.Functions.Notify("Cant do this right now..", "error")
         end
     
         if DataManager.Get("HeistsDisabled", 0) == 1 then
-            return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            return FW.Functions.Notify("Cant do this right now..", "error")
         end
     
         if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -77,7 +77,7 @@ AddEventHandler("fw-heists:Client:Baycity:OpenVault", function()
         return
     end
     
-    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "Dark Market", "#BayCity-283", "De kluis van de Bay City Bank wordt zometeen geopend...")
+    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "Dark Market", "#BayCity-283", "The safe is opening soon...")
 
     Citizen.SetTimeout((60 * 1000) * 2.5, function()
         DataManager.Set(GetBaycityPrefix() .. "vault", 2)

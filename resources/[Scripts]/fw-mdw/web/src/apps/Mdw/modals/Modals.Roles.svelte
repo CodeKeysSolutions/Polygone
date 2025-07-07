@@ -14,7 +14,7 @@
 <div class="mdw-modal-certs">
     <div class="mdw-modal-certs-container">
         <p>Rollen Toevoegen</p>
-        <TextField Title='Zoeken' Icon='search' SubSet={FilterRoles} />
+        <TextField Title='Search' Icon='search' SubSet={FilterRoles} />
         <div class="mdw-modal-certs-list">
             {#each FilteredRoles as Data, Key}
                 {#if !$MdwModalsRoles.IgnoreFilter.includes(Data.id)}

@@ -348,7 +348,7 @@ AddEventHandler("fw-vehicles:Server:DepotVehicle", function(NetId, ImpoundId, Da
         end
     else
         TriggerEvent("fw-jobmanager:Server:Impound:AddImpoundRequest", NetId)
-        Player.Functions.Notify("Een depotmedewerker is onderweg!")
+        Player.Functions.Notify("Impound employer on its way!")
     end
 
     if Result[1] then
@@ -408,7 +408,7 @@ AddEventHandler('fw-vehicles:Server:SendMessageToImpound', function()
     end
 
     if DepotWorkers == 0 then
-        Player.Functions.Notify("Geen depotmedewerkers aanwezig..", "error")
+        Player.Functions.Notify("No employers availiable aanwezig..", "error")
     end
 end)
 

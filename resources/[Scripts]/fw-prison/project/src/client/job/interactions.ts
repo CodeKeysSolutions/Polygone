@@ -9,7 +9,7 @@ export const IsDoc =() => {
 export const GetClosestPlayer = async () => {
     const [Player, Distance] = await FW.Functions.GetClosestPlayer();
     if (!Player || Player < 0 || Distance > 2.0 || IsPedInAnyVehicle(GetPlayerPed(GetPlayerFromServerId(Player)), false)) {
-        FW.Functions.Notify("Geen speler gevonden..", "error")
+        FW.Functions.Notify("No player found..", "error")
         return [false, 0];
     };
     
@@ -23,22 +23,22 @@ on("fw-prison:Client:OpenDOCActions", () => {
 
     MenuItems.push({
         Icon: 'box-open',
-        Title: 'Persoonlijke Stash',
-        Desc: 'Voor je persoonlijke spullen.',
+        Title: 'Personal Stash',
+        Desc: 'For your personal belongings.',
         Data: { Event: "fw-prison:Client:PersonalStash", Type: "Client" }
     });
 
     MenuItems.push({
         Icon: 'trash',
-        Title: 'Prullenbak',
-        Desc: 'Gooi jezelf er maar in, hier hoor je thuis.',
+        Title: 'Trashcan',
+        Desc: 'Just throw yourself in, this is where you belong.',
         Data: { Event: "fw-prison:Client:Trash", Type: "Client" }
     });
 
     MenuItems.push({
         Icon: 'shield-alt',
-        Title: 'Wapenkluis',
-        Desc: 'Voor je wapens en andere benodigdheden.',
+        Title: 'Armory',
+        Desc: 'For your weapons and other necessities.',
         Data: { Event: "fw-prison:Client:Armory", Type: "Client" }
     });
 
@@ -71,22 +71,22 @@ on("fw-prison:Client:CheckInmateInformation", async () => {
 
     MenuItems.push({
         Icon: 'info-circle',
-        Title: 'Gevangenen Informatie',
+        Title: 'Inmate Information',
     });
 
     MenuItems.push({
         Title: `Inmate #${InmateData.citizenid}`,
-        Desc: InmateData.metadata.islifer ? 'Tijd resterend: levenslang' : `Tijd resterend: ${InmateData.metadata.jailtime} maand(en)`,
+        Desc: InmateData.metadata.islifer ? 'Time remaining: life sentence' : `Time remaining: ${InmateData.metadata.jailtime} month(s)`,
     });
 
     MenuItems.push({
-        Title: `Voorwaardelijk: ${InmateData.metadata.paroletime} maand(en)`,
-        Desc: "Voorwaardelijke straf telt af na celstraf."
+        Title: `Parole: ${InmateData.metadata.paroletime} month(s)`,
+        Desc: "Parole time counts down after jail time."
     });
 
     MenuItems.push({
-        Title: `Huidige Taak`,
-        Desc: InmateData.CurrentTask ? InmateData.CurrentTask : "Geen actieve taak."
+        Title: `Current Task`,
+        Desc: InmateData.CurrentTask ? InmateData.CurrentTask : "No active task."
     });
 
     FW.Functions.OpenMenu({ MainMenuItems: MenuItems });

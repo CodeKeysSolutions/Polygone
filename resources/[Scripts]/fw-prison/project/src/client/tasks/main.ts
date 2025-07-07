@@ -29,7 +29,7 @@ export const ReduceJailTime = (Time: number) => {
 
     const JailTime: number = FW.Functions.GetPlayerData().metadata.jailtime
     if (JailTime - Time > 1) {
-        FW.Functions.Notify(`Strafvermindering ontvangen. ${JailTime - Time} maand(en) resterend.`, null, 7000);
+        FW.Functions.Notify(`Sentence reduction received. ${JailTime - Time} month(s) remaining.`, null, 7000); // was "Strafvermindering ontvangen. ${JailTime - Time} maand(en) resterend."
         FW.TriggerServer('fw-prison:Server:ReduceJailTime', Time)
     };
 };

@@ -16,7 +16,7 @@ Citizen.CreateThread(function()
 
         InsidePurchase = IsInside
         if InsidePurchase then
-            exports['fw-ui']:ShowInteraction("[E] Voertuig Aanschaffen")
+            exports['fw-ui']:ShowInteraction("[E] Purchase vehicles")
         else
             exports['fw-ui']:HideInteraction()
         end
@@ -36,7 +36,7 @@ Citizen.CreateThread(function()
                             SecondMenu = {
                                 {
                                     Icon = 'user',
-                                    Title = 'Bevestig aankoop',
+                                    Title = 'Confirm purchase',
                                     CloseMenu = true,
                                     Data = { Event = 'fw-police:Server:PurchaseVehicle', Type = 'Server', Vehicle = v }
                                 },
@@ -46,7 +46,7 @@ Citizen.CreateThread(function()
                         if (FW.Functions.GetPlayerData().metadata.ishighcommand) then
                             BuyVehicles[#BuyVehicles].SecondMenu[2] = {
                                 Icon = 'people-arrows',
-                                Title = 'Bevestig aankoop (Gezamelijk)',
+                                Title = 'Confirm shared purchase',
                                 CloseMenu = true,
                                 Data = { Event = 'fw-police:Server:PurchaseVehicle', Type = 'Server', Vehicle = v, Shared = true }
                             }
@@ -79,7 +79,7 @@ Citizen.CreateThread(function()
     
             InsideHeli = IsInside
             if InsideHeli then
-                exports['fw-ui']:ShowInteraction(IsPedInAnyHeli(PlayerPedId()) and "[E] Helikopter Verwijderen" or "[E] Politie Helikopters")
+                exports['fw-ui']:ShowInteraction(IsPedInAnyHeli(PlayerPedId()) and "[E] Delete Helichopers" or "[E] Poliice Helichopers")
             else
                 exports['fw-ui']:HideInteraction()
             end
@@ -90,7 +90,7 @@ Citizen.CreateThread(function()
                     if IsControlJustReleased(0, 38) then
     
                         if IsPedInAnyHeli(PlayerPedId()) then
-                            exports['fw-ui']:EditInteraction("[E] Politie Helikopters")
+                            exports['fw-ui']:EditInteraction("[E] Police Helichopers")
                             FW.VSync.DeleteVehicle(GetVehiclePedIsIn(PlayerPedId()))
                         else
                             FW.Functions.OpenMenu({
@@ -101,7 +101,7 @@ Citizen.CreateThread(function()
                                         Disabled = not CanUseVehicle('airone'),
                                         SecondMenu = {
                                             {
-                                                Title = 'Helikopter Pakken',
+                                                Title = 'Take out Helichoper',
                                                 CloseMenu = true,
                                                 Data = { Event = 'fw-police:Client:SpawnHelicopter', Type = 'Client', Helicopter = 'airone', Coords = pad.Coords }
                                             },

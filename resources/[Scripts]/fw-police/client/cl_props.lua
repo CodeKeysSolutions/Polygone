@@ -81,7 +81,7 @@ AddEventHandler("fw-police:Client:OpenBarricadeMenu", function(Props, ClosestDat
         table.insert(MenuItems, {
             Icon = "info-circle",
             Title = "Prop Info (" .. ClosestData.Label .. ")",
-            Desc = "Barricade Id: " .. ClosestData.Id .. ";<br/>Geplaats door: " .. ClosestData.PlacedBy .. ";<br/>Geplaats op: " .. ClosestData.PlacedAt .. ";",
+            Desc = "Barricade Id: " .. ClosestData.Id .. ";<br/>Placed by: " .. ClosestData.PlacedBy .. ";<br/>Placed on: " .. ClosestData.PlacedAt .. ";",
             Disabled = true,
         })
     end
@@ -106,7 +106,7 @@ AddEventHandler("fw-police:Client:PlaceBarricade", function(Data)
     exports['fw-core']:DoEntityPlacer(Data.Prop, 10.0, true, true, nil, function(DidPlace, Coords, Heading)
         if not DidPlace then return end
         
-        local Finished = FW.Functions.CompactProgressbar(1000, "Barricade plaatsen...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "weapons@first_person@aim_rng@generic@projectile@thermal_charge@", anim = "plant_floor", flags = 49 }, {}, {}, false)
+        local Finished = FW.Functions.CompactProgressbar(1000, "Placing Barricade...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "weapons@first_person@aim_rng@generic@projectile@thermal_charge@", anim = "plant_floor", flags = 49 }, {}, {}, false)
         if not Finished then return end
 
         FW.TriggerServer("fw-police:Server:PlaceBarricade", Data.Prop, Coords, Heading)

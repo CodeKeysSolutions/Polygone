@@ -100,8 +100,8 @@ const GetAvailableHospitalBed = (Coords: Vector3, InPrison: boolean) => {
     return false;
 };
 
-FW.Commands.Add("setemsvehicle", "Geef een ambulance voertuig aan een werknemer", [
-    { name: "Id", help: "Werknemer Server ID" },
+FW.Commands.Add("setemsvehicle", "Assign an ambulance vehicle to an employee", [
+    { name: "Id", help: "Employee Server ID" },
     { name: "Vehicle", help: "Speedo / Motor / Taurus / Flight / Water / Commander"},
     { name: "Status", help: "True / False"}
 ], true, (Source: number, Args: Array<string>) => {
@@ -113,12 +113,12 @@ FW.Commands.Add("setemsvehicle", "Geef een ambulance voertuig aan een werknemer"
 
     if (Args[2].toLowerCase() == 'true') {
         Target.Functions.SetMetaDataTable("ems-vehicle", Args[1].toUpperCase(), true);
-        Target.Functions.Notify(`Je hebt een voertuig specialisatie ontvangen! (${Args[1].toUpperCase()})`, 'success');
-        Player.Functions.Notify(`Specialisatie ${Args[1].toUpperCase()} gegeven aan ${Target.PlayerData.citizenid}`, 'success');
+        Target.Functions.Notify(`You have received a vehicle specialization! (${Args[1].toUpperCase()})`, 'success');
+        Player.Functions.Notify(`Specialization ${Args[1].toUpperCase()} given to ${Target.PlayerData.citizenid}`, 'success');
     } else {
         Target.Functions.SetMetaDataTable("ems-vehicle", Args[1].toUpperCase(), false);
-        Target.Functions.Notify(`Je specialisatie is afgenomen.. (${Args[1].toUpperCase()})`, 'error');
-        Player.Functions.Notify(`Specialisatie ${Args[1].toUpperCase()} ontnomen van ${Target.PlayerData.citizenid}`, 'error');
+        Target.Functions.Notify(`Your specialization has been removed.. (${Args[1].toUpperCase()})`, 'error');
+        Player.Functions.Notify(`Specialization ${Args[1].toUpperCase()} removed from ${Target.PlayerData.citizenid}`, 'error');
     };
 });
 
@@ -134,7 +134,7 @@ onNet("fw-hospital:Server:PurchaseVehicle", async (Data: any) => {
     const Account = Data.Shared ? "2" : Player.PlayerData.charinfo.account;
     const Price = FW.Shared.CalculateTax("Vehicle Registration Tax", SharedData.Price)
 
-    const HasPaid = await exp['fw-financials'].RemoveMoneyFromAccount("1001", "1", Account, Price, "PURCHASE", `Voertuig aankoop ${SharedData.Name}`, false);
+    const HasPaid = await exp['fw-financials'].RemoveMoneyFromAccount("1001", "1", Account, Price, "PURCHASE", `Vehicle purchase ${SharedData.Name}`, false);
     if (HasPaid) {
         exp['ghmattimysql'].execute("INSERT INTO `player_vehicles` (`citizenid`, `vehicle`, `plate`, `garage`, `vinnumber`) VALUES (?, ?, ?, ?, ?)", [
             Data.Shared ? "gov_ems" : Player.PlayerData.citizenid,
@@ -152,8 +152,8 @@ onNet("fw-hospital:Server:PurchaseVehicle", async (Data: any) => {
             new Date().getTime()
         ])
 
-        TriggerClientEvent('FW:Notify', Player.PlayerData.source, `Je hebt een ${SharedData.Name} gekocht..`, "success");
+        TriggerClientEvent('FW:Notify', Player.PlayerData.source, `You have purchased a ${SharedData.Name}..`, "success");
     } else {
-        Player.Functions.Notify("Niet genoeg geld..", "error")
+        Player.Functions.Notify("Not enough money..", "error")
     };
 });

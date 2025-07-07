@@ -15,12 +15,12 @@ export const WheaterIcons = {
 }
 
 export const LicensesLocale = {
-    driver: "Rijbewijs",
-    hunting: "Jaag Vergunning",
-    weapon: "Wapen Vergunning",
-    fishing: "Vis Vergunning",
-    flying: "Vliegbrevet",
-    business: "Bedrijfs Vergunning",
+    driver: "Driver license",
+    hunting: "Hunting lisence",
+    weapon: "Weapon lisence",
+    fishing: "Fishing lisence",
+    flying: "Pilot lisence",
+    business: "Business lisence",
 }
 
 export const HouseCategoryIcons = {
@@ -73,12 +73,12 @@ export const HouseTiersLabels = [
 ]
 
 export const DocumentTypes = [
-    "Notities",
-    "Licenties",
-    "Documenten",
-    "Voertuig Registraties",
-    "Eigendom Registraties",
-    "Contracten"
+    "Notes",
+    "Licenses",
+    "Documents",
+    "Vehicle Registrations",
+    "Property Deeds",
+    "Contracts",
 ]
 
 export const CreateableDocumentTypes = [

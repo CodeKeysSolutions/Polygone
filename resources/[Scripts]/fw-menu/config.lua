@@ -1,4 +1,3 @@
-
 Config = Config or {}
 
 Config.Keys = {["F1"] = 288}
@@ -7,7 +6,7 @@ Config.HasHandCuffs = false
 Config.Menu = {
     {
         Id = "park_vehicle",
-        Title = "Parkeer Voertuig",
+        Title = "Park Vehicle",
         Icon = "#global-park",
         Close = true,
         Event = "fw-vehicles:Client:ParkVehicle",
@@ -28,7 +27,7 @@ Config.Menu = {
     },
     {
         Id = "impound_request",
-        Title = "Voertuig Depot",
+        Title = "Vehicle Depot",
         Icon = "#global-lock",
         Close = true,
         Event = "fw-vehicles:Client:RequestImpound",
@@ -67,7 +66,7 @@ Config.Menu = {
     },
     {
         Id = "citizen",
-        Title = "Burger",
+        Title = "Citizen",
         Icon = "#citizen-action",
         Enabled = function()
             if not exports['fw-medical']:GetDeathStatus() then
@@ -78,7 +77,7 @@ Config.Menu = {
     },
     {
         Id = "animations",
-        Title = "Loop Stijl",
+        Title = "Walk Style",
         Icon = "#global-walking",
         Enabled = function()
             if not exports['fw-medical']:GetDeathStatus() then
@@ -89,7 +88,7 @@ Config.Menu = {
     },
     {
         Id = "expressions",
-        Title = "Gezicht Expressies",
+        Title = "Facial Expressions",
         Icon = "#expressions",
         Enabled = function()
             if not exports['fw-medical']:GetDeathStatus() then
@@ -100,7 +99,7 @@ Config.Menu = {
     },
     {
         Id = "police",
-        Title = "Politie",
+        Title = "Police",
         Icon = "#police-action",
         Enabled = function()
             if not exports['fw-medical']:GetDeathStatus() and FW.Functions.GetPlayerData().job.name == 'police' and FW.Functions.GetPlayerData().job.onduty then
@@ -111,7 +110,7 @@ Config.Menu = {
     },
     {
         Id = "storesecurity",
-        Title = "Winkel Cooperatie",
+        Title = "Store Security",
         Icon = "#police-action",
         Enabled = function()
             if not exports['fw-medical']:GetDeathStatus() and FW.Functions.GetPlayerData().job.name == 'storesecurity' and FW.Functions.GetPlayerData().job.onduty then
@@ -148,7 +147,7 @@ Config.Menu = {
     },
     {
         Id = "escort",
-        Title = "Escorteren",
+        Title = "Escort",
         Icon = "#citizen-action-escort",
         Close = true,
         Event = "fw-police:Client:Escort",
@@ -181,7 +180,7 @@ Config.Menu = {
     },
     {
         Id = "ems-actions",
-        Title = "EMS Acties",
+        Title = "EMS Actions",
         Icon = "#ambulance-action",
         Enabled = function()
             if not exports['fw-medical']:GetDeathStatus() and FW.Functions.GetPlayerData().job.name == 'ems' and FW.Functions.GetPlayerData().job.onduty then
@@ -192,7 +191,7 @@ Config.Menu = {
     },
     {
         Id = "vehicle",
-        Title = "Voertuig",
+        Title = "Vehicle",
         Icon = "#citizen-action-vehicle",
         Enabled = function()
             if not exports['fw-medical']:GetDeathStatus() then
@@ -206,7 +205,7 @@ Config.Menu = {
     },
     {
         Id = "vehicle-doors",
-        Title = "Voertuig Opties",
+        Title = "Vehicle Options",
         Icon = "#citizen-action-vehicle-options",
         Close = true,
         Event = "veh:options",
@@ -235,7 +234,7 @@ Config.Menu = {
     },
     {
         Id = "garage",
-        Title = "Voertuigen Acties",
+        Title = "Vehicle Actions",
         Icon = "#police-action-vehicle",
         Close = true,
         Event = "fw-vehicles:Client:GarageActions",
@@ -254,7 +253,7 @@ Config.Menu = {
     },
     {
         Id = "judge-actions",
-        Title = "Rechter",
+        Title = "Judge",
         Icon = "#judge-actions",
         Enabled = function()
             if not exports['fw-medical']:GetDeathStatus() and FW.Functions.GetPlayerData().job.name == 'judge' then
@@ -265,7 +264,7 @@ Config.Menu = {
     },
     {
         Id = "cuff",
-        Title = "Boeien",
+        Title = "Cuff",
         Icon = "#citizen-action-cuff",
         Close = true,
         Event = "fw-police:Client:Cuff",
@@ -277,7 +276,7 @@ Config.Menu = {
     },
     {
         Id = "hospital-menu",
-        Title = "In Checken",
+        Title = "Check In",
         Icon = "#citizen-clipboard",
         Close = true,
         Event = "fw-medical:Client:CheckIn",
@@ -290,7 +289,7 @@ Config.Menu = {
     },
     {
         Id = "boat-menu",
-        Title = "Boot",
+        Title = "Boat",
         Icon = "#police-boat",
         Close = true,
         Event = "fw-police:Client:SpawnBoat",
@@ -308,7 +307,7 @@ Config.Menu = {
     },
     {
         Id = "steal-shoes",
-        Title = "Schoenen Stelen",
+        Title = "Steal Shoes",
         Icon = "#citizen-steal-shoes",
         Close = true,
         Event = "fw-misc:Server:StealShoes",
@@ -335,7 +334,7 @@ Config.Menu = {
     },
     {
         Id = "griffier-actions",
-        Title = "Wet en Recht",
+        Title = "Law and Justice",
         Icon = "#police-action",
         Enabled = function()
             if not exports['fw-medical']:GetDeathStatus() and FW.Functions.GetPlayerData().job.name == 'griffier' or FW.Functions.GetPlayerData().job.name == 'security' then
@@ -346,7 +345,7 @@ Config.Menu = {
     },
     {
         Id = "mayor-actions",
-        Title = "Burgemeester",
+        Title = "Mayor",
         Icon = "#police-action",
         Enabled = function()
             if not exports['fw-medical']:GetDeathStatus() and FW.Functions.GetPlayerData().job.name == 'mayor' then
@@ -357,7 +356,7 @@ Config.Menu = {
     },
     {
         Id = "lawyer-actions",
-        Title = "Advocaat",
+        Title = "Lawyer",
         Icon = "#police-action",
         Enabled = function()
             if not exports['fw-medical']:GetDeathStatus() and FW.Functions.GetPlayerData().job.name == 'lawyer' then
@@ -366,22 +365,9 @@ Config.Menu = {
         end,
         SubMenus = {"police:tablet"}
     },
-    -- {
-    --     Id = "vehicle-extra",
-    --     Title = "Voertuig Extra's",
-    --     Icon = "#citizen-action-vehicle-extra",
-    --     Enabled = function()
-    --         if not exports['fw-medical']:GetDeathStatus() then
-    --             if IsPedSittingInAnyVehicle(PlayerPedId()) or IsPedInAnyBoat(PlayerPedId()) or IsPedInAnyHeli(PlayerPedId()) or IsPedOnAnyBike(PlayerPedId()) then
-    --                 return true
-    --             end
-    --         end
-    --     end,
-    --     SubMenus = {"vehicle:extra", "vehicle:extra2", "vehicle:extra3", "vehicle:extra4", "vehicle:extra5", "vehicle:extra6", "vehicle:extra7", "vehicle:extra8", "vehicle:extra9", "vehicle:extra10", "vehicle:extra11", "vehicle:extra12"}
-    -- },
     {
         Id = "toggle-clothes",
-        Title = "Kleding Aan/Uit",
+        Title = "Clothes On/Off",
         Icon = "#global-shirt",
         Enabled = function()
             return true
@@ -390,7 +376,7 @@ Config.Menu = {
     },
     {
         Id = "police-closed-compartment",
-        Title = "Gesloten Compartiment",
+        Title = "Closed Compartment",
         Icon = "#police-rack",
         Close = true,
         Parameters = "",
@@ -403,7 +389,7 @@ Config.Menu = {
     },
     {
         Id = "lock_property",
-        Title = "Ontgrendel/Vergrendel Huis",
+        Title = "Unlock/Lock House",
         Icon = "#global-lock",
         Close = true,
         Parameters = "",
@@ -430,7 +416,7 @@ Config.Menu = {
     },
     {
         Id = "enter_property",
-        Title = "Betreed Huis",
+        Title = "Enter House",
         Icon = "#global-appartment",
         Close = true,
         Parameters = false,
@@ -445,7 +431,7 @@ Config.Menu = {
     },
     {
         Id = "jail_current_task",
-        Title = "Huidige Taak",
+        Title = "Current Task",
         Icon = "#jail-current-task",
         Close = true,
         Event = "fw-prison:Client:ShowCurrentTask",
@@ -466,7 +452,7 @@ Config.Menu = {
     },
     {
         Id = 'jobs_postop_deliver_goods',
-        Title = 'Product Afleveren',
+        Title = 'Deliver Product',
         Icon = '#global-box',
         Close = true,
         Event = 'fw-jobmanager:Client:PostOP:DeliverGoods',
@@ -480,7 +466,7 @@ Config.Menu = {
     },
     {
         Id = "conceal_house",
-        Title = "Deur Vergrendelen",
+        Title = "Lock Door",
         Icon = "#global-lock",
         Close = true,
         Parameters = "",
@@ -509,19 +495,19 @@ Config.SubMenus = {
         Event = "fw-mdw:Client:OpenMDW"
     },
     ['police:search'] = {
-        Title = "Fouilleren",
+        Title = "Search Player",
         Icon = "#police-action-search",
         Close = true,
         Event = "fw-police:Client:SearchPlayer"
     },
     ["police:seizePossesions"] = {
-        Title = "Items in beslag",
+        Title = "Seize Possessions",
         Icon = "#police-seize-items",
         Close = true,
         Event = "fw-police:Client:SeizePossesionsClosest"
     },
     ["police:fingerprint"] = {
-        Title = "Vingerafdruk scannen",
+        Title = "Take finterprint",
         Icon = "#police-action-fingerprint",
         Close = true,
         Event = "fw-police:Client:CheckFingerprint"
@@ -533,33 +519,33 @@ Config.SubMenus = {
         Event = "fw-police:Client:CheckBank"
     },
     ["police:removeFacewear"] = {
-        Title = "Masker afdoen",
+        Title = "Remove Facewear",
         Icon = "#global-mask",
         Close = true,
         Event = "fw-police:Client:RemoveFacewear"
     },
     ["police:gsr"] = {
-        Title = "GSR-test Afnemen",
+        Title = "Take GSR-test",
         Icon = "#police-gsr",
         Close = true,
         Event = "fw-police:Client:TakeGSRTest"
     },
     ["police:checkStatus"] = {
-        Title = "Status Controleren",
+        Title = "Check Status",
         Icon = "#police-status",
         Close = true,
         Event = "fw-police:Client:CheckStatus"
     },
 
     ["prison:checkInmateInformation"] = {
-        Title = "Gevangenen Informatie",
+        Title = "Prison Inmate Information",
         Icon = "#police-status",
         Close = true,
         Event = "fw-prison:Client:CheckInmateInformation"
     },
 
     ['ambulance:heal'] = {
-        Title = "Burger Verzorgen",
+        Title = "Burger Heal",
         Icon = "#ambulance-action-heal",
         Close = true,
         Event = "fw-medical:Client:Medic:Heal"
@@ -571,91 +557,91 @@ Config.SubMenus = {
         Event = "fw-medical:Client:Medic:Revive"
     },
     ['ambulance:blood'] = {
-        Title = "Bloed Monster Nemen",
+        Title = "Take blood",
         Icon = "#ambulance-action-blood",
         Close = true,
         Event = "fw-medical:Client:Medic:TakeBlood"
     },
     ['ambulance:dna'] = {
-        Title = "DNA Afnemen",
+        Title = "Take DNA",
         Icon = "#ambulance-action-blood",
         Close = true,
         Event = "fw-medical:Client:Medic:TakeDNA"
     },
     ['vehicle:delete'] = {
-        Title = "Voertuig Verwijderen",
+        Title = "Delever Vehicle",
         Icon = "#police-action-vehicle-delete",
         Close = true,
         Event = "FW:Command:DeleteVehicle"
     },
     ['judge:job'] = {
-        Title = "Advocaat Aannemen",
+        Title = "Hire Lawyer",
         Icon = "#judge-actions",
         Close = true,
         Event = "fw-cityhall:client:lawyer:add:closest"
     },
     ['judge:createBusiness'] = {
-        Title = "Creëer Bedrijf",
+        Title = "Create Business",
         Icon = "#judge-employment",
         Close = true,
         Event = "fw-businesses:Client:CreateBusiness"
     },
     ['judge:giveLicense'] = {
-        Title = "Geef/Ontneem Vergunningen",
+        Title = "Give/Remove License",
         Icon = "#plane-paper",
         Close = true,
         Event = "fw-cityhall:Client:GiveLicense"
     },
     ['judge:subpoenaRecords'] = {
-        Title = "Telefoongegevens Aanvragen",
+        Title = "Request phone records",
         Icon = "#judge-phone",
         Close = true,
         Event = "fw-cityhall:Client:SubpoenaRecords"
     },
     ['judge:subpoenaFinancials'] = {
-        Title = "Financiëlegegevens Aanvragen",
+        Title = "Request financial records",
         Icon = "#global-bank",
         Close = true,
         Event = "fw-cityhall:Client:SubpoenaFinancials"
     },
     ['judge:financialState'] = {
-        Title = "Rekening (de)activeren",
+        Title = "Deactivate bank account",
         Icon = "#global-bank",
         Close = true,
         Event = "fw-cityhall:Client:FinancialState"
     },
     ['judge:financialMonitor'] = {
-        Title = "Rekening Monitoren",
+        Title = "Monitor Bank Account",
         Icon = "#global-bank",
         Close = true,
         Event = "fw-cityhall:Client:FinancialMonitorState"
     },
     ['judge:createFinancial'] = {
-        Title = "Creëer Bankrekening",
+        Title = "Create Financial Account",
         Icon = "#global-bank",
         Close = true,
         Event = "fw-cityhall:Client:CreateFinancial"
     },
     ['citizen:contact'] = {
-        Title = "Contact Gegevens",
+        Title = "Contact Details",
         Icon = "#citizen-contact",
         Close = true,
         Event = "fw-phone:Server:GiveContactDetails"
     },
     ['citizen:steal'] = {
-        Title = "Beroven",
+        Title = "Rob",
         Icon = "#citizen-action-steal",
         Close = true,
         Event = "fw-police:Client:RobPlayer"
     },
     ['vehicle:flip'] = {
-        Title = "Voertuig Omduwen",
+        Title = "Flip vehicle",
         Icon = "#citizen-action-vehicle",
         Close = true,
         Event = "fw-menu:client:flip:vehicle"
     },
     ['vehicle:key'] = {
-        Title = "Geef Sleutel",
+        Title = "Give keys",
         Icon = "#citizen-action-vehicle-key",
         Close = true,
         Event = "fw-vehicles:Client:GiveKeys"
@@ -711,14 +697,14 @@ Config.SubMenus = {
         Parameters = "move_f@gangster@ng",
     },
     ["animations:defaultFemale1"] = {
-        Title = "Standaard Vrouwelijk 1",
+        Title = "Default female 1",
         Icon = "#animation-female",
         Close = true,
         Event = "animations:client:set:walkstyle",
         Parameters = "move_f@generic",
     },
     ["animations:defaultFemale2"] = {
-        Title = "Standaard Vrouwelijk 2",
+        Title = "Default female 2",
         Icon = "#animation-female",
         Close = true,
         Event = "animations:client:set:walkstyle",
@@ -1068,7 +1054,7 @@ Config.SubMenus = {
         Parameters = "move_m@prisoner_cuffed",
     },
     ["animations:defaultMale"] = {
-        Title = "Standaard Mannelijk",
+        Title = "Default Male",
         Icon = "#animation-default",
         Close = true,
         Event = "animations:client:set:walkstyle",
@@ -1571,56 +1557,56 @@ Config.SubMenus = {
         Event = "fw-menu:client:setExtra"
     },
     ['clothes:pants'] = {
-        Title = "Broek Aan/Uit",
+        Title = "Pants On/Off",
         Icon = "#global-shoes",
         Close = true,
         Event = 'fw-menu:Client:TogglePants',
     },
     ['clothes:shirt'] = {
-        Title = "Shirt Aan/Uit",
+        Title = "Shirt On/Off",
         Icon = "#global-shirt",
         Close = true,
         Event = 'fw-menu:Client:ToggleShirt',
     },
     ['clothes:shoes'] = {
-        Title = "Schoenen Aan/Uit",
+        Title = "Shoes On/Off",
         Icon = "#global-shoes",
         Close = true,
         Event = 'fw-menu:Client:ToggleShoes',
     },
     ['clothes:vest'] = {
-        Title = "Vest Aan/Uit",
+        Title = "Vest On/Off",
         Icon = "#global-shirt",
         Close = true,
         Event = 'fw-menu:Client:ToggleVest',
     },
     ['clothes:visor'] = {
-        Title = "Vizier Omhoog/Omlaag",
+        Title = "Visor Up/Down",
         Icon = "#global-helmet",
         Close = true,
         Event = 'fw-menu:Client:ToggleVisor',
     },
     ['clothes:bag'] = {
-        Title = "Tas Open/Dicht",
+        Title = "Bag Open/Clode",
         Icon = "#global-bag",
         Close = true,
         Event = 'fw-menu:Client:ToggleBag',
     },
     ['clothes:gloves'] = {
-        Title = "Handschoenen Aan/Uit",
+        Title = "Gloves On/Off",
         Icon = "#global-gloves",
         Close = true,
         Event = 'fw-menu:Client:ToggleGloves',
     },
     ['clothes:neck'] = {
-        Title = "Ketting Aan/Uit",
+        Title = "Chain On/Off",
         Icon = "#global-necklace",
         Close = true,
         Event = 'fw-menu:Client:ToggleNeck',
     },
 
     ['arcade:leave'] = {
-        Title = "Verlaten",
+        Title = "Leave",
         Icon = "#arcade-leave",
         Close = true,
         Event = 'fw-arcade:Client:LeaveGame',
@@ -1638,7 +1624,7 @@ Config.SubMenus = {
     --     end,
     -- },
     ['arcade:end'] = {
-        Title = "Spel beëindigen",
+        Title = "End game",
         Icon = "#arcade-end",
         Close = true,
         Event = 'fw-arcade:Client:EndGame',
@@ -1647,7 +1633,7 @@ Config.SubMenus = {
         end,
     },
     ['arcade:tdm:changeLodout'] = {
-        Title = "Loadout veranderen",
+        Title = "Change Loadout",
         Icon = "#police-action",
         Close = true,
         Event = 'fw-arcade:Client:TDM:ChangeLoadout',

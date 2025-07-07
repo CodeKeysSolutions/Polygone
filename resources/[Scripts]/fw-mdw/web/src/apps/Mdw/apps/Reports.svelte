@@ -20,7 +20,7 @@
     let Reports = [];
     let FilteredReports = [];
     let MaxReports = 15;
-    let CurrentCategory = 'Alles'
+    let CurrentCategory = 'All'
     let ReportsEditor;
 
     const LoadMore = () => {
@@ -31,38 +31,35 @@
         let Template = $IsEms ? DefaultMedicalReport : DefaultReport;
 
         switch ($CurrentReport.category) {
-            case "MCU Onderzoek Rapport":
+            case "MCU Investigation Report":
                 Template = MCUReport;
                 break;
-            case "Burger Rapport":
+            case "Civilian Report":
                 Template = CivilianReport;
                 break;
-            case "Burger Rapport":
-                Template = CivilianReport;
-                break;
-            case "Voertuig Ongeluk Rapport":
+            case "Vehicle Accident Report":
                 Template = VehicleReport;
                 break;
-            case "Mentale Status Rapport":
+            case "Mental Status Report":
                 Template = MentalReport;
                 break;
-            case "Fysio Rapport":
+            case "Physio Report":
                 Template = FysioReport;
                 break;
-            case "Brandwonden Rapport":
+            case "Burn Report":
                 Template = BurnReport;
                 break;
-            case "Schotwonden Rapport":
+            case "Gunshot Wound Report":
                 Template = GunshotReport;
                 break;
-            case "Receptuur Rapport":
+            case "Prescription Report":
                 Template = ReceiptReport;
                 break;
         }
 
         // const Template = $IsEms ? DefaultMedicalReport : ($CurrentReport && $CurrentReport.category == "MCU Onderzoek Rapport" ? MCUReport : DefaultReport);
         return Template.replace("[DEPARTMENT]", ($MdwProfile.department == "RANGER" ? "SAPR" : $MdwProfile.department))
-            .replace("[DATE_TIMESTAMP]", new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' }))
+            .replace("[DATE_TIMESTAMP]", new Date().toLocaleString('en-US', { timeZone: 'Europe/Amsterdam', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' }))
             .replace("[REPORTING_OFFICER]", `@${$MdwProfile.callsign} ${$MdwProfile.name}`);
     };
 
@@ -126,7 +123,7 @@
         });
 
         // Get reports by current category if not 'Alles'
-        if (CurrentCategory != 'Alles') CategorizedReports = CategorizedReports.filter(Val => Val.category == CurrentCategory);
+        if (CurrentCategory != 'All') CategorizedReports = CategorizedReports.filter(Val => Val.category == CurrentCategory);
 
         // Filter them by search query.
         FilteredReports = CategorizedReports.filter(Val => {
@@ -148,7 +145,7 @@
             let formattedScums = Data.scums;
             for (let i = 0; i < formattedScums.length; i++) {
                 if (!formattedScums[i].ReductionString) {
-                    formattedScums[i].ReductionString = "0% / 0 maanden / € 0,00"
+                    formattedScums[i].ReductionString = "0% / 0 maanden / $ 0,00"
                 };
             };
             $CurrentReport.scums = formattedScums;
@@ -264,7 +261,7 @@
     // Reports
     const GetReportsCategories = (WithAll) => {
         let Retval = [];
-        if (WithAll) Retval.push({ Text: "Alles" });
+        if (WithAll) Retval.push({ Text: "All" });
 
         const Types = GetReportTypes($MdwProfile.certs);
         Retval = [...Retval, ...Types];
@@ -406,7 +403,7 @@
             IgnoreFilter: $CurrentReport.scums.map(Value => Value.Cid),
             Cb: (Data) => {
                 const ScumData = {
-                    Charges: [], Reduction: 0, ReductionString: "0% / 0 maanden / € 0,00",
+                    Charges: [], Reduction: 0, ReductionString: "0% / 0 maanden / $ 0,00",
                     PleadedGuilty: false, Processed: false,
                     Warrent: false, WarrentExpiration: false,
                     Cid: Data.citizenid, Name: Data.name, Id: Data.id
@@ -563,17 +560,17 @@
 
 <MdwPanel class="filled">
     <MdwPanelHeader>
-        <h6>Rapporten</h6>
-        <TextField Title='Zoeken' Icon='search' SubSet={FilterReports} />
+        <h6>Reports</h6>
+        <TextField Title='Search' Icon='search' SubSet={FilterReports} />
     </MdwPanelHeader>
 
     <div style="width: 97%; margin-left: auto; margin-right: auto;">
-        <TextField style="margin-bottom: 0px;" bind:RealValue={CurrentCategory} Title='Categorie' Select={GetReportsCategories(true)} />
+        <TextField style="margin-bottom: 0px;" bind:RealValue={CurrentCategory} Title='Category' Select={GetReportsCategories(true)} />
     </div>
 
     <MdwPanelList style="height: 86%">
         {#each FilteredReports.slice(0, MaxReports) as Data, Key}
-            {#if (CurrentCategory == 'Alles' || CurrentCategory == Data.category) && (Data.category != 'Recherche Rapport' || ($MdwProfile.certs.includes(10) || $MdwProfile.certs.includes(11)))}
+            {#if (CurrentCategory == 'All' || CurrentCategory == Data.category) && (Data.category != 'Investigation Report' || ($MdwProfile.certs.includes(10) || $MdwProfile.certs.includes(11)))}
                 <MdwCard on:click={() => { FetchById(Data.id) }} Information={[
                     [Data.title, Data.category],
                     [`ID: ${Data.id}`, `${Data.author} - ${GetTimeLabel(Data.created)}`]
@@ -583,7 +580,7 @@
 
         {#if FilteredReports.length > 5}
             <div style="display: flex; justify-content: center; width: 100%;">
-                <Button Color="success" click={LoadMore}>Laad Meer</Button>
+                <Button Color="success" click={LoadMore}>Load More</Button>
             </div>
         {/if}
     </MdwPanelList>
@@ -593,40 +590,40 @@
     <MdwPanel class="filled" style="width: 100%; height: max-content; padding-bottom: 1vh; margin-bottom: 0.5vh;">
         <MdwPanelHeader>
             {#if $CurrentReport.id}
-                <h6>Rapport Bewerken (#{$CurrentReport.id})</h6>
+                <h6>Edit Report (#{$CurrentReport.id})</h6>
             {:else}
-                <h6>Rapport Toevoegen</h6>
+                <h6>Add Report</h6>
             {/if}
     
             {#if !$IsPublic}
                 <div class="mdw-box-title-icons">
                     {#if $CurrentReport.id}
-                        {#if HasCidPermission("Reports.Create")} <i on:keyup on:click={() => { OnReportAction("Reset") }} data-tooltip="Nieuw" class="fas fa-sync"></i> {/if}
+                        {#if HasCidPermission("Reports.Create")} <i on:keyup on:click={() => { OnReportAction("Reset") }} data-tooltip="New" class="fas fa-sync"></i> {/if}
                         {#if HasCidPermission("Reports.Export")} <i on:keyup on:click={() => { OnReportAction("Export") }} data-tooltip="Export" class="fas fa-file-export"></i> {/if}
-                        {#if HasCidPermission("Reports.Delete")} <i on:keyup on:click={() => { OnReportAction("Delete") }} data-tooltip="Verwijderen" class="fas fa-trash"></i> {/if}
-                        {#if HasCidPermission("Reports.Edit")} <i on:keyup on:click={() => { OnReportAction("Save") }} data-tooltip="Opslaan" class="fas fa-save"></i> {/if}
+                        {#if HasCidPermission("Reports.Delete")} <i on:keyup on:click={() => { OnReportAction("Delete") }} data-tooltip="Delete" class="fas fa-trash"></i> {/if}
+                        {#if HasCidPermission("Reports.Edit")} <i on:keyup on:click={() => { OnReportAction("Save") }} data-tooltip="Save" class="fas fa-save"></i> {/if}
                     {:else}
-                        {#if HasCidPermission("Reports.Create")} <i on:keyup on:click={() => { OnReportAction("Save") }} data-tooltip="Opslaan" class="fas fa-save"></i> {/if}
+                        {#if HasCidPermission("Reports.Create")} <i on:keyup on:click={() => { OnReportAction("Save") }} data-tooltip="Save" class="fas fa-save"></i> {/if}
                     {/if}
                 </div>
             {/if}
         </MdwPanelHeader>
     
         <div style="width: 97%; margin-left: auto; margin-right: auto;">
-            <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentReport.category} SubSet={OnReportCategoryUpdate} Title='Categorie' Select={GetReportsCategories()} />
+            <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentReport.category} SubSet={OnReportCategoryUpdate} Title='Category' Select={GetReportsCategories()} />
         </div>
         
         <div style="width: 97%; margin-left: auto; margin-right: auto;">
-            <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentReport.title} Title='Titel' Icon='pencil-alt' />
+            <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentReport.title} Title='Title' Icon='pencil-alt' />
         </div>
     
         <div bind:this={ReportsEditor} class="mdw-reports-editor"></div>
     </MdwPanel>
 
-    <!-- Bewijs -->
+    <!-- Evidence -->
     <MdwPanel class="filled" style="width: 100%; height: max-content; margin-bottom: 0.5vh;">
         <MdwPanelHeader>
-            <h6>{$IsEms ? "Fotos" : "Bewijs"}</h6>
+            <h6>{$IsEms ? "Photos" : "Evidence"}</h6>
     
             <div class="mdw-box-title-icons">
                 {#if $CurrentReport.id && HasCidPermission("Reports.Edit")}
@@ -653,7 +650,7 @@
     <!-- Betrokken Agenten -->
     <MdwPanel class="filled" style="width: 100%; height: max-content; margin-bottom: 0.5vh;">
         <MdwPanelHeader>
-            <h6>{$IsEms ? "Betrokken Collegas" : "Betrokken Agenten"}</h6>
+            <h6>{$IsEms ? "Involved Colleagues" : "Involved Officers"}</h6>
     
             <div class="mdw-box-title-icons">
                 {#if $CurrentReport.id && HasCidPermission("Reports.Edit")}
@@ -674,7 +671,7 @@
     <!-- Betrokken Personen -->
     <MdwPanel class="filled" style="width: 100%; height: max-content; margin-bottom: 0.5vh;">
         <MdwPanelHeader>
-            <h6>Betrokken Personen</h6>
+            <h6>Involved Persons</h6>
     
             <div class="mdw-box-title-icons">
                 {#if $CurrentReport.id && HasCidPermission("Reports.Edit")}
@@ -718,11 +715,11 @@
     </MdwPanel>
 </MdwPanel>
 
-<!-- Verdachte Toevoegen -->
+<!-- Add Suspect -->
 <MdwPanel>
     <MdwPanel class="filled" style="width: 100%; height: 4.3vh; margin-bottom: 0.5vh;">
         <MdwPanelHeader>
-            <h6>{$IsEms ? "Slachtoffer" : "Verdachte"} Toevoegen</h6>
+            <h6>{$IsEms ? "Add Victim" : "Add Suspect"}</h6>
     
             <div class="mdw-box-title-icons">
                 {#if $CurrentReport.id && HasCidPermission("Reports.Edit")}
@@ -740,31 +737,31 @@
                     
                     <div class="mdw-box-title-icons">
                         {#if HasCidPermission("Reports.Edit")}
-                            <i on:keyup on:click={() => { RemoveSuspect(Key) }} data-tooltip="Verwijderen" class="fas fa-trash"></i>
-                            <i on:keyup on:click={() => { SaveScum(Key) }} data-tooltip="Opslaan" class="fas fa-save"></i>
+                            <i on:keyup on:click={() => { RemoveSuspect(Key) }} data-tooltip="Delete" class="fas fa-trash"></i>
+                            <i on:keyup on:click={() => { SaveScum(Key) }} data-tooltip="Save" class="fas fa-save"></i>
                         {/if}
                     </div>
                 </MdwPanelHeader>
 
                 <div style="padding: 0.37vh; padding-top: 0; display: flex; flex-wrap: wrap; box-sizing: border-box;">
-                    <MdwChip Text={$IsEms ? "Facturen Bewerken" : "Straffen Bewerken"} Color="#ffffff" on:click={() => { OpenChargesModal(Data) }}/>
+                    <MdwChip Text={$IsEms ? "Edit Invoices" : "Edit Charges"} Color="#ffffff" on:click={() => { OpenChargesModal(Data) }}/>
                     {#each Data.Charges as Charge, CKey}
-                        <MdwChip Text={(Charge.Type != "Principal" ? (Charge.Type == "Accomplice" ? "(Mp) " : "(Pt) ") : "") + GetChargeById(Charge.Id)?.name || "Onbekende Straf."} Color="#000000"/>
+                        <MdwChip Text={(Charge.Type != "Principal" ? (Charge.Type == "Accomplice" ? "(Accomplice) " : "(Attempted) ") : "") + GetChargeById(Charge.Id)?.name || "Unknown Charge."} Color="#000000"/>
                     {/each}
                 </div>
 
                 <hr style="margin: 1vh auto; width: 96.8%; border: none; height: 0.2vh; background-color: rgb(34, 40, 49);">
                 {#if !$IsEms}
                     <div style="display: flex; flex-direction: row; justify-content: space-between; width: 96.8%; margin: 0 auto;">
-                        <Checkbox bind:Checked={Data.Warrent} Title="Arrestatiebevel"/>
+                        <Checkbox bind:Checked={Data.Warrent} Title="Arrest Warrant"/>
                         {#if Data.Warrent}
-                            <TextField Title='Vervaldatum' Type="date" bind:RealValue={Data.WarrentExpiration} />
+                            <TextField Title='Expiration Date' Type="date" bind:RealValue={Data.WarrentExpiration} />
                         {/if}
                     </div>
 
                     <hr style="margin: 1vh auto; width: 96.8%; border: none; height: 0.2vh; background-color: rgb(34, 40, 49);">
 
-                    <TextField style="width: 96.8%; margin: 0 auto;" Title='Strafvermindering' Select={GetReductionDropdown(Data.Charges)} bind:Value={Data.Reduction} bind:RealValue={Data.ReductionString}/>
+                    <TextField style="width: 96.8%; margin: 0 auto;" Title='Sentence Reduction' Select={GetReductionDropdown(Data.Charges)} bind:Value={Data.Reduction} bind:RealValue={Data.ReductionString}/>
 
                     <MdwPanelHeader style="flex-direction: column; height: max-content; padding-bottom: 0.5vh;">
                         <h6 style="font-size: 2.4vh; height: 2.5vh;">Final</h6>
@@ -772,8 +769,8 @@
                     </MdwPanelHeader>
 
                     <div style="display: flex; flex-direction: row; justify-content: space-between; width: 96.8%; margin: 0 auto;">
-                        <Checkbox bind:Checked={Data.PleadedGuilty} Title="Schuldig Gepleit"/>
-                        <Checkbox bind:Checked={Data.Processed} Title="Afgehandeld"/>
+                        <Checkbox bind:Checked={Data.PleadedGuilty} Title="Pleaded Guilty"/>
+                        <Checkbox bind:Checked={Data.Processed} Title="Processed"/>
                     </div>
                 {:else}
                     <MdwPanelHeader style="flex-direction: column; height: max-content; padding-bottom: 0.5vh;">
@@ -782,7 +779,7 @@
                     </MdwPanelHeader>
 
                     <div style="display: flex; flex-direction: row; justify-content: space-between; width: 96.8%; margin: 0 auto;">
-                        <Checkbox bind:Checked={Data.Processed} Title="Afgehandeld"/>
+                        <Checkbox bind:Checked={Data.Processed} Title="Processed"/>
                     </div>
                 {/if}
             </MdwPanel>

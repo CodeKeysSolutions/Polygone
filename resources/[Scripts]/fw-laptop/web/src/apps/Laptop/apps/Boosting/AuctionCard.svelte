@@ -79,13 +79,15 @@
 
     async function bid() {
         if (!PlaceBidAmount || PlaceBidAmount < 1) {
-            addResultNotification("Boostin", { success: false, message: "Graag een geldig bod!" });
+            addResultNotification("Boostin", { success: false, message: "Please enter a valid bid!" }); // was "Graag een geldig bod!"
             return;
         }
         if ((!Data.Bid && PlaceBidAmount < Data.StartBid) || PlaceBidAmount <= Data.Bid) {
             addResultNotification("Boostin", {
                 success: false,
-                message: Data.Bid ? `Het bod moet hoger zijn dan ${Data.Bid || Data.StartBid} ${Data.Crypto}!` : `Bieden moet minimaal zijn ${Data.Bid || Data.StartBid} ${Data.Crypto}!`
+                message: Data.Bid
+                    ? `The bid must be higher than ${Data.Bid || Data.StartBid} ${Data.Crypto}!` // was "Het bod moet hoger zijn dan ..."
+                    : `Bid must be at least ${Data.Bid || Data.StartBid} ${Data.Crypto}!` // was "Bieden moet minimaal zijn ..."
             });
             return;
         }
@@ -102,11 +104,11 @@
 {#if ShowBiddingModal}
     <ModalContainer style="background-color: #1a1922;">
         <h1 style="color: white; font-size: 2vh; font-family: Roboto; font-weight: 500; margin-bottom: 2vh;">
-            Bod plaatsen
+            Place Bid <!-- was "Bod plaatsen" -->
         </h1>
         <div style="width: 100%; margin: 0 auto;">
             <TextField
-                Title="Bod"
+                Title="Bid" 
                 Icon="fas fa-coin"
                 style="width: 100%"
                 Type="number"
@@ -114,7 +116,7 @@
             />
             <div style="display: flex; justify-content: space-between; width: 100%;">
                 <Button Color="success" style="margin: 0;" click={bid}
-                    >Bieden</Button>
+                    >Bid</Button> 
 
                 <Button
                     Color="warning"
@@ -122,8 +124,7 @@
                     click={() => {
                         ShowBiddingModal = false;
                         PlaceBidAmount = undefined;
-                    }}>Annuleren</Button
-                >
+                    }}>Cancel</Button> 
             </div>
         </div>
     </ModalContainer>
@@ -136,32 +137,32 @@
     <div class="auction-card-container">
         <div class="auction-card-text">
             <p>{Data.Contractor}</p>
-            <p>Verkoper</p>
+            <p>Seller</p> 
         </div>
         <div class="auction-card-text">
             <p>{Data.Class}</p>
-            <p>Klasse</p>
+            <p>Class</p> 
         </div>
         <div class="auction-card-text">
             <p>{Data.VehicleLabel}</p>
-            <p>Voertuig</p>
+            <p>Vehicle</p> 
         </div>
         <div class="auction-card-text">
             {#if Data.Bid}
                 <p>{Data.Bid} {Data.Crypto}</p>
-                <p>Huidig Bod</p>
+                <p>Current Bid</p> 
             {:else}
                 <p>{Data.StartBid} {Data.Crypto}</p>
-                <p>Openingsbod</p>
+                <p>Starting Bid</p> >
             {/if}
         </div>
         <div class="auction-card-text">
-            <p style="color: {ends.color}">{ends.done ? "Verlopen" : ends.time}</p>
-            <p>Eindigt over</p>
+            <p style="color: {ends.color}">{ends.done ? "Expired" : ends.time}</p> 
+            <p>Ends In</p>
         </div>
         <div class="auction-card-text">
             <p style="color: {expires.color}">{expires.time}</p>
-            <p>Verloopt over</p>
+            <p>Expires In</p>
         </div>
 
         <div
@@ -172,7 +173,7 @@
                 ShowBiddingModal = true;
             }}
         >
-            Bieden
+            Bid 
         </div>
     </div>
 </div>

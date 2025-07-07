@@ -3,9 +3,9 @@ local HijackingVehicle, Lockpicking, LastCartheftAlert, InVehicle = false, false
 -- Loops
 
 Citizen.CreateThread(function()
-    FW.AddKeybind("vehicleEngineOn", "Voertuig", "Zet Motor Aan", "IOM_WHEEL_UP", false, "fw-vehicles:Client:SetEngineOn", false, "MOUSE_WHEEL")
-    FW.AddKeybind("vehicleEngineOff", "Voertuig", "Zet Motor Uit", "IOM_WHEEL_DOWN", false, "fw-vehicles:Client:SetEngineOff", false, "MOUSE_WHEEL")
-    FW.AddKeybind("vehicleToggleLock", "Voertuig", "Voertuig Vergrenden/Ontgrendelen", "L", false, "fw-vehicles:Client:ToggleVehicleLock", false)
+    FW.AddKeybind("vehicleEngineOn", "Vehicle", "Engine on", "IOM_WHEEL_UP", false, "fw-vehicles:Client:SetEngineOn", false, "MOUSE_WHEEL")
+    FW.AddKeybind("vehicleEngineOff", "Vehicle", "Engine off", "IOM_WHEEL_DOWN", false, "fw-vehicles:Client:SetEngineOff", false, "MOUSE_WHEEL")
+    FW.AddKeybind("vehicleToggleLock", "Vehicle", "Lock/unlock vehicle", "L", false, "fw-vehicles:Client:ToggleVehicleLock", false)
 
     while true do
         if LoggedIn then
@@ -214,7 +214,7 @@ AddEventHandler("fw-vehicles:Client:GiveKeys", function()
         local ClosestPlayer, ClosestDistance = FW.Functions.GetClosestPlayer(nil)
 
         if ClosestPlayer <= 0 or ClosestDistance > 2.0 then
-            FW.Functions.Notify("Niemand in de buurt..", "error")
+            FW.Functions.Notify("Nobody near..", "error")
             return
         end
 
@@ -250,12 +250,12 @@ AddEventHandler("fw-items:Client:Used:SecurityHackingDevice", function(Item)
     if Success then
         if InVehicle then
             TriggerEvent('fw-vehicles:Client:OnLockpickSuccess', Entity, true)
-            FW.Functions.Notify("Voertuig gelockpicked!", "success")
+            FW.Functions.Notify("Vehicle lockedpicked!", "success")
             SetVehicleKeys(Plate, true)
             exports['fw-vehicles']:SetVehicleTampering(Entity, 'Hacked', true)
         else
             TriggerEvent('fw-vehicles:Client:OnLockpickSuccess', Entity, false)
-            FW.Functions.Notify("Deur open gebroken..", "success")
+            FW.Functions.Notify("Door smashed in..", "success")
             FW.VSync.SetVehicleDoorsLocked(Entity, 1)
             exports['fw-vehicles']:SetVehicleTampering(Entity, 'ForcedEntry', true)
         end
@@ -279,7 +279,7 @@ AddEventHandler("fw-items:Client:UseLockpick", function(IsAdvanced)
     if HasKeysToVehicle(Plate) then return end
 
     if GetVehicleClass(Entity) == 18 then
-        return FW.Functions.Notify("Het lijkt erop dat je hier een zwaarder apperaat voor nodig hebt..", "error")
+        return FW.Functions.Notify("Looks like you need something heavyier..", "error")
     end
 
     if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -304,13 +304,13 @@ AddEventHandler("fw-items:Client:UseLockpick", function(IsAdvanced)
         local Outcome = exports['fw-ui']:StartSkillTest(IsAdvanced and math.random(2, 5) or math.random(5, 8), IsAdvanced and { 1, 5 } or { 10, 20 }, IsAdvanced and { 6000, 12000 } or { 1500, 3000 }, true)
         LoopAnimation(false)
         if not Outcome then
-            FW.Functions.Notify("Gefaald..", "error")
+            FW.Functions.Notify("Failed..", "error")
             exports['fw-assets']:RemoveLockpickChance(IsAdvanced)
             return
         end
 
         TriggerEvent('fw-vehicles:Client:OnLockpickSuccess', Entity, true)
-        FW.Functions.Notify("Voertuig gelockpicked!", "success")
+        FW.Functions.Notify("Vehicle gelockpicked!", "success")
         SetVehicleKeys(Plate, true)
         exports['fw-vehicles']:SetVehicleTampering(Entity, 'Lockpicked', true)
     else
@@ -320,13 +320,13 @@ AddEventHandler("fw-items:Client:UseLockpick", function(IsAdvanced)
         local Outcome = exports['fw-ui']:StartSkillTest(IsAdvanced and math.random(2, 5) or math.random(5, 8), IsAdvanced and { 1, 5 } or { 10, 20 }, IsAdvanced and { 6000, 12000 } or { 1500, 3000 }, true)
         LoopAnimation(false)
         if not Outcome then
-            FW.Functions.Notify("Gefaald..", "error")
+            FW.Functions.Notify("Failed..", "error")
             exports['fw-assets']:RemoveLockpickChance(IsAdvanced)
             return
         end
 
         TriggerEvent('fw-vehicles:Client:OnLockpickSuccess', Entity, false)
-        FW.Functions.Notify("Deur open gebroken..", "success")
+        FW.Functions.Notify("Door has been smashed..", "success")
         FW.VSync.SetVehicleDoorsLocked(Entity, 1)
         exports['fw-vehicles']:SetVehicleTampering(Entity, 'ForcedEntry', true)
     end
@@ -352,7 +352,7 @@ AddEventHandler("fw-vehicles:Client:SlimJim", function()
         local Outcome = exports['fw-ui']:StartSkillTest(math.random(2, 5), { 1, 5 }, { 6000, 12000 }, true)
         LoopAnimation(false)
         if not Outcome then
-            FW.Functions.Notify("Gefaald..", "error")
+            FW.Functions.Notify("Failed..", "error")
             return
         end
 
@@ -366,12 +366,12 @@ AddEventHandler("fw-vehicles:Client:SlimJim", function()
         local Outcome = exports['fw-ui']:StartSkillTest(math.random(2, 5), { 1, 5 }, { 6000, 12000 }, true)
         LoopAnimation(false)
         if not Outcome then
-            FW.Functions.Notify("Gefaald..", "error")
+            FW.Functions.Notify("Failed..", "error")
             return
         end
 
         TriggerEvent('fw-vehicles:Client:OnLockpickSuccess', Entity, false)
-        FW.Functions.Notify("Deuren geopend..", "success")
+        FW.Functions.Notify("Doors opened..", "success")
         FW.VSync.SetVehicleDoorsLocked(Entity, 1)
     end
 end)
@@ -424,11 +424,11 @@ AddEventHandler("fw-vehicles:Client:ToggleVehicleLock", function(IsPressed)
 
     if GetVehicleDoorLockStatus(Entity) == 1 then
         FW.VSync.SetVehicleDoorsLocked(Entity, 2)
-        FW.Functions.Notify("Voertuig vergrendeld.", 'error')
+        FW.Functions.Notify("Vehicle vergrendeld.", 'error')
         TriggerEvent("fw-misc:Client:PlaySoundEntity", 'vehicle.lock', NetworkGetNetworkIdFromEntity(Entity), true, nil)
     else
         FW.VSync.SetVehicleDoorsLocked(Entity, 1)
-        FW.Functions.Notify("Voertuig ontgrendeld.", 'success')
+        FW.Functions.Notify("Vehicle ontgrendeld.", 'success')
         TriggerEvent("fw-misc:Client:PlaySoundEntity", 'vehicle.unlock', NetworkGetNetworkIdFromEntity(Entity), true, nil)
     end
 

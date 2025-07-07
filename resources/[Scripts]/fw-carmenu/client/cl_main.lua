@@ -134,7 +134,7 @@ RegisterNUICallback('toggleengine', function(data, cb)
         SetVehicleEngineOn(veh, engine, false, true)
         SetVehicleJetEngineOn(veh, engine)
     else
-        FW.Functions.Notify("Dat kan hier niet..", "error")
+        FW.Functions.Notify("Wrong place..", "error")
     end
     cb('ok')
 end)

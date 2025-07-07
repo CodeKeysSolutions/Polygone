@@ -78,10 +78,10 @@
     };
 
     const PurchaseProducts = () => {
-        if (Cart.length == 0) return ModalMessage = 'Je kan geen leeg winkelmandje bestellen..';
+        if (Cart.length == 0) return ModalMessage = 'You cannot order an empty shopping cart..'; // was "Je kan geen leeg winkelmandje bestellen.."
         
         SendEvent("Market/PurchaseProducts", {Cart}, (Success, Data) => {
-            if (!Success) return ModalMessage = 'Je bestelling kon niet worden afgerond..';
+            if (!Success) return ModalMessage = 'Your order could not be completed..'; // was "Je bestelling kon niet worden afgerond.."
             ModalMessage = Data.Msg;
             Cart = [];
         })
@@ -99,7 +99,7 @@
 <AppContainer
     class="app-market-container"
     AppId="Market"
-    App="Holle Bolle Market - GNE hier."
+    App="Holle Bolle Market - GNE here."
 >
 
 {#if ModalMessage}
@@ -124,14 +124,14 @@
                 class:selected={CurrentCategory == 1}
                 class="app-navbar-item"
                 on:keyup on:click={() => SetCurrentCategory(1)}
-            >Alles</div>
+            >Everything</div>
             {#if CurrentCategory != 2}
                 <div
                     class="app-navbar-item selected"
                 >
                     <input
                         class="app-navbar-search"
-                        placeholder="Zoeken"
+                        placeholder="Search"
                         bind:value={SearchText}
                         on:input={() => FilterProducts(SearchText)}
                     />
@@ -146,7 +146,7 @@
                 {#if Cart.length > 0}
                     <p class="cart-amount">{Cart.length}</p>
                 {/if}
-                <i class="fas fa-shopping-cart" /> Winkelmandje
+                <i class="fas fa-shopping-cart" /> Cart <!-- was "Winkelmandje" -->
             </div>
         </div>
     </div>
@@ -165,12 +165,12 @@
             </div>
 
             <div class="payment">
-                <p>Totaal: {CartTotal} GNE</p>
+                <p>Total: {CartTotal} GNE</p> <!-- was "Totaal:" -->
                 <div
                     class="payment-button"
                     on:keyup on:click={() => PurchaseProducts()}
                 >
-                    Bestellen
+                    Order <!-- was "Bestellen" -->
                 </div>
             </div>
         </div>

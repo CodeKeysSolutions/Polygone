@@ -88,10 +88,10 @@ AddEventHandler('fw-misc:Server:ChangeContainerCode', function(ContainerId, Pin)
     if Player == nil then return end
 
     local Container = Config.Containers[ContainerId]
-    if Container == nil then return Player.Functions.Notify("Deze container bestaat niet..", "error") end
+    if Container == nil then return Player.Functions.Notify("This container does not exist..", "error") end
 
     if not exports['fw-businesses']:HasPlayerBusinessPermission("Cortainer", Source, "StashAccess") then
-        return Player.Functions.Notify("Geen toegang..", "error")
+        return Player.Functions.Notify("No access..", "error")
     end
 
     Config.Containers[ContainerId].Pin = Pin
@@ -100,7 +100,7 @@ AddEventHandler('fw-misc:Server:ChangeContainerCode', function(ContainerId, Pin)
         ['@Pin'] = Pin,
         ['@Id'] = ContainerId
     })
-    Player.Functions.Notify("Container pincode aangepast!", "success")
+    Player.Functions.Notify("Container pin code changed!", "success")
 end)
 
 RegisterNetEvent("fw-misc:Server:SetContainerOwnership")
@@ -113,10 +113,10 @@ AddEventHandler("fw-misc:Server:SetContainerOwnership", function(ContainerId, Ci
     if Target == nil then return end
 
     local Container = Config.Containers[ContainerId]
-    if Container == nil then return Player.Functions.Notify("Deze container bestaat niet..", "error") end
+    if Container == nil then return Player.Functions.Notify("This container does not exist..", "error") end
 
     if not exports['fw-businesses']:HasPlayerBusinessPermission("Cortainer", Source, "StashAccess") then
-        return Player.Functions.Notify("Geen toegang..", "error")
+        return Player.Functions.Notify("No access..", "error")
     end
 
     Config.Containers[ContainerId].Owner = Cid
@@ -127,6 +127,6 @@ AddEventHandler("fw-misc:Server:SetContainerOwnership", function(ContainerId, Ci
         ['@Id'] = ContainerId
     })
 
-    Player.Functions.Notify("Container eigenaarschap overgedragen!", "success")
-    Target.Functions.Notify("Container eigenaarschap ontvangen!", "success")
+    Player.Functions.Notify("Container ownership transferred!", "success")
+    Target.Functions.Notify("Container ownership received!", "success")
 end)

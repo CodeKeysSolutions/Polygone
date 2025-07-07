@@ -20,18 +20,18 @@ FW.Commands.Add("eventstart", "Start Halloween Event", {}, false, function(sourc
     Config.IsEventActive = true
     TriggerClientEvent('fw-events:Client:Start:Event', -1)
     TriggerEvent('fw-heists:Server:DisableHeists', -1)
-    SendStateEmergency('WEGENS EEN ONNATUURLIJKE SAMENKOMST OP DE BEGRAAFPLAATS RADEN WIJ IEDEREEN AAN DAAR WEG TE BLIJVEN EN GOED BIJ JE DIERBARE IN DE BUURT TE BLIJVEN. SLUIT RAMEN EN DEUREN EN VERTROUW ALLEEN JE NAASTEN.')
+    SendStateEmergency('DUE TO AN UNNATURAL GATHERING AT THE CEMETERY, WE ADVISE EVERYONE TO STAY AWAY AND STAY CLOSE TO YOUR LOVED ONES. CLOSE WINDOWS AND DOORS AND ONLY TRUST YOUR CLOSEST ONES.')
     TriggerEvent('fw-sync:Server:SetCurrentWeather', 'Halloween')
 end, "admin")
 
-FW.Commands.Add("eventstop", "Start Halloween Event", {}, false, function(source, args)
+FW.Commands.Add("eventstop", "Stop Halloween Event", {}, false, function(source, args)
     Config.IsEventActive = false
     TriggerClientEvent('fw-events:Client:End:Event', -1)
 
     Citizen.SetTimeout(30000, function()
         local AllPlayers = FW.GetPlayers()
         for k, v in pairs(AllPlayers) do
-            DropPlayer(v.ServerId, 'Het spokenjagen is voorbij, hopelijk heb jij net zo\'n leuke ervaring gehad aan dit event als wij! De stad zal na een korte restart weer normaal zijn..')
+            DropPlayer(v.ServerId, 'The ghost hunting is over, hopefully you had as much fun at this event as we did! The city will return to normal after a short restart..')
         end
     end)
 end, "admin")
@@ -65,10 +65,10 @@ FW.Commands.Add("createPortal", "Create a Portal on Current Location", {}, false
 end, "admin")
 
 FW.Functions.CreateUsableItem("zombie-antidote", function(Source, item)
-	local Player = FW.Functions.GetPlayer(Source)
+    local Player = FW.Functions.GetPlayer(Source)
     if Player.Functions.GetItemBySlot(item.Slot) ~= nil then
         if InfectedPlayers[source] then
-            Player.Functions.Notify("Hoe werkt zo'n spuit okalweer?", "error")
+            Player.Functions.Notify("How does this injection work again?", "error")
             return
         end
 
@@ -91,12 +91,12 @@ end)
 
 function SendStateEmergency(Message)
     TriggerClientEvent('fw-phone:Client:Mails:AddMail', -1, {
-        From = 'De Staat van San Andreas',
-        Subject = 'STAAT NOODGEVAL',
+        From = 'The State of San Andreas',
+        Subject = 'STATE EMERGENCY',
         Msg = Message,
         Timestamp = os.time() * 1000
     })
 
     Citizen.Wait(100)
-    TriggerClientEvent("fw-phone:Client:Notification", -1, 'state-emergency', 'fas fa-exclamation-triangle', { 'white', 'rgb(38, 50, 56)' }, "STAAT NOODGEVAL", "LEES UW EMAIL APP!", false, true, "", "", { HideOnAction = true })
+    TriggerClientEvent("fw-phone:Client:Notification", -1, 'state-emergency', 'fas fa-exclamation-triangle', { 'white', 'rgb(38, 50, 56)' }, "STATE EMERGENCY", "READ YOUR EMAIL APP!", false, true, "", "", { HideOnAction = true })
 end

@@ -74,7 +74,7 @@
 <MdwPanel style="margin-top: 1vh; height: 72.5vh;">
     <MdwPanelHeader style="height: 6vh">
         <h6>Tags</h6>
-        <TextField Title="Zoeken" Icon="search" SubSet={FilterTags} />
+        <TextField Title="Search" Icon="search" SubSet={FilterTags} />
     </MdwPanelHeader>
 
     <div style="border-top: 0.3vh solid rgb(30, 30, 30); margin-bottom: 1vh;">
@@ -110,7 +110,7 @@
 <MdwPanel style="margin-top: 1vh; height: 72.5vh;">
     <MdwPanelHeader style="height: 6vh">
         <h6>Evidence Types</h6>
-        <TextField Title="Zoeken" Icon="search" SubSet={FilterEvidenceTypes} />
+        <TextField Title="Search" Icon="search" SubSet={FilterEvidenceTypes} />
     </MdwPanelHeader>
 
     <div style="border-top: 0.3vh solid rgb(30, 30, 30); margin-bottom: 1vh;">

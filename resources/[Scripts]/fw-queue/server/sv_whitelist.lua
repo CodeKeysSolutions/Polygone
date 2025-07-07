@@ -1,8 +1,8 @@
-local DiscordServerBotToken = ''
+local DiscordServerBotToken = 'Njk3NzM4ODA1MjQzMDE5Mjk1.G4KAGW.GjfH406sW51Yi0QkqT61qEzCkiUtoS_cNQMqlI'
 
-local DiscordServerId = 728231206252052551
+local DiscordServerId = 1057628945257865248
 local DiscordRoles = {
-    1128027923467735160, -- Whitelisted
+    1057631677255536711, -- Whitelisted
     -- 1128027903930675220, -- PD
     -- 1128027906145255556, -- EMS
     -- 1137330048374943795, -- DOC
@@ -12,8 +12,8 @@ local DiscordRoles = {
 }
 
 local PrioRoles = {
-    [1128027896938774558] = 15, -- Developers
-    [1128027909492326472] = 8, -- Mayor
+    [1057631745383604244] = 15, -- Developers
+    -- [1128027909492326472] = 8, -- Mayor
 }
 
 function HasDiscordPrioRole(Source)

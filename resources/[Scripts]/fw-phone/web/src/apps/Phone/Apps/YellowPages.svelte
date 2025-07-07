@@ -38,7 +38,7 @@
                     Id: "Message",
                     Type: "TextArea",
                     Data: {
-                        Title: "Advertentie",
+                        Title: "Advertise",
                     },
                 },
             ],
@@ -90,7 +90,7 @@
     {#if !MyAd}
         <div class="phone-misc-icons">
             <i
-                data-tooltip="Advertentie Plaatsen"
+                data-tooltip="Add Advertise"
                 data-position="left"
                 class="fas fa-plus"
                 on:keyup
@@ -100,7 +100,7 @@
     {/if}
 
     <TextField
-        Title="Zoeken"
+        Title="Search"
         Icon="search"
         SubSet={FilterAds}
         class="phone-misc-input"
@@ -118,7 +118,7 @@
                     Color="warning"
                     style="position: relative; float: right; margin: 0px;"
                     on:click={DeleteAd}
-                    >Verwijderen</Button
+                    >Delete</Button
                 >
             </div>
 
@@ -143,7 +143,7 @@
 
         {#if FilteredAds.length > ShowingLimit}
             <div style="display: flex; justify-content: center; width: 100%;">
-                <Button Color="success" on:click={LoadMore}>Laad Meer</Button>
+                <Button Color="success" on:click={LoadMore}>Load more</Button>
             </div>
         {/if}
     </PaperList>

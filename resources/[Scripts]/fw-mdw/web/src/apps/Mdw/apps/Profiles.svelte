@@ -178,8 +178,8 @@
 
 <MdwPanel class="filled">
     <MdwPanelHeader>
-        <h6>Profielen</h6>
-        <TextField Title='Zoeken' Icon='search' SubSet={FilterProfiles} />
+        <h6>Profiles</h6>
+        <TextField Title='Search' Icon='search' SubSet={FilterProfiles} />
     </MdwPanelHeader>
 
     <MdwPanelList>
@@ -192,7 +192,7 @@
 
         {#if FilteredProfiles.length > 5}
             <div style="display: flex; justify-content: center; width: 100%;">
-                <Button Color="success" click={LoadMore}>Laad Meer</Button>
+                <Button Color="success" click={LoadMore}>Load More</Button>
             </div>
         {/if}
     </MdwPanelList>
@@ -201,19 +201,19 @@
 <MdwPanel class="filled">
     <MdwPanelHeader>
         {#if $CurrentProfile.id}
-            <h6>Profiel Bewerken (#{$CurrentProfile.citizenid})</h6>
+            <h6>Edit Profile (#{$CurrentProfile.citizenid})</h6>
         {:else}
-            <h6>Profiel Toevoegen</h6>
+            <h6>Add Profile</h6>
         {/if}
 
         {#if !$IsPublic}
             <div class="mdw-box-title-icons">
                 {#if $CurrentProfile.id}
-                    {#if HasCidPermission("Profiles.Create")} <i on:keyup on:click={() => { OnProfileAction("Reset") }} data-tooltip="Nieuw" class="fas fa-sync"></i> {/if}
-                    {#if HasCidPermission("Profiles.Delete")} <i on:keyup on:click={() => { OnProfileAction("Delete") }} data-tooltip="Verwijderen" class="fas fa-trash"></i> {/if}
-                    {#if HasCidPermission("Profiles.Edit")} <i on:keyup on:click={() => { OnProfileAction("Save") }} data-tooltip="Opslaan" class="fas fa-save"></i> {/if}
+                    {#if HasCidPermission("Profiles.Create")} <i on:keyup on:click={() => { OnProfileAction("Reset") }} data-tooltip="New" class="fas fa-sync"></i> {/if}
+                    {#if HasCidPermission("Profiles.Delete")} <i on:keyup on:click={() => { OnProfileAction("Delete") }} data-tooltip="Delete" class="fas fa-trash"></i> {/if}
+                    {#if HasCidPermission("Profiles.Edit")} <i on:keyup on:click={() => { OnProfileAction("Save") }} data-tooltip="Save" class="fas fa-save"></i> {/if}
                 {:else}
-                    {#if HasCidPermission("Profiles.Create")} <i on:keyup on:click={() => { OnProfileAction("Save") }} data-tooltip="Opslaan" class="fas fa-save"></i> {/if}
+                    {#if HasCidPermission("Profiles.Create")} <i on:keyup on:click={() => { OnProfileAction("Save") }} data-tooltip="Save" class="fas fa-save"></i> {/if}
                 {/if}
             </div>
         {/if}
@@ -228,9 +228,9 @@
         </div>
 
         <div style="margin-left: 0.7vh; width: 100%;">
-            <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentProfile.citizenid} Title='BSN' Icon='id-card' />
-            <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentProfile.name} Title='Naam' Icon='user' />
-            <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentProfile.image} Title='Profiel Foto URL' Icon='clipboard' />
+            <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentProfile.citizenid} Title='SSN' Icon='id-card' />
+            <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentProfile.name} Title='Name' Icon='user' />
+            <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentProfile.image} Title='Profile Photo URL' Icon='clipboard' />
         </div>
     </div>
 
@@ -242,7 +242,7 @@
 <MdwPanel>
     <MdwPanel class="filled" style="width: 100%; height: max-content; margin-bottom: 0.5vh;">
         <MdwPanelHeader>
-            <h6>Licensies ({GetPriorPoints($CurrentProfile.priors)} punten)</h6>
+            <h6>Licenses ({GetPriorPoints($CurrentProfile.priors)} points)</h6>
         </MdwPanelHeader>
 
         {#if $CurrentProfile.id && $CurrentProfile.licenses}
@@ -288,7 +288,7 @@
 
     <MdwPanel class="filled" style="width: 100%; height: max-content; margin-bottom: 0.5vh;">
         <MdwPanelHeader>
-            <h6>Voertuigen</h6>
+            <h6>Vehicles</h6>
         </MdwPanelHeader>
 
         {#if $CurrentProfile.id && $CurrentProfile.vehicles}
@@ -303,12 +303,12 @@
     {#if HasCidPermission("Profiles.ShowHousing")} 
         <MdwPanel class="filled" style="width: 100%; height: max-content; margin-bottom: 0.5vh;">
             <MdwPanelHeader>
-                <h6>Huisvesting</h6>
+                <h6>Housing</h6>
             </MdwPanelHeader>
             {#if $CurrentProfile.id && $CurrentProfile.housing}
                 <div style="padding: 0.37vh; padding-top: 0; display: flex; flex-wrap: wrap; box-sizing: border-box;">
                     {#each $CurrentProfile.housing as Data, Key}
-                        <MdwChip Text="{Data.Adress} ({Data.Owner ? "Eigenaar" : "Keyholder"})"/>
+                        <MdwChip Text="{Data.Adress} ({Data.Owner ? "Owner" : "Keyholder"})"/>
                     {/each}
                 </div>
             {/if}
@@ -317,7 +317,7 @@
 
     <MdwPanel class="filled" style="width: 100%; height: max-content; margin-bottom: 0.5vh;">
         <MdwPanelHeader>
-            <h6>Werkgelegenheid</h6>
+            <h6>Employment</h6>
         </MdwPanelHeader>
 
         {#if $CurrentProfile.id && $CurrentProfile.employment}
@@ -331,7 +331,7 @@
 
     <MdwPanel class="filled" style="width: 100%; height: max-content; margin-bottom: 0.5vh;">
         <MdwPanelHeader>
-            <h6>Historie</h6>
+            <h6>History</h6>
         </MdwPanelHeader>
 
         {#if $CurrentProfile.id && $CurrentProfile.priors}

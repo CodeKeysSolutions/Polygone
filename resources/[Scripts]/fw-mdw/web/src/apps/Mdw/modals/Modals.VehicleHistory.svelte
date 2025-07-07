@@ -37,19 +37,19 @@
 
 <div class="mdw-modal-vehicle-history">
     <div class="mdw-modal-vehicle-history-container">
-        <p>Acties</p>
+        <p>Actions</p>
         <div class="mdw-modal-vehicle-history-list">
             <MdwPanel class="filled" style="width: 49.25%">
                 <MdwPanelHeader>
-                    <h6>Impound Geschiedenis ({TotalStrikes} strikes)</h6>
+                    <h6>Impound History ({TotalStrikes} strikes)</h6>
                 </MdwPanelHeader>
             
                 <MdwPanelList style="max-height: 35vh;">
                     {#each ImpoundHistory as Data, Key}
                         <MdwCard Information={[
-                            [`Uitgever: ${Data.actor} - Reden: ${Data.reason}`],
-                            [`Vrijgavekosten: ${FormatCurrency.format(Data.fee)} - Strikes: ${Data.strikes}`],
-                            [`Datum inbeslagname: ${GetLongTimeLabel(Data.retained_date)} - Datum vrijgave: ${GetLongTimeLabel(Data.retained_until)}`],
+                            [`Issuer: ${Data.actor} - Reason: ${Data.reason}`],
+                            [`Relleasecost: ${FormatCurrency.format(Data.fee)} - Strikes: ${Data.strikes}`],
+                            [`Date of impound: ${GetLongTimeLabel(Data.retained_date)} - Date of release: ${GetLongTimeLabel(Data.retained_until)}`],
                             [`ID: ${Data.id}`]
                         ]} />
                     {/each}
@@ -58,7 +58,7 @@
 
             <MdwPanel class="filled" style="width: 49.25%">
                 <MdwPanelHeader>
-                    <h6>Eigendomsgeschiedenis</h6>
+                    <h6>Owner history</h6>
                 </MdwPanelHeader>
             
                 <MdwPanelList style="max-height: 35vh;">
@@ -66,8 +66,8 @@
 
                     {#each OwnershipHistory as Data, Key}
                         <MdwCard Information={[
-                            [`Van: ${Data.from}`],
-                            [`Verkoopprijs: ${FormatCurrency.format(Data.price)} - Verkocht op: ${GetLongTimeLabel(Data.timestamp)}`],
+                            [`From: ${Data.from}`],
+                            [`Sale price: ${FormatCurrency.format(Data.price)} - Sold on: ${GetLongTimeLabel(Data.timestamp)}`],
                             [`ID: ${Data.id}`]
                         ]} />
                     {/each}
@@ -81,7 +81,7 @@
                     Show: false,
                     Plate: ""
                 })
-            }}>Sluiten</Button>
+            }}>Close</Button>
         </div>
     </div>
 </div>

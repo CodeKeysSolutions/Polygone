@@ -35,7 +35,7 @@
         Firstname: '',
         Lastname: '',
         Birthdate: '',
-        Gender: 'Man',
+        Gender: 'Male', // was 'Man'
         Type: "Normal"
     };
 
@@ -43,7 +43,7 @@
         Delete: false,
         Selected: false,
         Cid: '0000',
-        Name: 'Druk om te Selecteren, of maak een nieuw karakter.'
+        Name: 'Press to Select, or create a new character.' // was 'Druk om te Selecteren, of maak een nieuw karakter.'
     };
 
     const SetCurrent = (SlotId) => {
@@ -60,7 +60,7 @@
 
         let CharacterData = Characters[SlotId - 1];
         if (!SlotId || !CharacterData) {
-            return CurrentCharacter.Name = 'Druk om te Selecteren, of maak een nieuw karakter.'
+            return CurrentCharacter.Name = 'Press to Select, or create a new character.' // was 'Druk om te Selecteren, of maak een nieuw karakter.'
         };
 
         CurrentCharacter.Cid = CharacterData.Cid;
@@ -75,7 +75,7 @@
         setTimeout(() => {
             if (Characters.length >= 6 && !MaxCharsOverride) {
                 CreateCharacterForm.Processing = false;
-                CreateCharacterForm.Text = 'Limit aan karakters bereikt.';
+                CreateCharacterForm.Text = 'Character limit reached.'; // was 'Limit aan karakters bereikt.'
                 setTimeout(() => { CreateCharacterForm.Text = false }, 5000);
                 return;
             };
@@ -87,7 +87,7 @@
 
             if (!Firstname || !Lastname || !Birthdate || !Gender) {
                 CreateCharacterForm.Processing = false;
-                CreateCharacterForm.Text = 'Vul alle velden in.';
+                CreateCharacterForm.Text = 'Fill in all fields.'; // was 'Vul alle velden in.'
                 setTimeout(() => { CreateCharacterForm.Text = false }, 5000);
                 return;
             };
@@ -96,14 +96,14 @@
             const MaxBirthyear = new Date().getFullYear() - 17;
             if (BirthYear < (MaxBirthyear - 101) || BirthYear >= MaxBirthyear) {
                 CreateCharacterForm.Processing = false;
-                CreateCharacterForm.Text = `Geboortedatum moet tussen ${MaxBirthyear - 101} en ${MaxBirthyear} zitten.`;
+                CreateCharacterForm.Text = `Birthdate must be between ${MaxBirthyear - 101} and ${MaxBirthyear}.`; // was `Geboortedatum moet tussen ${MaxBirthyear - 101} en ${MaxBirthyear} zitten.`
                 setTimeout(() => { CreateCharacterForm.Text = false }, 5000);
                 return;
             };
 
-            if (Gender !== 'Man' && Gender !== 'Vrouw') {
+            if (Gender !== 'Male' && Gender !== 'Female') { // was 'Man' and 'Vrouw'
                 CreateCharacterForm.Processing = false;
-                CreateCharacterForm.Text = 'Ongeldig geslacht.';
+                CreateCharacterForm.Text = 'Invalid gender.'; // was 'Ongeldig geslacht.'
                 setTimeout(() => { CreateCharacterForm.Text = false }, 5000);
                 return;
             };
@@ -124,7 +124,7 @@
             Delete: false,
             Selected: false,
             Cid: '0000',
-            Name: 'Druk om te Selecteren, of maak een nieuw karakter.'
+            Name: 'Press to Select, or create a new character.' // was 'Druk om te Selecteren, of maak een nieuw karakter.'
         };
     };
 
@@ -137,7 +137,7 @@
                 Delete: false,
                 Selected: false,
                 Cid: '0000',
-                Name: 'Druk om te Selecteren, of maak een nieuw karakter.'
+                Name: 'Press to Select, or create a new character.' // was 'Druk om te Selecteren, of maak een nieuw karakter.'
             };
         });
     };
@@ -152,7 +152,7 @@
             <div class="characters-extra">
                 <TextField
                     style="margin: 0;"
-                    Title="Selecteer een karakter.."
+                    Title="Select a character.."
                     Select={ExtraCharacters}
                     SubSet={(_, Value) => {
                         console.log(Value)
@@ -169,10 +169,10 @@
                     <hr />
                     <div>
                         {#if CurrentCharacter.Selected}
-                            <Button Color="success" on:click={() => PlayCharacter()}>Spelen</Button>
-                            <Button Color="warning" on:click={OpenDeleteForm}>Verwijderen</Button>
+                            <Button Color="success" on:click={() => PlayCharacter()}>Play</Button> 
+                            <Button Color="warning" on:click={OpenDeleteForm}>Delete</Button> 
                         {:else}
-                            <Button Color="success" on:click={OpenCreateForm}>Nieuw Karakter Aanmaken</Button>
+                            <Button Color="success" on:click={OpenCreateForm}>Create New Character</Button> 
                         {/if}
                     </div>
                 </div>
@@ -180,24 +180,24 @@
 
             {#if CurrentCharacter.Selected && CurrentCharacter.Delete}
                 <div class="character-delete">
-                    <p style="padding-bottom: 0;">Karakter Verwijderen #{CurrentCharacter.Cid}</p>
-                    <p style="padding-bottom: 0; font-size: 1.7vh;">Weet je zeker dat je {CurrentCharacter.Name} wilt verwijderen?</p>
-                    <p style="font-size: 1.7vh;">Het verwijderen van een karakter kan <strong>NIET</strong> ongedaan worden.</p>
+                    <p style="padding-bottom: 0;">Delete Character #{CurrentCharacter.Cid}</p> 
+                    <p style="padding-bottom: 0; font-size: 1.7vh;">Are you sure you want to delete {CurrentCharacter.Name}?</p> 
+                    <p style="font-size: 1.7vh;">Deleting a character <strong>CANNOT</strong> be undone.</p> 
                     <hr />
                     <div>
-                        <Button Color="error" on:click={ProcessCharacterDelete}>Verwijderen</Button>
-                        <Button Color="success" on:click={CloseDeleteForm}>Terug</Button>
+                        <Button Color="error" on:click={ProcessCharacterDelete}>Delete</Button> 
+                        <Button Color="success" on:click={CloseDeleteForm}>Back</Button>
                     </div>
                 </div>
             {/if}
 
             {#if CreateCharacterForm.IsCreating}
                 <div class="character-create">
-                    <p style="padding-bottom: 3vh;">Karakter Aanmaken</p>
+                    <p style="padding-bottom: 3vh;">Create Character</p> 
 
                     {#if CreateCharacterForm.Processing}
                         <hr/>
-                        <p style="font-size: 2vh; padding-bottom: 0;">Data controleren...</p>
+                        <p style="font-size: 2vh; padding-bottom: 0;">Checking data...</p> 
                         <p style="font-size: 3vh; padding-bottom: 3vh;"><i class="fas fa-spinner fa-pulse"></i></p>
                     {:else if CreateCharacterForm.Text}
                         <hr/>
@@ -207,37 +207,37 @@
                             <img
                                 alt=""
                                 src="./images/characters/male.png"
-                                class:highlight={CreateCharacterForm.Gender == 'Man'}
-                                on:keyup on:click={() => CreateCharacterForm.Gender = 'Man'}
+                                class:highlight={CreateCharacterForm.Gender == 'Male'} 
+                                on:keyup on:click={() => CreateCharacterForm.Gender = 'Male'} 
                             />
                             <img
                                 alt=""
                                 src="./images/characters/female.png"
-                                class:highlight={CreateCharacterForm.Gender == 'Vrouw'}
-                                on:keyup on:click={() => CreateCharacterForm.Gender = 'Vrouw'}
+                                class:highlight={CreateCharacterForm.Gender == 'Female'} 
+                                on:keyup on:click={() => CreateCharacterForm.Gender = 'Female'} 
                             />
                         </div>
 
-                        <TextField bind:Value={CreateCharacterForm.Firstname} style="width: 90%" Title='Voornaam' Placeholder='Bob'/>
-                        <TextField bind:Value={CreateCharacterForm.Lastname} style="width: 90%" Title='Achternaam' Placeholder='de Bouwer'/>
-                        <TextField bind:Value={CreateCharacterForm.Birthdate} style="width: 90%" Title='Geboortedatum' Type="date"  />
+                        <TextField bind:Value={CreateCharacterForm.Firstname} style="width: 90%" Title='First Name' Placeholder='Bob'/> 
+                        <TextField bind:Value={CreateCharacterForm.Lastname} style="width: 90%" Title='Last Name' Placeholder='the Builder'/> 
+                        <TextField bind:Value={CreateCharacterForm.Birthdate} style="width: 90%" Title='Birthdate' Type="date"  /> 
 
-                        <p style="padding-bottom: 2vh; font-size: 1.5vh;">Karakter Type</p>
+                        <p style="padding-bottom: 2vh; font-size: 1.5vh;">Character Type</p> 
 
                         <div style="display: flex; justify-content: space-between; width: 32%;">
                             <Button
-                                style="border-radius: 1.5vh; background-color: transparent; box-shadow: none; color: rgba(255, 255, 255, { CreateCharacterForm.Type == "Normal" ? 1.0 : 0.5})"
+                                style="border-radius: 1.5vh; background-color: transparent; box-shadow: none; color: rgba(255, 255, 255, { CreateCharacterForm.Type == 'Normal' ? 1.0 : 0.5})"
                                 on:click={() => CreateCharacterForm.Type = "Normal"}
-                            >Normaal</Button>
+                            >Normal</Button> 
                             <Button
-                                style="border-radius: 1.5vh; background-color: transparent; box-shadow: none; color: rgba(255, 255, 255, { CreateCharacterForm.Type == "Lifer" ? 1.0 : 0.5})"
+                                style="border-radius: 1.5vh; background-color: transparent; box-shadow: none; color: rgba(255, 255, 255, { CreateCharacterForm.Type == 'Lifer' ? 1.0 : 0.5})"
                                 on:click={() => CreateCharacterForm.Type = "Lifer"}
                             >Prison Lifer</Button>
                         </div>
 
                         <div style="margin: 2vh 0;">
-                            <Button Color="success" on:click={ProcessNewCharacter}>Aanmaken</Button>
-                            <Button Color="warning" on:click={CloseCreateForm}>Terug</Button>
+                            <Button Color="success" on:click={ProcessNewCharacter}>Create</Button>
+                            <Button Color="warning" on:click={CloseCreateForm}>Back</Button> 
                         </div>
                     {/if}
                 </div>

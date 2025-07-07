@@ -14,7 +14,7 @@
 <div class="mdw-modal-certs">
     <div class="mdw-modal-certs-container">
         <p>Specialisatie Toevoegen</p>
-        <TextField Title='Zoeken' Icon='search' SubSet={FilterCerts} />
+        <TextField Title='Search' Icon='search' SubSet={FilterCerts} />
         <div class="mdw-modal-certs-list">
             {#each FilteredCerts as Data, Key}
                 {#if !$MdwModalsCerts.IgnoreFilter.includes(Data.id)}

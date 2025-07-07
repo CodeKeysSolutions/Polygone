@@ -63,7 +63,7 @@
                 items: [ 'heading', '|', 'bold', 'italic', '|', 'blockQuote', '|', 'undo', 'redo', '|', 'numberedList', 'bulletedList', '|', 'insertTable' ],
                 shouldNotGroupWhenFull: true,
             },
-            placeholder: "Begin met typen...",
+            placeholder: "Typing...",
         }).then(Editor => {
             window.editor = Editor;
             LoaderModal.set(false);
@@ -167,20 +167,20 @@
 {#if EditingAttachments}
     <div class="phone-news-images">
         <div class="phone-news-images-container">
-            <TextField Title="Foto URL (.png/.jpg/.jpeg/.gif)" Icon="file-image" bind:Value={NewAttachmentUrl} />
+            <TextField Title="Picture URL (.png/.jpg/.jpeg/.gif)" Icon="file-image" bind:Value={NewAttachmentUrl} />
             <div class="phone-news-images-buttons">
                 <Button Color="success" on:click={() => {
                     $CurrentArticle.images = [...$CurrentArticle.images, NewAttachmentUrl];
-                }}>Toevoegen</Button>
+                }}>Add</Button>
             </div>
             <hr style="margin: 1vh 0px;">
             
             {#each $CurrentArticle.images as Data, Id}
-                <TextField Title="Foto URL (.png/.jpg/.jpeg/.gif)" bind:Value={$CurrentArticle.images[Id]} />
+                <TextField Title="Picture URL (.png/.jpg/.jpeg/.gif)" bind:Value={$CurrentArticle.images[Id]} />
                 <div class="phone-news-images-buttons">
                     <Button Color="warning" on:click={() => {
                         $CurrentArticle.images = $CurrentArticle.images.filter((Data, Index) => Index !== Id);
-                    }}>Verwijderen</Button>
+                    }}>Delete</Button>
                 </div>
                 <hr style="margin: 1vh 0px;">
             {/each}
@@ -196,7 +196,7 @@
         {#if IsJournalist}
             <div class="phone-misc-icons">
                 <i
-                    data-tooltip="Artikel Schrijven"
+                    data-tooltip="Write Article"
                     data-position="left"
                     class="fas fa-edit"
                     on:keyup
@@ -206,7 +206,7 @@
         {/if}
 
         <TextField
-            Title="Zoeken"
+            Title="Search"
             Icon="search"
             SubSet={FilterArticles}
             class="phone-misc-input"
@@ -248,7 +248,7 @@
                     style="display: flex; justify-content: center; width: 100%;"
                 >
                     <Button Color="success" on:click={LoadMore}
-                        >Laad Meer</Button
+                        >Load more</Button
                     >
                 </div>
             {/if}
@@ -260,7 +260,7 @@
             </div>
 
             <TextField
-                Title="Titel"
+                Title="Title"
                 Icon="tags"
                 class="phone-misc-input phone-misc-input2"
                 bind:RealValue={$CurrentArticle.title}
@@ -270,7 +270,7 @@
                 <div class="phone-misc-icons">
                     {#if !$CurrentArticle.Editing}
                         <i
-                            data-tooltip="Artikel Bewerken"
+                            data-tooltip="Edit article"
                             data-position="left"
                             class="fas fa-pencil-alt"
                             on:keyup
@@ -282,7 +282,7 @@
                         />
                         {#if $CurrentArticle.id}
                             <i
-                                data-tooltip="Verwijderen"
+                                data-tooltip="Delete"
                                 data-position="left"
                                 class="fas fa-trash"
                                 on:keyup
@@ -291,14 +291,14 @@
                         {/if}
                     {:else}
                         <i
-                            data-tooltip="Fotos"
+                            data-tooltip="Pictures"
                             data-position="left"
                             class="fas fa-file-image"
                             on:keyup
                             on:click={ToggleAttachments}
                         />
                         <i
-                            data-tooltip="Opslaan"
+                            data-tooltip="Save"
                             data-position="left"
                             class="fas fa-cloud-upload"
                             on:keyup

@@ -124,11 +124,11 @@ Shared.StarterItems = {
 
 Shared.Jobs = {
     ["unemployed"] = {
-        label = "UWV",
+        label = "Unemployed",
         payment = 70,
         grades = {
             ['0'] = {
-                name = "Uitkering",
+                name = "Goverment pay",
                 payment = 70
             },
         },
@@ -139,30 +139,30 @@ Shared.Jobs = {
         payment = 70,
         grades = {
             ['0'] = {
-                name = "Medewerker",
+                name = "Employer",
                 payment = 100
             },
             ['1'] = {
-                name = "Leidinggevende",
+                name = "Manager",
                 payment = 115
             },
         },
         defaultDuty = true,
     },
     ["police"] = {
-        label = "Politie",
+        label = "Police",
         payment = 100,
         grades = {
             ['0'] = {
-                name = "Stagiair",
+                name = "Intern",
                 payment = 150
             },
             ['1'] = {
-                name = "Medewerker",
+                name = "Officer",
                 payment = 230
             },
             ['2'] = {
-                name = "Leidinggevende",
+                name = "Seargant",
                 payment = 260
             },
         },
@@ -173,15 +173,15 @@ Shared.Jobs = {
         payment = 200,
         grades = {
             ['0'] = {
-                name = "Stagiair",
+                name = "Intern",
                 payment = 150
             },
             ['1'] = {
-                name = "Medewerker",
+                name = "Employer",
                 payment = 230
             },
             ['2'] = {
-                name = "Leidinggevende",
+                name = "Chief",
                 payment = 260
             },
         },
@@ -192,37 +192,37 @@ Shared.Jobs = {
         payment = 100,
         grades = {
             ['0'] = {
-                name = "Stagiair",
+                name = "Intern",
                 payment = 250
             },
             ['1'] = {
-                name = "Medewerker",
+                name = "Employer",
                 payment = 330 
             },
             ['2'] = {
-                name = "Leidinggevende",
+                name = "Chief",
                 payment = 360
             },
         },
         defaultDuty = false,
     },
     ["lawyer"] = {
-        label = "Wet en Recht",
+        label = "Humanrights",
         payment = 130,
         grades = {
             ['0'] = {
-                name = "Advocaat",
+                name = "lawyer",
                 payment = 130
             },
         },
         defaultDuty = false,
     },
     ["judge"] = {
-        label = "Wet en Recht",
+        label = "Court",
         payment = 260,
         grades = {
             ['0'] = {
-                name = "Rechter",
+                name = "Judge",
                 payment = 260
             },
             ['1'] = {
@@ -237,18 +237,18 @@ Shared.Jobs = {
         payment = 150,
         grades = {
             ['0'] = {
-                name = "Medewerker",
+                name = "Employer",
                 payment = 150
             },
         },
         defaultDuty = false,
     },
     ["mayor"] = {
-        label = "Gemeente Los Santos",
+        label = "State Los Santos",
         payment = 300,
         grades = {
             ['0'] = {
-                name = "Burgemeester",
+                name = "Mayor",
                 payment = 300
             },
         },
@@ -270,7 +270,7 @@ Shared.Jobs = {
         payment = 125,
         grades = {
             ['0'] = {
-                name = "Medewerker",
+                name = "Employer",
                 payment = 125
             },
         },

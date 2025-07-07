@@ -3,7 +3,7 @@ import { FW } from "../client";
 import { ReduceJailTime } from "./main";
 import { PrisonTask } from "./task";
 
-const Kitchen = new PrisonTask("Kitchen", "Keuken", "Sorteer de keuken en poets de tafels.");
+const Kitchen = new PrisonTask("Kitchen", "Kitchen", "Sort out the kitchen and clean tables.");
 
 Kitchen.addTask("SortKitchen", async () => {
     const Finished = await FW.Functions.CompactProgressbar(20000, "Sorteren", false, true, {

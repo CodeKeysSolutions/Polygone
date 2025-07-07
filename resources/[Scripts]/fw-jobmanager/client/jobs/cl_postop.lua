@@ -15,7 +15,7 @@ AddEventHandler('fw-jobmanager:Client:SetupJob', function(IsLeader, Tasks, Data)
 
                 if #(GetEntityCoords(PlayerPedId()) - vector3(929.99, -1249.48, 25.5)) < 1.2 then
                     if not ShowingInteraction then
-                        exports['fw-ui']:ShowInteraction("[E] Vraag de werkgever om een voertuig.")
+                        exports['fw-ui']:ShowInteraction("[E] Ask the employer for a vehicle.")
                         ShowingInteraction = true
                     end
 
@@ -27,7 +27,7 @@ AddEventHandler('fw-jobmanager:Client:SetupJob', function(IsLeader, Tasks, Data)
                             ShowingInteraction = false
                             return
                         else
-                            FW.Functions.Notify("De werkgever kan je geen voertuig geven: er staat iets in de weg..", "error")
+                            FW.Functions.Notify("The employer cannot give you a vehicle: something is in the way..", "error")
                         end
                     end
                 elseif ShowingInteraction then
@@ -45,7 +45,7 @@ AddEventHandler('fw-jobmanager:Client:OnNextTask', function(IsLeader, TaskId)
     if MyJob.CurrentJob ~= 'postop' then return end
 
     if TaskId == 3 then
-        SetRouteBlip("Winkel", vector3(DeliveryJob.Store.x, DeliveryJob.Store.y, DeliveryJob.Store.z))
+        SetRouteBlip("Store", vector3(DeliveryJob.Store.x, DeliveryJob.Store.y, DeliveryJob.Store.z))
 
         if IsLeader then
             Citizen.CreateThread(function()
@@ -62,7 +62,7 @@ AddEventHandler('fw-jobmanager:Client:OnNextTask', function(IsLeader, TaskId)
             end)
         end
     elseif TaskId == 5 then
-        SetRouteBlip("24/7 Logistiek", vector3(927.73, -1246.89, 25.5))
+        SetRouteBlip("24/7 Logistics", vector3(927.73, -1246.89, 25.5))
 
         if IsLeader then
             Citizen.CreateThread(function()
@@ -84,7 +84,7 @@ end)
 
 RegisterNetEvent("fw-jobmanager:Client:PostOp:GrabGoods")
 AddEventHandler("fw-jobmanager:Client:PostOp:GrabGoods", function()
-    if HasPackage then return FW.Functions.Notify("Je hebt al een pakketje vast..", "error") end
+    if HasPackage then return FW.Functions.Notify("You are already holding a package..", "error") end
 
     HasPackage = true
     exports['fw-assets']:AddProp('Box')
@@ -110,10 +110,10 @@ AddEventHandler("fw-jobmanager:Client:PostOP:DeliverGoods", function()
     if exports['fw-progressbar']:GetTaskBarStatus() then return end
 
     if not HasPackage then
-        return FW.Functions.Notify("Pak eerst een pakketje uit je busje..", "error")
+        return FW.Functions.Notify("First grab a package from your van..", "error")
     end
 
-    local Finished = FW.Functions.CompactProgressbar(math.random(700, 1300), "Pakketje afleveren...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(math.random(700, 1300), "Delivering package...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     if not Finished then return end
 
     if CurrentTaskId == 4 then

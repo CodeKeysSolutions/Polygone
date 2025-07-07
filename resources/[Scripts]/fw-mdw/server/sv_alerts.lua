@@ -40,7 +40,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:Racing", function(StreetName, Heading)
     local Source = source
     AddAlert({
         Color = "Blue",
-        Title = "Illegale Straatrace",
+        Title = "Illegal Street Race",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
             { Icon = "fa-compass", Text = Heading },
@@ -54,7 +54,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:TrackedGoods", function(Coords, StreetN
     AddAlert({
         Coords = Coords,
         Color = "Blue",
-        Title = "Tracker Manipulatie Waardevolle Goederen",
+        Title = "Tracker Tampering Valuable Goods",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
             { Icon = "fa-sticky-note", Text = Serial },
@@ -68,7 +68,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:MonitedAccountActivity", function(Coord
     AddAlert({
         Coords = Coords,
         Color = "Blue",
-        Title = "Gecontroleerde accountactiviteit",
+        Title = "Monitored Account Activity",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
             { Icon = "fa-sticky-note", Text = Name },
@@ -83,7 +83,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:CivilianRobbery", function(Coords, Stre
         Coords = Coords,
         Color = "Red",
         Code = "10-31B",
-        Title = "Persoons overval aan de gang",
+        Title = "Civilian Robbery in Progress",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
             { Icon = "fa-venus-mars", Text = Gender },
@@ -98,7 +98,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:Container", function(Coords, StreetName
         Coords = Coords,
         Color = "Blue",
         Code = "10-90C",
-        Title = "Container Beveiligingssysteem Manipulatie",
+        Title = "Container Security System Tampering",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
             { Icon = "fa-sticky-note", Text = Grade },
@@ -115,7 +115,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:FleecaBank", function(Coords)
         Code = "10-90E",
         Title = "Fleeca Bank Alarm",
         Information = {
-            { Text = "Overval op een Fleeca Bank aan de gang." },
+            { Text = "Robbery at a Fleeca Bank in progress." },
         }
     }, true, false, false, true)
 end)
@@ -127,9 +127,9 @@ AddEventHandler("fw-mdw:Server:SendAlert:ATM", function(Coords, StreetName)
         Coords = Coords,
         Color = "Blue",
         Code = "10-90C",
-        Title = "Pin Automaat Alarm",
+        Title = "ATM Alarm",
         Information = {
-            { Text = "Overval op een Pin Automaat aan de gang." },
+            { Text = "Robbery at an ATM in progress." },
             { Icon = "fa-globe-europe", Text = StreetName },
         }
     }, false, false, false, true)
@@ -142,9 +142,9 @@ AddEventHandler("fw-mdw:Server:SendAlert:JewelryAlarm", function(Coords)
         Coords = Coords,
         Color = "Red",
         Code = "10-90E",
-        Title = "Vangelico Juwielier Alarm",
+        Title = "Vangelico Jewelry Alarm",
         Information = {
-            { Text = "Overval op de Vangelico Juwielier aan de gang." },
+            { Text = "Robbery at the Vangelico Jewelry in progress." },
         }
     }, true, false, false, true)
 end)
@@ -158,7 +158,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:BayCity", function(Coords)
         Code = "10-90E",
         Title = "Bay City Bank Alarm",
         Information = {
-            { Text = "Overval op de Bay City Bank aan de gang." },
+            { Text = "Robbery at the Bay City Bank in progress." },
         }
     }, true, false, false, true)
 end)
@@ -172,7 +172,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:Bobcat", function(Coords)
         Code = "10-90E",
         Title = "Bobcat Security Alarm",
         Information = {
-            { Text = "Overval op de Bobcat Security aan de gang." },
+            { Text = "Robbery at the Bobcat Security in progress." },
         }
     }, true, false, false, true)
 end)
@@ -186,7 +186,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:Banktruck", function(Coords)
         Code = "10-90D",
         Title = "Banktruck Alarm",
         Information = {
-            { Text = "Overval op een Gruppe 6 waardetransport aan de gang." },
+            { Text = "Robbery at a Gruppe 6 money transport in progress." },
         }
     }, true, false, false, true)
 end)
@@ -198,9 +198,9 @@ AddEventHandler("fw-mdw:Server:SendAlert:Paleto", function(Coords)
         Coords = Coords,
         Color = "Red",
         Code = "10-90E",
-        Title = "Blaine Countys Savings Bank Alarm",
+        Title = "Blaine County Savings Bank Alarm",
         Information = {
-            { Text = "Overval op de Blaine Countys Savings Bank aan de gang." },
+            { Text = "Robbery at the Blaine County Savings Bank in progress." },
         }
     }, true, false, false, true)
 end)
@@ -213,7 +213,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:Vault", function()
         Code = "10-90",
         Title = "City Vault Alarm",
         Information = {
-            { Text = "Overval op de City Vault aan de gang." },
+            { Text = "Robbery at the City Vault in progress." },
         }
     }, true, false, false, true)
 end)
@@ -223,15 +223,15 @@ AddEventHandler("fw-mdw:Server:SendAlert:OfficerDown", function(Coords, StreetNa
     local Source = source
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
-    local UserType = (Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "doc") and "Agent" or "Medicus"
+    local UserType = (Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "doc") and "Officer" or "Medic"
 
     AddAlert({
         Coords = Coords,
         Color = Priority == 3 and "Red" or "Blue",
         Code = Priority == 3 and "11-13B" or "11-13A",
-        Title = Priority == 3 and UserType .. " Gewond URGENT" or UserType .. " Gewond",
+        Title = Priority == 3 and UserType .. " Injured URGENT" or UserType .. " Injured",
         Information = {
-            { Icon = "fa-id-badge", Text = Info.Callsign .. " is gewond" },
+            { Icon = "fa-id-badge", Text = Info.Callsign .. " is injured" },
         }
     }, false, Priority == 3, true)
 end)
@@ -243,9 +243,9 @@ AddEventHandler("fw-mdw:Server:SendAlert:DistressSignal", function(Coords, Stree
         Coords = Coords,
         Color = "Red",
         Code = "10-78",
-        Title = "Noodknop",
+        Title = "Panic Button",
         Information = {
-            { Icon = "fa-id-badge", Text = Info.Callsign .. " heeft urgente assistentie nodig" },
+            { Icon = "fa-id-badge", Text = Info.Callsign .. " needs urgent assistance" },
         }
     }, false, true, true)
 end)
@@ -259,7 +259,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:PrisonLockdown", function()
         Code = "11-13C",
         Title = "Bolingbroke Penitentiary Alarm",
         Information = {
-            { Text = "Alarm ingeschakeld bij Bolingbroke Penitentiary!" },
+            { Text = "Alarm triggered at Bolingbroke Penitentiary!" },
         }
     }, false, true, true, true)
 end)
@@ -273,12 +273,12 @@ AddEventHandler("fw-mdw:Server:SendAlert:Gunshots", function(Coords, StreetName,
             Coords = Coords,
             Color = "Blue",
             Code = "10-71",
-            Title = "Schoten Gelost uit Voertuig",
+            Title = "Shots Fired from Vehicle",
             Information = {
                 { Icon = "fa-globe-europe", Text = StreetName },
                 { { Icon = "fa-car", Text = VehicleDesc.Name }, { Icon = "fa-closed-captioning", Text = VehicleDesc.Plate } },
                 { Icon = "fa-palette", Text = VehicleDesc.Colors },
-    
+
             }
         }, false, false, false, true)
     else
@@ -286,10 +286,10 @@ AddEventHandler("fw-mdw:Server:SendAlert:Gunshots", function(Coords, StreetName,
             Coords = Coords,
             Color = "Blue",
             Code = "10-71",
-            Title = "Schoten Gelost",
+            Title = "Shots Fired",
             Information = {
                 { Icon = "fa-globe-europe", Text = StreetName },
-    
+
             }
         }, false, false, false, true)
     end
@@ -303,7 +303,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:Fighting", function(Coords, StreetName,
         Coords = Coords,
         Color = "Blue",
         Code = Deadly and "10-11" or "10-10",
-        Title = Deadly and "Dodelijk Gevecht aan de Gang" or "Gevecht aan de Gang",
+        Title = Deadly and "Deadly Fight in Progress" or "Fight in Progress",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
 
@@ -318,7 +318,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:Dead", function(Coords, StreetName)
         Coords = Coords,
         Color = "Blue",
         Code = "10-47",
-        Title = "Gewonde Burger",
+        Title = "Injured Civilian",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
         }
@@ -332,7 +332,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:StoreHeist", function(Coords, StreetNam
         Coords = Coords,
         Color = IsSafe and "Red" or "Blue",
         Code = "10-90",
-        Title = IsSafe and "Kluis Overval" or "Winkel Overval",
+        Title = IsSafe and "Safe Robbery" or "Store Robbery",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
         }
@@ -346,7 +346,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:HouseAlarm", function(Coords, StreetNam
         Coords = Coords,
         Color = "Blue",
         Code = "10-31A",
-        Title = "Huis Inbraak",
+        Title = "House Burglary",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
         }
@@ -360,7 +360,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:Explosion", function(Coords, StreetName
         Coords = Coords,
         Color = "Blue",
         Code = "10-02C",
-        Title = "Explosie",
+        Title = "Explosion",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
         }
@@ -374,7 +374,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:IllegalHunting", function(Coords, Stree
         Coords = Coords,
         Color = "Blue",
         Code = "10-45",
-        Title = "Illegaal Jagen",
+        Title = "Illegal Hunting",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
         }
@@ -388,7 +388,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:Oxy", function(Coords, StreetName)
         Coords = Coords,
         Color = "Blue",
         Code = "10-37",
-        Title = "Verdachte Situatie",
+        Title = "Suspicious Situation",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
         }
@@ -402,7 +402,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:Call", function(Coords, Message)
         Coords = Coords,
         Color = "Blue",
         Code = "911",
-        Title = "Een inkomende 911-oproep!",
+        Title = "An incoming 911 call!",
         Information = {
             { Text = Message },
         }
@@ -416,13 +416,13 @@ AddEventHandler("fw-mdw:Server:SendAlert:CarBoosting", function(Coords, StreetNa
         Coords = Coords,
         Color = VehicleClass == "D" and "Blue" or "Red",
         Code = "10-99A",
-        Title = "Tracker Apparaat Manipulatie - Voertuig Diefstal",
+        Title = "Tracker Device Tampering - Vehicle Theft",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
             { Icon = "fa-compass", Text = Heading },
             { { Icon = "fa-car", Text = Model }, { Icon = "fa-closed-captioning", Text = Plate } },
             { Icon = "fa-palette", Text = Color },
-            { Icon = "fa-sticky-note", Text = "Voertuig Klasse: " .. VehicleClass },
+            { Icon = "fa-sticky-note", Text = "Vehicle Class: " .. VehicleClass },
         }
     }, VehicleClass ~= "D", false, false)
 end)
@@ -434,7 +434,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:CarTheft", function(Coords, StreetName,
         Coords = Coords,
         Color = "Blue",
         Code = "10-60",
-        Title = "Voertuig Diefstal",
+        Title = "Vehicle Theft",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
             { Icon = "fa-compass", Text = Heading },
@@ -466,7 +466,7 @@ AddEventHandler("fw-mdw:Server:SendAlert:TransportingDrugs", function(Coords, St
         Coords = Coords,
         Color = "Red",
         Code = "10-37A",
-        Title = "Schoten Gelost / Transporteren van Drugsparafernalia",
+        Title = "Shots Fired / Transporting Drug Paraphernalia",
         Information = {
             { Icon = "fa-globe-europe", Text = StreetName },
             { Icon = "fa-compass", Text = Heading },

@@ -41,7 +41,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'dui_url',
                 Icon = 'fas fa-circle',
-                Label = 'URL Veranderen',
+                Label = 'Edit URL',
                 EventType = 'Client',
                 EventName = 'fw-assets:client:change:dui:menu',
                 EventParams = { DuiId = 'police-briefing' },

@@ -106,7 +106,7 @@ export const DeleteDocument = () => {
         Inputs: [
             {
                 Type: "Text",
-                Text: "Weet je het zeker? Dit kan niet teruggedraaid worden.",
+                Text: "You sure you wanna undo this.",
                 Data: {
                     style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
                 },
@@ -165,7 +165,7 @@ export const RequestSignature = () => {
                 Id: "Cid",
                 Type: "TextField",
                 Data: {
-                    Title: "BSN",
+                    Title: "SSN",
                     Icon: "id-card",
                     Value: "",
                 },

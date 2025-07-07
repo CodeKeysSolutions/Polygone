@@ -2,7 +2,7 @@
     import Ripple from "@smui/ripple";
     import { FormatDate, GetTimeLabel } from "../../../../utils/Utils";
     export let Image = 'https://i.imgur.com/C7BzBQ4.png';
-    export let Name = 'Een Holle-Bolle Kitten';
+    export let Name = 'Any kitten';
     export let Timestamp = new Date().getTime();
     export let Price = 5;
     export let CartAmount = 0;
@@ -25,7 +25,7 @@
         class="cart-button"
         on:keyup on:click
     >
-        Toevoegen aan Winkelmandje
+        Add to basked
     </div>
 </div>
 

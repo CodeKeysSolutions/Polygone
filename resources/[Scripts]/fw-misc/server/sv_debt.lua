@@ -166,7 +166,7 @@ FW.Functions.CreateCallback("fw-misc:Server:PayDebt", function(Source, Cb, Data)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
-    if exports['fw-financials']:RemoveMoneyFromAccount('1001', '1', Player.PlayerData.charinfo.account, Data.Data.Due, "DEBT", "Onderhoudskosten betaald: " .. (Data.AssetType == 'Vehicle' and "Voertuigen" or Data.Data.Name)) then
+    if exports['fw-financials']:RemoveMoneyFromAccount('1001', '1', Player.PlayerData.charinfo.account, Data.Data.Due, "DEBT", "Onderhoudskosten betaald: " .. (Data.AssetType == 'Vehicle' and "Vehicles" or Data.Data.Name)) then
         if Data.AssetType == 'Coopers Arcade Membership' then
             local BusinessAccount = exports['fw-businesses']:GetBusinessAccount("Coopers Arcade");
             exports['fw-financials']:AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, BusinessAccount, ticketPrice * Data.Amount, "PURCHASE", "Membership betaald.", false)
@@ -176,7 +176,7 @@ FW.Functions.CreateCallback("fw-misc:Server:PayDebt", function(Source, Cb, Data)
         TriggerEvent("fw-logs:Server:Log", 'debt', "Debt Paid", ("User: [%s] - %s - %s\nData: ```json\n%s```"):format(Player.PlayerData.source, Player.PlayerData.citizenid, Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname, json.encode(Data, {indent=2})), "green")
         Cb({Success = true})
     else
-        Cb({Success = false, Msg = "Niet genoeg bank balans."})
+        Cb({Success = false, Msg = "Not enough bank balance."})
     end
 end)
 

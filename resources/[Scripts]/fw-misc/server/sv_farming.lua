@@ -177,11 +177,11 @@ FW.RegisterServer("fw-misc:Server:Farming:RentGarden", function(Source, GardenId
     -- Does the player have 2 gardens claimed?
     local PlayerGardens = exports['ghmattimysql']:executeSync("SELECT * FROM `farms_gardens` WHERE `cid` = ? AND `timestamp` > ?", {Player.PlayerData.citizenid, os.time()})
     if #PlayerGardens + 1 > 2 then
-        return Player.Functions.Notify("Je kan maar maximaal 2 moestuintjes huren tegelijkertijd!", "error")
+        return Player.Functions.Notify("You can only rent a maximum of 2 gardens at the same time!", "error")
     end
 
-    if not exports['fw-financials']:RemoveMoneyFromAccount('1001', '1', Player.PlayerData.charinfo.account, RentPrice, "PURCHASE", "Tuin (#" .. GardenId .. ") gehuurd voor " .. Hours .. " uur.") then
-        return Player.Functions.Notify("Je hebt niet genoeg banksaldo..", "error")
+    if not exports['fw-financials']:RemoveMoneyFromAccount('1001', '1', Player.PlayerData.charinfo.account, RentPrice, "PURCHASE", "Garden (#" .. GardenId .. ") rented for " .. Hours .. " hours.") then
+        return Player.Functions.Notify("You do not have enough bank balance..", "error")
     end
 
     local Result = exports['ghmattimysql']:executeSync("SELECT * FROM `farms_gardens` WHERE `garden_id` = ?", {GardenId})
@@ -199,7 +199,7 @@ FW.RegisterServer("fw-misc:Server:Farming:RentGarden", function(Source, GardenId
         })
     end
 
-    Player.Functions.Notify("Moestuintje gehuurd voor " .. Hours .. " uur!")
+    Player.Functions.Notify("Garden rented for " .. Hours .. " hours!")
 end)
 
 RegisterNetEvent("fw-misc:Server:PurchaseStock")
@@ -221,7 +221,7 @@ AddEventHandler("fw-misc:Server:PurchaseStock", function(Data)
             Config.FarmStock[Data.Category].Stock = Config.FarmStock[Data.Category].Stock - Stock
         end
     else
-        Player.Functions.Notify("Niet genoeg cash..", "error")
+        Player.Functions.Notify("Not enough cash..", "error")
     end
 end)
 
@@ -239,7 +239,7 @@ AddEventHandler("fw-misc:Server:Farm:PurchaseSeedbag", function(args)
     if Player.Functions.RemoveMoney('cash', Price, 'Farming Stock') then
         Player.Functions.AddItem('farming-seedbag', 1, nil, nil, true)
     else
-        Player.Functions.Notify("Niet genoeg cash..", "error")
+        Player.Functions.Notify("Not enough cash..", "error")
     end
 end)
 
@@ -257,7 +257,7 @@ AddEventHandler("fw-misc:Server:Farm:PurchaseProduceBasket", function(args)
     if Player.Functions.RemoveMoney('cash', Price, 'Farming Stock') then
         Player.Functions.AddItem('producebasket', 1, nil, nil, true)
     else
-        Player.Functions.Notify("Niet genoeg cash..", "error")
+        Player.Functions.Notify("Not enough cash..", "error")
     end
 end)
 
@@ -275,7 +275,7 @@ AddEventHandler("fw-misc:Server:Farm:PurchaseWateringCan", function(args)
     if Player.Functions.RemoveMoney('cash', Price, 'Farming Stock') then
         Player.Functions.AddItem('farming-wateringcan', 1, nil, nil, true)
     else
-        Player.Functions.Notify("Niet genoeg cash..", "error")
+        Player.Functions.Notify("Not enough cash..", "error")
     end
 end)
 
@@ -293,7 +293,7 @@ AddEventHandler("fw-misc:Server:Farm:PurchasePitchfork", function(args)
     if Player.Functions.RemoveMoney('cash', Price, 'Farming Stock') then
         Player.Functions.AddItem('farming-pitchfork', 1, nil, nil, true)
     else
-        Player.Functions.Notify("Niet genoeg cash..", "error")
+        Player.Functions.Notify("Not enough cash..", "error")
     end
 end)
 
@@ -311,7 +311,7 @@ AddEventHandler("fw-misc:Server:Farm:PurchaseHoe", function(args)
     if Player.Functions.RemoveMoney('cash', Price, 'Farming Stock') then
         Player.Functions.AddItem('farming-hoe', 1, nil, nil, true)
     else
-        Player.Functions.Notify("Niet genoeg cash..", "error")
+        Player.Functions.Notify("Not enough cash..", "error")
     end
 end)
 

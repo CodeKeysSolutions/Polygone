@@ -483,6 +483,8 @@ FW.RegisterServer("fw-inventory:Server:UseItem", function(Source, Slot, IgnoreSh
             TriggerClientEvent("fw-inventory:Client:OnItemUsed", Source, Item, ItemData)
 
             if not FW.Functions.CanUseItem(Item.Item) then return end
+            print("Using item: " .. Item.Item
+            .. " Slot: " .. Slot)
             FW.Functions.UseItem(Source, Item)
         end)
     end

@@ -58,10 +58,10 @@
                         "boosting-notif.png",
                         ["#1a1922", "white"],
                         "Boostin",
-                        "Wachtrij binnengegaan.."
+                        "Join Queue.."
                     );
                 }
-                AddNotification("boosting-notif.png", ["#1a1922", "white"], "Boostin", "Wachtrij verlaten..");
+                AddNotification("boosting-notif.png", ["#1a1922", "white"], "Boosting", "Leaving queue..");
             }, 1500);
         });
     };
@@ -83,7 +83,7 @@
                 use:Ripple={{ surface: true, active: true }}
                 class="boosting-navbar-button {CurrentPage == 'contracts' ? 'active' : ''}"
             >
-                <p>Mijn contracten</p>
+                <p>My contracts</p>
             </div>
             <div
                 on:keyup
@@ -93,7 +93,7 @@
                 use:Ripple={{ surface: true, active: true }}
                 class="boosting-navbar-button {CurrentPage == 'auctions' ? 'active' : ''}"
             >
-                <p>Contract veilingen</p>
+                <p>Contract Auctions</p> <!-- was "Contract veilingen" -->
             </div>
             <div
                 on:keyup
@@ -104,7 +104,7 @@
                 {#if IsQueuing}
                     <i class="fas fa-spinner" />
                 {:else}
-                    <p>{UserData.IsQueued ? "Wachtrij verlaten" : "Wachtrij binnengaan"}</p>
+                    <p>{UserData.IsQueued ? "Leave Queue" : "Join Queue"}</p> <!-- was "Wachtrij verlaten" / "Wachtrij binnengaan" -->
                 {/if}
             </div>
         </div>
@@ -124,7 +124,7 @@
                 <p
                     style="color: white; opacity: 0.8; font-size: 1.3vh; text-align: center; font-family: Roboto; margin-top: 0.5vh;"
                 >
-                    Postvak IN leeg... :(
+                    Inbox empty... :( <!-- was "Postvak IN leeg... :(" -->
                 </p>
             {/if}
 
@@ -141,7 +141,7 @@
                 <p
                     style="color: white; opacity: 0.8; font-size: 1.3vh; text-align: center; font-family: Roboto; margin-top: 0.5vh;"
                 >
-                    Geen lopende veilingen... :(
+                    No ongoing auctions... :( <!-- was "Geen lopende veilingen... :(" -->
                 </p>
             {/if}
 

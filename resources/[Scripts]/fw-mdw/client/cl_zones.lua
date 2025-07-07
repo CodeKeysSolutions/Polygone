@@ -18,7 +18,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'clock_in',
                 Icon = 'fas fa-circle',
-                Label = 'In / Uit Dienst',
+                Label = 'On / Off Duty',
                 EventType = 'Client',
                 EventName = 'fw-mdw:Client:DutyAction',
                 EventParams = { Job = 'Police' },
@@ -47,7 +47,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'pd',
                 Icon = 'fas fa-circle',
-                Label = 'In / Uit Dienst',
+                Label = 'On / Off Duty',
                 EventType = 'Client',
                 EventName = 'fw-mdw:Client:DutyAction',
                 EventParams = { Job = 'Police' },
@@ -58,7 +58,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'dispatch',
                 Icon = 'fas fa-circle',
-                Label = '(Dispatch) In / Uit Dienst',
+                Label = '(Dispatch) On / Off Duty',
                 EventType = 'Client',
                 EventName = 'fw-mdw:Client:DutyAction',
                 EventParams = { Job = 'Dispatch' },
@@ -69,7 +69,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'dispatch',
                 Icon = 'fas fa-circle',
-                Label = '(Winkel Cooperatie) In / Uit Dienst',
+                Label = '(Store Cooperation) On / Off Duty',
                 EventType = 'Client',
                 EventName = 'fw-mdw:Client:DutyAction',
                 EventParams = { Job = 'StoreSecurity' },
@@ -80,7 +80,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'stash',
                 Icon = 'fas fa-inbox',
-                Label = 'Servicebalie Stash',
+                Label = 'Service Desk Stash',
                 EventType = 'Client',
                 EventName = 'fw-police:OpenServicedeskStash',
                 EventParams = {},
@@ -109,7 +109,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'clock_in',
                 Icon = 'fas fa-circle',
-                Label = 'In / Uit Dienst',
+                Label = 'On / Off Duty',
                 EventType = 'Client',
                 EventName = 'fw-mdw:Client:DutyAction',
                 EventParams = { Job = 'Police' },
@@ -138,7 +138,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'clock_in',
                 Icon = 'fas fa-circle',
-                Label = 'In / Uit Dienst',
+                Label = 'On / Off Duty',
                 EventType = 'Client',
                 EventName = 'fw-mdw:Client:DutyAction',
                 EventParams = { Job = 'Police' },
@@ -167,7 +167,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'clock_in',
                 Icon = 'fas fa-circle',
-                Label = 'In / Uit Dienst',
+                Label = 'On / Off Duty',
                 EventType = 'Client',
                 EventName = 'fw-mdw:Client:DutyAction',
                 EventParams = { Job = 'Police' },
@@ -196,7 +196,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'clock_in',
                 Icon = 'fas fa-circle',
-                Label = 'In / Uit Dienst',
+                Label = 'On / Off Duty',
                 EventType = 'Client',
                 EventName = 'fw-mdw:Client:DutyAction',
                 EventParams = { Job = 'Police' },
@@ -225,7 +225,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'clock_in',
                 Icon = 'fas fa-circle',
-                Label = 'In / Uit Dienst',
+                Label = 'On / Off Duty',
                 EventType = 'Client',
                 EventName = 'fw-mdw:Client:DutyAction',
                 EventParams = { Job = 'EMS' },
@@ -254,7 +254,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'clock_in',
                 Icon = 'fas fa-circle',
-                Label = 'In / Uit Dienst',
+                Label = 'On / Off Duty',
                 EventType = 'Client',
                 EventName = 'fw-mdw:Client:DutyAction',
                 EventParams = { Job = 'EMS' },
@@ -283,7 +283,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'clock_in',
                 Icon = 'fas fa-circle',
-                Label = 'In / Uit Dienst',
+                Label = 'On / Off Duty',
                 EventType = 'Client',
                 EventName = 'fw-mdw:Client:DutyAction',
                 EventParams = { Job = 'EMS' },
@@ -312,7 +312,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'clock_in',
                 Icon = 'fas fa-circle',
-                Label = 'In / Uit Dienst',
+                Label = 'On / Off Duty',
                 EventType = 'Client',
                 EventName = 'fw-mdw:Client:DutyAction',
                 EventParams = { Job = 'DOC' },

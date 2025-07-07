@@ -11,12 +11,11 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'house_alarm',
                 Icon = 'fas fa-dna',
-                Label = 'Alarm Uitschakelen',
+                Label = 'Disable Alarm',
                 EventType = 'Client',
                 EventName = 'fw-jobmanager:Client:Houses:DisableAlarm',
                 EventParams = '',
                 Enabled = function(Entity)
-
                     return exports['fw-jobmanager']:CanDisableAlarm()
                 end,
             }
@@ -39,7 +38,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'pickup',
                     Icon = 'fas fa-circle',
-                    Label = 'Oppakken',
+                    Label = 'Pick Up',
                     EventType = 'Client',
                     EventName = 'fw-jobmanager:Client:Houses:StealObject',
                     EventParams = '',
@@ -87,7 +86,7 @@ AddEventHandler("fw-ui:Ready", function()
         if not InsideHouse and CurrentHouse and not Config.Houses.Houses[CurrentHouse].Locked then
             if not ShowingInteraction then
                 ShowingInteraction = true
-                exports['fw-ui']:ShowInteraction("[E] Naar Binnen")
+                exports['fw-ui']:ShowInteraction("[E] Enter")
             end
             
             if IsControlJustReleased(0, 38) then
@@ -141,7 +140,7 @@ AddEventHandler("fw-jobmanager:Client:Houses:StealObject", function(Data, Entity
 
         Config.Houses.Houses[CurrentHouse].Props[ModelHash] = 1
         TriggerServerEvent("fw-jobmanager:Server:Houses:SetState", CurrentHouse, 'Props', Config.Houses.Houses[CurrentHouse].Props)
-        FW.Functions.Progressbar("bitch", "Oppakken...", 6000, false, true, {
+        FW.Functions.Progressbar("bitch", "Picking up...", 6000, false, true, {
             disableMovement = true,
             disableCarMovement = true,
             disableMouse = false,
@@ -164,7 +163,7 @@ AddEventHandler("fw-jobmanager:Client:Houses:StealObject", function(Data, Entity
             TriggerServerEvent("fw-jobmanager:Server:Houses:SetState", CurrentHouse, 'Props', Config.Houses.Houses[CurrentHouse].Props)
         end)
     else
-        FW.Functions.Notify("Je bent al bezig, of iemand heeft dit al opgepakt.", "error")
+        FW.Functions.Notify("You are already busy, or someone has already picked this up.", "error")
     end
 end)
 
@@ -172,7 +171,7 @@ RegisterNetEvent('fw-jobmanager:Client:SetupJob')
 AddEventHandler('fw-jobmanager:Client:SetupJob', function(IsLeader, Tasks, Data)
     if MyJob.CurrentJob ~= 'houses' then return end
 
-    SetRouteBlip("Huis", {GetEntityCoords(PlayerPedId()), Data.House.Coords}, true)
+    SetRouteBlip("House", {GetEntityCoords(PlayerPedId()), Data.House.Coords}, true)
     HouseData = Data.House
 
     Citizen.CreateThread(function()
@@ -254,7 +253,7 @@ AddEventHandler("fw-items:Client:UseLockpick", function(IsAdvanced, Item)
     if not HouseData then return end
 
     if #(GetEntityCoords(PlayerPedId()) - vector3(HouseData.Coords.x, HouseData.Coords.y, HouseData.Coords.z)) > 1.5 then
-        return FW.Functions.Notify("Ik denk niet dat de baas het zo leuk vindt als je huizen leeg trekt zonder zijn toestemming..", "error", 7500)
+        return FW.Functions.Notify("I don't think the boss will like it if you empty houses without his permission..", "error", 7500)
     end
     
     if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -266,7 +265,7 @@ AddEventHandler("fw-items:Client:UseLockpick", function(IsAdvanced, Item)
     TriggerEvent('fw-assets:client:lockpick:animation', false)
 
     if not Outcome then
-        FW.Functions.Notify("Gefaald..", "error")
+        FW.Functions.Notify("Failed..", "error")
         TriggerServerEvent('fw-inventory:Server:DecayItem', Item.Item, Item.Slot, IsAdvanced and 4.5 or 7.5)
         return
     end
@@ -300,7 +299,7 @@ function EnterRobHouse()
     local Coords = Config.Houses.Houses[CurrentHouse].Coords
     
     InteriorData = exports['fw-interiors']:CreateInterior(Config.Houses.Houses[CurrentHouse].Shell, vector3(Coords.x, Coords.y, Coords.z - 100.0), true)
-    if InteriorData == nil or InteriorData[1] == nil then return FW.Functions.Notify("Kan interieur niet laden..", "error") end
+    if InteriorData == nil or InteriorData[1] == nil then return FW.Functions.Notify("Cannot load interior..", "error") end
 
     DoScreenFadeOut(250)
     while not IsScreenFadedOut(250) do Citizen.Wait(4) end
@@ -356,9 +355,9 @@ function StartRobHouseLoop()
                 if not ShowingInteraction then
                     ShowingInteraction = true
                     if InteractType == "Exit" then
-                        exports['fw-ui']:ShowInteraction("[E] Verlaten", "primary")
+                        exports['fw-ui']:ShowInteraction("[E] Leave", "primary")
                     elseif InteractType == "Loot" then
-                        exports['fw-ui']:ShowInteraction("[E] Zoeken", "primary")
+                        exports['fw-ui']:ShowInteraction("[E] Search", "primary")
                     end
                 end
 
@@ -386,7 +385,7 @@ function StartRobHouseLoop()
 
                             Config.Houses.Houses[CurrentHouse].Loot[InteractData.Id] = true
                             TriggerServerEvent("fw-jobmanager:Server:Houses:SetState", CurrentHouse, 'Loot', Config.Houses.Houses[CurrentHouse].Loot)
-                            FW.Functions.Progressbar("bitch", "Zoeken...", 8000, false, true, {
+                            FW.Functions.Progressbar("bitch", "Searching...", 8000, false, true, {
                                 disableMovement = true,
                                 disableCarMovement = true,
                                 disableMouse = false,
@@ -404,7 +403,7 @@ function StartRobHouseLoop()
                                 TriggerServerEvent("fw-jobmanager:Server:Houses:SetState", CurrentHouse, 'Loot', Config.Houses.Houses[CurrentHouse].Loot)
                             end)
                         else
-                            FW.Functions.Notify("Je bent al bezig, of de kast is leeg.", "error")
+                            FW.Functions.Notify("You are already busy, or the cabinet is empty.", "error")
                         end
                     end
                 end

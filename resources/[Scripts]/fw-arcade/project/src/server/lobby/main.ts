@@ -139,7 +139,7 @@ export default () => {
 
         const Lobby = GetLobby(Game, Id);
         if (!Lobby) return Player.Functions.Notify("Lobby bestaat niet..", "error");
-        if (IsCidInAnyLobby(TargetCid)) return Player.Functions.Notify("Speler zit al in een lobby!");
+        if (IsCidInAnyLobby(TargetCid)) return Player.Functions.Notify("player zit al in een lobby!");
 
         const Target = FW.Functions.GetPlayerByCitizenId(TargetCid);
         if (!Target) return;
@@ -148,7 +148,7 @@ export default () => {
         const TargetCoords: number[] = GetEntityCoords(GetPlayerPed(Target.PlayerData.source));
         const ArcadeCoords = new Vector3(-1654.12, -1070.66, 12.16);
 
-        if (ArcadeCoords.getDistanceFromArray(TargetCoords) > 100.0) return Player.Functions.Notify("Speler is niet bij de arcade..", "error");
+        if (ArcadeCoords.getDistanceFromArray(TargetCoords) > 100.0) return Player.Functions.Notify("player is niet bij de arcade..", "error");
 
         emitNet("fw-phone:Client:Notification", Target.PlayerData.source, `arcade-invite-${Game}:${Id}`, "fas fa-gamepad", ["white", "rgb(38, 50, 56)"], "Arcade Invite", `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} heeft je uitgenodigd voor een lobby.`, false, true, "fw-arcade:Server:AcceptInvitation", "fw-phone:Client:RemoveNotificationById", {Id: `arcade-invite-${Game}:${Id}`, Game, LobbyId: Id})
     });

@@ -88,9 +88,9 @@ function InitAssets()
 
     -- Misc stuff
     DisablePlayerRadioStations()
-    SetDiscordRichPresenceAction(0, 'Discord', 'https://discord.gg/clarityrp')
+    SetDiscordRichPresenceAction(0, 'Discord', 'https://discord.gg/gGYt5mbrTW')
 
-    -- Config.SavedDuiData = FW.SendCallback("fw-assets:Server:GetDuiData")
+    --  Config.SavedDuiData = FW.SendCallback("fw-assets:Server:GetDuiData")
 
     -- Remove soft border around minimap
     RequestStreamedTextureDict("squaremap", false)
@@ -182,7 +182,7 @@ function DisablePlayerRadioStations()
     end
 end
 
-FW.AddKeybind("handsUp", "Speler", "Handen omhoog doen", "", function(IsPressed)
+FW.AddKeybind("handsUp", "player", "Put hands up", "", function(IsPressed)
     if not IsPressed then return end
     if not IsEntityPlayingAnim(PlayerPedId(), "missminuteman_1ig_2", "handsup_base", 1) then
         if not HasAnimDictLoaded("missminuteman_1ig_2") then

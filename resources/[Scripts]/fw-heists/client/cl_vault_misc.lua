@@ -116,7 +116,7 @@ function IsVaultTripped()
             end)
         end
 
-        FW.Functions.Notify("Anti-diefstal systeem is geactiveerd..", "error")
+        FW.Functions.Notify("Anti-theft system activated.", "error")
         
         ApplyForceToEntity(PlayerPedId(), 1, 400.0, -400.0, 0.0, 1.0, 0.0, 0.0, 1, false, true, false, false)
         Citizen.Wait(5)
@@ -245,7 +245,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'rob',
                     Icon = 'fas fa-th',
-                    Label = 'Overvallen',
+                    Label = 'Rob',
                     EventType = 'Client',
                     EventName = 'fw-heists:Client:Vault:Loot',
                     EventParams = { Id = k },
@@ -391,7 +391,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'grab_left',
                 Icon = 'fas fa-circle',
-                Label = 'Keycard Links Oppaken',
+                Label = 'Grab left Keycard,
                 EventType = 'Server',
                 EventName = 'fw-heists:Server:Vault:GrabKeycard',
                 EventParams = { Type = 'Left' },
@@ -402,7 +402,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'grab_right',
                 Icon = 'fas fa-circle',
-                Label = 'Keycard Rechts Oppaken',
+                Label = 'Grab Right Keycard',
                 EventType = 'Server',
                 EventName = 'fw-heists:Server:Vault:GrabKeycard',
                 EventParams = { Type = 'Right' },
@@ -431,7 +431,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'hack',
                 Icon = 'fas fa-keyboard',
-                Label = 'Activeren',
+                Label = 'Activate',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Vault:HackEletrical',
                 EventParams = { },
@@ -547,7 +547,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'password',
                 Icon = 'fas fa-passport',
-                Label = 'Wachtwoord Invoeren',
+                Label = 'Enter password',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Vault:EnterPassword',
                 EventParams = {},
@@ -576,7 +576,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'hack',
                 Icon = 'fas fa-credit-card',
-                Label = 'Keycard Gebruiken',
+                Label = 'Use Keycard',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Vault:UseKeycard',
                 EventParams = {},
@@ -625,7 +625,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'grab',
                 Icon = 'fas fa-circle',
-                Label = 'Oppakken',
+                Label = 'Grab Box',
                 EventType = 'Server',
                 EventName = 'fw-heists:Server:Vault:GrabBox',
                 EventParams = {},

@@ -20,7 +20,7 @@ FW.Functions.CreateCallback("fw-phone:Server:DOJ:GetUsers", function(Source, Cb,
             Cid = Target.PlayerData.citizenid,
             CharName = Target.PlayerData.charinfo.firstname .. " " .. Target.PlayerData.charinfo.lastname,
             Number = Target.PlayerData.charinfo.phone,
-            Status = Statusses[Target.PlayerData.citizenid] or "Bezet",
+            Status = Statusses[Target.PlayerData.citizenid] or "Busy",
             Job = Target.PlayerData.job.name,
         })
 

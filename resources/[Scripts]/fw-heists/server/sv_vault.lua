@@ -8,19 +8,19 @@ end)
 
 FW.Functions.CreateCallback("fw-heists:Server:Vault:IsPasswordCorrect", function(Source, Cb, Result)
     if #ShuffledVaultCodes == 0 then
-        Cb("Geen Data Gevonden!")
+        Cb("No Data!")
         return
     end
 
     for k, v in pairs(ShuffledVaultCodes) do
         if v.Letters ~= Result[tostring(k)] then
-            Cb("Toegang Geweigerd!")
+            Cb("Access denied!")
             return
         end
     end
 
     SecurityCode = math.random(11111, 9999999)
-    Cb("Beveiligingscode: " .. tostring(SecurityCode))
+    Cb("SecurityCode: " .. tostring(SecurityCode))
 end)
 
 FW.Functions.CreateCallback("fw-heists:Server:IsVaultBox", function(Source, Cb, NetId)

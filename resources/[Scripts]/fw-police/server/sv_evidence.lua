@@ -46,7 +46,7 @@ AddEventHandler('fw-police:Server:GetTargetStatus', function(Target)
             end
         end
         if TotalMessage ~= '' then
-            TriggerClientEvent('chatMessage', source, "Status Controle", "error", TotalMessage)
+            TriggerClientEvent('chatMessage', source, "Checking Status", "error", TotalMessage)
         end
     end
 end)
@@ -57,9 +57,9 @@ AddEventHandler('fw-police:Server:GSRResult', function(Target)
     if TPlayer == nil then return end
 
     if CurrentStatusLists[TPlayer.PlayerData.source] ~= nil and HasStatus(TPlayer.PlayerData.source, 'gunpowder') then
-        TriggerClientEvent('chatMessage', source, "GSR Resultaat - #" .. TPlayer.PlayerData.citizenid, "error", "Positief")
+        TriggerClientEvent('chatMessage', source, "GSR result - #" .. TPlayer.PlayerData.citizenid, "error", "Positief")
     else
-        TriggerClientEvent('chatMessage', source, "GSR Resultaat - #" .. TPlayer.PlayerData.citizenid, "error", "Negatief")
+        TriggerClientEvent('chatMessage', source, "GSR result - #" .. TPlayer.PlayerData.citizenid, "error", "Negatief")
     end
 end)
 
@@ -111,7 +111,7 @@ FW.RegisterServer("fw-police:Server:Receive:Evidence", function(Source, Evidence
     if Player == nil then return end
 
     if #EvidenceData == 0 or not Player.Functions.RemoveItem('evidence', 1, false, true) then
-        Player.Functions.Notify("Je hebt geen markeringen..", "error")
+        Player.Functions.Notify("No markings..", "error")
         TriggerClientEvent('fw-police:Client:Can:Collect:Again', Source)
         return 
     end

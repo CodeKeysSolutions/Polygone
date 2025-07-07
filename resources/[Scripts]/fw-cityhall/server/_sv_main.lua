@@ -2,12 +2,12 @@ FW = exports['fw-core']:GetCoreObject()
 
 -- Code
 
-FW.Commands.Add("staatsmelding", "Verzend een melding als de Staat.", {}, false, function(Source, Args)
+FW.Commands.Add("staatsmelding", "Send a message as the State.", {}, false, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
     if Player.PlayerData.job.name ~= 'judge' and Player.PlayerData.job.name ~= 'mayor' then
-        return Player.Functions.Notify("Je kan geen melding maken..", "error")
+        return Player.Functions.Notify("You cannot make an announcement..", "error")
     end
 
     TriggerClientEvent("fw-cityhall:Client:SendAnnouncement", Source)
@@ -18,7 +18,7 @@ FW.RegisterServer("fw-cityhall:Server:SendAnnouncement", function(Source, Label,
     if Player == nil then return end
 
     if Player.PlayerData.job.name ~= 'judge' and Player.PlayerData.job.name ~= 'mayor' then
-        return Player.Functions.Notify("Je kan geen melding maken..", "error")
+        return Player.Functions.Notify("You cannot make an announcement..", "error")
     end
 
     TriggerClientEvent('chatMessage', -1, "[" .. Label .. "]", "warning", Text)
@@ -30,16 +30,16 @@ FW.RegisterServer("fw-cityhall:Server:RequestBankaccount", function(Source, Cid)
     if Player == nil then return end
 
     if Player.PlayerData.job.name ~= 'judge' or not Player.PlayerData.metadata.ishighcommand then
-        return Player.Functions.Notify("Geen toegang..", "error")
+        return Player.Functions.Notify("No access..", "error")
     end
 
     local Result = exports['ghmattimysql']:executeSync("SELECT `charinfo` FROM `players` WHERE `citizenid` = ?", {Cid})
     if Result[1] == nil then
-        return Player.Functions.Notify("Geen bankaccount gevonden met het gegeven BSN..", "error")
+        return Player.Functions.Notify("No bank account found with the given SSN..", "error")
     end
 
     local CharInfo = json.decode(Result[1].charinfo)
-    TriggerClientEvent('chatMessage', Source, "Resultaat", "warning", CharInfo.account)
+    TriggerClientEvent('chatMessage', Source, "Result", "warning", CharInfo.account)
 end)
 
 RegisterNetEvent('fw-cityhall:Server:PurchaseId')
@@ -49,7 +49,7 @@ AddEventHandler('fw-cityhall:Server:PurchaseId', function(Data)
     if Player == nil then return end
 
     if Data.Type == "Driver" and not Player.PlayerData.metadata.licenses.driver then
-        return Player.Functions.Notify("Je hebt geen rijbewijs..", "error")
+        return Player.Functions.Notify("You do not have a driver's license..", "error")
     end
 
     if Player.Functions.RemoveMoney('cash', Config.IdPrice) then
@@ -60,7 +60,7 @@ AddEventHandler('fw-cityhall:Server:PurchaseId', function(Data)
             Player.Functions.AddItem('driver_license', 1, false, nil, true)
         end
     else
-        Player.Functions.Notify('Niet genoeg cash..', 'error')
+        Player.Functions.Notify('Not enough cash..', 'error')
     end
 end)
 
@@ -81,21 +81,21 @@ AddEventHandler("fw-cityhall:Server:SetLicense", function(Cid, License)
     NewLicenses[License] = not NewLicenses[License]
 
     if NewLicenses[License] then
-        Player.Functions.Notify("Vergunning [" .. License .. "] gegeven", "success")
+        Player.Functions.Notify("License [" .. License .. "] granted", "success")
     
         local Date = os.date("*t", os.time())
         TriggerEvent('fw-phone:Server:Documents:AddDocument', '1001', {
             Type = 1,
             Title = Config.LicensesLocales[License] .. ' - ' .. Target.PlayerData.citizenid,
-            Content = Config.LicenseTemplate:format((Target.PlayerData.charinfo.firstname .. " " .. Target.PlayerData.charinfo.lastname), Target.PlayerData.citizenid, (Player.PlayerData.charinfo.gender == 0 and "Man" or "Vrouw"), (Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname), Date.day .. '/' .. Date.month .. '/' .. Date.year .. ' ' .. Date.hour .. ':' .. Date.min),
+            Content = Config.LicenseTemplate:format((Target.PlayerData.charinfo.firstname .. " " .. Target.PlayerData.charinfo.lastname), Target.PlayerData.citizenid, (Player.PlayerData.charinfo.gender == 0 and "Man" or "Woman"), (Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname), Date.day .. '/' .. Date.month .. '/' .. Date.year .. ' ' .. Date.hour .. ':' .. Date.min),
             Signatures = {
-                { Signed = true, Name = 'De Staat', Timestamp = os.time() * 1000, Cid = '1001' },
+                { Signed = true, Name = 'The State', Timestamp = os.time() * 1000, Cid = '1001' },
             },
             Sharees = { Target.PlayerData.citizenid },
             Finalized = 1,
         })
     else
-        Player.Functions.Notify("Vergunning [" .. License .. "] ontnomen", "error")
+        Player.Functions.Notify("License [" .. License .. "] revoked", "error")
         exports['ghmattimysql']:execute("DELETE FROM `phone_documents` WHERE `type` = 1 AND `title` = @Title AND `sharees` LIKE @Cid", {
             ['@Title'] = Config.LicensesLocales[License] .. ' - ' .. Target.PlayerData.citizenid,
             ['@Cid'] = '%' .. Target.PlayerData.citizenid .. '%',
@@ -116,7 +116,7 @@ AddEventHandler("fw-cityhall:Server:CreateFinancial", function(Data)
     end
 
     exports['fw-financials']:CreateFinancialAccount(Data.Type, Data.Cid, Data.Name, 0)
-    Player.Functions.Notify("Rekening [" .. Data.Type .. "] aangemaakt")
+    Player.Functions.Notify("Account [" .. Data.Type .. "] created")
 end)
 
 RegisterNetEvent("fw-cityhall:Server:SetFinancialState")
@@ -130,7 +130,7 @@ AddEventHandler("fw-cityhall:Server:SetFinancialState", function(AccountId, Acti
     end
 
     local Account = exports['fw-financials']:GetFinancialAccountById(AccountId)
-    if Account == nil then return Player.Functions.Notify("Rekening bestaat niet..", "error") end
+    if Account == nil then return Player.Functions.Notify("Account does not exist..", "error") end
 
     exports['ghmattimysql']:executeSync("UPDATE `player_financials` SET `active` = @Active WHERE `accountid` = @AccountId", {
         ['@Active'] = Active and 1 or 0,
@@ -138,9 +138,9 @@ AddEventHandler("fw-cityhall:Server:SetFinancialState", function(AccountId, Acti
     })
 
     if Active then
-        Player.Functions.Notify("Bankrekening [" .. AccountId .. "] geactiveerd", "success")
+        Player.Functions.Notify("Bank account [" .. AccountId .. "] activated", "success")
     else
-        Player.Functions.Notify("Bankrekening [" .. AccountId .. "] gedeactiveerd", "error")
+        Player.Functions.Notify("Bank account [" .. AccountId .. "] deactivated", "error")
     end
 end)
 
@@ -155,7 +155,7 @@ AddEventHandler("fw-cityhall:Server:SetFinancialMonitorState", function(AccountI
     end
 
     local Account = exports['fw-financials']:GetFinancialAccountById(AccountId)
-    if Account == nil then return Player.Functions.Notify("Rekening bestaat niet..", "error") end
+    if Account == nil then return Player.Functions.Notify("Account does not exist..", "error") end
 
     exports['ghmattimysql']:executeSync("UPDATE `player_financials` SET `monitored` = @Monitored WHERE `accountid` = @AccountId", {
         ['@Monitored'] = Active and 1 or 0,
@@ -163,9 +163,9 @@ AddEventHandler("fw-cityhall:Server:SetFinancialMonitorState", function(AccountI
     })
 
     if Active then
-        Player.Functions.Notify("Bankrekening accountactiviteit monitoring [" .. AccountId .. "] geactiveerd", "success")
+        Player.Functions.Notify("Bank account activity monitoring [" .. AccountId .. "] activated", "success")
     else
-        Player.Functions.Notify("Bankrekening accountactiviteit monitoring [" .. AccountId .. "] gedeactiveerd", "error")
+        Player.Functions.Notify("Bank account activity monitoring [" .. AccountId .. "] deactivated", "error")
     end
 end)
 
@@ -175,8 +175,8 @@ AddEventHandler('fw-cityhall:lawyer:add', function(TagetId)
     local TagetPlayer = FW.Functions.GetPlayer(TagetId)
     if TagetPlayer ~= nil and SelfPlayer ~= nil then
         TagetPlayer.Functions.SetJob('lawyer', '0')
-        TriggerClientEvent('FW:Notify', SelfPlayer.PlayerData.source, 'Je hebt '..TagetPlayer.PlayerData.charinfo.firstname..' '..TagetPlayer.PlayerData.charinfo.lastname..' aangenomen!')
-        TriggerClientEvent('FW:Notify', TagetPlayer.PlayerData.source, 'Gefeliciteerd je bent aangenomen als advocaat')
+        TriggerClientEvent('FW:Notify', SelfPlayer.PlayerData.source, 'You have hired '..TagetPlayer.PlayerData.charinfo.firstname..' '..TagetPlayer.PlayerData.charinfo.lastname..'!')
+        TriggerClientEvent('FW:Notify', TagetPlayer.PlayerData.source, 'Congratulations, you have been hired as a lawyer')
     end
 end)
 
@@ -216,7 +216,7 @@ AddEventHandler("fw-cityhall:Server:SubpoenaRecords", function(Data)
     })
 
     if Target[1] == nil then
-        Player.Functions.Notify("Telefoonnummer bestaat niet..", "error")
+        Player.Functions.Notify("Phone number does not exist..", "error")
         return
     end
 
@@ -228,13 +228,13 @@ AddEventHandler("fw-cityhall:Server:SubpoenaRecords", function(Data)
         if statusCode == 200 then
             local Data = json.decode(response)
             if Data.Url then
-                Player.Functions.Notify(Data.Message .. " Url gekopieerd naar plakbord.", "success")
+                Player.Functions.Notify(Data.Message .. " Url copied to clipboard.", "success")
                 TriggerClientEvent("fw-admin:Client:CopyToClipboard", Source, Data.Url)
             else
                 Player.Functions.Notify(Data.Message, "error")
             end
         else
-            Player.Functions.Notify("Fout opgetreden tijdens het exporteren. (" .. statusCode .. ")", "error")
+            Player.Functions.Notify("An error occurred during export. (" .. statusCode .. ")", "error")
         end
     end, 'GET', '', {})
 end)
@@ -248,20 +248,20 @@ AddEventHandler("fw-cityhall:Server:SubpoenaFinancials", function(Data)
     if Player.PlayerData.job.name ~= 'judge' then return end
 
     local Account = exports['fw-financials']:GetFinancialAccountById(Data.AccountId)
-    if Account == nil then return Player.Functions.Notify("Rekening bestaat niet..", "error") end
+    if Account == nil then return Player.Functions.Notify("Account does not exist..", "error") end
 
     local url = 'http://localhost:3000/financials?accountId=' .. Data.AccountId
     PerformHttpRequest(url, function(statusCode, response, headers)
         if statusCode == 200 then
             local Data = json.decode(response)
             if Data.Url then
-                Player.Functions.Notify(Data.Message .. " Url gekopieerd naar plakbord.", "success")
+                Player.Functions.Notify(Data.Message .. " Url copied to clipboard.", "success")
                 TriggerClientEvent("fw-admin:Client:CopyToClipboard", Source, Data.Url)
             else
                 Player.Functions.Notify(Data.Message, "error")
             end
         else
-            Player.Functions.Notify("Fout opgetreden tijdens het exporteren. (" .. statusCode .. ")", "error")
+            Player.Functions.Notify("An error occurred during export. (" .. statusCode .. ")", "error")
         end
     end, 'GET', '', {})
 end)

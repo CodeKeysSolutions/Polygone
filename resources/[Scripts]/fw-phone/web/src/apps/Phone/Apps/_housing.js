@@ -65,7 +65,7 @@ export const PurchaseHouse = async HouseId => {
         Inputs: [
             {
                 Type: "Text",
-                Text: "Weet je het zeker?",
+                Text: "Are you sure?",
                 Data: {
                     style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
                 },
@@ -116,7 +116,7 @@ export const CheckCurrentLocation = async () => {
             Inputs: [
                 {
                     Type: "Text",
-                    Text: "Geen eigendom gevonden op huidige locatie.",
+                    Text: "No properties found on current location.",
                     Data: {
                         style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
                     },
@@ -391,7 +391,7 @@ export const DeleteHousing = async () => {
         Inputs: [
             {
                 Type: "Text",
-                Text: "Weet je het zeker?",
+                Text: "Are you sure?",
                 Data: {
                     style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
                 },

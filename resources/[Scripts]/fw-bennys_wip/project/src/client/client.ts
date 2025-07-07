@@ -28,7 +28,7 @@ RegisterNUICallback("Bennys/PurchaseUpgrade", (Data: any, Cb: Function) => {
     if (Data.Id == "RepairVehicle") {
         const Cash = FW.Functions.GetPlayerData().money.cash;
         if (Data.Costs > Cash) {
-            return FW.Functions.Notify("Je hebt niet genoeg cash..", "error");
+            return FW.Functions.Notify("You do not have enough cash..", "error");
         };
 
         const BodyHealth = GetVehicleBodyHealth(Vehicle);
@@ -40,7 +40,7 @@ RegisterNUICallback("Bennys/PurchaseUpgrade", (Data: any, Cb: Function) => {
         SetVehicleHandbrake(Vehicle, true);
 
         if (MissingEngineHealth > 50) {
-            const Finished = FW.Functions.CompactProgressbar(5000 + (MissingEngineHealth / 50), "Motor repareren...", false, false, {disableMovement: true, disableCarMovement: true, disableMouse: false, disableCombat: true}, {}, {}, {}, false);
+            const Finished = FW.Functions.CompactProgressbar(5000 + (MissingEngineHealth / 50), "Repairing engine...", false, false, {disableMovement: true, disableCarMovement: true, disableMouse: false, disableCombat: true}, {}, {}, {}, false);
             if (Finished) {
                 SetVehicleEngineHealth(Vehicle, EngineHealth + MissingEngineHealth);
                 SetVehiclePetrolTankHealth(Vehicle, 1000.0);
@@ -48,7 +48,7 @@ RegisterNUICallback("Bennys/PurchaseUpgrade", (Data: any, Cb: Function) => {
         };
 
         if (MissingBodyHealth > 50) {
-            const Finished = FW.Functions.CompactProgressbar(5000 + (MissingBodyHealth / 50), "Body repareren...", false, false, {disableMovement: true, disableCarMovement: true, disableMouse: false, disableCombat: true}, {}, {}, {}, false);
+            const Finished = FW.Functions.CompactProgressbar(5000 + (MissingBodyHealth / 50), "Repairing body...", false, false, {disableMovement: true, disableCarMovement: true, disableMouse: false, disableCombat: true}, {}, {}, {}, false);
             if (Finished) {
                 SetVehicleDeformationFixed(Vehicle);
                 SetVehicleBodyHealth(Vehicle, BodyHealth + MissingBodyHealth);

@@ -43,12 +43,12 @@
         </div>
 
         <TextField
-            Title="Aantal"
+            Title="Amount"
             Icon="$"
             IconText={true}
             bind:RealValue={Amount}
             Type="number"
-            Sub="€ 0,00"
+            Sub="$ 0,00"
             SubSet={() => FormatCurrency.format(Amount)}
         />
 
@@ -60,14 +60,14 @@
         />
 
         <TextField
-            Title="BSN"
+            Title="SSN"
             Icon="#"
             IconText={true}
             bind:RealValue={TargetCid}
             Type="number"
         />
         <TextField
-            Title="...of bankrekeningnummer"
+            Title="...of bank account"
             Icon="#"
             IconText={true}
             bind:RealValue={TargetId}
@@ -78,11 +78,11 @@
             <Button
                 on:click={() => ModalData.set({})}
                 Color="warning"
-            >Annuleren</Button>
+            >Cancel</Button>
             <Button
                 on:click={Transfer}
                 Color="success"
-            >Overmaken</Button>
+            >Transfer</Button>
         </div>
     {:else}
         <div style="display: flex; justify-content: center; align-items: center; height: 20vh; width: 100%;">

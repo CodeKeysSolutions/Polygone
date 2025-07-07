@@ -53,7 +53,7 @@
 
         DoingMinigame = true;
         ShowingSplash = true;
-        SplashText = 'Sequentie op Afstand Vereist';
+        SplashText = 'Remote Sequence Required'; // was 'Sequentie op Afstand Vereist'
 
         await Delay(5);
 
@@ -97,7 +97,7 @@
 
         if (TimeLeft >= 100 || WrongSelected >= 3) {
             ShowingSplash = true;
-            SplashText = 'Sequentie op Afstand Geweigerd';
+            SplashText = 'Remote Sequence Denied'; // was 'Sequentie op Afstand Geweigerd'
             if (TimeInterval) clearInterval(TimeInterval);
             setTimeout(() => {
                 SendEvent("Minigames/Thermite/Finished", {Success: false})
@@ -112,7 +112,7 @@
 
         if (CorrectSelected == CorrectPositions.length) {
             ShowingSplash = true;
-            SplashText = 'Sequentie op Afstand Voltooid';
+            SplashText = 'Remote Sequence Completed'; // was 'Sequentie op Afstand Voltooid'
             if (TimeInterval) clearInterval(TimeInterval);
             setTimeout(() => {
                 SendEvent("Minigames/Thermite/Finished", {Success: true})

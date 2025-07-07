@@ -23,17 +23,17 @@ end)
 
 -- Code
 
-FW.AddKeybind("toggleScenes", "Scenes", "Aan/Uit Zetten", "", function(IsPressed)
+FW.AddKeybind("toggleScenes", "Scenes", "Toggle On/Off", "", function(IsPressed)
     if IsPressed then
         ScenesEnabled = not ScenesEnabled
         SetResourceKvpInt("fw_scene_disabled", ScenesEnabled and 0 or 1)
-        FW.Functions.Notify("Scenes " .. (ScenesEnabled and "geactiveerd" or "gedeactiveerd"), ScenesEnabled and "success" or "error")
+        FW.Functions.Notify("Scenes " .. (ScenesEnabled and "activated" or "deactivated"), ScenesEnabled and "success" or "error")
         if ScenesEnabled then StartScenesLoop() end
     end
 end)
 
 local PlacingScene = false
-FW.AddKeybind("placeScene", "Scenes", "Plaatsen", "", function(IsPressed)
+FW.AddKeybind("placeScene", "Scenes", "Place", "", function(IsPressed)
     if not ScenesEnabled then return end
     PlacingScene = IsPressed
 
@@ -67,27 +67,27 @@ FW.AddKeybind("placeScene", "Scenes", "Plaatsen", "", function(IsPressed)
             end
 
             local Result = exports['fw-ui']:CreateInput({
-                { Label = 'Tekst', Icon = 'fas fa-pencil-alt', Name = 'Text' },
-                { Label = 'Kleur', Icon = 'fas fa-palette', Name = 'Color', Choices = ColorChoices },
-                { Label = 'Afstand (0.1 - 10)', Icon = 'fas fa-people-arrows', Name = 'Distance', Type = 'Number' },
+                { Label = 'Text', Icon = 'fas fa-pencil-alt', Name = 'Text' },
+                { Label = 'Color', Icon = 'fas fa-palette', Name = 'Color', Choices = ColorChoices },
+                { Label = 'Distance (0.1 - 10)', Icon = 'fas fa-people-arrows', Name = 'Distance', Type = 'Number' },
             })
 
             if Result then
                 if #Result.Text > Config.MaxTextLength then
-                    FW.Functions.Notify("Tekst is te lang.. (" .. #Result.Text .. "/" .. Config.MaxTextLength .. ")", "error")
+                    FW.Functions.Notify("Text is too long.. (" .. #Result.Text .. "/" .. Config.MaxTextLength .. ")", "error")
                     return
                 end
 
-                if not Result.Color or Result.Color == '' then Result.Color = "wit" end
+                if not Result.Color or Result.Color == '' then Result.Color = "white" end
                 if Config.Colors[Result.Color:lower()] == nil then
-                    FW.Functions.Notify("Ongeldige kleur..", "error")
+                    FW.Functions.Notify("Invalid color..", "error")
                     return
                 end
 
                 if not Result.Distance or Result.Distance == ''then Result.Distance = 5.0 end
                 local Dist = tonumber(Result.Distance) + 0.0
                 if Dist < 0.1 or Dist > 10.0 then
-                    FW.Functions.Notify("Ongeldige afstand..", "error")
+                    FW.Functions.Notify("Invalid distance..", "error")
                     return
                 end
 
@@ -97,7 +97,7 @@ FW.AddKeybind("placeScene", "Scenes", "Plaatsen", "", function(IsPressed)
     end
 end)
 
-FW.AddKeybind("deleteScene", "Scenes", "Verwijder dichtstbijzijnde", "", function(IsPressed)
+FW.AddKeybind("deleteScene", "Scenes", "Delete nearest", "", function(IsPressed)
     if not IsPressed or not ScenesEnabled then return end
 
     local PlayerCoords = GetEntityCoords(PlayerPedId())

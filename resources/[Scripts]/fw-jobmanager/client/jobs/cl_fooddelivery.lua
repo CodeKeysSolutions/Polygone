@@ -21,7 +21,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = "grab",
                     Icon = "fas fa-box",
-                    Label = "Bestelling Ophalen",
+                    Label = "Pick Up Order",
                     EventType = "Client",
                     EventName = "fw-jobmanager:Client:FoodDelivery:PickupOrder",
                     EventParams = {},
@@ -53,7 +53,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = "grab",
                     Icon = "fas fa-box",
-                    Label = "Bestelling Inleveren",
+                    Label = "Deliver Order",
                     EventType = "Client",
                     EventName = "fw-jobmanager:Client:FoodDelivery:DeliverOrder",
                     EventParams = {},
@@ -109,7 +109,7 @@ AddEventHandler('fw-jobmanager:Client:OnNextTask', function(IsLeader, TaskId)
 
     if TaskId == 3 then
         RemoveRouteBlip()
-        SetRouteBlip("Bezorgadres", DeliveryCoords)
+        SetRouteBlip("Delivery Address", DeliveryCoords)
     end
 
     if not IsLeader then return end

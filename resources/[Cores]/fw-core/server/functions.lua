@@ -149,7 +149,7 @@ end
 
 FW.Functions.Kick = function(source, reason, setKickReason, deferrals)
     local src = source
-    reason = "\n"..reason.."\n🔸 Kijk op onze discord voor meer informatie!"
+    reason = "\n"..reason.."\n🔸 Check out our discord for info!"
     if(setKickReason ~=nil) then
         setKickReason(reason)
     end
@@ -298,9 +298,9 @@ FW.Functions.IsPlayerBanned = function(source)
         if os.time() < result[1].expire then
             local timeTable = os.date('*t', result[1].expire)
             if result[1].expire >= 3132036000 then
-                Message = "\n🔰 Je bent verbannen van de server. \n🛑 Reden: " ..result[1].reason.. '\n🛑 Verbannen Door: ' ..result[1].bannedby.. '\n🛑Ban vervalt over: permanent\n\n Voor een unban kan je een ticket openen in de discord.'
+                Message = "\n🔰 You are banned from the server. \n🛑 Reason: " ..result[1].reason.. '\n🛑 by: ' ..result[1].bannedby.. '\n🛑Ban expires in: Permant\n\n  Appeal on discord.'
             else
-                Message = "\n🔰 Je bent verbannen van de server. \n🛑 Reden: " ..result[1].reason.. '\n🛑 Verbannen Door: ' ..result[1].bannedby.. '\n🛑Ban vervalt over: ' .. timeTable['day'] .. '/' .. timeTable['month'] .. '/' .. timeTable['year'] .. ' ' .. timeTable['hour'] .. ':' .. timeTable['min'] .. '\n\n Voor een unban kan je een ticket openen in de discord.'
+                Message = "\n🔰 You are banned from the server. \n🛑 Reason: " ..result[1].reason.. '\n🛑 by: ' ..result[1].bannedby.. '\n🛑Ban expires in: ' .. timeTable['day'] .. '/' .. timeTable['month'] .. '/' .. timeTable['year'] .. ' ' .. timeTable['hour'] .. ':' .. timeTable['min'] .. '\n\n Voor een unban kan je een ticket openen in de discord.'
             end
             IsBanned = true
         else

@@ -30,7 +30,7 @@ const GetClosestSpot = () => {
 };
 
 HelipadThread.addHook('preStart', () => {
-    exp['fw-ui'].ShowInteraction(IsPedInAnyHeli(PlayerPedId()) ? "[E] Helikopter Inleveren" : "[E] Helikopter Pakken")
+    exp['fw-ui'].ShowInteraction(IsPedInAnyHeli(PlayerPedId()) ? "[E] Return Helicopter" : "[E] Take Helicopter")
 });
 
 HelipadThread.addHook('active', async () => {
@@ -72,7 +72,7 @@ HelipadThread.addHook('afterStop', () => {
 
 on("fw-medical:Client:PurchaseVehicle", () => {
     if (FW.Functions.GetPlayerData().job.name != 'ems') {
-        return FW.Functions.Notify("Geen toegang..", "error")
+        return FW.Functions.Notify("No access..", "error")
     }
 
     let BuyVehicles: Array<any> = [];
@@ -90,7 +90,7 @@ on("fw-medical:Client:PurchaseVehicle", () => {
             SecondMenu: [
                 {
                     Icon: 'user',
-                    Title: 'Bevestig aankoop',
+                    Title: 'Confirm purchase',
                     CloseMenu: true,
                     Data: { Event: 'fw-hospital:Server:PurchaseVehicle', Vehicle: Model }
                 },
@@ -100,7 +100,7 @@ on("fw-medical:Client:PurchaseVehicle", () => {
         if (FW.Functions.GetPlayerData().metadata.ishighcommand) {
             BuyVehicles[BuyVehicles.length - 1].SecondMenu[1] = {
                 Icon: 'people-arrows',
-                Title: 'Bevestig aankoop (Gezamelijk)',
+                Title: 'Confirm purchase (Shared)',
                 CloseMenu: true,
                 Data: { Event: 'fw-hospital:Server:PurchaseVehicle', Vehicle: Model, Shared: true }
             }
@@ -178,7 +178,7 @@ setImmediate(() => {
             {
                 Name: "purchase",
                 Icon: "fas fa-garage-car",
-                Label: "Voertuig Aanschaffen",
+                Label: "Purchase Vehicle",
                 EventType: "Client",
                 EventName: "fw-medical:Client:PurchaseVehicle",
                 EventParams: {},

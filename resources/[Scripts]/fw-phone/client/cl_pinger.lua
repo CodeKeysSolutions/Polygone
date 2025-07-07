@@ -18,10 +18,10 @@ AddEventHandler("fw-phone:Client:Pinger:SetBlip", function(Coords)
     SetBlipColour(PingerBlip, 4)
     SetBlipAsShortRange(PingerBlip, false)
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString("Geaccepteerde GPS Positie")
+    AddTextComponentString("Accepted GPS Positie")
     EndTextCommandSetBlipName(PingerBlip)
 
-    FW.Functions.Notify("GPS-ping is gemarkeerd op de kaart.", "success")
+    FW.Functions.Notify("GPS-ping set on map", "success")
     Citizen.SetTimeout((60 * 1000) * 1, function()
         if DoesBlipExist(PingerBlip) then
             RemoveBlip(PingerBlip)

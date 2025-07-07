@@ -1,4 +1,25 @@
--- Dumping structure for table fivem-clarity.ballots_votes
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server versie:                10.4.28-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win64
+-- HeidiSQL Versie:              12.6.0.6765
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+-- Databasestructuur van Polygone wordt geschreven
+CREATE DATABASE IF NOT EXISTS `Polygone` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+USE `Polygone`;
+
+-- Structuur van  tabel Polygone.ballots_votes wordt geschreven
 CREATE TABLE IF NOT EXISTS `ballots_votes` (
   `ballot_id` int(11) NOT NULL DEFAULT 0,
   `steam_id` varchar(50) NOT NULL,
@@ -7,9 +28,9 @@ CREATE TABLE IF NOT EXISTS `ballots_votes` (
   KEY `steam_id` (`steam_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.ballots_votes: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.ballots_votes: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.businesses_dishes
+-- Structuur van  tabel Polygone.businesses_dishes wordt geschreven
 CREATE TABLE IF NOT EXISTS `businesses_dishes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `foodchain` text NOT NULL,
@@ -20,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `businesses_dishes` (
   KEY `foodchain` (`foodchain`(768))
 ) ENGINE=InnoDB AUTO_INCREMENT=349 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.businesses_dishes: ~153 rows (approximately)
+-- Dumpen data van tabel Polygone.businesses_dishes: ~153 rows (ongeveer)
 INSERT INTO `businesses_dishes` (`id`, `foodchain`, `type`, `dish_id`, `ingredients`) VALUES
 	(1, 'Burger Shot', 'Main', 'burger-bacon-cheeseburger', '["beef","grain","dairy","oil","seasoning"]'),
 	(2, 'Burger Shot', 'Main', 'burger-dino-nuggies', '["seasoning","beef","oil","dairy","seasoning"]'),
@@ -176,7 +197,7 @@ INSERT INTO `businesses_dishes` (`id`, `foodchain`, `type`, `dish_id`, `ingredie
 	(347, 'De petit croissant', 'Main', 'undefined-luikse-wafel-met-suiker', '["grain","grain","sugar","sugar","dairy"]'),
 	(348, 'De petit croissant', 'Main', 'undefined-wafel-met-fruit', '["grain","grain","sugar","sugar","dairy"]');
 
--- Dumping structure for table fivem-clarity.farms_gardens
+-- Structuur van  tabel Polygone.farms_gardens wordt geschreven
 CREATE TABLE IF NOT EXISTS `farms_gardens` (
   `garden_id` int(11) NOT NULL,
   `cid` varchar(11) DEFAULT NULL,
@@ -184,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `farms_gardens` (
   PRIMARY KEY (`garden_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.farms_gardens: ~14 rows (approximately)
+-- Dumpen data van tabel Polygone.farms_gardens: ~14 rows (ongeveer)
 INSERT INTO `farms_gardens` (`garden_id`, `cid`, `timestamp`) VALUES
 	(1, NULL, 0),
 	(2, NULL, 0),
@@ -201,7 +222,7 @@ INSERT INTO `farms_gardens` (`garden_id`, `cid`, `timestamp`) VALUES
 	(13, NULL, 0),
 	(14, NULL, 0);
 
--- Dumping structure for table fivem-clarity.financials_transactions
+-- Structuur van  tabel Polygone.financials_transactions wordt geschreven
 CREATE TABLE IF NOT EXISTS `financials_transactions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account_id` varchar(50) NOT NULL DEFAULT '0',
@@ -217,11 +238,17 @@ CREATE TABLE IF NOT EXISTS `financials_transactions` (
   `comment` longtext NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `account_id` (`account_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.financials_transactions: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.financials_transactions: ~5 rows (ongeveer)
+INSERT INTO `financials_transactions` (`id`, `account_id`, `trans_accountname`, `trans_accountid`, `type`, `uuid`, `amount`, `negative`, `timestamp`, `receiver`, `sender`, `comment`) VALUES
+	(1, '4', 'The state', '1', 'PURCHASE', '1fa2b39d-599e-4835-8695-f208a30cfbf1', 96600, 1, '2025-06-29 15:09:21', 'De Staat', 'De Staat', 'Voertuig aankoop Vapid Crownvic'),
+	(2, '4', 'The state', '1', 'PURCHASE', '8e7b80bf-a8f8-416f-a312-105001f26872', 96600, 1, '2025-06-29 15:09:24', 'De Staat', 'De Staat', 'Voertuig aankoop Vapid Crownvic'),
+	(3, '58051432', 'Personal account', '58051432', 'WITHDRAW', '6555ee00-acdb-4120-b7fb-7fe47c29dbc5', 1200, 1, '2025-07-06 13:17:19', 'Durk Banks', 'Durk Banks', ''),
+	(4, '58051432', 'Los Santos Crypto Exchange', '3', 'PURCHASE', 'af09aef2-636a-4c62-8d97-444955977df8', 1200, 1, '2025-07-06 13:23:24', 'Durk Banks', 'De Staat', 'Bought 12 SHUNG'),
+	(5, '67815053', 'Personal account', '67815053', 'DEPOSIT', '367b9feb-08cd-4d54-817e-75cf82eab755', 1000000, 0, '2025-07-06 14:14:17', 'ollie pphati', 'ollie pphati', '');
 
--- Dumping structure for table fivem-clarity.laptop_boosting
+-- Structuur van  tabel Polygone.laptop_boosting wordt geschreven
 CREATE TABLE IF NOT EXISTS `laptop_boosting` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` varchar(255) NOT NULL DEFAULT '1001',
@@ -241,22 +268,26 @@ CREATE TABLE IF NOT EXISTS `laptop_boosting` (
   KEY `cid` (`cid`),
   KEY `expire` (`expire`),
   KEY `auction_end` (`auction_end`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.laptop_boosting: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.laptop_boosting: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.laptop_data
+-- Structuur van  tabel Polygone.laptop_data wordt geschreven
 CREATE TABLE IF NOT EXISTS `laptop_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` varchar(50) NOT NULL DEFAULT '',
   `boosting` longtext NOT NULL DEFAULT '{}',
   PRIMARY KEY (`id`),
   KEY `cid` (`cid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.laptop_data: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.laptop_data: ~3 rows (ongeveer)
+INSERT INTO `laptop_data` (`id`, `cid`, `boosting`) VALUES
+	(1, '2014', '{"Experience":0,"ContractsDone":0,"WeekContracts":0,"WeekScratches":0,"WeekStartTime":1751811405956,"LastVinScratch":0}'),
+	(2, '2009', '{"Experience":0,"ContractsDone":0,"WeekContracts":0,"WeekScratches":0,"WeekStartTime":1751811852101,"LastVinScratch":0}'),
+	(3, '2011', '{"Experience":0,"ContractsDone":0,"WeekContracts":0,"WeekScratches":0,"WeekStartTime":1751820797154,"LastVinScratch":0}');
 
--- Dumping structure for table fivem-clarity.laptop_gangs
+-- Structuur van  tabel Polygone.laptop_gangs wordt geschreven
 CREATE TABLE IF NOT EXISTS `laptop_gangs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gang_id` text NOT NULL,
@@ -268,13 +299,14 @@ CREATE TABLE IF NOT EXISTS `laptop_gangs` (
   PRIMARY KEY (`id`),
   KEY `gang_id` (`gang_id`(768)),
   KEY `gang_members` (`gang_members`(768))
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.laptop_gangs: ~1 rows (approximately)
+-- Dumpen data van tabel Polygone.laptop_gangs: ~2 rows (ongeveer)
 INSERT INTO `laptop_gangs` (`id`, `gang_id`, `gang_label`, `gang_leader`, `gang_members`, `gang_metadata`, `discovered_sprays`) VALUES
-	(1, 'dev', 'Dev Gang', '1001', '[]', '[]', '[]');
+	(1, 'dev', 'Dev Gang', '1001', '[]', '[]', '[]'),
+	(2, 'ballas', 'Ballas', '2009', '[]', '{"LastSprayTimestamp":1751822991,"GraffitisSprayedToday":1}', '[4,5,6,7,8,9,10,11]');
 
--- Dumping structure for table fivem-clarity.laptop_gangs_chat
+-- Structuur van  tabel Polygone.laptop_gangs_chat wordt geschreven
 CREATE TABLE IF NOT EXISTS `laptop_gangs_chat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gang_id` text NOT NULL,
@@ -286,9 +318,9 @@ CREATE TABLE IF NOT EXISTS `laptop_gangs_chat` (
   KEY `gang_id` (`gang_id`(768)) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.laptop_gangs_chat: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.laptop_gangs_chat: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.laptop_market
+-- Structuur van  tabel Polygone.laptop_market wordt geschreven
 CREATE TABLE IF NOT EXISTS `laptop_market` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` varchar(50) NOT NULL DEFAULT '0',
@@ -298,11 +330,11 @@ CREATE TABLE IF NOT EXISTS `laptop_market` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.laptop_market: 0 rows
+-- Dumpen data van tabel Polygone.laptop_market: 0 rows
 /*!40000 ALTER TABLE `laptop_market` DISABLE KEYS */;
 /*!40000 ALTER TABLE `laptop_market` ENABLE KEYS */;
 
--- Dumping structure for table fivem-clarity.laptop_sprays
+-- Structuur van  tabel Polygone.laptop_sprays wordt geschreven
 CREATE TABLE IF NOT EXISTS `laptop_sprays` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gang_id` text NOT NULL,
@@ -311,11 +343,21 @@ CREATE TABLE IF NOT EXISTS `laptop_sprays` (
   `rotation` longtext NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `gang_id` (`gang_id`(768)) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.laptop_sprays: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.laptop_sprays: ~9 rows (ongeveer)
+INSERT INTO `laptop_sprays` (`id`, `gang_id`, `type`, `position`, `rotation`) VALUES
+	(3, 'kings', 'kings', '{"x":153.98558044433595,"y":-1042.33154296875,"z":30.76884841918945}', '{"x":0.0007431252161,"y":-2.6055102519961794e-11,"z":70.0016860961914}'),
+	(4, 'ballas', 'ballas', '{"x":784.5277709960938,"y":-1173.2393798828126,"z":29.13746070861816}', '{"x":0.0,"y":0.0,"z":79.49765014648438}'),
+	(5, 'ballas', 'ballas', '{"x":1115.3192138671876,"y":-1192.3935546875,"z":23.0336685180664}', '{"x":0.0,"y":-0.0,"z":113.0085678100586}'),
+	(6, 'ballas', 'ballas', '{"x":955.3640747070313,"y":-1198.6519775390626,"z":26.28488159179687}', '{"x":0.00118025252595,"y":6.513775629990448e-12,"z":-177.60975646972657}'),
+	(7, 'ballas', 'ballas', '{"x":1266.134521484375,"y":-1168.6312255859376,"z":44.46118545532226}', '{"x":-0.00026227760827,"y":-1.3027551259980897e-11,"z":-156.80526733398438}'),
+	(8, 'ballas', 'ballas', '{"x":1353.5147705078126,"y":-1072.7508544921876,"z":51.84434509277344}', '{"x":0.0,"y":-0.0,"z":98.72525024414063}'),
+	(9, 'ballas', 'ballas', '{"x":1197.504150390625,"y":-1050.609130859375,"z":42.0593376159668}', '{"x":-0.00161739322356,"y":-0.0,"z":152.861572265625}'),
+	(10, 'ballas', 'ballas', '{"x":1008.4240112304688,"y":-1031.024658203125,"z":35.3769645690918}', '{"x":-0.00019670909387,"y":3.256887814995224e-12,"z":81.4324951171875}'),
+	(11, 'ballas', 'ballas', '{"x":856.5631713867188,"y":-1058.8883056640626,"z":28.82168769836425}', '{"x":0.0,"y":-0.0,"z":90.87708282470703}');
 
--- Dumping structure for table fivem-clarity.mdw_certs
+-- Structuur van  tabel Polygone.mdw_certs wordt geschreven
 CREATE TABLE IF NOT EXISTS `mdw_certs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `certificate` longtext NOT NULL,
@@ -324,7 +366,7 @@ CREATE TABLE IF NOT EXISTS `mdw_certs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.mdw_certs: ~27 rows (approximately)
+-- Dumpen data van tabel Polygone.mdw_certs: ~27 rows (ongeveer)
 INSERT INTO `mdw_certs` (`id`, `certificate`, `color`, `deleted`) VALUES
 	(1, 'Interceptor', '#ffffff', 0),
 	(2, 'High Speed Pursuit Driver', '#ffffff', 0),
@@ -354,7 +396,7 @@ INSERT INTO `mdw_certs` (`id`, `certificate`, `color`, `deleted`) VALUES
 	(26, 'Dispatch Lead', '#ffffff', 0),
 	(27, 'Internal Affairs', '', 0);
 
--- Dumping structure for table fivem-clarity.mdw_charges
+-- Structuur van  tabel Polygone.mdw_charges wordt geschreven
 CREATE TABLE IF NOT EXISTS `mdw_charges` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gov_type` longtext NOT NULL,
@@ -372,185 +414,185 @@ CREATE TABLE IF NOT EXISTS `mdw_charges` (
   KEY `gov_type` (`gov_type`(768))
 ) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.mdw_charges: ~175 rows (approximately)
+-- Dumpen data van tabel Polygone.mdw_charges: ~175 rows (ongeveer)
 INSERT INTO `mdw_charges` (`id`, `gov_type`, `category`, `fine`, `jail`, `points`, `name`, `description`, `type`, `accomplice`, `attempted`, `deleted`) VALUES
-	(1, 'pd', 'Wet Wapen & Munitie', 1500, 15, 0, 'Bezit wapen van de 1ste categorie', 'De wapens uit categorie 1 zijn voornamelijk messen/slagwapens. Zo vallen hieronder andere stiletto\'s, valmessen, vlindermessen en slagwapens. Sommige andere stiletto\'s, valmessen en vlindermessen (en andere opvouwbare messen) vallen ook in categorie I. Het bezit van munitie valt ook onder deze straf.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(2, 'pd', 'Wet Wapen & Munitie', 4500, 60, 0, 'Bezit (semi)-automatische vuurwapen', 'Een (semi)automatisch wapen is een vuurwapen dat af te vuren is zonder tussen de schoten een handeling uit te voeren waardoor de kogel afgevuurd kan worden.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(3, 'pd', 'Wet Wapen & Munitie', 3200, 40, 0, 'Bezit wapen van de 2de categorie', 'Hij/zij die in het bezit is van een vuurwapen. Denk hierbij aan een handpistool', 'normal', '{"fine":"0","points":0,"jail":"0"}', '{"fine":"0","points":0,"jail":"0"}', 0),
-	(4, 'pd', 'Wetboek van Strafrecht', 2400, 15, 0, 'Bedreiging', 'Als iemand dreigt je iets aan te doen, spreken we van een bedreiging. De persoon kan je bijvoorbeeld bedreigen  met de dood of dreigen met geweld, dit is dan met woorden. Dit kan ook zijn met bijvoorbeeld een steek- of vuurwapen.', 'normal', '{"jail":10,"points":0,"fine":2100}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(5, 'pd', 'Wetboek van Strafrecht', 1200, 0, 0, 'Wet ID', 'Het niet kunnen of willen tonen van een origineel of geldig identiteitsbewijs. Of het niet willen tonen van een rijbewijs.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(6, 'pd', 'Wetboek van Strafrecht', 2800, 15, 0, 'Smaad & Laster', 'Laster is als iemand een leugen verspreidt, terwijl die persoon weet dat het een leugen is. Smaad is een vorm van belediging waarbij je opzettelijk iemands goede naam en eer aantast door deze persoon van iets te beschuldigen.', 'normal', '{"jail":"10","points":0,"fine":"2200"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(7, 'pd', 'Wetboek van Strafrecht', 3800, 25, 0, 'Valsheid in geschrifte', 'De wet spreekt van valsheid in geschrifte als iemand een geschrift dat bestemd is om tot bewijs van enig feit te dienen, valselijk opmaakt of vervalst, met het oogmerk om het als echt en onvervalst te gebruiken of door anderen te doen gebruiken. Valsheid in geschrifte is een misdrijf en hierop staat een gevangenisstraf van ten hoogste zes jaren of geldboete van de vijfde categorie. Ook het gebruik van een vervalst document, wetende dat het vervalst is, is een strafbaar feit.', 'major', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(8, 'pd', 'Wetboek van Strafrecht', 850, 0, 0, 'Inbrekerswerktuig', 'Onder inbrekerswerktuigen verstaat het college middelen die ertoe kunnen dienen zich onrechtmatig de toegang tot een gebouw of erf te verschaffen, onrechtmatig sluitingen te openen of te verbreken, diefstal door middel van braak te vergemakkelijken of het maken van sporen te voorkomen.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(10, 'pd', 'Wetboek van Strafrecht', 950, 0, 0, 'Artk. 266 - Eenvoudige belediging', 'Van eenvoudige belediging is sprake als een dader een ander mondeling, schriftelijk of door een feitelijkheid opzettelijk aanrand in eer of goede naam. Voorbeelden van eenvoudige belediging zijn het grof uitschelden van iemand, het opsteken van een middelvinger of het spugen in het gezicht.', 'normal', '{"points":0,"jail":0,"fine":"0"}', '{"points":0,"jail":0,"fine":"0"}', 0),
-	(11, 'pd', 'Wetboek van Strafrecht', 1250, 0, 0, 'Gebruik van soft drugs in het openbaar', 'Het gebruik van softdrugs op de openbare weg, dus op straat of op een pleintje. Voorbeelden zijn cannabisproducten (hasj en wiet) en slaapmiddelen.', 'normal', '{"jail":0,"points":0,"fine":"0"}', '{"jail":0,"points":0,"fine":"0"}', 0),
-	(12, 'pd', 'Wetboek van Strafrecht', 1700, 8, 0, 'Gebruik van hard drugs in het openbaar', 'Het gebruik van hard drugs op de openbare weg, dus op straat of op een pleintje. Voorbeelden hiervan zijn heroïne, cocaïne, MDMA, LSD, speed en oxycodon.', 'normal', '{"jail":0,"points":0,"fine":"0"}', '{"jail":0,"points":0,"fine":"0"}', 0),
-	(13, 'pd', 'Wetboek van Strafrecht', 1600, 0, 0, 'Venten', 'Venten is het huis aan huis te koop aanbieden of afleveren van goederen op of aan de weg, aan huis of op een andere voor het publiek toegankelijke en in de open lucht gelegen plaats. Een venter is in beweging en biedt zijn waren voortdurend aan vanaf een andere plaats.', 'normal', '{"jail":0,"points":0,"fine":"1250"}', '{"jail":0,"points":0,"fine":"0"}', 0),
-	(14, 'pd', 'Wetboek van Strafrecht', 950, 0, 0, 'Collecteren', 'Inzamelen, geld ophalen voor armen of noodlijdenden, met de schaal rondgaan zonder vergunning.', 'normal', '{"jail":0,"points":0,"fine":"0"}', '{"jail":0,"points":0,"fine":"0"}', 0),
-	(15, 'pd', 'Wetboek van Strafrecht', 1200, 0, 0, 'Opgeven valse gegevens', 'Niet enkel het zelf plegen van valsheid in geschrifte is strafbaar. Ook het opgeven van valse gegevens die daarna in een authentieke akte (tot bewijs van die gegevens) worden opgenomen kan in een dergelijk geval strafbaar zijn.', 'normal', '{"jail":0,"points":0,"fine":"0"}', '{"jail":0,"points":0,"fine":"0"}', 0),
-	(16, 'pd', 'Wetboek van Strafrecht', 1600, 12, 0, 'Huisvredebreuk', 'Onder huisvredebreuk moet worden verstaan het wederrechtelijk binnendringen in een woning of wederrechtelijk aldaar vertoevende, zich niet aanstonds verwijderen op vordering van een rechthebbende.', 'major', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(17, 'pd', 'Wetboek van Strafrecht', 3000, 40, 0, 'Mishandeling op ambtenaar', 'Mishandeling is het bewust verwonden of pijn doen van een ander, door iemand bijvoorbeeld te slaan of te schoppen.', 'major', '{"jail":30,"points":0,"fine":2400}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(18, 'pd', 'Wetboek van Strafrecht', 4200, 20, 0, 'Meineed', 'Als iemand opzettelijk een valse getuigenis aflegt onder ede, dan pleegt deze persoon meineed.', 'major', '{"jail":0,"points":0,"fine":0}', '{"jail":0,"points":0,"fine":0}', 0),
-	(19, 'pd', 'Wetboek van Strafrecht', 5250, 40, 0, 'Omkoping', 'Omkoping is een vorm van corruptie. Het houdt in dat bijvoorbeeld bestuurders of werknemers van een bedrijf, maar bijvoorbeeld ook ambtenaren van de overheid, kunnen worden omgekocht.', 'major', '{"jail":"30","points":0,"fine":"4800"}', '{"jail":"25","points":0,"fine":"4600"}', 0),
-	(20, 'pd', 'Wetboek van Strafrecht', 3600, 25, 0, 'Oplichting', 'Oplichting is, in ‘normale taal’, het tegen de wet in behalen van een bepaald voordeel door het misleiden van iemand.', 'major', '{"jail":20,"points":0,"fine":"2800"}', '{"jail":20,"points":0,"fine":"2800"}', 0),
-	(21, 'pd', 'Wetboek van Strafrecht', 4000, 30, 0, 'Heling', 'Heling is het krijgen of kopen, in bezit hebben of overdragen van een product of voertuig dat gestolen is.', 'major', '{"jail":"20","fine":"3500","points":0}', '{"jail":"0","fine":"0","points":0}', 0),
-	(22, 'pd', 'Wetboek van Strafrecht', 1050, 0, 0, 'Vernieling', 'Vernieling is expres dingen kapot maken. Bijvoorbeeld spiegels van auto\'s aftrappen, bushokjes vernielen, verkeersborden kapot maken, bloembakken omgooien, etcetera.', 'major', '{"jail":"0","points":0,"fine":"850"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(23, 'pd', 'Wetboek van Strafrecht', 2650, 25, 0, 'Helpen ontsnappen', 'Het helpen bij het ontkomen, bij hij die word achtervolgd of is aangehouden door de politie, en of is veroordeeld door een rechter.', 'major', '{"points":0,"fine":"2000","jail":20}', '{"points":0,"fine":"1650","jail":20}', 0),
-	(24, 'pd', 'Wetboek van Strafrecht', 2200, 15, 0, 'Valse aangifte ', 'Hij die aangifte of klacht doet dat een strafbaar feit gepleegd is, wetende dat het niet gepleegd is.', 'major', '{"jail":"12","points":0,"fine":"1800"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(25, 'pd', 'Wetboek van Strafrecht', 1850, 20, 0, 'Wederspannigheid', 'Wanneer iemand zich met geweld of onder bedreiging met geweld verzet tegen een handeling van een ambtenaar', 'major', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(26, 'pd', 'Wetboek van Strafrecht', 700, 0, 0, 'Misbruik noodnummer', 'Het opzettelijk gebruiken van het noodnummer, zonder dat er ook maar enige nood is.', 'normal', '{"jail":0,"points":0,"fine":"0"}', '{"jail":0,"points":0,"fine":"0"}', 0),
-	(27, 'pd', 'Wetboek van Strafrecht', 1200, 12, 0, 'Verboden toegang', 'Het betreden van een terrein of gebied zonder bevoegdheid.', 'major', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(28, 'pd', 'Wetboek van Strafrecht', 2650, 35, 0, 'Vrijheidsontneming', 'Het ontnemen van iemand zijn/haar vrijheid, zonder wettelijk gegronde reden en bevoegdheid.', 'major', '{"jail":25,"points":0,"fine":"2000"}', '{"jail":25,"points":0,"fine":"1750"}', 0),
-	(29, 'pd', 'Wetboek van Strafrecht', 3200, 30, 0, 'Ambtsdwang', 'Het uitoefenen van dwang of het nemen van dwingende maatregelen door een ambtenaar of overheidsfunctionaris om wetten, voorschriften of beslissingen af te dwingen of te handhaven.', 'major', '{"jail":20,"points":0,"fine":"2250"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(30, 'pd', 'Wetboek van Strafrecht', 1750, 8, 0, 'Negeren ambtelijk bevel', 'Het negeren van een ambtelijk bevel betekent dat iemand weigert te gehoorzamen aan een instructie of bevel van een ambtenaar of overheidsfunctionaris.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(31, 'pd', 'Wetboek van Strafrecht', 4250, 45, 0, 'Onrechtmatig voordoen als ambtenaar', 'Het onrechtmatig voordoen als een ambtenaar betekent dat iemand zich ten onrechte presenteert als een ambtenaar of overheidsfunctionaris terwijl dit niet het geval is.', 'major', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(32, 'pd', 'Wetboek van Strafrecht', 1150, 0, 0, 'Belediging van een ambtenaar ', 'Belediging van een ambtenaar betekent dat iemand een ambtenaar of overheidsfunctionaris beledigt, vernedert of respectloos behandelt tijdens de uitoefening van zijn of haar ambt. Dit kan zowel verbaal als non-verbaal gedrag omvatten dat de ambtenaar beledigt of hinderlijk is.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(33, 'pd', 'Wetboek van Strafrecht', 1600, 15, 0, 'Verstoring openbare orde ', 'Verstoring van de openbare orde betekent dat er een situatie ontstaat waarin de normale gang van zaken in de openbare ruimte wordt verstoord en de veiligheid, rust, orde, of het welzijn van de samenleving in gevaar wordt gebracht. Dit kan verschillende vormen aannemen, zoals rellen, gewelddadige demonstraties, vandalisme, luidruchtig gedrag, of andere verstoringen die de normale activiteiten van mensen en het functioneren van de maatschappij belemmeren.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(34, 'pd', 'Wetboek van Strafrecht', 60000, 200, 0, 'Terrorisme ', 'Een handeling die opzettelijk, direct of indirect, bedoeld is om angst te zaaien en/of levensbedreigende situaties te veroorzaken, door geweld of dreiging met geweld.\n\nDit is vooral in de volgende situaties:\n1. Een aanval op overheidsgebouwen\n2. Met explosieven gooien alsof het niks is', 'extreme', '{"points":0,"fine":"45000","jail":180}', '{"points":0,"fine":30000,"jail":180}', 0),
-	(35, 'pd', 'Wetboek van Strafrecht', 2500, 15, 0, 'Stalking', 'Stalking is een patroon van herhaalde, ongewenste aandacht, achtervolging of contact met een persoon, wat resulteert in een gevoel van angst, onveiligheid of lastigvallen voor het slachtoffer. Het kan verschillende vormen aannemen, zoals fysiek achtervolgen, digitaal stalken via sociale media of berichten, ongewenste telefoontjes of brieven sturen, enzovoort.', 'major', '{"jail":10,"points":0,"fine":2200}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(36, 'pd', 'Wetboek van Strafrecht', 1950, 17, 0, 'Bezit hard-drugs', 'Bezit van harddrugs verwijst naar het onrechtmatig in bezit hebben van verboden en illegale drugs die als \'harddrugs\' worden geclassificeerd.', 'major', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(37, 'pd', 'Wetboek van Strafrecht', 3400, 30, 0, 'Afpersing', 'Afpersing is een strafbaar feit waarbij iemand dreigt om iemand anders letsel toe te brengen, hun reputatie te beschadigen, hun eigendommen te beschadigen of op een andere manier schadelijke acties te ondernemen, als het slachtoffer geen geld, goederen, diensten of iets anders van waarde levert aan de afperser.', 'major', '{"jail":"25","points":0,"fine":"2800"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(38, 'pd', 'Wetboek van Strafrecht', 1150, 10, 0, 'Diefstal zonder geweld', 'Het onrechtmatig wegnemen van eigendommen of bezittingen van een ander persoon zonder het gebruik van geweld of bedreigingen.', 'normal', '{"fine":"1000","points":0,"jail":"8"}', '{"fine":"950","points":0,"jail":"5"}', 0),
-	(39, 'pd', 'Wetboek van Strafrecht', 3500, 35, 0, 'Gekwalificeerde diefstal', 'Een vorm van diefstal waarbij naast het stelen van eigendommen ook bijkomende strafverzwarende factoren aanwezig zijn. Enkele voorbeelden van strafverzwarende factoren zijn; geweld, bedreiging met geweld, gebruik van een wapen, inbraak, hoge waarde van gestolen goederen.', 'major', '{"jail":"25","points":0,"fine":"2800"}', '{"jail":20,"points":0,"fine":"2300"}', 0),
-	(40, 'pd', 'Wetboek van Strafrecht', 4000, 45, 0, 'Diefstal met geweld', 'Een misdrijf waarbij een persoon eigendommen van een ander steelt met gebruik van fysiek geweld, bedreiging met geweld of het gebruik van een wapen.', 'major', '{"jail":40,"points":0,"fine":"3500"}', '{"jail":"35","points":0,"fine":3000}', 0),
-	(41, 'pd', 'Wetboek van Strafrecht', 1600, 25, 0, 'Eenvoudige mishandeling', 'Eenvoudige mishandeling verwijst naar een vorm van mishandeling waarbij het slachtoffer lichte verwondingen, letsel of pijn oploopt als gevolg van fysiek geweld of een aanval.', 'major', '[]', '[]', 0),
-	(42, 'pd', 'Wetboek van Strafrecht', 2400, 30, 0, 'Zware mishandeling', 'Zware mishandeling verwijst naar een ernstige vorm van fysieke aanval of geweld waarbij het slachtoffer ernstige verwondingen, lichamelijk letsel of gezondheidscomplicaties oploopt als gevolg van de aanval.', 'major', '{"jail":25,"points":0,"fine":2000}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(43, 'pd', 'Wetboek van Strafrecht', 5000, 90, 0, 'Doodslag', 'Een misdrijf waarbij een persoon opzettelijk het leven van een ander persoon beëindigt, maar zonder de voorbedachte rade of intentie om te doden. (Poging tot is bij richten)', 'extreme', '{"points":0,"fine":"4200","jail":"70"}', '{"points":0,"fine":"4500","jail":"80"}', 0),
-	(44, 'pd', 'Wetboek van Strafrecht', 7500, 100, 0, 'Moord', 'Moord is een zeer ernstig misdrijf waarbij een persoon opzettelijk en met voorbedachte rade het leven van een ander persoon beëindigt. ', 'extreme', '{"jail":"80","points":0,"fine":"6500"}', '{"jail":"70","points":0,"fine":"6250"}', 0),
-	(45, 'pd', 'Wetboek van Strafrecht', 1850, 20, 0, 'Openlijke geweldpleging', 'Een strafbaar feit waarbij een groep mensen samenkomt en gezamenlijk geweld gebruikt tegen personen of eigendommen in de openbare ruimte. Het kenmerkt zich door het openlijk en gewelddadig optreden van de daders in het bijzijn van anderen, vaak met de intentie om schade aan te richten, anderen te intimideren of een bepaald doel te bereiken.', 'major', '{"jail":"15","points":0,"fine":1400}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(46, 'pd', 'Wet Wapen & Munitie', 50000, 240, 0, 'Bezit politiewapens', 'Het bezitten en of beroven van wapens die zijn gefabriceerd voor de politie.', 'extreme', '{"points":0,"fine":"32500","jail":"210"}', '{"points":0,"fine":"0","jail":"0"}', 0),
-	(47, 'pd', 'Wetboek van Strafrecht', 375, 0, 0, 'Vissen zonder vispas', 'Het vissen zonder (geldige) vergunning', 'normal', '[]', '[]', 0),
-	(48, 'pd', 'Wetboek van Strafrecht', 675, 8, 0, 'Illegaal jagen', 'Het jagen op beschermde dieren, het jagen zonder jaagvergunning, of het jagen in een niet daarvoor wettelijk toegekende locatie.\n', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
-	(49, 'pd', 'Wetboek van Strafrecht', 2300, 15, 0, 'Dierenmishandeling', 'Het opzettelijk of nalatig veroorzaken van fysiek letsel, pijn, lijden, of het verwaarlozen van dieren.', 'normal', '{"points":0,"jail":"0","fine":"0"}', '{"points":0,"jail":"0","fine":"0"}', 0),
-	(82, 'pd', 'Verkeers-overtredingen', 250, 0, 1, 'Snelheidsovertreding 20 km/u', 'Hij die 20 km/u harder rijdt dan de toegestaande snelheid.', 'normal', '[]', '[]', 0),
-	(83, 'pd', 'Verkeers-overtredingen', 425, 0, 2, 'Snelheidsovertreding 30 km/u', 'Hij die 30 km/u harder rijdt dan de toegestaande snelheid.', 'normal', '[]', '[]', 0),
-	(84, 'pd', 'Verkeers-overtredingen', 500, 0, 3, 'Snelheidsovertreding 40 km/u', 'Hij die 40 km/u harder rijdt dan de toegestaande snelheid.', 'normal', '[]', '[]', 0),
-	(85, 'pd', 'Verkeers-overtredingen', 750, 0, 4, 'Snelheidsovertreding 50 km/u of meer', 'Hij die meer dan 50 km/u harder rijdt dan de toegestaande snelheid.', 'normal', '[]', '[]', 0),
-	(86, 'pd', 'Verkeers-overtredingen', 180, 0, 1, 'Het niet opvolgen van een verkeers stoplicht', 'Hij die zich niet aan een stoplicht houdt.', 'normal', '[]', '[]', 0),
-	(87, 'pd', 'Verkeers-overtredingen', 250, 0, 1, 'Niet doorrijden bij groen licht', '', 'normal', '{}', '{}', 1),
-	(88, 'pd', 'Verkeers-overtredingen', 250, 0, 1, 'Spookrijden', 'Hij die aan de tegengestelde kant van de weg rijdt.', 'normal', '[]', '[]', 0),
-	(89, 'pd', 'Verkeers-overtredingen', 250, 0, 1, 'Niet zoveel mogelijk rechts houden', '', 'normal', '[]', '[]', 0),
-	(90, 'pd', 'Verkeers-overtredingen', 300, 0, 1, 'Blokkeren van een kruispunt', '', 'normal', '[]', '[]', 0),
-	(91, 'pd', 'Verkeers-overtredingen', 400, 0, 1, 'Foutief parkeren', 'Hij die een voertuig parkeert op een niet daarvoor bestemde plek.', 'normal', '[]', '[]', 0),
-	(92, 'pd', 'Verkeers-overtredingen', 400, 0, 1, 'Onrechtmatig stil laten staan', 'Hij die zijn voertuig stil zet op een niet daarvoor bestemde plek.', 'normal', '[]', '[]', 0),
-	(93, 'pd', 'Verkeers-overtredingen', 250, 0, 1, 'Voertuig niet voor laten gaan', '', 'normal', '[]', '[]', 0),
-	(94, 'pd', 'Verkeers-overtredingen', 250, 0, 0, 'Onnodig claxonneren', '', 'normal', '[]', '[]', 0),
-	(95, 'pd', 'Verkeers-overtredingen', 150, 0, 3, 'Zonder helm een motorvoertuig besturen', '', 'normal', '[]', '[]', 0),
-	(97, 'pd', 'Verkeers-overtredingen', 650, 0, 2, 'Het niet opvolgen van een stopteken', '', 'normal', '{}', '{}', 0),
-	(98, 'pd', 'Verkeers-overtredingen', 400, 0, 1, 'Overschrijden doorgetrokken streep', '', 'normal', '[]', '[]', 0),
-	(100, 'pd', 'Verkeers-overtredingen', 450, 0, 0, 'Kenteken niet zichtbaar op voertuig', '', 'normal', '{}', '{}', 0),
-	(101, 'pd', 'Verkeers-overtredingen', 250, 0, 0, 'Lichtdoorlatendheid lager dan 55%', '', 'normal', '{}', '{}', 0),
-	(103, 'pd', 'Verkeers-overtredingen', 900, 0, 3, 'Roekeloos rijgedrag', '', 'major', '{}', '{}', 0),
-	(104, 'pd', 'Verkeers-overtredingen', 950, 0, 2, 'Ongeluk door schuld', '', 'major', '{}', '{}', 0),
-	(105, 'pd', 'Verkeers-overtredingen', 950, 2, 1, 'Verlaten plaats ongeval', '', 'major', '{}', '{}', 0),
-	(106, 'pd', 'Verkeers-overtredingen', 150, 5, 1, 'Rijden onder invloed', '', 'major', '{}', '{}', 0),
-	(107, 'pd', 'Verkeers-overtredingen', 1050, 12, 3, 'Rijden met ongeldig verklaard rijbewijs', '', 'major', '{}', '{}', 0),
-	(108, 'pd', 'Verkeers-overtredingen', 1575, 21, 4, 'Straatracen', '', 'major', '{}', '{}', 0),
-	(109, 'pd', 'Verkeers-overtredingen', 800, 8, 3, 'Joyriding', '', 'major', '{}', '{}', 0),
-	(110, 'pd', 'Verkeers-overtredingen', 1050, 7, 0, 'Invordering rijbewijs', '', 'major', '{}', '{}', 0),
-	(112, 'pd', 'Wetboek van Strafrecht', 17500, 110, 0, 'Bezit politie apparatuur', 'Het bezitten en of beroven van apparatuur die gefabriceerd is voor de politie.', 'extreme', '{"points":0,"fine":"13500","jail":"75"}', '{"points":0,"fine":"0","jail":"0"}', 0),
-	(113, 'pd', 'Verkeers-overtredingen', 240, 0, 0, 'VA010 - Snelheidsovertreding 10 km/u', '', 'major', '{"jail":0,"fine":0,"points":0}', '{"jail":0,"fine":0,"points":0}', 0),
-	(114, 'ems', 'Operaties', 1000, 0, 0, 'Harttransplantatie', '', 'normal', '{}', '{}', 0),
-	(115, 'ems', 'Operaties', 1000, 0, 0, 'Orgaantransplantatie', '', 'normal', '{}', '{}', 0),
-	(116, 'ems', 'Operaties', 1000, 0, 0, 'Kunstheup', '', 'normal', '{}', '{}', 0),
-	(117, 'ems', 'Operaties', 1000, 0, 0, 'Amputatie', '', 'normal', '{}', '{}', 0),
-	(118, 'ems', 'Operaties', 250, 0, 0, 'Schotwonden <5', '', 'normal', '{}', '{}', 0),
-	(119, 'ems', 'Operaties', 500, 0, 0, 'Schotwonden >5', '', 'normal', '{}', '{}', 0),
-	(120, 'ems', 'Operaties', 250, 0, 0, 'Auto ongeluk', '', 'normal', '[]', '[]', 0),
-	(121, 'ems', 'Operaties', 1000, 0, 0, 'Kunstknie', '', 'normal', '{}', '{}', 0),
-	(122, 'ems', 'Operaties', 750, 0, 0, 'Pacemaker', '', 'normal', '{}', '{}', 0),
-	(123, 'ems', 'Operaties', 250, 0, 0, 'Jachtongeluk', '', 'normal', '{}', '{}', 0),
-	(124, 'ems', 'Operaties', 250, 0, 0, 'Vliegongeluk', '', 'normal', '{}', '{}', 0),
-	(125, 'ems', 'Operaties', 200, 0, 0, 'Snij- of steekwonden', '', 'normal', '{}', '{}', 0),
-	(126, 'ems', 'Operaties', 500, 0, 0, 'Plastische chirurgie', '', 'normal', '{}', '{}', 0),
-	(127, 'ems', 'Kleine Behandelingen', 150, 0, 0, 'Hechtingen', '', 'normal', '{}', '{}', 0),
-	(128, 'ems', 'Kleine Behandelingen', 100, 0, 0, 'Bloedonderzoek', '', 'normal', '{}', '{}', 0),
-	(129, 'ems', 'Kleine Behandelingen', 75, 0, 0, 'Kneuzing/blauwe plek', '', 'normal', '{}', '{}', 0),
-	(130, 'ems', 'Kleine Behandelingen', 50, 0, 0, 'Controle', '', 'normal', '{}', '{}', 0),
-	(131, 'ems', 'Kleine Behandelingen', 150, 0, 0, 'MRI-scan', '', 'normal', '{}', '{}', 0),
-	(132, 'ems', 'Kleine Behandelingen', 150, 0, 0, 'Röntgenfoto', '', 'normal', '{}', '{}', 0),
-	(133, 'ems', 'Kleine Behandelingen', 150, 0, 0, 'Gips', '', 'normal', '{}', '{}', 0),
-	(134, 'ems', 'Kleine Behandelingen', 150, 0, 0, 'Echo', '', 'normal', '{}', '{}', 0),
-	(135, 'ems', 'Kleine Behandelingen', 100, 0, 0, 'Verhongerd / uitgedroogd', '', 'normal', '{}', '{}', 0),
-	(136, 'ems', 'Kleine Behandelingen', 50, 0, 0, 'Algemene behandeling', '', 'normal', '{}', '{}', 0),
-	(137, 'ems', 'Kleine Behandelingen', 150, 0, 0, 'Reanimatie / verdrinking', '', 'normal', '{}', '{}', 0),
-	(138, 'ems', 'Kleine Behandelingen', 50, 0, 0, 'Beademing / intuberen', '', 'normal', '{}', '{}', 0),
-	(139, 'ems', 'Kleine Behandelingen', 150, 0, 0, 'Brandwonden', '', 'normal', '{}', '{}', 0),
-	(140, 'ems', 'Kleine Behandelingen', 75, 0, 0, 'Aambeien', '', 'normal', '{}', '{}', 0),
-	(141, 'ems', 'Medicijnen', 15, 0, 0, 'Oxycodon', '', 'normal', '{}', '{}', 0),
-	(142, 'ems', 'Medicijnen', 15, 0, 0, 'Paracetamol', '', 'normal', '{}', '{}', 0),
-	(143, 'ems', 'Medicijnen', 15, 0, 0, 'Ibuprofen', '', 'normal', '{}', '{}', 0),
-	(144, 'ems', 'Medicijnen', 20, 0, 0, 'Antibiotica', '', 'normal', '{}', '{}', 0),
-	(145, 'ems', 'Medicijnen', 30, 0, 0, 'Ketamine', '', 'normal', '{}', '{}', 0),
-	(146, 'ems', 'Medicijnen', 30, 0, 0, 'Morfine', '', 'normal', '{}', '{}', 0),
-	(147, 'ems', 'Medicijnen', 30, 0, 0, 'Narcosespuit', '', 'normal', '{}', '{}', 0),
-	(148, 'ems', 'Medicijnen', 15, 0, 0, 'Slaappillen', '', 'normal', '{}', '{}', 0),
-	(149, 'ems', 'Medicijnen', 25, 0, 0, 'Adrenalinespuit', '', 'normal', '{}', '{}', 0),
-	(150, 'ems', 'Overige', 15, 0, 0, 'Verband', '', 'normal', '{}', '{}', 0),
-	(151, 'ems', 'Hulpmiddelen', 0, 0, 0, 'Teddybeer', '', 'normal', '[]', '[]', 0),
-	(152, 'ems', 'Overige', 35, 0, 0, 'Administratiekosten', '', 'normal', '{}', '{}', 0),
-	(153, 'ems', 'Hulpmiddelen', 50, 0, 0, 'Wandelstok', '', 'normal', '[]', '[]', 0),
-	(154, 'ems', 'Overige', 50, 0, 0, 'Ambulance transport', '', 'normal', '[]', '[]', 0),
-	(155, 'ems', 'Overige', 100, 0, 0, 'Lifeflight transport', '', 'normal', '[]', '[]', 0),
-	(156, 'ems', 'Hulpmiddelen', 350, 0, 0, 'Rolstoel', 'Patiënt krijgt de borg terug bij inlevering van het hulpmiddel.', 'normal', '[]', '[]', 0),
-	(157, 'ems', 'Overige', 30, 0, 0, 'Plaatselijke verdoving', '', 'normal', '{}', '{}', 0),
-	(158, 'ems', 'Hulpmiddelen', 50, 0, 0, 'Rugkorset', '', 'normal', '[]', '[]', 0),
-	(159, 'ems', 'Overige', 500, 0, 0, 'Werkbelemmering', '', 'normal', '{}', '{}', 0),
-	(160, 'ems', 'Overige', 50, 0, 0, 'Coldpack', '', 'normal', '{}', '{}', 0),
-	(161, 'ems', 'Overige', 50, 0, 0, 'Infuus', '', 'normal', '{}', '{}', 0),
-	(162, 'ems', 'Overige', 20, 0, 0, 'Zalfje', '', 'normal', '{}', '{}', 0),
-	(163, 'ems', 'Zielenknijper', 75, 0, 0, 'Afkicken', '', 'normal', '{}', '{}', 0),
-	(164, 'ems', 'Zielenknijper', 50, 0, 0, 'Depressie', '', 'normal', '{}', '{}', 0),
-	(165, 'ems', 'Zielenknijper', 75, 0, 0, 'PTSS', '', 'normal', '{}', '{}', 0),
-	(166, 'ems', 'Zielenknijper', 50, 0, 0, 'Hoortest', '', 'normal', '{}', '{}', 0),
-	(167, 'ems', 'Zielenknijper', 50, 0, 0, 'Oogtest', '', 'normal', '{}', '{}', 0),
-	(168, 'ems', 'Zielenknijper', 100, 0, 0, 'Relatie- en gezinstherapie', '', 'normal', '{}', '{}', 0),
-	(169, 'ems', 'Zielenknijper', 150, 0, 0, 'Eerste consult psycholoog', '', 'normal', '{}', '{}', 0),
-	(170, 'ems', 'Zielenknijper', 300, 0, 0, 'Consult psycholoog', '', 'normal', '{}', '{}', 0),
-	(171, 'pd', 'Wet Wapen & Munitie', 5750, 60, 0, 'Fabriceren van een vuurwapen', 'Een persoon die een vuurwapen of onderdelen van een vuurwapen vervaardigt zonder een vergunning.', 'major', '{"jail":"50","points":"0","fine":"4750"}', '{"jail":"0","points":"0","fine":"0"}', 0),
-	(172, 'pd', 'Wet Wapen & Munitie', 5250, 40, 0, 'Distributie van een vuurwapen', 'Een persoon die een vuurwapen distribueert zonder een vergunning.', 'major', '{"jail":"30","points":"0","fine":"4500"}', '{"jail":"0","points":"0","fine":"0"}', 0),
-	(173, 'pd', 'Wetboek van Strafrecht', 6500, 100, 0, 'Doodslag op ambtenaar', 'Een misdrijf waarbij een persoon opzettelijk het leven van een ambtenaar beëindigt, maar zonder de voorbedachte rade of intentie om te doden. (Poging tot bij richten)', 'extreme', '{"points":"0","fine":"5200","jail":"80"}', '{"points":"0","fine":"5500","jail":"90"}', 0),
-	(174, 'pd', 'Wetboek van Strafrecht', 8500, 110, 0, 'Moord op ambtenaar', 'Moord is een zeer ernstig misdrijf waarbij een persoon opzettelijk en met voorbedachte rade het leven van een ambtenaar beëindigt. ', 'extreme', '{"jail":"90","points":"0","fine":"7500"}', '{"jail":"80","points":"0","fine":"7250"}', 0),
-	(175, 'pd', 'Wetboek van Strafrecht', 80000, 4320, 0, 'Corruptie', 'Misbruik maken van toegekende bevoegdheden of macht voor persoonlijk gewin.', 'extreme', '{"points":"","fine":"","jail":""}', '{"points":"","fine":"","jail":""}', 0),
-	(176, 'pd', 'Wetboek van Strafrecht', 80000, 4320, 0, 'Corruptie', 'Misbruik maken van toegekende bevoegdheden of macht voor persoonlijk gewin.', 'extreme', '{"points":"0","fine":"0","jail":"0"}', '{"points":"0","fine":"0","jail":"0"}', 1),
-	(177, 'pd', 'Wetboek van Strafrecht', 1000, 0, 0, 'Voorhanden hebben van soft drugs', 'Het voorhanden hebben van softdrugs (wiet of hasj), meer dan de toegestane hoeveelheid (5 stuks).', 'normal', '{"fine":"","points":"","jail":""}', '{"fine":"","points":"","jail":""}', 0),
-	(178, 'pd', 'Wetboek van Strafrecht', 1500, 15, 0, 'Distributie van soft drugs', 'Distributie van verdovende middelen (Wiet en Hasj)', 'major', '{"fine":"","jail":"","points":""}', '{"fine":"","jail":"","points":""}', 0),
-	(179, 'pd', 'Wetboek van Strafrecht', 4000, 60, 0, 'Distributie van hard drugs', 'Distributie van verdovende middelen (hard drugs)', 'extreme', '{"fine":"","jail":"","points":""}', '{"fine":"","jail":"","points":""}', 0),
-	(180, 'pd', 'Wetboek van Strafrecht', 500, 0, 0, 'Lelijk hoofd', 'De verdachte is in bezit of uitvoering van een lelijk hoofd.', 'normal', '{"points":"0","fine":"300","jail":"0"}', '{"points":"0","fine":"150","jail":"0"}', 1),
-	(181, 'ems', 'Overige', 6000, 0, 0, 'Scootmobiel', '', 'normal', '[]', '[]', 1),
-	(182, 'ems', 'Hulpmiddelen', 6000, 0, 0, 'Scootmobiel', 'Patiënt krijgt de borg terug bij inlevering van het hulpmiddel.', 'normal', '[]', '[]', 0),
-	(183, 'ems', 'Kleine Behandelingen', 50, 0, 0, 'Taserpijltjes', '', 'normal', '[]', '[]', 0),
-	(184, 'ems', 'Kleine Behandelingen', 75, 0, 0, 'Infectie', '', 'normal', '[]', '[]', 0),
-	(185, 'ems', 'Medicijnen', 30, 0, 0, 'Melatonine', '', 'normal', '[]', '[]', 0),
-	(186, 'ems', 'Zielenknijper', 75, 0, 0, 'Schaamluizen', '', 'normal', '[]', '[]', 0),
-	(187, 'ems', 'Hulpmiddelen', 30, 0, 0, 'Mitella', '', 'normal', '[]', '[]', 0),
-	(188, 'ems', 'Zielenknijper', 100, 0, 0, 'Fysiotherapie', '', 'normal', '[]', '[]', 0),
-	(189, 'ems', 'Overige', 500, 0, 0, 'Pakketdienst', '', 'major', '[]', '[]', 1),
-	(190, 'pd', 'Wetboek van Strafrecht', 15000, 0, 0, 'Overschrijding maximale hoeveelheid softdrugs', 'Hij/ Zij die eigenaar is van een coffeeshop en de maximale hoeveelheid soft drugs heeft overschreden in de opslag van de coffeeshop. (1000 Gram)', 'major', '{"fine":"","points":"","jail":""}', '{"fine":"","points":"","jail":""}', 0),
-	(191, 'pd', 'Wetboek van Strafrecht', 1500, 0, 0, 'Adverteren van drugs met de intentie tot verkoop', 'Hij/Zij die adverteert met het verkoop van drugs op welke manier dan ook.', 'normal', '{"fine":"","points":"","jail":""}', '{"fine":"","points":"","jail":""}', 0),
-	(192, 'pd', 'Wet Wapen & Munitie', 6500, 80, 0, 'Bezit van Explosieven', 'Hij of zij die in bezit is van een explosief, denk hieraan bijvoorbeeld C4 of Thermiet', 'extreme', '{"fine":"","points":"","jail":""}', '{"fine":"","points":"","jail":""}', 0),
-	(193, 'pd', 'Wet Wapen & Munitie', 4000, 50, 0, 'Bezit wapen van de 3e catergorie', 'Hij of zij die in bezit is van een vuurwapen uit de 3e catergorie. Dit geldt voor (semi) automatische shotguns en shotguns die een extra handeling nodig hebben voordat er gevuurd kan worden.', 'major', '{"fine":"","points":"","jail":""}', '{"fine":"","points":"","jail":""}', 0),
-	(194, 'ems', 'Kleine Behandelingen', 75, 0, 0, 'Massage', '', 'normal', '[]', '[]', 0),
-	(195, 'pd', 'Speciaal', 10, 1, 0, 'Heterdaad Janken', 'Het heterdaad janken in een situatie die je zelf hebt veroorzaakt.', 'extreme', '{"jail":"","points":"","fine":""}', '{"jail":"","points":"","fine":""}', 1),
-	(196, 'ems', 'Operaties', 500, 0, 0, 'Orgaan (deels) verwijderen', '', 'normal', '[]', '[]', 0),
-	(197, 'ems', 'Kleine Behandelingen', 75, 0, 0, 'Schrammen / schaafwonden', '', 'normal', '[]', '[]', 0),
-	(198, 'ems', 'Medicijnen', 15, 0, 0, 'Laxeermiddel', '', 'normal', '[]', '[]', 0),
-	(199, 'ems', 'Medicijnen', 25, 0, 0, 'Viagra', '', 'normal', '[]', '[]', 0),
-	(200, 'ems', 'Medicijnen', 15, 0, 0, 'Laxeermiddel', '', 'normal', '[]', '[]', 1),
-	(201, 'ems', 'Operaties', 200, 0, 0, 'Aangereden', '', 'normal', '[]', '[]', 0),
-	(202, 'ems', 'Kleine Behandelingen', 150, 0, 0, 'Spoedhulp', '', 'normal', '[]', '[]', 0),
-	(203, 'ems', 'Hulpmiddelen', 6000, 0, 0, 'Duikuitrusting', '', 'normal', '[]', '[]', 0),
-	(204, 'pd', 'Wetboek van Strafrecht', 3500, 15, 0, 'Belemmering Ambtenaar ', 'Hij die opzettelijk niet voldoet aan een bevel of een vordering, krachtens wettelijk voorschrift gedaan door een ambtenaar met de uitoefening van enig toezicht belast of door een ambtenaar belast met of bevoegd verklaard tot het opsporen of onderzoeken van strafbare feiten, alsmede hij die opzettelijk enige handeling, door een van die ambtenaren ondernomen ter uitvoering van enig wettelijk voorschrift, belet, belemmert of verijdelt.', 'normal', '{"jail":"","fine":"","points":""}', '{"jail":"","fine":"","points":""}', 0),
-	(205, 'pd', 'Verkeers-overtredingen', 125, 0, 0, 'Oversteken zonder zebrapad', 'Oversteken op de openbare weg zonder het gebruiken van een zebra pad', 'normal', '{"jail":"","fine":"","points":""}', '{"jail":"","fine":"","points":""}', 0),
-	(206, 'pd', 'Wetboek van Strafrecht', 120, 0, 0, 'Wildplassen', 'In het openbaar urineren', 'normal', '{"jail":"","points":"","fine":""}', '{"jail":"","points":"","fine":""}', 0),
-	(207, 'ems', 'Operaties', 200, 0, 0, 'Klaplong', '', 'normal', '[]', '[]', 0),
-	(208, 'pd', 'Wetboek van Strafrecht', 3250, 20, 0, 'Doxing', 'Een handeling waarbij identificerende informatie over iemand online wordt onthuld, zoals zijn of haar echte naam, woonadres, werkplek, telefoon, financiële en andere persoonlijke informatie. Die informatie wordt dan openbaar gemaakt - zonder toestemming van het slachtoffer.', 'major', '{"points":"","fine":"","jail":""}', '{"points":"","fine":"","jail":""}', 0),
-	(209, 'pd', 'Wetboek van Strafrecht', 3000, 25, 0, 'Bedreiging ambtenaar', 'Met bedreiging wordt bedoeld dat u of iemand anders wordt bedreigd met fysiek geweld of de dood.', 'major', '{"points":"","fine":"","jail":""}', '{"points":"","fine":"","jail":""}', 0),
-	(210, 'pd', 'Wetboek van Strafrecht', 3000, 25, 0, 'Bedreiging ambtenaar in functie', 'Met bedreiging wordt bedoeld dat u of iemand anders wordt bedreigd met fysiek geweld of de dood.', 'major', '{"points":"","fine":"","jail":""}', '{"points":"","fine":"","jail":""}', 1),
-	(211, 'pd', 'Wetboek van Strafrecht', 5000, 25, 0, 'Verstoring van een rechtszaak', 'Het is een ieder verboden een rechtszaak te verstoren of te verhinderen. ', 'normal', '{"jail":"10","fine":"5000","points":""}', '{"jail":"","fine":"","points":""}', 0),
+	(1, 'pd', 'Weapons & Ammunition Act', 1500, 15, 0, 'Possession of Category 1 Weapon', 'Category 1 weapons primarily include knives/blunt weapons such as stilettos, switchblades, butterfly knives, and other folding knives. Possession of ammunition also falls under this penalty.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(2, 'pd', 'Weapons & Ammunition Act', 4500, 60, 0, 'Possession of (Semi-)Automatic Firearm', 'A (semi-)automatic firearm can discharge rounds without manual action between shots.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(3, 'pd', 'Weapons & Ammunition Act', 3200, 40, 0, 'Possession of Category 2 Weapon', 'Possession of firearms such as handguns.', 'normal', '{"fine":"0","points":0,"jail":"0"}', '{"fine":"0","points":0,"jail":"0"}', 0),
+	(4, 'pd', 'Criminal Code', 2400, 15, 0, 'Threatening Behavior', 'When someone threatens to harm you, either verbally (e.g., threats of violence or death) or with a weapon (e.g., knife or firearm).', 'normal', '{"jail":10,"points":0,"fine":2100}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(5, 'pd', 'Criminal Code', 1200, 0, 0, 'Failure to Present ID', 'Refusing or being unable to show a valid original ID or driver\'s license.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(6, 'pd', 'Criminal Code', 2800, 15, 0, 'Defamation & Slander', 'Defamation involves spreading false statements knowingly, while slander is intentionally damaging someone\'s reputation by making false accusations.', 'normal', '{"jail":"10","points":0,"fine":"2200"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(7, 'pd', 'Criminal Code', 3800, 25, 0, 'Fraud', 'Forgery of documents intended as evidence, or knowingly using falsified documents. Punishable by up to six years imprisonment or a fifth-category fine.', 'major', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(8, 'pd', 'Criminal Code', 850, 0, 0, 'Possession of Burglary Tools', 'Tools used to unlawfully access buildings, break locks, facilitate theft, or conceal evidence.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(10, 'pd', 'Criminal Code', 950, 0, 0, 'Art. 266 - Simple Insult', 'Intentional verbal, written, or physical acts that harm someone\'s honor or reputation (e.g., verbal abuse, offensive gestures, or spitting).', 'normal', '{"points":0,"jail":0,"fine":"0"}', '{"points":0,"jail":0,"fine":"0"}', 0),
+	(11, 'pd', 'Criminal Code', 1250, 0, 0, 'Public Use of Soft Drugs', 'Using soft drugs (e.g., cannabis products, sedatives) in public spaces.', 'normal', '{"jail":0,"points":0,"fine":"0"}', '{"jail":0,"points":0,"fine":"0"}', 0),
+	(12, 'pd', 'Criminal Code', 1700, 8, 0, 'Public Use of Hard Drugs', 'Using hard drugs (e.g., heroin, cocaine, MDMA, LSD) in public spaces.', 'normal', '{"jail":0,"points":0,"fine":"0"}', '{"jail":0,"points":0,"fine":"0"}', 0),
+	(13, 'pd', 'Criminal Code', 1600, 0, 0, 'Street Vending', 'Selling goods door-to-door or in public spaces without authorization.', 'normal', '{"jail":0,"points":0,"fine":"1250"}', '{"jail":0,"points":0,"fine":"0"}', 0),
+	(14, 'pd', 'Criminal Code', 950, 0, 0, 'Unauthorized Fundraising', 'Collecting money for charity without a permit.', 'normal', '{"jail":0,"points":0,"fine":"0"}', '{"jail":0,"points":0,"fine":"0"}', 0),
+	(15, 'pd', 'Criminal Code', 1200, 0, 0, 'Providing False Information', 'Knowingly submitting false information that is later recorded in an official document.', 'normal', '{"jail":0,"points":0,"fine":"0"}', '{"jail":0,"points":0,"fine":"0"}', 0),
+	(16, 'pd', 'Criminal Code', 1600, 12, 0, 'Trespassing', 'Unlawfully entering or remaining in a property after being ordered to leave.', 'major', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(17, 'pd', 'Criminal Code', 3000, 40, 0, 'Assault on an Official', 'Intentionally causing harm or pain to another person (e.g., hitting or kicking).', 'major', '{"jail":30,"points":0,"fine":2400}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(18, 'pd', 'Criminal Code', 4200, 20, 0, 'Perjury', 'Knowingly giving false testimony under oath.', 'major', '{"jail":0,"points":0,"fine":0}', '{"jail":0,"points":0,"fine":0}', 0),
+	(19, 'pd', 'Criminal Code', 5250, 40, 0, 'Bribery', 'Offering or accepting bribes by officials, employees, or public servants.', 'major', '{"jail":"30","points":0,"fine":"4800"}', '{"jail":"25","points":0,"fine":"4600"}', 0),
+	(20, 'pd', 'Criminal Code', 3600, 25, 0, 'Deception', 'Gaining unlawful advantage by misleading someone.', 'major', '{"jail":20,"points":0,"fine":"2800"}', '{"jail":20,"points":0,"fine":"2800"}', 0),
+	(21, 'pd', 'Criminal Code', 4000, 30, 0, 'Handling Stolen Goods', 'Possessing, buying, or transferring stolen property or vehicles.', 'major', '{"jail":"20","fine":"3500","points":0}', '{"jail":"0","fine":"0","points":0}', 0),
+	(22, 'pd', 'Criminal Code', 1050, 0, 0, 'Vandalism', 'Intentional destruction of property (e.g., breaking car mirrors, damaging bus stops).', 'major', '{"jail":"0","points":0,"fine":"850"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(23, 'pd', 'Criminal Code', 2650, 25, 0, 'Aiding Escape', 'Helping someone evade arrest or flee from law enforcement.', 'major', '{"points":0,"fine":"2000","jail":20}', '{"points":0,"fine":"1650","jail":20}', 0),
+	(24, 'pd', 'Criminal Code', 2200, 15, 0, 'False Report', 'Filing a report about a crime knowing it did not occur.', 'major', '{"jail":"12","points":0,"fine":"1800"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(25, 'pd', 'Criminal Code', 1850, 20, 0, 'Resisting Arrest', 'Using force or threats to resist an official\'s lawful actions.', 'major', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(26, 'pd', 'Criminal Code', 700, 0, 0, 'Misuse of Emergency Number', 'Deliberately calling emergency services without a valid reason.', 'normal', '{"jail":0,"points":0,"fine":"0"}', '{"jail":0,"points":0,"fine":"0"}', 0),
+	(27, 'pd', 'Criminal Code', 1200, 12, 0, 'Unauthorized Access', 'Entering restricted areas without permission.', 'major', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(28, 'pd', 'Criminal Code', 2650, 35, 0, 'Unlawful Detention', 'Depriving someone of their freedom without legal justification.', 'major', '{"jail":25,"points":0,"fine":"2000"}', '{"jail":25,"points":0,"fine":"1750"}', 0),
+	(29, 'pd', 'Criminal Code', 3200, 30, 0, 'Abuse of Authority', 'Using coercion by officials to enforce laws or decisions.', 'major', '{"jail":20,"points":0,"fine":"2250"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(30, 'pd', 'Criminal Code', 1750, 8, 0, 'Disobeying Official Order', 'Refusing to comply with lawful instructions from an official.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(31, 'pd', 'Criminal Code', 4250, 45, 0, 'Impersonating an Official', 'Falsely presenting oneself as a government official.', 'major', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(32, 'pd', 'Criminal Code', 1150, 0, 0, 'Insulting an Official', 'Verbally or non-verbally disrespecting an official during their duties.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(33, 'pd', 'Criminal Code', 1600, 15, 0, 'Disturbing Public Order', 'Disrupting public safety or peace (e.g., riots, loud disturbances).', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(34, 'pd', 'Criminal Code', 60000, 200, 0, 'Terrorism', 'Acts intended to spread fear or endanger lives (e.g., attacks on government buildings, use of explosives).', 'extreme', '{"points":0,"fine":"45000","jail":180}', '{"points":0,"fine":30000,"jail":180}', 0),
+	(35, 'pd', 'Criminal Code', 2500, 15, 0, 'Stalking', 'Repeated unwanted attention or harassment causing fear or distress.', 'major', '{"jail":10,"points":0,"fine":2200}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(36, 'pd', 'Criminal Code', 1950, 17, 0, 'Possession of Hard Drugs', 'Unlawful possession of illegal hard drugs.', 'major', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(37, 'pd', 'Criminal Code', 3400, 30, 0, 'Extortion', 'Threatening harm to obtain money, goods, or services.', 'major', '{"jail":"25","points":0,"fine":"2800"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(38, 'pd', 'Criminal Code', 1150, 10, 0, 'Petty Theft (Non-Violent)', 'Unlawfully taking property without force.', 'normal', '{"fine":"1000","points":0,"jail":"8"}', '{"fine":"950","points":0,"jail":"5"}', 0),
+	(39, 'pd', 'Criminal Code', 3500, 35, 0, 'Aggravated Theft', 'Theft involving violence, weapons, or high-value goods.', 'major', '{"jail":"25","points":0,"fine":"2800"}', '{"jail":20,"points":0,"fine":"2300"}', 0),
+	(40, 'pd', 'Criminal Code', 4000, 45, 0, 'Robbery with Violence', 'Theft using physical force, threats, or weapons.', 'major', '{"jail":40,"points":0,"fine":"3500"}', '{"jail":"35","points":0,"fine":3000}', 0),
+	(41, 'pd', 'Criminal Code', 1600, 25, 0, 'Simple Assault', 'Causing minor injuries through physical violence.', 'major', '[]', '[]', 0),
+	(42, 'pd', 'Criminal Code', 2400, 30, 0, 'Aggravated Assault', 'Causing serious injuries or health complications through violence.', 'major', '{"jail":25,"points":0,"fine":2000}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(43, 'pd', 'Criminal Code', 5000, 90, 0, 'Manslaughter', 'Unintentional killing without premeditation.', 'extreme', '{"points":0,"fine":"4200","jail":"70"}', '{"points":0,"fine":"4500","jail":"80"}', 0),
+	(44, 'pd', 'Criminal Code', 7500, 100, 0, 'Murder', 'Premeditated killing.', 'extreme', '{"jail":"80","points":0,"fine":"6500"}', '{"jail":"70","points":0,"fine":"6250"}', 0),
+	(45, 'pd', 'Criminal Code', 1850, 20, 0, 'Public Violence', 'Group violence against people or property in public spaces.', 'major', '{"jail":"15","points":0,"fine":1400}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(46, 'pd', 'Weapons & Ammunition Act', 50000, 240, 0, 'Possession of Police-Issued Weapons', 'Possessing or stealing weapons manufactured for law enforcement.', 'extreme', '{"points":0,"fine":"32500","jail":"210"}', '{"points":0,"fine":"0","jail":"0"}', 0),
+	(47, 'pd', 'Criminal Code', 375, 0, 0, 'Fishing Without License', 'Fishing without a valid permit.', 'normal', '[]', '[]', 0),
+	(48, 'pd', 'Criminal Code', 675, 8, 0, 'Illegal Hunting', 'Hunting protected animals, hunting without a license, or hunting in unauthorized areas.', 'normal', '{"jail":"0","points":0,"fine":"0"}', '{"jail":"0","points":0,"fine":"0"}', 0),
+	(49, 'pd', 'Criminal Code', 2300, 15, 0, 'Animal Cruelty', 'Intentional or negligent harm, suffering, or neglect of animals.', 'normal', '{"points":0,"jail":"0","fine":"0"}', '{"points":0,"jail":"0","fine":"0"}', 0),
+	(82, 'pd', 'Traffic Violations', 250, 0, 1, 'Speeding (20 km/h over limit)', 'Driving 20 km/h over the speed limit.', 'normal', '[]', '[]', 0),
+	(83, 'pd', 'Traffic Violations', 425, 0, 2, 'Speeding (30 km/h over limit)', 'Driving 30 km/h over the speed limit.', 'normal', '[]', '[]', 0),
+	(84, 'pd', 'Traffic Violations', 500, 0, 3, 'Speeding (40 km/h over limit)', 'Driving 40 km/h over the speed limit.', 'normal', '[]', '[]', 0),
+	(85, 'pd', 'Traffic Violations', 750, 0, 4, 'Speeding (50+ km/h over limit)', 'Driving 50+ km/h over the speed limit.', 'normal', '[]', '[]', 0),
+	(86, 'pd', 'Traffic Violations', 180, 0, 1, 'Running a Red Light', 'Failing to stop at a traffic light.', 'normal', '[]', '[]', 0),
+	(87, 'pd', 'Traffic Violations', 250, 0, 1, 'Failure to Proceed on Green', '', 'normal', '{}', '{}', 1),
+	(88, 'pd', 'Traffic Violations', 250, 0, 1, 'Wrong-Way Driving', 'Driving on the opposite side of the road.', 'normal', '[]', '[]', 0),
+	(89, 'pd', 'Traffic Violations', 250, 0, 1, 'Failure to Keep Right', '', 'normal', '[]', '[]', 0),
+	(90, 'pd', 'Traffic Violations', 300, 0, 1, 'Blocking an Intersection', '', 'normal', '[]', '[]', 0),
+	(91, 'pd', 'Traffic Violations', 400, 0, 1, 'Illegal Parking', 'Parking in unauthorized areas.', 'normal', '[]', '[]', 0),
+	(92, 'pd', 'Traffic Violations', 400, 0, 1, 'Illegal Stopping', 'Stopping a vehicle in unauthorized areas.', 'normal', '[]', '[]', 0),
+	(93, 'pd', 'Traffic Violations', 250, 0, 1, 'Failure to Yield', '', 'normal', '[]', '[]', 0),
+	(94, 'pd', 'Traffic Violations', 250, 0, 0, 'Unnecessary Honking', '', 'normal', '[]', '[]', 0),
+	(95, 'pd', 'Traffic Violations', 150, 0, 3, 'Riding Without Helmet', 'Operating a motorcycle without a helmet.', 'normal', '[]', '[]', 0),
+	(97, 'pd', 'Traffic Violations', 650, 0, 2, 'Failure to Stop', 'Ignoring a stop sign.', 'normal', '{}', '{}', 0),
+	(98, 'pd', 'Traffic Violations', 400, 0, 1, 'Crossing Solid Line', '', 'normal', '[]', '[]', 0),
+	(100, 'pd', 'Traffic Violations', 450, 0, 0, 'Unreadable License Plate', '', 'normal', '{}', '{}', 0),
+	(101, 'pd', 'Traffic Violations', 250, 0, 0, 'Tinted Windows (<55% Light Transmission)', '', 'normal', '{}', '{}', 0),
+	(103, 'pd', 'Traffic Violations', 900, 0, 3, 'Reckless Driving', '', 'major', '{}', '{}', 0),
+	(104, 'pd', 'Traffic Violations', 950, 0, 2, 'Accident Due to Negligence', '', 'major', '{}', '{}', 0),
+	(105, 'pd', 'Traffic Violations', 950, 2, 1, 'Leaving the Scene of an Accident', '', 'major', '{}', '{}', 0),
+	(106, 'pd', 'Traffic Violations', 150, 5, 1, 'Driving Under Influence', '', 'major', '{}', '{}', 0),
+	(107, 'pd', 'Traffic Violations', 1050, 12, 3, 'Driving with Invalid License', '', 'major', '{}', '{}', 0),
+	(108, 'pd', 'Traffic Violations', 1575, 21, 4, 'Street Racing', '', 'major', '{}', '{}', 0),
+	(109, 'pd', 'Traffic Violations', 800, 8, 3, 'Joyriding', '', 'major', '{}', '{}', 0),
+	(110, 'pd', 'Traffic Violations', 1050, 7, 0, 'License Confiscation', '', 'major', '{}', '{}', 0),
+	(112, 'pd', 'Criminal Code', 17500, 110, 0, 'Possession of Police Equipment', 'Possessing or stealing equipment manufactured for law enforcement.', 'extreme', '{"points":0,"fine":"13500","jail":"75"}', '{"points":0,"fine":"0","jail":"0"}', 0),
+	(113, 'pd', 'Traffic Violations', 240, 0, 0, 'VA010 - Speeding (10 km/h over limit)', '', 'major', '{"jail":0,"fine":0,"points":0}', '{"jail":0,"fine":0,"points":0}', 0),
+	(114, 'ems', 'Operations', 1000, 0, 0, 'Heart Transplant', '', 'normal', '{}', '{}', 0),
+	(115, 'ems', 'Operations', 1000, 0, 0, 'Organ Transplant', '', 'normal', '{}', '{}', 0),
+	(116, 'ems', 'Operations', 1000, 0, 0, 'Artificial Hip', '', 'normal', '{}', '{}', 0),
+	(117, 'ems', 'Operations', 1000, 0, 0, 'Amputation', '', 'normal', '{}', '{}', 0),
+	(118, 'ems', 'Operations', 250, 0, 0, 'Gunshot Wounds (<5)', '', 'normal', '{}', '{}', 0),
+	(119, 'ems', 'Operations', 500, 0, 0, 'Gunshot Wounds (>5)', '', 'normal', '{}', '{}', 0),
+	(120, 'ems', 'Operations', 250, 0, 0, 'Car Accident', '', 'normal', '[]', '[]', 0),
+	(121, 'ems', 'Operations', 1000, 0, 0, 'Artificial Knee', '', 'normal', '{}', '{}', 0),
+	(122, 'ems', 'Operations', 750, 0, 0, 'Pacemaker', '', 'normal', '{}', '{}', 0),
+	(123, 'ems', 'Operations', 250, 0, 0, 'Hunting Accident', '', 'normal', '{}', '{}', 0),
+	(124, 'ems', 'Operations', 250, 0, 0, 'Aviation Accident', '', 'normal', '{}', '{}', 0),
+	(125, 'ems', 'Operations', 200, 0, 0, 'Cut or Stab Wounds', '', 'normal', '{}', '{}', 0),
+	(126, 'ems', 'Operations', 500, 0, 0, 'Plastic Surgery', '', 'normal', '{}', '{}', 0),
+	(127, 'ems', 'Minor Treatments', 150, 0, 0, 'Stitches', '', 'normal', '{}', '{}', 0),
+	(128, 'ems', 'Minor Treatments', 100, 0, 0, 'Blood Test', '', 'normal', '{}', '{}', 0),
+	(129, 'ems', 'Minor Treatments', 75, 0, 0, 'Bruising/Contusion', '', 'normal', '{}', '{}', 0),
+	(130, 'ems', 'Minor Treatments', 50, 0, 0, 'Check-Up', '', 'normal', '{}', '{}', 0),
+	(131, 'ems', 'Minor Treatments', 150, 0, 0, 'MRI Scan', '', 'normal', '{}', '{}', 0),
+	(132, 'ems', 'Minor Treatments', 150, 0, 0, 'X-Ray', '', 'normal', '{}', '{}', 0),
+	(133, 'ems', 'Minor Treatments', 150, 0, 0, 'Cast', '', 'normal', '{}', '{}', 0),
+	(134, 'ems', 'Minor Treatments', 150, 0, 0, 'Ultrasound', '', 'normal', '{}', '{}', 0),
+	(135, 'ems', 'Minor Treatments', 100, 0, 0, 'Starvation/Dehydration', '', 'normal', '{}', '{}', 0),
+	(136, 'ems', 'Minor Treatments', 50, 0, 0, 'General Treatment', '', 'normal', '{}', '{}', 0),
+	(137, 'ems', 'Minor Treatments', 150, 0, 0, 'CPR/Drowning', '', 'normal', '{}', '{}', 0),
+	(138, 'ems', 'Minor Treatments', 50, 0, 0, 'Ventilation/Intubation', '', 'normal', '{}', '{}', 0),
+	(139, 'ems', 'Minor Treatments', 150, 0, 0, 'Burns', '', 'normal', '{}', '{}', 0),
+	(140, 'ems', 'Minor Treatments', 75, 0, 0, 'Hemorrhoids', '', 'normal', '{}', '{}', 0),
+	(141, 'ems', 'Medications', 15, 0, 0, 'Oxycodone', '', 'normal', '{}', '{}', 0),
+	(142, 'ems', 'Medications', 15, 0, 0, 'Paracetamol', '', 'normal', '{}', '{}', 0),
+	(143, 'ems', 'Medications', 15, 0, 0, 'Ibuprofen', '', 'normal', '{}', '{}', 0),
+	(144, 'ems', 'Medications', 20, 0, 0, 'Antibiotics', '', 'normal', '{}', '{}', 0),
+	(145, 'ems', 'Medications', 30, 0, 0, 'Ketamine', '', 'normal', '{}', '{}', 0),
+	(146, 'ems', 'Medications', 30, 0, 0, 'Morphine', '', 'normal', '{}', '{}', 0),
+	(147, 'ems', 'Medications', 30, 0, 0, 'Anesthesia Syringe', '', 'normal', '{}', '{}', 0),
+	(148, 'ems', 'Medications', 15, 0, 0, 'Sleeping Pills', '', 'normal', '{}', '{}', 0),
+	(149, 'ems', 'Medications', 25, 0, 0, 'Epinephrine Syringe', '', 'normal', '{}', '{}', 0),
+	(150, 'ems', 'Miscellaneous', 15, 0, 0, 'Bandage', '', 'normal', '{}', '{}', 0),
+	(151, 'ems', 'Aids', 0, 0, 0, 'Teddy Bear', '', 'normal', '[]', '[]', 0),
+	(152, 'ems', 'Miscellaneous', 35, 0, 0, 'Administrative Fees', '', 'normal', '{}', '{}', 0),
+	(153, 'ems', 'Aids', 50, 0, 0, 'Walking Stick', '', 'normal', '[]', '[]', 0),
+	(154, 'ems', 'Miscellaneous', 50, 0, 0, 'Ambulance Transport', '', 'normal', '[]', '[]', 0),
+	(155, 'ems', 'Miscellaneous', 100, 0, 0, 'LifeFlight Transport', '', 'normal', '[]', '[]', 0),
+	(156, 'ems', 'Aids', 350, 0, 0, 'Wheelchair', 'Patient receives deposit back upon return of the aid.', 'normal', '[]', '[]', 0),
+	(157, 'ems', 'Miscellaneous', 30, 0, 0, 'Local Anesthesia', '', 'normal', '{}', '{}', 0),
+	(158, 'ems', 'Aids', 50, 0, 0, 'Back Brace', '', 'normal', '[]', '[]', 0),
+	(159, 'ems', 'Miscellaneous', 500, 0, 0, 'Work Impediment', '', 'normal', '{}', '{}', 0),
+	(160, 'ems', 'Miscellaneous', 50, 0, 0, 'Cold Pack', '', 'normal', '{}', '{}', 0),
+	(161, 'ems', 'Miscellaneous', 50, 0, 0, 'IV Drip', '', 'normal', '{}', '{}', 0),
+	(162, 'ems', 'Miscellaneous', 20, 0, 0, 'Ointment', '', 'normal', '{}', '{}', 0),
+	(163, 'ems', 'Mental Health', 75, 0, 0, 'Detox', '', 'normal', '{}', '{}', 0),
+	(164, 'ems', 'Mental Health', 50, 0, 0, 'Depression', '', 'normal', '{}', '{}', 0),
+	(165, 'ems', 'Mental Health', 75, 0, 0, 'PTSD', '', 'normal', '{}', '{}', 0),
+	(166, 'ems', 'Mental Health', 50, 0, 0, 'Hearing Test', '', 'normal', '{}', '{}', 0),
+	(167, 'ems', 'Mental Health', 50, 0, 0, 'Eye Test', '', 'normal', '{}', '{}', 0),
+	(168, 'ems', 'Mental Health', 100, 0, 0, 'Family Therapy', '', 'normal', '{}', '{}', 0),
+	(169, 'ems', 'Mental Health', 150, 0, 0, 'First Psychologist Consultation', '', 'normal', '{}', '{}', 0),
+	(170, 'ems', 'Mental Health', 300, 0, 0, 'Psychologist Consultation', '', 'normal', '{}', '{}', 0),
+	(171, 'pd', 'Weapons & Ammunition Act', 5750, 60, 0, 'Manufacturing a Firearm', 'Producing firearms or firearm components without a license.', 'major', '{"jail":"50","points":"0","fine":"4750"}', '{"jail":"0","points":"0","fine":"0"}', 0),
+	(172, 'pd', 'Weapons & Ammunition Act', 5250, 40, 0, 'Distribution of a Firearm', 'Distributing firearms without a license.', 'major', '{"jail":"30","points":"0","fine":"4500"}', '{"jail":"0","points":"0","fine":"0"}', 0),
+	(173, 'pd', 'Criminal Code', 6500, 100, 0, 'Manslaughter of an Official', 'Unintentional killing of an official without premeditation.', 'extreme', '{"points":"0","fine":"5200","jail":"80"}', '{"points":"0","fine":"5500","jail":"90"}', 0),
+	(174, 'pd', 'Criminal Code', 8500, 110, 0, 'Murder of an Official', 'Premeditated killing of an official.', 'extreme', '{"jail":"90","points":"0","fine":"7500"}', '{"jail":"80","points":"0","fine":"7250"}', 0),
+	(175, 'pd', 'Criminal Code', 80000, 4320, 0, 'Corruption', 'Abuse of entrusted power for personal gain.', 'extreme', '{"points":"","fine":"","jail":""}', '{"points":"","fine":"","jail":""}', 0),
+	(176, 'pd', 'Criminal Code', 80000, 4320, 0, 'Corruption', 'Abuse of entrusted power for personal gain.', 'extreme', '{"points":"0","fine":"0","jail":"0"}', '{"points":"0","fine":"0","jail":"0"}', 1),
+	(177, 'pd', 'Criminal Code', 1000, 0, 0, 'Possession of Excess Soft Drugs', 'Possessing more than the legal limit of soft drugs (5 units).', 'normal', '{"fine":"","points":"","jail":""}', '{"fine":"","points":"","jail":""}', 0),
+	(178, 'pd', 'Criminal Code', 1500, 15, 0, 'Distribution of Soft Drugs', 'Distributing cannabis products (weed/hash).', 'major', '{"fine":"","jail":"","points":""}', '{"fine":"","jail":"","points":""}', 0),
+	(179, 'pd', 'Criminal Code', 4000, 60, 0, 'Distribution of Hard Drugs', 'Distributing hard drugs.', 'extreme', '{"fine":"","jail":"","points":""}', '{"fine":"","jail":"","points":""}', 0),
+	(180, 'pd', 'Criminal Code', 500, 0, 0, 'Ugly Head', 'Suspect is in possession or execution of an ugly head.', 'normal', '{"points":"0","fine":"300","jail":"0"}', '{"points":"0","fine":"150","jail":"0"}', 1),
+	(181, 'ems', 'Miscellaneous', 6000, 0, 0, 'Mobility Scooter', '', 'normal', '[]', '[]', 1),
+	(182, 'ems', 'Aids', 6000, 0, 0, 'Mobility Scooter', 'Patient receives deposit back upon return of the aid.', 'normal', '[]', '[]', 0),
+	(183, 'ems', 'Minor Treatments', 50, 0, 0, 'Taser Darts', '', 'normal', '[]', '[]', 0),
+	(184, 'ems', 'Minor Treatments', 75, 0, 0, 'Infection', '', 'normal', '[]', '[]', 0),
+	(185, 'ems', 'Medications', 30, 0, 0, 'Melatonin', '', 'normal', '[]', '[]', 0),
+	(186, 'ems', 'Mental Health', 75, 0, 0, 'Pubic Lice', '', 'normal', '[]', '[]', 0),
+	(187, 'ems', 'Aids', 30, 0, 0, 'Sling', '', 'normal', '[]', '[]', 0),
+	(188, 'ems', 'Mental Health', 100, 0, 0, 'Physical Therapy', '', 'normal', '[]', '[]', 0),
+	(189, 'ems', 'Miscellaneous', 500, 0, 0, 'Parcel Service', '', 'major', '[]', '[]', 1),
+	(190, 'pd', 'Criminal Code', 15000, 0, 0, 'Exceeding Maximum Soft Drug Quantity', 'Owners of coffee shops exceeding the legal storage limit (1000 grams).', 'major', '{"fine":"","points":"","jail":""}', '{"fine":"","points":"","jail":""}', 0),
+	(191, 'pd', 'Criminal Code', 1500, 0, 0, 'Drug Advertising with Intent to Sell', 'Advertising drug sales in any form.', 'normal', '{"fine":"","points":"","jail":""}', '{"fine":"","points":"","jail":""}', 0),
+	(192, 'pd', 'Weapons & Ammunition Act', 6500, 80, 0, 'Possession of Explosives', 'Possessing explosives (e.g., C4, thermite).', 'extreme', '{"fine":"","points":"","jail":""}', '{"fine":"","points":"","jail":""}', 0),
+	(193, 'pd', 'Weapons & Ammunition Act', 4000, 50, 0, 'Possession of Category 3 Weapon', 'Possession of (semi-)automatic shotguns or shotguns requiring additional steps to fire.', 'major', '{"fine":"","points":"","jail":""}', '{"fine":"","points":"","jail":""}', 0),
+	(194, 'ems', 'Minor Treatments', 75, 0, 0, 'Massage', '', 'normal', '[]', '[]', 0),
+	(195, 'pd', 'Special', 10, 1, 0, 'Caught Whining', 'Whining during a situation you caused yourself.', 'extreme', '{"jail":"","points":"","fine":""}', '{"jail":"","points":"","fine":""}', 1),
+	(196, 'ems', 'Operations', 500, 0, 0, 'Organ (Partial) Removal', '', 'normal', '[]', '[]', 0),
+	(197, 'ems', 'Minor Treatments', 75, 0, 0, 'Scrapes/Abrasions', '', 'normal', '[]', '[]', 0),
+	(198, 'ems', 'Medications', 15, 0, 0, 'Laxative', '', 'normal', '[]', '[]', 0),
+	(199, 'ems', 'Medications', 25, 0, 0, 'Viagra', '', 'normal', '[]', '[]', 0),
+	(200, 'ems', 'Medications', 15, 0, 0, 'Laxative', '', 'normal', '[]', '[]', 1),
+	(201, 'ems', 'Operations', 200, 0, 0, 'Hit by Vehicle', '', 'normal', '[]', '[]', 0),
+	(202, 'ems', 'Minor Treatments', 150, 0, 0, 'Emergency Assistance', '', 'normal', '[]', '[]', 0),
+	(203, 'ems', 'Aids', 6000, 0, 0, 'Diving Gear', '', 'normal', '[]', '[]', 0),
+	(204, 'pd', 'Criminal Code', 3500, 15, 0, 'Obstruction of an Official', 'Deliberately obstructing an official\'s lawful actions.', 'normal', '{"jail":"","fine":"","points":""}', '{"jail":"","fine":"","points":""}', 0),
+	(205, 'pd', 'Traffic Violations', 125, 0, 0, 'Crossing Without Crosswalk', 'Crossing a public road without using a crosswalk.', 'normal', '{"jail":"","fine":"","points":""}', '{"jail":"","fine":"","points":""}', 0),
+	(206, 'pd', 'Criminal Code', 120, 0, 0, 'Public Urination', 'Urinating in public.', 'normal', '{"jail":"","points":"","fine":""}', '{"jail":"","points":"","fine":""}', 0),
+	(207, 'ems', 'Operations', 200, 0, 0, 'Collapsed Lung', '', 'normal', '[]', '[]', 0),
+	(208, 'pd', 'Criminal Code', 3250, 20, 0, 'Doxing', 'Unauthorized online release of personal information (e.g., name, address, workplace).', 'major', '{"points":"","fine":"","jail":""}', '{"points":"","fine":"","jail":""}', 0),
+	(209, 'pd', 'Criminal Code', 3000, 25, 0, 'Threatening an Official', 'Threatening physical harm or death against an official.', 'major', '{"points":"","fine":"","jail":""}', '{"points":"","fine":"","jail":""}', 0),
+	(210, 'pd', 'Criminal Code', 3000, 25, 0, 'Threatening an Official in Function', 'Threatening physical harm or death against an official during their duties.', 'major', '{"points":"","fine":"","jail":""}', '{"points":"","fine":"","jail":""}', 1),
+	(211, 'pd', 'Criminal Code', 5000, 25, 0, 'Disruption of Court Proceedings', 'Disrupting or obstructing a court hearing.', 'normal', '{"jail":"10","fine":"5000","points":""}', '{"jail":"","fine":"","points":""}', 0),
 	(212, 'pd', '', 0, 0, 0, '', '', '', '{"fine":"","jail":"","points":""}', '{"fine":"","jail":"","points":""}', 0);
 
--- Dumping structure for table fivem-clarity.mdw_evidence
+-- Structuur van  tabel Polygone.mdw_evidence wordt geschreven
 CREATE TABLE IF NOT EXISTS `mdw_evidence` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` longtext NOT NULL,
@@ -561,9 +603,9 @@ CREATE TABLE IF NOT EXISTS `mdw_evidence` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.mdw_evidence: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.mdw_evidence: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.mdw_evidence_types
+-- Structuur van  tabel Polygone.mdw_evidence_types wordt geschreven
 CREATE TABLE IF NOT EXISTS `mdw_evidence_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` longtext NOT NULL,
@@ -572,18 +614,18 @@ CREATE TABLE IF NOT EXISTS `mdw_evidence_types` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.mdw_evidence_types: ~8 rows (approximately)
+-- Dumpen data van tabel Polygone.mdw_evidence_types: ~8 rows (ongeveer)
 INSERT INTO `mdw_evidence_types` (`id`, `type`, `color`, `deleted`) VALUES
-	(1, 'Anders', '#ffffff', 0),
-	(2, 'Bloed', '#f44436', 0),
-	(3, 'Kogelhuls', '#7db966', 0),
-	(4, 'Vuurwapen', '#000000', 0),
-	(5, 'Projectiel', '#fd9808', 0),
-	(6, 'Glas', '#ffffff', 0),
-	(7, 'Voertuig Fragment', '#ffffff', 0),
-	(8, 'Foto', '#4eab57', 0);
+	(1, 'Other', '#ffffff', 0),
+	(2, 'Blood', '#f44436', 0),
+	(3, 'Bulletcase', '#7db966', 0),
+	(4, 'Fireweapon', '#000000', 0),
+	(5, 'Projectile', '#fd9808', 0),
+	(6, 'Glass', '#ffffff', 0),
+	(7, 'Vehicle scrap', '#ffffff', 0),
+	(8, 'Picture', '#4eab57', 0);
 
--- Dumping structure for table fivem-clarity.mdw_legislation
+-- Structuur van  tabel Polygone.mdw_legislation wordt geschreven
 CREATE TABLE IF NOT EXISTS `mdw_legislation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` longtext NOT NULL,
@@ -594,9 +636,9 @@ CREATE TABLE IF NOT EXISTS `mdw_legislation` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.mdw_legislation: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.mdw_legislation: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.mdw_profiles
+-- Structuur van  tabel Polygone.mdw_profiles wordt geschreven
 CREATE TABLE IF NOT EXISTS `mdw_profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` longtext NOT NULL,
@@ -610,9 +652,9 @@ CREATE TABLE IF NOT EXISTS `mdw_profiles` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.mdw_profiles: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.mdw_profiles: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.mdw_ranks
+-- Structuur van  tabel Polygone.mdw_ranks wordt geschreven
 CREATE TABLE IF NOT EXISTS `mdw_ranks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rank` longtext NOT NULL,
@@ -620,9 +662,9 @@ CREATE TABLE IF NOT EXISTS `mdw_ranks` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.mdw_ranks: ~38 rows (approximately)
+-- Dumpen data van tabel Polygone.mdw_ranks: ~38 rows (ongeveer)
 INSERT INTO `mdw_ranks` (`id`, `rank`, `deleted`) VALUES
-	(1, 'Rechter', 0),
+	(1, 'Judge', 0),
 	(2, 'Cadet', 0),
 	(3, 'Solo Cadet', 0),
 	(4, 'Officer', 0),
@@ -661,7 +703,7 @@ INSERT INTO `mdw_ranks` (`id`, `rank`, `deleted`) VALUES
 	(37, 'Trooper Lieutenant', 0),
 	(38, 'Trooper Captain', 0);
 
--- Dumping structure for table fivem-clarity.mdw_reports
+-- Structuur van  tabel Polygone.mdw_reports wordt geschreven
 CREATE TABLE IF NOT EXISTS `mdw_reports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `author` varchar(256) DEFAULT NULL,
@@ -679,9 +721,9 @@ CREATE TABLE IF NOT EXISTS `mdw_reports` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.mdw_reports: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.mdw_reports: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.mdw_roles
+-- Structuur van  tabel Polygone.mdw_roles wordt geschreven
 CREATE TABLE IF NOT EXISTS `mdw_roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` longtext NOT NULL,
@@ -691,17 +733,17 @@ CREATE TABLE IF NOT EXISTS `mdw_roles` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.mdw_roles: ~7 rows (approximately)
+-- Dumpen data van tabel Polygone.mdw_roles: ~7 rows (ongeveer)
 INSERT INTO `mdw_roles` (`id`, `name`, `icon`, `color`, `permissions`) VALUES
 	(1, 'Systeem Adminstrator', 'users-cog', '#F44336', '{"Staff.GiveStrikes":true,"Profiles.Delete":true,"Profiles.Create":true,"Dashboard.Visible":true,"Legislation.Edit":true,"Reports.Edit":true,"Profiles.ShowHousing":true,"Profiles.Edit":true,"Reports.Visible":true,"Evidence.Delete":true,"Dashboard.ShowBulletin":true,"Reports.Delete":true,"Staff.ShowStrikes":true,"Reports.Create":true,"Profiles.ShowNotes":true,"Evidence.Edit":true,"Evidence.Visible":true,"Evidence.Create":true,"Staff.GiveCerts":true,"Legislation.Create":true,"Legislation.Delete":true,"Dashboard.ShowWarrents":true,"Reports.Export":true,"Config.EditCharges":true,"Config.DeleteCharges":true}'),
 	(2, 'PD Edit', 'user-edit', '#ffffff', '{"Staff.GiveStrikes":false,"Profiles.Delete":false,"Profiles.Create":true,"Dashboard.Visible":true,"Legislation.Edit":false,"Reports.Edit":true,"Profiles.ShowHousing":true,"Profiles.Edit":true,"Reports.Visible":true,"Evidence.Delete":false,"Dashboard.ShowBulletin":true,"Reports.Delete":false,"Staff.ShowStrikes":false,"Reports.Create":true,"Profiles.ShowNotes":true,"Evidence.Edit":true,"Evidence.Visible":true,"Evidence.Create":true,"Staff.GiveCerts":false,"Legislation.Create":false,"Legislation.Delete":false,"Dashboard.ShowWarrents":true,"Reports.Export":true,"Config.EditCharges":false,"Config.DeleteCharges":false}'),
 	(3, 'EMS Edit', 'user-edit', '#ffffff', '{"Staff.GiveStrikes":false,"Profiles.Delete":false,"Profiles.Create":true,"Dashboard.Visible":true,"Legislation.Edit":false,"Reports.Edit":true,"Profiles.ShowHousing":false,"Profiles.Edit":true,"Reports.Visible":true,"Evidence.Delete":false,"Dashboard.ShowBulletin":true,"Reports.Delete":false,"Staff.ShowStrikes":false,"Reports.Create":true,"Profiles.ShowNotes":true,"Evidence.Edit":true,"Evidence.Visible":false,"Evidence.Create":true,"Staff.GiveCerts":false,"Legislation.Create":false,"Legislation.Delete":false,"Dashboard.ShowWarrents":false,"Reports.Export":true,"Config.EditCharges":false,"Config.DeleteCharges":false}'),
 	(4, 'Cert Edit', 'user-edit', '#ffffff', '{"Staff.GiveStrikes":false,"Profiles.Delete":false,"Profiles.Create":false,"Dashboard.Visible":false,"Legislation.Edit":false,"Reports.Edit":false,"Profiles.ShowHousing":false,"Profiles.Edit":false,"Reports.Visible":false,"Evidence.Delete":false,"Dashboard.ShowBulletin":false,"Reports.Delete":false,"Staff.ShowStrikes":false,"Reports.Create":false,"Profiles.ShowNotes":false,"Evidence.Edit":false,"Evidence.Visible":false,"Evidence.Create":false,"Staff.GiveCerts":true,"Legislation.Create":false,"Legislation.Delete":false,"Dashboard.ShowWarrents":false,"Reports.Export":false,"Config.EditCharges":false,"Config.DeleteCharges":false}'),
-	(5, 'Rechter', 'gavel', '#ffffff', '{"Staff.GiveStrikes":false,"Profiles.Delete":true,"Profiles.Create":true,"Dashboard.Visible":true,"Legislation.Edit":true,"Reports.Edit":true,"Profiles.ShowHousing":true,"Profiles.Edit":true,"Reports.Visible":true,"Evidence.Delete":true,"Dashboard.ShowBulletin":true,"Reports.Delete":true,"Staff.ShowStrikes":true,"Reports.Create":true,"Profiles.ShowNotes":true,"Evidence.Edit":true,"Evidence.Visible":true,"Evidence.Create":true,"Staff.GiveCerts":false,"Legislation.Create":true,"Legislation.Delete":true,"Dashboard.ShowWarrents":true,"Reports.Export":true,"Config.EditCharges":true,"Config.DeleteCharges":true}'),
+	(5, 'Judge', 'gavel', '#ffffff', '{"Staff.GiveStrikes":false,"Profiles.Delete":true,"Profiles.Create":true,"Dashboard.Visible":true,"Legislation.Edit":true,"Reports.Edit":true,"Profiles.ShowHousing":true,"Profiles.Edit":true,"Reports.Visible":true,"Evidence.Delete":true,"Dashboard.ShowBulletin":true,"Reports.Delete":true,"Staff.ShowStrikes":true,"Reports.Create":true,"Profiles.ShowNotes":true,"Evidence.Edit":true,"Evidence.Visible":true,"Evidence.Create":true,"Staff.GiveCerts":false,"Legislation.Create":true,"Legislation.Delete":true,"Dashboard.ShowWarrents":true,"Reports.Export":true,"Config.EditCharges":true,"Config.DeleteCharges":true}'),
 	(6, 'Straffen', 'users-cog', '#ffffff', '{"Profiles.Delete":false,"Legislation.Delete":false,"Staff.ShowStrikes":false,"Profiles.Edit":false,"Dashboard.ShowBulletin":false,"Evidence.Edit":false,"Evidence.Visible":false,"Evidence.Delete":false,"Staff.GiveCerts":false,"Reports.Create":false,"Reports.Visible":false,"Dashboard.ShowWarrents":false,"Dashboard.Visible":false,"Reports.Delete":false,"Profiles.ShowHousing":false,"Staff.GiveStrikes":false,"Legislation.Create":false,"Profiles.Create":false,"Evidence.Create":false,"Legislation.Edit":false,"Profiles.ShowNotes":false,"Reports.Edit":false}'),
 	(7, 'Trainee', 'vial', '#ffffff', '{"Dashboard.ShowBulletin":true,"Profiles.Delete":false,"Evidence.Create":false,"Dashboard.Visible":true,"Legislation.Delete":false,"Staff.GiveStrikes":false,"Staff.ShowStrikes":false,"Evidence.Delete":false,"Profiles.ShowHousing":false,"Evidence.Edit":false,"Evidence.Visible":false,"Profiles.Edit":false,"Reports.Delete":false,"Reports.Create":false,"Profiles.Create":false,"Profiles.ShowNotes":false,"Staff.GiveCerts":false,"Reports.Edit":false,"Reports.Visible":true,"Legislation.Edit":false,"Legislation.Create":false,"Dashboard.ShowWarrents":false}');
 
--- Dumping structure for table fivem-clarity.mdw_staff
+-- Structuur van  tabel Polygone.mdw_staff wordt geschreven
 CREATE TABLE IF NOT EXISTS `mdw_staff` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -721,9 +763,9 @@ CREATE TABLE IF NOT EXISTS `mdw_staff` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fivem-clarity.mdw_staff: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.mdw_staff: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.mdw_tags
+-- Structuur van  tabel Polygone.mdw_tags wordt geschreven
 CREATE TABLE IF NOT EXISTS `mdw_tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tag` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -733,7 +775,7 @@ CREATE TABLE IF NOT EXISTS `mdw_tags` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fivem-clarity.mdw_tags: ~23 rows (approximately)
+-- Dumpen data van tabel Polygone.mdw_tags: ~23 rows (ongeveer)
 INSERT INTO `mdw_tags` (`id`, `tag`, `color`, `icon`, `deleted`) VALUES
 	(1, 'Lifer', '#a87532', '', 0),
 	(2, 'BCSO', '#a87d32', '', 0),
@@ -755,11 +797,11 @@ INSERT INTO `mdw_tags` (`id`, `tag`, `color`, `icon`, `deleted`) VALUES
 	(18, 'Los Muertos MC', '#D50000', 'fas fa-motorcycle', 0),
 	(19, 'Grizzley Gang', '#F44336', 'fas fa-paw-claws', 0),
 	(20, 'Copkiller', '#ffffff', 'user-shield', 0),
-	(21, 'Gevangenis', '#ffffff', 'voicemail', 0),
+	(21, 'Prison', '#ffffff', 'voicemail', 0),
 	(22, 'Terrorisme', '#D50000', 'fas fa-bomb', 0),
 	(23, 'Vatos Locos', '#FBC02D', 'fas fa-skull-crossbones', 0);
 
--- Dumping structure for table fivem-clarity.musictapes
+-- Structuur van  tabel Polygone.musictapes wordt geschreven
 CREATE TABLE IF NOT EXISTS `musictapes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tape_id` longtext NOT NULL,
@@ -768,9 +810,9 @@ CREATE TABLE IF NOT EXISTS `musictapes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.musictapes: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.musictapes: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.phone_businesses
+-- Structuur van  tabel Polygone.phone_businesses wordt geschreven
 CREATE TABLE IF NOT EXISTS `phone_businesses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `business_owner` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
@@ -784,9 +826,9 @@ CREATE TABLE IF NOT EXISTS `phone_businesses` (
   KEY `business_name` (`business_name`(1024))
 ) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fivem-clarity.phone_businesses: ~64 rows (approximately)
+-- Dumpen data van tabel Polygone.phone_businesses: ~64 rows (ongeveer)
 INSERT INTO `phone_businesses` (`id`, `business_owner`, `business_name`, `business_account`, `business_employees`, `business_ranks`) VALUES
-	(1, '1001', 'De Staat van San Andreas', '1', '[]', '[]'),
+	(1, '1001', 'The state of San Andreas', '1', '[]', '[]'),
 	(2, '1001', 'Bennys Motorworks', '37489523', '[]', '[]'),
 	(3, '1001', 'Dynasty 8', '90184729', '[]', '[]'),
 	(5, '1001', 'Premium Deluxe Motorsports', '51872694', '[]', '[]'),
@@ -807,7 +849,7 @@ INSERT INTO `phone_businesses` (`id`, `business_owner`, `business_name`, `busine
 	(24, '1001', 'Mattronics', '41977204', '[]', '[]'),
 	(25, '1001', 'van Binskerken', '93846474', '[]', '[]'),
 	(26, '1001', 'Department of Corrections', '5', '[]', '[]'),
-	(27, '1001', 'Algemene Court', '38038770', '[]', '[]'),
+	(27, '1001', 'Courthouse', '38038770', '[]', '[]'),
 	(28, '1001', 'Οίνος από οντίν', '39771131', '[]', '[]'),
 	(29, '1001', 'BBV&A', '86339923', '[]', '[]'),
 	(30, '1001', 'Court of Justice', '13480488', '[]', '[]'),
@@ -851,7 +893,7 @@ INSERT INTO `phone_businesses` (`id`, `business_owner`, `business_name`, `busine
 	(69, '1001', 'Le Commerçant', '14723574', '[]', '[]'),
 	(70, '1001', 'Cortainer', '50407380', '[]', '[]');
 
--- Dumping structure for table fivem-clarity.phone_contacts
+-- Structuur van  tabel Polygone.phone_contacts wordt geschreven
 CREATE TABLE IF NOT EXISTS `phone_contacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -861,9 +903,9 @@ CREATE TABLE IF NOT EXISTS `phone_contacts` (
   KEY `citizenid` (`citizenid`(768))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fivem-clarity.phone_contacts: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.phone_contacts: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.phone_debt
+-- Structuur van  tabel Polygone.phone_debt wordt geschreven
 CREATE TABLE IF NOT EXISTS `phone_debt` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -873,11 +915,14 @@ CREATE TABLE IF NOT EXISTS `phone_debt` (
   `due_date` bigint(20) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `citizenid` (`citizenid`(768))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fivem-clarity.phone_debt: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.phone_debt: ~2 rows (ongeveer)
+INSERT INTO `phone_debt` (`id`, `citizenid`, `type`, `asset_type`, `debt_data`, `due_date`) VALUES
+	(1, '2000', 'Memberships', 'Coopers Arcade Membership', '{"Name":"Coopers Arcade Membership","Due":5500}', 1749836032000),
+	(2, '2000', 'Memberships', 'Coopers Arcade Membership', '{"Name":"Coopers Arcade Membership","Due":5500}', 1753440088000);
 
--- Dumping structure for table fivem-clarity.phone_documents
+-- Structuur van  tabel Polygone.phone_documents wordt geschreven
 CREATE TABLE IF NOT EXISTS `phone_documents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
@@ -890,11 +935,44 @@ CREATE TABLE IF NOT EXISTS `phone_documents` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `citizenid` (`citizenid`),
   KEY `sharees` (`sharees`(1024))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fivem-clarity.phone_documents: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.phone_documents: ~32 rows (ongeveer)
+INSERT INTO `phone_documents` (`id`, `citizenid`, `type`, `title`, `content`, `signatures`, `sharees`, `finalized`) VALUES
+	(1, '1001', 1, 'Rijbewijs - 2000', '<p><strong>Uitgegeven aan</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>a a</td></tr><tr><th>BSN nummer</th><td>2000</td></tr><tr><th>Geslacht</th><td>Man</td></tr></tbody></table></figure><p><strong>Uitgegeven door</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>De Staat</td></tr><tr><th>Datum</th><td>24/6/2025 13:23</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Signed":true,"Timestamp":1750764213000,"Cid":"1001","Name":"De Staat"}]', '["2000"]', 1),
+	(2, '1001', 3, 'Vapid Minivan - 8ZI316EH', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Naam</th><td>Vapid Minivan</td></tr><tr><th>Model</th><td>minivan</td></tr><tr><th>Kenteken</th><td>8ZI316EH</td></tr><tr><th>Vin</th><td>GT41YB6C392FMTJX</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Eigendom Geschiedenis</h3><figure class="table"><table><thead><tr><th>Eigenaar</th><th>Verkoper</th><th>Datum</th><th>Prijs</th></tr></thead><tbody><tr><td>a a</td><td>De Staat</td><td>24/6/2025 13:23</td><td>Gratis</td></tr></tbody></table></figure>', '[{"Signed":true,"Timestamp":1750764213000,"Cid":"1001","Name":"De Staat"},{"Signed":true,"Timestamp":1750764213000,"Cid":"2000","Name":"a a"}]', '["2000"]', 1),
+	(3, '1001', 1, 'Driver License - 2001', '<p><strong>Uitgegeven aan</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>asd asd</td></tr><tr><th>BSN nummer</th><td>2001</td></tr><tr><th>Geslacht</th><td>Male</td></tr></tbody></table></figure><p><strong>Uitgegeven door</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>The State</td></tr><tr><th>Datum</th><td>28/6/2025 14:59</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Signed":true,"Timestamp":1751115563000,"Name":"The State","Cid":"1001"}]', '["2001"]', 1),
+	(4, '1001', 3, 'Declasse Rhapsody - 3BX202IL', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Naam</th><td>Declasse Rhapsody</td></tr><tr><th>Model</th><td>rhapsody</td></tr><tr><th>Kenteken</th><td>3BX202IL</td></tr><tr><th>Vin</th><td>LH91QI3Q046GXDRW</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Eigendom Geschiedenis</h3><figure class="table"><table><thead><tr><th>Eigenaar</th><th>Verkoper</th><th>Datum</th><th>Prijs</th></tr></thead><tbody><tr><td>asd asd</td><td>The State</td><td>28/6/2025 14:59</td><td>Free</td></tr></tbody></table></figure>', '[{"Signed":true,"Timestamp":1751115563000,"Name":"The State","Cid":"1001"},{"Signed":true,"Timestamp":1751115563000,"Name":"asd asd","Cid":"2001"}]', '["2001"]', 1),
+	(5, '1001', 1, 'Driver License - 2002', '<p><strong>Uitgegeven aan</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>as asd</td></tr><tr><th>BSN nummer</th><td>2002</td></tr><tr><th>Geslacht</th><td>Male</td></tr></tbody></table></figure><p><strong>Uitgegeven door</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>The State</td></tr><tr><th>Datum</th><td>28/6/2025 15:7</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Name":"The State","Cid":"1001","Signed":true,"Timestamp":1751116064000}]', '["2002"]', 1),
+	(6, '1001', 3, 'Brioso 300 - 7JG319CL', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Naam</th><td>Brioso 300</td></tr><tr><th>Model</th><td>brioso2</td></tr><tr><th>Kenteken</th><td>7JG319CL</td></tr><tr><th>Vin</th><td>BP50OO3B166NJTYF</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Eigendom Geschiedenis</h3><figure class="table"><table><thead><tr><th>Eigenaar</th><th>Verkoper</th><th>Datum</th><th>Prijs</th></tr></thead><tbody><tr><td>as asd</td><td>The State</td><td>28/6/2025 15:7</td><td>Free</td></tr></tbody></table></figure>', '[{"Name":"The State","Cid":"1001","Signed":true,"Timestamp":1751116064000},{"Name":"as asd","Cid":"2002","Signed":true,"Timestamp":1751116064000}]', '["2002"]', 1),
+	(7, '1001', 1, 'Driver License - 2003', '<p><strong>Uitgegeven aan</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>asdads adasdassd</td></tr><tr><th>BSN nummer</th><td>2003</td></tr><tr><th>Geslacht</th><td>Male</td></tr></tbody></table></figure><p><strong>Uitgegeven door</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>The State</td></tr><tr><th>Datum</th><td>29/6/2025 14:7</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Name":"The State","Signed":true,"Timestamp":1751198879000,"Cid":"1001"}]', '["2003"]', 1),
+	(8, '1001', 3, 'Declasse Rhapsody - 8MP812NZ', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Naam</th><td>Declasse Rhapsody</td></tr><tr><th>Model</th><td>rhapsody</td></tr><tr><th>Kenteken</th><td>8MP812NZ</td></tr><tr><th>Vin</th><td>WK31QT5K338LNMUB</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Eigendom Geschiedenis</h3><figure class="table"><table><thead><tr><th>Eigenaar</th><th>Verkoper</th><th>Datum</th><th>Prijs</th></tr></thead><tbody><tr><td>asdads adasdassd</td><td>The State</td><td>29/6/2025 14:7</td><td>Free</td></tr></tbody></table></figure>', '[{"Name":"The State","Signed":true,"Timestamp":1751198879000,"Cid":"1001"},{"Name":"asdads adasdassd","Signed":true,"Timestamp":1751198879000,"Cid":"2003"}]', '["2003"]', 1),
+	(9, '1001', 1, 'Driver License - 2004', '<p><strong>Uitgegeven aan</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>asd asd</td></tr><tr><th>BSN nummer</th><td>2004</td></tr><tr><th>Geslacht</th><td>Male</td></tr></tbody></table></figure><p><strong>Uitgegeven door</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>The State</td></tr><tr><th>Datum</th><td>29/6/2025 14:13</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Name":"The State","Signed":true,"Timestamp":1751199212000,"Cid":"1001"}]', '["2004"]', 1),
+	(10, '1001', 3, 'Bürgerfahrzeug Weevil - 4KI474AD', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Naam</th><td>Bürgerfahrzeug Weevil</td></tr><tr><th>Model</th><td>weevil</td></tr><tr><th>Kenteken</th><td>4KI474AD</td></tr><tr><th>Vin</th><td>ZH97UM0N359SQIUK</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Eigendom Geschiedenis</h3><figure class="table"><table><thead><tr><th>Eigenaar</th><th>Verkoper</th><th>Datum</th><th>Prijs</th></tr></thead><tbody><tr><td>asd asd</td><td>The State</td><td>29/6/2025 14:13</td><td>Free</td></tr></tbody></table></figure>', '[{"Name":"The State","Signed":true,"Timestamp":1751199212000,"Cid":"1001"},{"Name":"asd asd","Signed":true,"Timestamp":1751199212000,"Cid":"2004"}]', '["2004"]', 1),
+	(11, '1001', 1, 'Driver License - 2005', '<p><strong>Uitgegeven aan</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>asdad asdasd</td></tr><tr><th>BSN nummer</th><td>2005</td></tr><tr><th>Geslacht</th><td>Male</td></tr></tbody></table></figure><p><strong>Uitgegeven door</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>The State</td></tr><tr><th>Datum</th><td>29/6/2025 14:22</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Name":"The State","Cid":"1001","Timestamp":1751199753000,"Signed":true}]', '["2005"]', 1),
+	(12, '1001', 3, 'Brioso 300 - 4TG229EN', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Naam</th><td>Brioso 300</td></tr><tr><th>Model</th><td>brioso2</td></tr><tr><th>Kenteken</th><td>4TG229EN</td></tr><tr><th>Vin</th><td>ES33JM4V043JECZN</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Eigendom Geschiedenis</h3><figure class="table"><table><thead><tr><th>Eigenaar</th><th>Verkoper</th><th>Datum</th><th>Prijs</th></tr></thead><tbody><tr><td>asdad asdasd</td><td>The State</td><td>29/6/2025 14:22</td><td>Free</td></tr></tbody></table></figure>', '[{"Name":"The State","Cid":"1001","Timestamp":1751199753000,"Signed":true},{"Name":"asdad asdasd","Cid":"2005","Timestamp":1751199753000,"Signed":true}]', '["2005"]', 1),
+	(13, '1001', 1, 'Driver License - 2006', '<p><strong>Uitgegeven aan</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>asdad asdasd</td></tr><tr><th>BSN nummer</th><td>2006</td></tr><tr><th>Geslacht</th><td>Male</td></tr></tbody></table></figure><p><strong>Uitgegeven door</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>The State</td></tr><tr><th>Datum</th><td>29/6/2025 14:28</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Name":"The State","Cid":"1001","Timestamp":1751200136000,"Signed":true}]', '["2006"]', 1),
+	(14, '1001', 3, 'Brioso 300 - 1OM228SE', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Naam</th><td>Brioso 300</td></tr><tr><th>Model</th><td>brioso2</td></tr><tr><th>Kenteken</th><td>1OM228SE</td></tr><tr><th>Vin</th><td>FP59YL2L258KXRNO</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Eigendom Geschiedenis</h3><figure class="table"><table><thead><tr><th>Eigenaar</th><th>Verkoper</th><th>Datum</th><th>Prijs</th></tr></thead><tbody><tr><td>asdad asdasd</td><td>The State</td><td>29/6/2025 14:28</td><td>Free</td></tr></tbody></table></figure>', '[{"Name":"The State","Cid":"1001","Timestamp":1751200136000,"Signed":true},{"Name":"asdad asdasd","Cid":"2006","Timestamp":1751200136000,"Signed":true}]', '["2006"]', 1),
+	(15, '1001', 1, 'Driver License - 2007', '<p><strong>Uitgegeven aan</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>asdad asdasd</td></tr><tr><th>BSN nummer</th><td>2007</td></tr><tr><th>Geslacht</th><td>Male</td></tr></tbody></table></figure><p><strong>Uitgegeven door</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>The State</td></tr><tr><th>Datum</th><td>29/6/2025 14:32</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Name":"The State","Cid":"1001","Timestamp":1751200363000,"Signed":true}]', '["2007"]', 1),
+	(16, '1001', 3, 'Declasse Rhapsody - 0JK604TW', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Naam</th><td>Declasse Rhapsody</td></tr><tr><th>Model</th><td>rhapsody</td></tr><tr><th>Kenteken</th><td>0JK604TW</td></tr><tr><th>Vin</th><td>WH62VS6B961ZAWBK</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Eigendom Geschiedenis</h3><figure class="table"><table><thead><tr><th>Eigenaar</th><th>Verkoper</th><th>Datum</th><th>Prijs</th></tr></thead><tbody><tr><td>asdad asdasd</td><td>The State</td><td>29/6/2025 14:32</td><td>Free</td></tr></tbody></table></figure>', '[{"Name":"The State","Cid":"1001","Timestamp":1751200363000,"Signed":true},{"Name":"asdad asdasd","Cid":"2007","Timestamp":1751200363000,"Signed":true}]', '["2007"]', 1),
+	(17, '1001', 1, 'Driver License - 2008', '<p><strong>Uitgegeven aan</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>asdad asdasd</td></tr><tr><th>BSN nummer</th><td>2008</td></tr><tr><th>Geslacht</th><td>Male</td></tr></tbody></table></figure><p><strong>Uitgegeven door</strong></p><figure class="table"><table><tbody><tr><th>Naam</th><td>The State</td></tr><tr><th>Datum</th><td>29/6/2025 14:33</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Name":"The State","Cid":"1001","Timestamp":1751200432000,"Signed":true}]', '["2008"]', 1),
+	(18, '1001', 3, 'Declasse Rhapsody - 4ZG736IJ', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Naam</th><td>Declasse Rhapsody</td></tr><tr><th>Model</th><td>rhapsody</td></tr><tr><th>Kenteken</th><td>4ZG736IJ</td></tr><tr><th>Vin</th><td>EM96TD8N116URKUR</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Eigendom Geschiedenis</h3><figure class="table"><table><thead><tr><th>Eigenaar</th><th>Verkoper</th><th>Datum</th><th>Prijs</th></tr></thead><tbody><tr><td>asdad asdasd</td><td>The State</td><td>29/6/2025 14:33</td><td>Free</td></tr></tbody></table></figure>', '[{"Name":"The State","Cid":"1001","Timestamp":1751200432000,"Signed":true},{"Name":"asdad asdasd","Cid":"2008","Timestamp":1751200432000,"Signed":true}]', '["2008"]', 1),
+	(19, '1001', 1, 'Driver License - 2009', '<p><strong>Issued to</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>pphati walliams</td></tr><tr><th>SSN number</th><td>2009</td></tr><tr><th>Gender</th><td>Male</td></tr></tbody></table></figure><p><strong>Issued by</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>The State</td></tr><tr><th>Date</th><td>3/7/2025 17:32</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Name":"The State","Signed":true,"Timestamp":1751556761000,"Cid":"1001"}]', '["2009"]', 1),
+	(20, '1001', 3, 'Brioso 300 - 5YU451LJ', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Name</th><td>Brioso 300</td></tr><tr><th>Model</th><td>brioso2</td></tr><tr><th>License Plate</th><td>5YU451LJ</td></tr><tr><th>Vin</th><td>EN99SW8Q486YVPAW</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Ownership History</h3><figure class="table"><table><thead><tr><th>Owner</th><th>Seller</th><th>Date</th><th>Price</th></tr></thead><tbody><tr><td>pphati walliams</td><td>The State</td><td>3/7/2025 17:32</td><td>Free</td></tr></tbody></table></figure>', '[{"Name":"The State","Signed":true,"Timestamp":1751556761000,"Cid":"1001"},{"Name":"pphati walliams","Signed":true,"Timestamp":1751556761000,"Cid":"2009"}]', '["2009"]', 1),
+	(21, '1001', 1, 'Driver License - 2010', '<p><strong>Issued to</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>Joe Fook</td></tr><tr><th>SSN number</th><td>2010</td></tr><tr><th>Gender</th><td>Male</td></tr></tbody></table></figure><p><strong>Issued by</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>The State</td></tr><tr><th>Date</th><td>4/7/2025 9:56</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Name":"The State","Cid":"1001","Signed":true,"Timestamp":1751615787000}]', '["2010"]', 1),
+	(22, '1001', 3, 'Declasse Rhapsody - 2PZ912FF', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Name</th><td>Declasse Rhapsody</td></tr><tr><th>Model</th><td>rhapsody</td></tr><tr><th>License Plate</th><td>2PZ912FF</td></tr><tr><th>Vin</th><td>GF14CS0T772ZICNR</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Ownership History</h3><figure class="table"><table><thead><tr><th>Owner</th><th>Seller</th><th>Date</th><th>Price</th></tr></thead><tbody><tr><td>Joe Fook</td><td>The State</td><td>4/7/2025 9:56</td><td>Free</td></tr></tbody></table></figure>', '[{"Name":"The State","Cid":"1001","Signed":true,"Timestamp":1751615787000},{"Name":"Joe Fook","Cid":"2010","Signed":true,"Timestamp":1751615787000}]', '["2010"]', 1),
+	(23, '1001', 1, 'Driver License - 2011', '<p><strong>Issued to</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>Rob Banks</td></tr><tr><th>SSN number</th><td>2011</td></tr><tr><th>Gender</th><td>Male</td></tr></tbody></table></figure><p><strong>Issued by</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>The State</td></tr><tr><th>Date</th><td>5/7/2025 13:33</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Cid":"1001","Signed":true,"Timestamp":1751715215000,"Name":"The State"}]', '["2011"]', 1),
+	(24, '1001', 3, 'Karin Rusty Rebel - 3CR773HU', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Name</th><td>Karin Rusty Rebel</td></tr><tr><th>Model</th><td>rebel</td></tr><tr><th>License Plate</th><td>3CR773HU</td></tr><tr><th>Vin</th><td>XM58IE6W202CNTAM</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Ownership History</h3><figure class="table"><table><thead><tr><th>Owner</th><th>Seller</th><th>Date</th><th>Price</th></tr></thead><tbody><tr><td>Rob Banks</td><td>The State</td><td>5/7/2025 13:33</td><td>Free</td></tr></tbody></table></figure>', '[{"Cid":"1001","Signed":true,"Timestamp":1751715215000,"Name":"The State"},{"Cid":"2011","Signed":true,"Timestamp":1751715215000,"Name":"Rob Banks"}]', '["2011"]', 1),
+	(25, '1001', 1, 'Driver License - 2012', '<p><strong>Issued to</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>Durk  Banks</td></tr><tr><th>SSN number</th><td>2012</td></tr><tr><th>Gender</th><td>Male</td></tr></tbody></table></figure><p><strong>Issued by</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>The State</td></tr><tr><th>Date</th><td>6/7/2025 14:43</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Cid":"1001","Timestamp":1751805820000,"Name":"The State","Signed":true}]', '["2012"]', 1),
+	(26, '1001', 3, 'Brioso 300 - 0UR964UY', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Name</th><td>Brioso 300</td></tr><tr><th>Model</th><td>brioso2</td></tr><tr><th>License Plate</th><td>0UR964UY</td></tr><tr><th>Vin</th><td>BA41SS8N614TWZBL</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Ownership History</h3><figure class="table"><table><thead><tr><th>Owner</th><th>Seller</th><th>Date</th><th>Price</th></tr></thead><tbody><tr><td>Durk  Banks</td><td>The State</td><td>6/7/2025 14:43</td><td>Free</td></tr></tbody></table></figure>', '[{"Cid":"1001","Timestamp":1751805820000,"Name":"The State","Signed":true},{"Cid":"2012","Timestamp":1751805820000,"Name":"Durk  Banks","Signed":true}]', '["2012"]', 1),
+	(27, '1001', 1, 'Driver License - 2013', '<p><strong>Issued to</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>Durk Banks</td></tr><tr><th>SSN number</th><td>2013</td></tr><tr><th>Gender</th><td>Male</td></tr></tbody></table></figure><p><strong>Issued by</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>The State</td></tr><tr><th>Date</th><td>6/7/2025 15:4</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Cid":"1001","Timestamp":1751807072000,"Name":"The State","Signed":true}]', '["2013"]', 1),
+	(28, '1001', 3, 'Declasse Rhapsody - 5DJ657UM', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Name</th><td>Declasse Rhapsody</td></tr><tr><th>Model</th><td>rhapsody</td></tr><tr><th>License Plate</th><td>5DJ657UM</td></tr><tr><th>Vin</th><td>ML29OK8J224ARHPK</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Ownership History</h3><figure class="table"><table><thead><tr><th>Owner</th><th>Seller</th><th>Date</th><th>Price</th></tr></thead><tbody><tr><td>Durk Banks</td><td>The State</td><td>6/7/2025 15:4</td><td>Free</td></tr></tbody></table></figure>', '[{"Cid":"1001","Timestamp":1751807072000,"Name":"The State","Signed":true},{"Cid":"2013","Timestamp":1751807072000,"Name":"Durk Banks","Signed":true}]', '["2013"]', 1),
+	(29, '1001', 1, 'Driver License - 2014', '<p><strong>Issued to</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>ollie pphati</td></tr><tr><th>SSN number</th><td>2014</td></tr><tr><th>Gender</th><td>Male</td></tr></tbody></table></figure><p><strong>Issued by</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>The State</td></tr><tr><th>Date</th><td>6/7/2025 16:9</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Cid":"1001","Timestamp":1751810948000,"Name":"The State","Signed":true}]', '["2014"]', 1),
+	(30, '1001', 3, 'Benefactor Panto - 6XZ244LU', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Name</th><td>Benefactor Panto</td></tr><tr><th>Model</th><td>panto</td></tr><tr><th>License Plate</th><td>6XZ244LU</td></tr><tr><th>Vin</th><td>CS48FH0B157AHMLB</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Ownership History</h3><figure class="table"><table><thead><tr><th>Owner</th><th>Seller</th><th>Date</th><th>Price</th></tr></thead><tbody><tr><td>ollie pphati</td><td>The State</td><td>6/7/2025 16:9</td><td>Free</td></tr></tbody></table></figure>', '[{"Cid":"1001","Timestamp":1751810949000,"Name":"The State","Signed":true},{"Cid":"2014","Timestamp":1751810949000,"Name":"ollie pphati","Signed":true}]', '["2014"]', 1),
+	(31, '1001', 1, 'Driver License - 2015', '<p><strong>Issued to</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>Danny Johnstone</td></tr><tr><th>SSN number</th><td>2015</td></tr><tr><th>Gender</th><td>Male</td></tr></tbody></table></figure><p><strong>Issued by</strong></p><figure class="table"><table><tbody><tr><th>Name</th><td>The State</td></tr><tr><th>Date</th><td>7/7/2025 14:32</td></tr></tbody></table></figure><p>&nbsp;</p>', '[{"Cid":"1001","Name":"The State","Signed":true,"Timestamp":1751891579000}]', '["2015"]', 1),
+	(32, '1001', 3, 'Vapid Minivan - 8CV333NN', '<h3>Los Santos DMV</h3><figure class="table"><table><thead><tr><th>&nbsp;</th><th>Data</th></tr></thead><tbody><tr><th>Name</th><td>Vapid Minivan</td></tr><tr><th>Model</th><td>minivan</td></tr><tr><th>License Plate</th><td>8CV333NN</td></tr><tr><th>Vin</th><td>ZN24FA9L234MFLYL</td></tr></tbody></table></figure><p>&nbsp;</p><h3>Ownership History</h3><figure class="table"><table><thead><tr><th>Owner</th><th>Seller</th><th>Date</th><th>Price</th></tr></thead><tbody><tr><td>Danny Johnstone</td><td>The State</td><td>7/7/2025 14:32</td><td>Free</td></tr></tbody></table></figure>', '[{"Cid":"1001","Name":"The State","Signed":true,"Timestamp":1751891579000},{"Cid":"2015","Name":"Danny Johnstone","Signed":true,"Timestamp":1751891579000}]', '["2015"]', 1);
 
--- Dumping structure for table fivem-clarity.phone_messages
+-- Structuur van  tabel Polygone.phone_messages wordt geschreven
 CREATE TABLE IF NOT EXISTS `phone_messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `from_phone` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -908,9 +986,9 @@ CREATE TABLE IF NOT EXISTS `phone_messages` (
   KEY `to_phone` (`to_phone`(1024))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fivem-clarity.phone_messages: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.phone_messages: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.phone_newsarticles
+-- Structuur van  tabel Polygone.phone_newsarticles wordt geschreven
 CREATE TABLE IF NOT EXISTS `phone_newsarticles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `network` longtext NOT NULL,
@@ -922,9 +1000,9 @@ CREATE TABLE IF NOT EXISTS `phone_newsarticles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fivem-clarity.phone_newsarticles: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.phone_newsarticles: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.phone_tierup
+-- Structuur van  tabel Polygone.phone_tierup wordt geschreven
 CREATE TABLE IF NOT EXISTS `phone_tierup` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `members` longtext NOT NULL DEFAULT '[]',
@@ -933,9 +1011,9 @@ CREATE TABLE IF NOT EXISTS `phone_tierup` (
   KEY `members` (`members`(768))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.phone_tierup: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.phone_tierup: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.phone_wenmo
+-- Structuur van  tabel Polygone.phone_wenmo wordt geschreven
 CREATE TABLE IF NOT EXISTS `phone_wenmo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `from_citizenid` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -948,9 +1026,9 @@ CREATE TABLE IF NOT EXISTS `phone_wenmo` (
   KEY `to_citizenid` (`to_citizenid`(768))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table fivem-clarity.phone_wenmo: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.phone_wenmo: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.players
+-- Structuur van  tabel Polygone.players wordt geschreven
 CREATE TABLE IF NOT EXISTS `players` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -970,15 +1048,21 @@ CREATE TABLE IF NOT EXISTS `players` (
   `last_updated` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `citizenid` (`citizenid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2000 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2016 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table fivem-clarity.players: 1 rows
+-- Dumpen data van tabel Polygone.players: 7 rows
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
 INSERT INTO `players` (`id`, `citizenid`, `email`, `steam`, `license`, `name`, `money`, `charinfo`, `job`, `gang`, `position`, `metadata`, `skills`, `addiction`, `skin`, `last_updated`) VALUES
-	(1001, '1001', 'destaat@lossantos.nl', 'steam:1001', 'license:1001', 'StateAccount', '{"crypto":{"SHUNG":0,"GNE":0}}', '{"phone":"0612345678","account":"1","firstname":"De","lastname":"Staat"}', '{}', '{}', '{}', '{"Dead":false,"Crafting":false,"Handcuffed":false}', '{}', '{}', NULL, '2023-05-15 14:12:13');
+	(1001, '1001', 'destaat@lossantos.nl', 'steam:1001', 'license:1001', 'StateAccount', '{"crypto":{"SHUNG":0,"GNE":0}}', '{"phone":"0612345678","account":"1","firstname":"De","lastname":"Staat"}', '{}', '{}', '{}', '{"Dead":false,"Crafting":false,"Handcuffed":false}', '{}', '{}', NULL, '2023-05-15 12:12:13'),
+	(2015, '2015', 'dannyjohnstone@lossantos.nl', 'steam:1100001493b5fb6', 'license:1de717fd6037eba6f5fa4bbf2809ce398a59df37', 'TheHulkKiller60', '{"cash":0,"crypto":{"XTF":0,"SHUNG":0,"GNE":0,"EVD":0},"casino":0}', '{"lastname":"Johnstone","phone":"0674017812","account":"35874509","birthdate":"1989-01-10","nationality":"Los Santos","firstname":"Danny","gender":0}', '{"serial":"Kk998iln221Dq389","name":"unemployed","label":"Unemployed","onduty":true,"grade":{"level":"0","name":"Goverment pay"},"plate":"none","payment":70}', NULL, '{"x":-252.4879150390625,"y":-994.10107421875,"z":29.4652099609375}', '{"pd-vehicles":{"STANDAARD":true,"INTERCEPTOR":false,"UNMARKED":false,"AIRONE":false,"MOTORCYCLE":false},"lastmethpayment":0,"isdead":false,"licenses":{"driver":true,"weapon":false,"business":false,"flying":false,"fishing":false,"hunting":false},"islifer":false,"health":200,"paycheck":65,"ishandcuffed":false,"ems-vehicle":{"FLIGHT":false,"TAURUS":false,"SPEEDO":true,"MOTOR":false,"WATER":false,"COMMANDER":false},"division":"UPD","paroletime":0,"craftingrep":0,"fingerprint":"FLME435e67pTU0231","jailtime":0,"haircode":"HDG015myP35cUF5656","phone":[],"apartmentid":"547799","ishighcommand":false,"commandbinds":[],"department":"UPD","slimecode":"SvM028IJ20aFL4487","lucky":false,"hunger":98.0,"thirst":98.0,"bloodtype":"AB-","stress":0,"callsign":"N.T.B","armor":0}', NULL, '{"weed":0,"fastfood":0,"cocaine":0}', '{"Model":"mp_m_freemode_01","Clothes":{"Hair":[0,0,0,0],"Pants":[61,0],"FaceMisc":[50,50,50],"FaceJawBone":[50,50],"TattoosRArm":[0],"TattoosLLeg":[0],"Watches":[-1,0],"Undershirt":[15,0],"Complexion":[0,0],"Bags":[0,0],"SunDamage":[0,0],"Vest":[0,0],"FaceEyeColor":[0],"TattoosLArm":[0],"FaceEyebrows":[50,50],"FaceNose":[50,50,50,50,50,50],"FaceTwo":[0,0],"Blemishes":[0,0],"Jacket":[15,0],"Eyebrows":[0,0,0],"FaceMix":50.0,"TattoosTorso":[0],"Decals":[0,0],"TattoosHead":[0],"Masks":[0,0],"BodyBlemishes":[0,0],"Fade":[0],"FaceChin":[50,50,50,50],"SkinMix":50.0,"Bracelets":[-1,0],"Hat":[-1,0],"Ageing":[0,0],"ChestHair":[0,0,0],"TattoosRLeg":[0],"Beard":[0,0,0],"Arms":[15,0],"Blush":[-1,0,0,42],"Makeup":[-1,1,0,0],"Glasses":[0,0],"FaceCheeks":[50,50,50],"Earrings":[-1,0],"Moles":[0,0],"ThirdFaceMix":50.0,"FaceOne":[0,0],"Lipstick":[-1,3,0,33],"Scarfs":[0,0],"FaceThree":[0,0],"Shoes":[34,0]}}', '2025-07-07 12:38:47'),
+	(2013, '2013', 'durkbanks@lossantos.nl', 'steam:11000010a0399dc', 'license:dd24eb488f5548110800f5609f8bd42e62b0a268', 'Magic', '{"crypto":{"SHUNG":12,"XTF":0,"EVD":0,"GNE":0},"casino":0,"cash":728}', '{"lastname":"Banks","gender":0,"birthdate":"1990-10-10","account":"58051432","nationality":"Los Santos","firstname":"Durk","phone":"0675961338"}', '{"name":"unemployed","serial":"Yg092SoT207Cw717","payment":70,"onduty":true,"label":"Unemployed","grade":{"level":"0","name":"Goverment pay"},"plate":"none"}', NULL, '{"x":-300.19781494140627,"y":-988.02197265625,"z":31.06591796875}', '{"pd-vehicles":{"AIRONE":false,"UNMARKED":false,"MOTORCYCLE":false,"INTERCEPTOR":false,"STANDAARD":true},"isdead":false,"lastmethpayment":0,"ishandcuffed":false,"haircode":"HiE247YfV31zUO3555","health":200,"licenses":{"flying":false,"driver":true,"hunting":false,"weapon":false,"business":false,"fishing":false},"stress":0,"craftingrep":0,"thirst":94.0,"department":"UPD","callsign":"N.T.B","jailtime":0,"paycheck":195,"lucky":false,"islifer":false,"apartmentid":"148495","phone":[],"division":"UPD","armor":0,"ishighcommand":false,"ems-vehicle":{"FLIGHT":false,"TAURUS":false,"WATER":false,"MOTOR":false,"SPEEDO":true,"COMMANDER":false},"bloodtype":"AB-","commandbinds":[],"hunger":94.0,"paroletime":0,"fingerprint":"FtLZ104L44YyG9578","slimecode":"SuC122kv61yzU4606"}', NULL, '{"weed":0,"fastfood":0,"cocaine":0}', '{"Clothes":{"Pants":[170,0],"Earrings":[-1,0],"ThirdFaceMix":61.0,"Makeup":[-1,1,0,0],"ChestHair":[3,100,0],"FaceThree":[0,0],"TattoosLArm":{"1":59,"2":64,"3":72,"4":77,"0":34},"Bags":[0,0],"FaceEyeColor":[20],"Bracelets":[-1,0],"TattoosLLeg":[0],"SunDamage":[0,4],"Blush":[-1,0,0,42],"FaceMix":74.0,"Hair":[81,0,11,5],"Ageing":[0,11],"FaceCheeks":[51,46,50],"Eyebrows":[12,100,0],"Moles":[0,6],"FaceChin":[38,17,11,25],"Decals":[0,0],"Fade":[0],"Masks":[0,0],"Scarfs":[0,0],"Jacket":[263,1],"TattoosRLeg":[0],"FaceOne":[16,0],"Lipstick":[-1,3,0,33],"TattoosHead":{"1":47,"0":28},"BodyBlemishes":[0,100],"SkinMix":21.0,"Beard":[10,100,0],"Undershirt":[15,0],"FaceEyebrows":[41,51],"Vest":[0,0],"TattoosRArm":[0],"TattoosTorso":{"1":0,"0":56},"Complexion":[0,8],"FaceJawBone":[0,10],"Glasses":[0,0],"FaceMisc":[42,0,25],"FaceTwo":[19,0],"Hat":[-1,0],"Shoes":[12,0],"Blemishes":[4,40],"Arms":[12,0],"FaceNose":[41,47,48,49,47,48],"Watches":[-1,0]},"Model":"mp_m_freemode_01"}', '2025-07-06 13:25:03'),
+	(2014, '2014', 'olliepphati@lossantos.nl', 'steam:110000135ce0334', 'license:1265e7ab251b73f7d9e5b4306afbfca68aa087a3', 'pphati', '{"crypto":{"SHUNG":12,"XTF":0,"EVD":0,"GNE":0},"casino":0,"cash":99000000}', '{"lastname":"pphati","gender":0,"birthdate":"2005-05-09","account":"67815053","nationality":"Los Santos","firstname":"ollie","phone":"0600394519"}', '{"name":"police","serial":"DU591Yby526qm336","payment":30,"onduty":true,"label":"Police","grade":{"level":"0","name":"Onbekend"},"plate":"none"}', NULL, '{"x":156.59341430664063,"y":-1043.3670654296876,"z":29.3135986328125}', '{"pd-vehicles":{"AIRONE":false,"UNMARKED":false,"MOTORCYCLE":false,"INTERCEPTOR":false,"STANDAARD":true},"isdead":false,"lastmethpayment":0,"ishandcuffed":false,"haircode":"HRT701ryM53TCA2696","health":200,"licenses":{"flying":false,"driver":true,"hunting":false,"weapon":false,"business":false,"fishing":false},"stress":0,"craftingrep":0,"thirst":96.0,"department":"UPD","callsign":"N.T.B","jailtime":0,"paycheck":93,"lucky":false,"islifer":false,"apartmentid":"092710","phone":[],"division":"UPD","armor":0,"ishighcommand":true,"ems-vehicle":{"FLIGHT":false,"TAURUS":false,"WATER":false,"MOTOR":false,"SPEEDO":true,"COMMANDER":false},"bloodtype":"O-","commandbinds":[],"hunger":96.0,"paroletime":0,"fingerprint":"FDpl856A81ooN5678","slimecode":"STn372Ey96RdQ2011"}', NULL, '{"weed":0,"fastfood":0,"cocaine":0}', '{"Clothes":{"Beard":[0,0,0],"Earrings":[-1,0],"Jacket":[15,0],"Makeup":[-1,1,0,0],"ChestHair":[0,0,0],"FaceThree":[0,0],"FaceNose":[50,50,50,50,50,50],"Bags":[0,0],"FaceEyeColor":[0],"Bracelets":[-1,0],"TattoosLLeg":[0],"SunDamage":[0,0],"Blush":[-1,0,0,42],"FaceMix":50.0,"Hair":[0,0,0,0],"Ageing":[0,0],"FaceCheeks":[50,50,50],"Eyebrows":[0,0,0],"Moles":[0,0],"Shoes":[34,0],"ThirdFaceMix":50.0,"Fade":[0],"Masks":[0,0],"Scarfs":[0,0],"TattoosRLeg":[0],"FaceTwo":[0,0],"FaceOne":[0,0],"TattoosHead":[0],"BodyBlemishes":[0,0],"Complexion":[0,0],"SkinMix":50.0,"Decals":[0,0],"Undershirt":[15,0],"FaceEyebrows":[50,50],"Vest":[0,0],"TattoosRArm":[0],"TattoosTorso":[0],"FaceChin":[50,50,50,50],"FaceJawBone":[50,50],"Glasses":[0,0],"Hat":[-1,0],"FaceMisc":[50,50,50],"Lipstick":[-1,3,0,33],"TattoosLArm":[0],"Blemishes":[0,0],"Arms":[15,0],"Pants":[61,0],"Watches":[-1,0]},"Model":"mp_m_freemode_01"}', '2025-07-06 14:18:32'),
+	(2011, '2011', 'robbanks@lossantos.nl', 'steam:110000139cffd77', 'license:b8d74a1ececd5078486457d4eeea2879817842c1', 'Anykeys', '{"cash":0,"crypto":{"SHUNG":0,"EVD":0,"XTF":0,"GNE":0},"casino":0}', '{"lastname":"Banks","gender":0,"firstname":"Rob","account":"73238384","nationality":"Los Santos","birthdate":"1999-12-12","phone":"0696800352"}', '{"name":"unemployed","plate":"none","serial":"zb473cyt969ci014","onduty":true,"label":"Unemployed","grade":{"name":"Goverment pay","level":"0"},"payment":70}', NULL, '{"x":372.0923156738281,"y":-1537.054931640625,"z":29.2799072265625}', '{"pd-vehicles":{"AIRONE":false,"UNMARKED":false,"MOTORCYCLE":false,"INTERCEPTOR":false,"STANDAARD":true},"stress":0,"jailtime":0,"division":"UPD","health":200,"slimecode":"SFX938dM96QMb8610","ishandcuffed":false,"craftingrep":0,"lastmethpayment":0,"department":"UPD","callsign":"N.T.B","licenses":{"flying":false,"driver":true,"hunting":false,"fishing":false,"business":false,"weapon":false},"paycheck":3055,"lucky":false,"islifer":false,"ishighcommand":false,"thirst":70.0,"apartmentid":"316114","walkstyle":"move_f@gangster@ng","haircode":"Hdb248znd09kdD1157","ems-vehicle":{"FLIGHT":false,"TAURUS":false,"WATER":false,"MOTOR":false,"SPEEDO":true,"COMMANDER":false},"armor":0,"isdead":false,"bloodtype":"B-","commandbinds":[],"hunger":70.0,"paroletime":0,"fingerprint":"FKey981h06cMI8249","phone":[]}', NULL, '{"weed":0,"fastfood":0,"cocaine":0}', '{"Clothes":{"Pants":[63,0],"Earrings":[-1,0],"Jacket":[43,0],"Makeup":[-1,1,0,0],"ChestHair":[0,0,0],"FaceThree":[0,0],"TattoosLArm":[0],"Bags":[0,0],"FaceEyeColor":[0],"Bracelets":[-1,0],"TattoosRLeg":[0],"SunDamage":[0,0],"Blush":[-1,0,0,42],"FaceMix":50.0,"Hair":[0,0,0,0],"Ageing":[0,0],"FaceCheeks":[50,50,50],"Eyebrows":[0,0,0],"Moles":[0,0],"TattoosLLeg":[0],"FaceChin":[50,50,50,50],"Fade":[0],"Masks":[0,0],"Scarfs":[0,0],"Lipstick":[-1,3,0,33],"ThirdFaceMix":50.0,"Hat":[2,0],"Glasses":[0,0],"FaceTwo":[0,0],"Beard":[0,0,0],"SkinMix":50.0,"Complexion":[0,0],"Undershirt":[15,0],"FaceEyebrows":[50,50],"Vest":[0,0],"TattoosRArm":[0],"FaceOne":[0,0],"Decals":[0,0],"FaceJawBone":[50,50],"Watches":[-1,0],"TattoosTorso":[0],"FaceMisc":[50,50,50],"TattoosHead":[0],"FaceNose":[50,50,50,50,50,50],"Blemishes":[0,0],"Arms":[19,0],"BodyBlemishes":[0,0],"Shoes":[34,0]},"Model":"mp_m_freemode_01"}', '2025-07-06 17:16:01'),
+	(2010, '2010', 'joefook@lossantos.nl', 'steam:110000139cffd77', 'license:b8d74a1ececd5078486457d4eeea2879817842c1', 'Anykeys', '{"cash":0,"crypto":{"XTF":0,"SHUNG":0,"GNE":0,"EVD":0},"casino":0}', '{"lastname":"Fook","phone":"0687974059","account":"74286207","birthdate":"1999-12-12","gender":0,"firstname":"Joe","nationality":"Los Santos"}', '{"serial":"yx411jqV206hH920","name":"mayor","label":"State Los Santos","onduty":false,"grade":{"level":"0","name":"Onbekend"},"plate":"none","payment":300}', NULL, '{"x":128.84835815429688,"y":-642.10546875,"z":262.85205078125}', '{"phone":[],"isdead":false,"walkstyle":false,"department":"UPD","jailtime":0,"bloodtype":"A+","paycheck":11592,"ishandcuffed":false,"ems-vehicle":{"TAURUS":false,"FLIGHT":false,"SPEEDO":true,"MOTOR":false,"WATER":false,"COMMANDER":false},"health":200,"paroletime":0,"craftingrep":0,"fingerprint":"FuyY592g17CFy1086","armor":0,"thirst":74.0,"division":"UPD","apartmentid":"993187","pd-vehicles":{"STANDAARD":true,"AIRONE":false,"UNMARKED":false,"INTERCEPTOR":false,"MOTORCYCLE":false},"ishighcommand":false,"commandbinds":[],"haircode":"HMw529pet44uNV5709","licenses":{"driver":true,"fishing":false,"business":false,"weapon":false,"flying":false,"hunting":false},"lucky":false,"hunger":74.0,"lastmethpayment":0,"slimecode":"Son966wF09upl7723","stress":0,"callsign":"N.T.B","islifer":false}', NULL, '{"weed":0,"fastfood":0,"cocaine":0}', '{"Clothes":{"Hair":[9,0,21,0],"Pants":[0,0],"FaceMisc":[50,50,50],"FaceJawBone":[50,50],"TattoosRArm":[0],"TattoosLLeg":[0],"Watches":[-1,0],"FaceThree":[0,0],"Complexion":[0,0],"Bags":[0,0],"SunDamage":[0,0],"Vest":[0,0],"FaceEyeColor":[0],"TattoosLArm":[0],"FaceEyebrows":[50,50],"FaceNose":[50,50,50,50,50,50],"FaceTwo":[0,0],"Blemishes":[0,0],"Jacket":[605,0],"Shoes":[8,0],"FaceMix":50.0,"TattoosTorso":[0],"Decals":[0,0],"Makeup":[-1,1,0,0],"Masks":[0,0],"FaceOne":[0,0],"Fade":[0],"FaceChin":[50,50,50,50],"SkinMix":50.0,"Bracelets":[-1,0],"Lipstick":[-1,3,0,33],"FaceCheeks":[50,50,50],"ChestHair":[0,0,0],"TattoosRLeg":[0],"Beard":[0,0,0],"Arms":[16,0],"Blush":[-1,0,0,42],"Moles":[0,0],"Glasses":[0,0],"Undershirt":[15,0],"Earrings":[-1,0],"Ageing":[0,0],"ThirdFaceMix":50.0,"TattoosHead":[0],"Hat":[-1,0],"BodyBlemishes":[0,0],"Scarfs":[0,0],"Eyebrows":[0,0,0]},"Model":"mp_m_freemode_01"}', '2025-07-07 12:38:55'),
+	(2009, '2009', 'pphatiwalliams@lossantos.nl', 'steam:110000135ce0334', 'license:1265e7ab251b73f7d9e5b4306afbfca68aa087a3', 'pphati', '{"cash":99999993514,"crypto":{"EVD":0,"SHUNG":0,"GNE":0,"XTF":0},"casino":0}', '{"lastname":"walliams","phone":"0618054778","account":"25170701","gender":0,"birthdate":"2005-05-01","firstname":"pphati","nationality":"Los Santos"}', '{"serial":"Id569okU238Sp496","name":"police","label":"Police","onduty":false,"payment":150,"plate":"none","grade":{"level":"0","name":"Onbekend"}}', '{}', '{"x":-579.6791381835938,"y":2034.3956298828126,"z":128.5926513671875}', '{"pd-vehicles":{"STANDAARD":true,"MOTORCYCLE":false,"UNMARKED":false,"AIRONE":false,"INTERCEPTOR":false},"isdead":false,"walkstyle":false,"slimecode":"SRu319Zq53frC9501","jailtime":0,"health":200,"paycheck":608,"ishandcuffed":false,"ems-vehicle":{"TAURUS":false,"WATER":false,"SPEEDO":true,"MOTOR":false,"FLIGHT":false,"COMMANDER":false},"fingerprint":"FEdM007j37FOq6407","lastmethpayment":0,"craftingrep":0,"apartmentid":"657563","bloodtype":"B+","haircode":"HzQ864MaB66TST5705","division":"UPD","ishighcommand":true,"islifer":false,"department":"UPD","commandbinds":[],"armor":72,"licenses":{"driver":true,"weapon":false,"fishing":false,"business":false,"hunting":false,"flying":false},"lucky":false,"hunger":76.0,"thirst":76.0,"phone":[],"paroletime":0,"callsign":"N.T.B","stress":0}', NULL, '{"fastfood":0,"weed":0,"cocaine":0}', '{"Clothes":{"Hair":[0,0,0,0],"Pants":[61,0],"Moles":[0,0],"FaceJawBone":[50,50],"TattoosRArm":[0],"TattoosLLeg":[0],"Watches":[-1,0],"FaceThree":[0,0],"Complexion":[0,0],"Bags":[0,0],"SunDamage":[0,0],"Vest":[0,0],"FaceEyeColor":[0],"TattoosLArm":[0],"FaceEyebrows":[50,50],"FaceNose":[50,50,50,50,50,50],"FaceTwo":[0,0],"Blemishes":[0,0],"Jacket":[15,0],"FaceCheeks":[50,50,50],"FaceMix":50.0,"TattoosTorso":[0],"Decals":[0,0],"Makeup":[-1,1,0,0],"Masks":[0,0],"BodyBlemishes":[0,0],"Fade":[0],"Scarfs":[0,0],"SkinMix":50.0,"Bracelets":[-1,0],"TattoosHead":[0],"Undershirt":[15,0],"ChestHair":[0,0,0],"TattoosRLeg":[0],"Beard":[0,0,0],"Arms":[15,0],"Blush":[-1,0,0,42],"FaceMisc":[50,50,50],"Hat":[-1,0],"FaceOne":[0,0],"Earrings":[-1,0],"Glasses":[0,0],"ThirdFaceMix":50.0,"FaceChin":[50,50,50,50],"Shoes":[34,0],"Eyebrows":[0,0,0],"Lipstick":[-1,3,0,33],"Ageing":[0,0]},"Model":"mp_m_freemode_01"}', '2025-07-06 17:36:26');
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 
--- Dumping structure for table fivem-clarity.player_crops
+-- Structuur van  tabel Polygone.player_crops wordt geschreven
 CREATE TABLE IF NOT EXISTS `player_crops` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` varchar(50) NOT NULL DEFAULT '',
@@ -991,9 +1075,9 @@ CREATE TABLE IF NOT EXISTS `player_crops` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.player_crops: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.player_crops: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.player_financials
+-- Structuur van  tabel Polygone.player_financials wordt geschreven
 CREATE TABLE IF NOT EXISTS `player_financials` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '1001',
@@ -1007,87 +1091,98 @@ CREATE TABLE IF NOT EXISTS `player_financials` (
   PRIMARY KEY (`id`),
   KEY `citizenid` (`citizenid`),
   KEY `accountid` (`accountid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3815 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3831 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Dumping data for table fivem-clarity.player_financials: ~80 rows (approximately)
+-- Dumpen data van tabel Polygone.player_financials: ~86 rows (ongeveer)
 INSERT INTO `player_financials` (`id`, `citizenid`, `name`, `accountid`, `balance`, `type`, `authorized`, `active`, `monitored`) VALUES
-	(1, '3214', 'De Staat', '1', 0, 'State Entity', '[]', 1, 0),
+	(1, '1001', 'The State', '1', 2973, 'State Entity', '[]', 1, 0),
 	(2, '1001', 'Los Santos Medical Group', '2', 0, 'State Entity', '[]', 1, 0),
 	(3, '1001', 'Los Santos Crypto Exchange', '3', 0, 'State Entity', '[]', 1, 0),
-	(4, '1001', 'San Andreas Law Enforcement', '4', 0, 'State Entity', '[]', 1, 0),
-	(5, '2557', 'Bennys Motorworks', '37489523', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(6, '2109', 'Dynasty 8', '90184729', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(7, '2186', 'Premium Deluxe Motorsports', '51872694', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(8, '2755', 'The Lost Holland', '62984571', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(9, '2309', 'UwU Café', '10485732', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(10, '2449', 'Burger Shot', '72938410', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(4, '1001', 'San Andreas Law Enforcement', '4', 6800, 'State Entity', '[]', 1, 0),
+	(5, '1001', 'Bennys Motorworks', '37489523', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(6, '1001', 'Dynasty 8', '90184729', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(7, '1001', 'Premium Deluxe Motorsports', '51872694', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(8, '1001', 'The Lost Holland', '62984571', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(9, '1001', 'UwU Café', '10485732', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(10, '1001', 'Burger Shot', '72938410', 0, 'Bedrijfsrekening', '[]', 1, 0),
 	(11, '1001', 'Maldinis Pizza', '51293764', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(12, '2300', 'Digital Den', '93571284', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(13, '3815', 'Los Santos Vliegschool', '64859127', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(14, '2337', 'Hayes Repairs', '38104795', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(15, '4189', 'Los Santos Events', '73948510', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(16, '1002', 'Diamond Casino & Resort', '29483617', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(17, '2028', 'PawnNGo', '61739284', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(18, '2019', 'Los Muertos MC', '24581397', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(19, '2022', 'Bearly Legal MC', '72659048', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(21, '2305', 'Dark Wolves MC', '97461523', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(628, '2028', 'PawnNGo', '21032860', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(973, '3772', 'Dragons Den', '58004141', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1255, '2863', 'Guard Vision', '47050658', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1336, '2915', 'Mattronics', '41977204', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1343, '5011', 'Weazel News', '22809356', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1344, '2103', 'Department of Corrections', '5', 0, 'State Entity', '[]', 1, 0),
-	(1345, '3163', 'van Binskerken', '93846474', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1415, '3112', 'Court of Justice', '13480488', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1416, '3374', 'Court Algemene Bankrekening', '35328209', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1424, '2655', 'Οίνος από οντίν', '39771131', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1439, '2055', 'BBV&A', '86339923', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1466, '2274', 'Algemene Court', '38038770', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1600, '4819', 'Downtown Cab Co.', '76132625', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1655, '2247', 'Quick House Makelaar', '57281946', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1660, '3564', 'Staatsrekening', '16563966', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1748, '3678', 'DA De Boer', '42868446', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1749, '2493', 'Bijtjes Revalidatie Centrum', '59298776', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1782, '3523', 'Advocatenbureau Wilson', '73521984', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1817, '2557', 'Benny\'s Medewerkers', '06474063', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1861, '3787', 'Van Den Bossche & Van Gisteren', '26498564', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(1916, '3072', 'MarleyGo', '78720543', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2017, '3027', 'Magnus Kalus', '39358889', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2018, '2280', 'US Marshals Service', '70339460', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2021, '3349', 'AshWin', '07624517', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2063, '3838', 'van Dam D.A.', '94412004', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2064, '3718', 'Puff Puff Pass', '35677967', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2237, '3669', 'Bahama Mamas', '64879604', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2241, '3391', 'Happy Shark', '17819483', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2243, '3815', 'The Mile High Service', '67041512', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2272, '2278', 'Dragons Den Investment Group', '76599570', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2355, '2914', 'White Widow', '53855382', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2363, '4199', 'De Oude Wortol', '61175693', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2566, '3787', 'Triad Records', '27076967', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2613, '3122', 'The Pink Cage', '49693784', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2615, '3818', 'Coopers Arcade', '35110332', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2616, '4458', 'Gruppe6', '70177095', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2722, '2078', 'Weazel News', '99641954', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2970, '3606', 'Harmony Repairs', '12010470', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(2979, '4373', 'King Of Investments', '43615999', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(3022, '2035', 'Johnson Law and Insurances', '39288407', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(3142, '2306', 'Devils money', '08949924', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(3176, '2134', 'Kebab King', '89455582', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(3207, '2557', 'Imperial Kings', '91439092', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(3249, '3694', 'ORO LOCOS', '50779961', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(12, '1001', 'Digital Den', '93571284', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(13, '1001', 'Los Santos Vliegschool', '64859127', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(14, '1001', 'Hayes Repairs', '38104795', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(15, '1001', 'Los Santos Events', '73948510', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(16, '1001', 'Diamond Casino & Resort', '29483617', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(17, '1001', 'PawnNGo', '61739284', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(18, '1001', 'Los Muertos MC', '24581397', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(19, '1001', 'Bearly Legal MC', '72659048', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(21, '1001', 'Dark Wolves MC', '97461523', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(628, '1001', 'PawnNGo', '21032860', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(973, '1001', 'Dragons Den', '58004141', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1255, '1001', 'Guard Vision', '47050658', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1336, '1001', 'Mattronics', '41977204', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1343, '1001', 'Weazel News', '22809356', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1344, '1001', 'Department of Corrections', '5', 0, 'State Entity', '[]', 1, 0),
+	(1345, '1001', 'van Binskerken', '93846474', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1415, '1001', 'Court of Justice', '13480488', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1416, '1001', 'Court Algemene Bankrekening', '35328209', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1424, '1001', 'Οίνος από οντίν', '39771131', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1439, '1001', 'BBV&A', '86339923', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1466, '1001', 'Algemene Court', '38038770', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1600, '1001', 'Downtown Cab Co.', '76132625', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1655, '1001', 'Quick House Makelaar', '57281946', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1660, '1001', 'Staatsrekening', '16563966', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1748, '1001', 'DA De Boer', '42868446', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1749, '1001', 'Bijtjes Revalidatie Centrum', '59298776', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1782, '1001', 'Advocatenbureau Wilson', '73521984', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1817, '1001', 'Benny\'s Medewerkers', '06474063', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1861, '1001', 'Van Den Bossche & Van Gisteren', '26498564', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(1916, '1001', 'MarleyGo', '78720543', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2017, '1001', 'Magnus Kalus', '39358889', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2018, '1001', 'US Marshals Service', '70339460', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2021, '1001', 'AshWin', '07624517', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2063, '1001', 'van Dam D.A.', '94412004', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2064, '1001', 'Puff Puff Pass', '35677967', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2237, '1001', 'Bahama Mamas', '64879604', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2241, '1001', 'Happy Shark', '17819483', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2243, '1001', 'The Mile High Service', '67041512', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2272, '1001', 'Dragons Den Investment Group', '76599570', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2355, '1001', 'White Widow', '53855382', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2363, '1001', 'De Oude Wortol', '61175693', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2566, '1001', 'Triad Records', '27076967', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2613, '1001', 'The Pink Cage', '49693784', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2615, '1001', 'Coopers Arcade', '35110332', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2616, '1001', 'Gruppe6', '70177095', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2722, '1001', 'Weazel News', '99641954', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2970, '1001', 'Harmony Repairs', '12010470', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(2979, '1001', 'King Of Investments', '43615999', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(3022, '1001', 'Johnson Law and Insurances', '39288407', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(3142, '1001', 'Devils money', '08949924', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(3176, '1001', 'Kebab King', '89455582', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(3207, '1001', 'Imperial Kings', '91439092', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(3249, '1001', 'ORO LOCOS', '50779961', 0, 'Bedrijfsrekening', '[]', 1, 0),
 	(3260, '1001', 'San Andreas State Troopers Budget', '6', 0, 'State Entity', '[]', 1, 0),
 	(3261, '1001', 'Los Santos Police Department Budget', '7', 0, 'State Entity', '[]', 1, 0),
 	(3262, '1001', 'Blaine County Sheriffs Office Budget', '8', 0, 'State Entity', '[]', 1, 0),
 	(3263, '1001', 'San Andreas Park Ranger Budget', '9', 0, 'State Entity', '[]', 1, 0),
-	(3335, '3163', 'Binsbergen International Network', '57877227', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(3462, '3866', 'Daily Fresh', '65873458', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(3463, '4501', 'Perfect Shine', '39244577', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(3464, '2755', 'Digital Dean', '92594208', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(3465, '3622', 'De petit croissant', '65560390', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(3474, '3653', 'Le Commerçant', '14723574 ', 0, 'Bedrijfsrekening', '[]', 1, 0),
-	(3561, '3932', 'Cortainer bedrijfsrekening', '50407380', 0, 'Bedrijfsrekening', '[]', 1, 0);
+	(3335, '1001', 'Binsbergen International Network', '57877227', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(3462, '1001', 'Daily Fresh', '65873458', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(3463, '1001', 'Perfect Shine', '39244577', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(3464, '1001', 'Digital Dean', '92594208', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(3465, '1001', 'De petit croissant', '65560390', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(3474, '1001', 'Le Commerçant', '14723574 ', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(3561, '1001', 'Cortainer bedrijfsrekening', '50407380', 0, 'Bedrijfsrekening', '[]', 1, 0),
+	(3815, '1001', 'Personal account', '31248305', 3500, 'Default', '[]', 1, 0),
+	(3816, '1001', 'Personal account', '14012755', 3500, 'Default', '[]', 1, 0),
+	(3817, '1001', 'Personal account', '20468251', 3500, 'Default', '[]', 1, 0),
+	(3818, '1001', 'Personal account', '05477830', 3500, 'Default', '[]', 1, 0),
+	(3820, '1001', 'Personal account', '06911320', 3500, 'Default', '[]', 1, 0),
+	(3824, '2009', 'Personal account', '25170701', 3500, 'Default', '[]', 1, 0),
+	(3825, '2010', 'Personal account', '74286207', 3500, 'Default', '[]', 1, 0),
+	(3826, '2011', 'Personal account', '73238384', 3500, 'Default', '[]', 1, 0),
+	(3828, '2013', 'Personal account', '58051432', 1100, 'Default', '[]', 1, 0),
+	(3829, '2014', 'Personal account', '67815053', 1003500, 'Default', '[]', 1, 0),
+	(3830, '2015', 'Personal account', '35874509', 3500, 'Default', '[]', 1, 0);
 
--- Dumping structure for table fivem-clarity.player_houses
+-- Structuur van  tabel Polygone.player_houses wordt geschreven
 CREATE TABLE IF NOT EXISTS `player_houses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -1106,9 +1201,9 @@ CREATE TABLE IF NOT EXISTS `player_houses` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.player_houses: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.player_houses: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.player_inventories
+-- Structuur van  tabel Polygone.player_inventories wordt geschreven
 CREATE TABLE IF NOT EXISTS `player_inventories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `inventory` text NOT NULL,
@@ -1121,11 +1216,87 @@ CREATE TABLE IF NOT EXISTS `player_inventories` (
   KEY `slot` (`slot`),
   KEY `inventory` (`inventory`(1024)),
   KEY `item_name` (`item_name`(1024))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Dumping data for table fivem-clarity.player_inventories: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.player_inventories: ~75 rows (ongeveer)
+INSERT INTO `player_inventories` (`id`, `inventory`, `item_name`, `custom_type`, `slot`, `info`, `createdate`) VALUES
+	(2, 'ply-2000', 'phone', '', 7, '[]', 1750764213000),
+	(3, 'ply-2000', 'driver_license', '', 1, '{"birthdate":"2006-01-01","type":"A1-A2-A | AM-B | C1-C-CE","lastname":"a","firstname":"a","citizenid":"2000"}', 1750766036000),
+	(6, 'ply-2000', 'fishingrod', '', 5, '[]', 1750766036000),
+	(7, 'ply-2000', 'lockpick', '', 6, '[]', 1750766036000),
+	(15, 'ply-2001', 'phone', '', 2, '[]', 1751115563000),
+	(17, 'ply-2002', 'phone', '', 2, '[]', 1751116064000),
+	(19, 'ply-2003', 'phone', '', 2, '[]', 1751198879000),
+	(30, 'ply-2005', 'phone', '', 1, '[]', 1751560161000),
+	(32, 'ply-2010', 'phone', '', 2, '[]', 1751615787000),
+	(33, 'ply-2010', 'driver_license', '', 1, '{"type":"A1-A2-A | AM-B | C1-C-CE","citizenid":"2010","lastname":"Fook","firstname":"Joe","birthdate":"1999-12-12"}', 1751615802000),
+	(36, 'ply-2010', 'fishingrod', '', 5, '[]', 1751615802000),
+	(37, 'ply-2010', 'lockpick', '', 6, '[]', 1751615802000),
+	(38, 'ply-2009', 'phone', '', 9, '[]', 1751638363000),
+	(39, 'apartment-657563', 'ammo', '', 3, '[]', 1751638420000),
+	(40, 'apartment-657563', 'ammo', '', 3, '[]', 1751638423000),
+	(41, 'apartment-657563', 'ammo', '', 3, '[]', 1751638423000),
+	(42, 'apartment-657563', 'ammo', '', 3, '[]', 1751638423000),
+	(43, 'apartment-657563', 'ammo', '', 3, '[]', 1751638423000),
+	(44, 'apartment-657563', 'ammo', '', 3, '[]', 1751638423000),
+	(45, 'apartment-657563', 'weapon_ak74', '', 1, '{"Serial":"2009-QsgY-250","Ammo":0}', 1751623913800),
+	(47, 'ply-2011', 'phone', '', 2, '[]', 1751715215000),
+	(56, 'ply-2013', 'phone', '', 40, '[]', 1751807072000),
+	(57, 'ply-2013', 'driver_license', '', 39, '{"lastname":"Banks","citizenid":"2013","firstname":"Durk","type":"A1-A2-A | AM-B | C1-C-CE","birthdate":"1990-10-10"}', 1751807143000),
+	(60, 'ply-2013', 'fishingrod', '', 1, '[]', 1751807143000),
+	(61, 'ply-2013', 'lockpick', '', 3, '[]', 1751807143000),
+	(62, 'ply-2013', 'bandage', '', 9, '[]', 1751807851000),
+	(63, 'ply-2013', 'bandage', '', 9, '[]', 1751807851000),
+	(68, 'apartment-657563', 'weapon_glock18c', '', 2, '{"Ammo":0,"Serial":"2009-QdBy-855"}', 1751789112400),
+	(70, 'ply-2014', 'phone', '', 7, '[]', 1751810948000),
+	(71, 'ply-2014', 'driver_license', '', 1, '{"lastname":"pphati","citizenid":"2014","firstname":"ollie","type":"A1-A2-A | AM-B | C1-C-CE","birthdate":"2005-05-09"}', 1751810969000),
+	(74, 'ply-2014', 'fishingrod', '', 5, '[]', 1751810969000),
+	(75, 'ply-2014', 'lockpick', '', 6, '[]', 1751810969000),
+	(76, 'ply-2014', 'gang-spray', 'kings', 2, '[]', 1751811281000),
+	(78, 'ply-2014', 'laptop', '', 3, '[]', 1751811333000),
+	(79, 'ply-2014', 'vpn', '', 10, '[]', 1751811383000),
+	(80, 'ply-2009', 'vpn', '', 2, '[]', 1751811576000),
+	(81, 'ply-2009', 'laptop', '', 1, '[]', 1751811579000),
+	(82, 'ply-2009', 'gang-spray', 'ballas', 16, '[]', 1751811649000),
+	(83, 'ply-2009', 'gang-spray', 'ballas', 17, '[]', 1751811649000),
+	(84, 'ply-2009', 'identification-badge', 'pd', 6, '{"Rank":"Chief","Callsign":"C-01","Image":"","Name":"Ollie","Department":"Los Santos PD"}', 1751811681000),
+	(85, 'ply-2009', 'notepad', '', 7, '{"_Uses":9}', 1751811764000),
+	(88, 'ply-2009', 'armor', '', 8, '[]', 1751811898000),
+	(89, 'ply-2009', 'lockpick', '', 3, '[]', 1751812281000),
+	(90, 'ply-2009', 'lockpick', '', 3, '[]', 1751812281000),
+	(91, 'ply-2009', 'lockpick', '', 3, '[]', 1751812281000),
+	(92, 'ply-2009', 'lockpick', '', 3, '[]', 1751812281000),
+	(93, 'ply-2009', 'lockpick', '', 3, '[]', 1751812281000),
+	(94, 'ply-2009', 'beehive', '', 10, '[]', 1751812355000),
+	(95, 'ply-2009', 'electronics', '', 11, '[]', 1751812466000),
+	(96, 'ply-2009', 'plastic', '', 12, '[]', 1751812466000),
+	(97, 'ply-2009', 'rubber', '', 13, '[]', 1751812466000),
+	(98, 'ply-2009', 'electronics', '', 11, '[]', 1751812466000),
+	(99, 'ply-2009', 'electronics', '', 11, '[]', 1751812466000),
+	(100, 'ply-2009', 'electronics', '', 11, '[]', 1751812466000),
+	(101, 'ply-2009', 'rubber', '', 13, '[]', 1751812500000),
+	(102, 'ply-2009', 'plastic', '', 12, '[]', 1751812500000),
+	(103, 'ply-2009', 'plastic', '', 12, '[]', 1751812500000),
+	(104, 'ply-2009', 'electronics', '', 11, '[]', 1751812500000),
+	(106, 'ply-2011', 'vpn', '', 3, '[]', 1751820741000),
+	(107, 'ply-2009', 'hacking_device', '', 14, '[]', 1751823109000),
+	(108, 'ply-2009', 'heist-electronic-kit-adv', '', 15, '[]', 1751823197000),
+	(109, 'ply-2009', 'advlockpick', '', 4, '[]', 1751823204000),
+	(111, 'ply-2009', 'aluminum', '', 18, '[]', 1751823359000),
+	(112, 'ply-2009', 'aluminum', '', 18, '[]', 1751823359000),
+	(113, 'ply-2009', 'aluminum', '', 18, '[]', 1751823359000),
+	(114, 'ply-2009', 'steel', '', 19, '[]', 1751823359000),
+	(115, 'ply-2009', 'steel', '', 19, '[]', 1751823359000),
+	(116, 'ply-2009', 'steel', '', 19, '[]', 1751823381000),
+	(117, 'ply-2009', 'steel', '', 19, '[]', 1751823381000),
+	(118, 'ply-2009', 'copper', '', 20, '[]', 1751823381000),
+	(119, 'ply-2009', 'aluminum', '', 18, '[]', 1751823381000),
+	(120, 'ply-2009', 'aluminum', '', 18, '[]', 1751823381000),
+	(121, 'ply-2010', 'laptop', '', 3, '[]', 1751828587000),
+	(122, 'ply-2015', 'welcome', '', 1, '[]', 1751891579000),
+	(123, 'ply-2015', 'phone', '', 2, '[]', 1751891579000);
 
--- Dumping structure for table fivem-clarity.player_outfits
+-- Structuur van  tabel Polygone.player_outfits wordt geschreven
 CREATE TABLE IF NOT EXISTS `player_outfits` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -1134,11 +1305,11 @@ CREATE TABLE IF NOT EXISTS `player_outfits` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.player_outfits: 0 rows
+-- Dumpen data van tabel Polygone.player_outfits: 0 rows
 /*!40000 ALTER TABLE `player_outfits` DISABLE KEYS */;
 /*!40000 ALTER TABLE `player_outfits` ENABLE KEYS */;
 
--- Dumping structure for table fivem-clarity.player_plants
+-- Structuur van  tabel Polygone.player_plants wordt geschreven
 CREATE TABLE IF NOT EXISTS `player_plants` (
   `id` int(11) NOT NULL,
   `type` varchar(50) DEFAULT NULL,
@@ -1151,11 +1322,11 @@ CREATE TABLE IF NOT EXISTS `player_plants` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.player_plants: 0 rows
+-- Dumpen data van tabel Polygone.player_plants: 0 rows
 /*!40000 ALTER TABLE `player_plants` DISABLE KEYS */;
 /*!40000 ALTER TABLE `player_plants` ENABLE KEYS */;
 
--- Dumping structure for table fivem-clarity.player_vehicles
+-- Structuur van  tabel Polygone.player_vehicles wordt geschreven
 CREATE TABLE IF NOT EXISTS `player_vehicles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -1174,13 +1345,27 @@ CREATE TABLE IF NOT EXISTS `player_vehicles` (
   KEY `garage` (`garage`) USING BTREE,
   KEY `vinnumber` (`vinnumber`) USING BTREE,
   KEY `plate` (`plate`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table fivem-clarity.player_vehicles: 0 rows
+-- Dumpen data van tabel Polygone.player_vehicles: 13 rows
 /*!40000 ALTER TABLE `player_vehicles` DISABLE KEYS */;
+INSERT INTO `player_vehicles` (`id`, `citizenid`, `vehicle`, `plate`, `vinnumber`, `garage`, `state`, `parts`, `mods`, `metadata`, `impounddata`, `vinscratched`) VALUES
+	(1, '2000', 'minivan', '8ZI316EH', 'GT41YB6C392FMTJX', 'apartment_1', 'in', '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}', '[]', '{"FakePlate":false,"Fuel":97.00000000000003,"Outfits":[],"Gifted":true,"Harness":0.0,"Waxed":false,"WheelFitment":[],"Flagged":false,"Engine":1000.0,"Body":1000.0,"Nitrous":0.0}', NULL, 0),
+	(2, '2001', 'rhapsody', '3BX202IL', 'LH91QI3Q046GXDRW', 'apartment_1', 'in', '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}', '[]', '{"Fuel":100.0,"Engine":1000.0,"Gifted":true,"Body":1000.0}', NULL, 0),
+	(3, '2002', 'brioso2', '7JG319CL', 'BP50OO3B166NJTYF', 'apartment_1', 'in', '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}', '[]', '{"Body":1000.0,"Gifted":true,"Engine":1000.0,"Fuel":100.0}', NULL, 0),
+	(4, '2003', 'rhapsody', '8MP812NZ', 'WK31QT5K338LNMUB', 'apartment_1', 'in', '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}', '[]', '{"Body":1000.0,"Engine":1000.0,"Fuel":100.0,"Gifted":true}', NULL, 0),
+	(6, '2005', 'brioso2', '4TG229EN', 'ES33JM4V043JECZN', 'apartment_1', 'in', '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}', '[]', '{"Engine":1000.0,"Fuel":100.0,"Gifted":true,"Body":1000.0}', NULL, 0),
+	(13, '2009', 'brioso2', '5YU451LJ', 'EN99SW8Q486YVPAW', 'apartment_1', 'in', '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}', '[]', '{"WheelFitment":[],"Harness":0.0,"FakePlate":false,"Nitrous":0.0,"Body":1000.0,"Engine":1000.0,"Fuel":99.4,"Flagged":false,"Outfits":[],"Damage":{"Windows":{"1":true,"2":true,"3":true,"4":false,"5":false,"6":true,"7":true,"0":true},"Doors":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false},"Tyres":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false}},"Gifted":true,"Waxed":false}', NULL, 0),
+	(10, 'gov_pd', 'polvic', '8QX749CS', 'EM77VA1V424DYVWU', 'gov_mrpd', 'in', '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}', '{"ModSideSkirt":-1,"ModBackWheels":-1,"ModFrame":1,"ModDoorSpeaker":-1,"ModArchCover":0,"ModOrnaments":0,"ModHood":-1,"TyreSmokeColor":[255,255,255],"ModWindows":0,"ModSeats":-1,"ModHorns":-1,"ModFender":0,"PearlescentColor":0,"ModTank":1,"DashboardColor":0,"ModTransmission":-1,"PlateIndex":4,"ModExtras":[0,0,1,1,1,1,0,1,1,1],"InteriorColor":0,"WheelColor":0,"ModSuspension":-1,"ModBrakes":-1,"ModSpoilers":-1,"ColorOne":112,"ModEngineBlock":-1,"ModFrontBumper":1,"ModPlateHolder":-1,"ModSteeringWheel":-1,"WindowTint":0,"Neon":[false,false,false,false],"ModSmokeEnabled":false,"ModRoof":-1,"ModAirFilter":-1,"ModXenonColor":255,"NeonColor":[3,83,255],"ModAerials":0,"ColorTwo":0,"ModStruts":-1,"ModRightFender":0,"ModAPlate":-1,"ModShifterLeavers":-1,"Wheels":1,"ModExhaust":-1,"ModVanityPlate":-1,"ModTrimB":-1,"ModTrimA":-1,"ModLivery":0,"ModDashboard":0,"ModGrille":-1,"ModTurbo":false,"ModFrontWheels":0,"ModTrunk":0,"ModSpeakers":-1,"ModXenon":false,"ModArmor":-1,"ModRearBumper":-1,"ModEngine":-1,"ModHydrolic":-1,"ModDial":0,"DirtLevel":7.00427865982055}', '{"Body":1000.0,"Fuel":99.4,"WheelFitment":[],"Harness":0.0,"Damage":{"Tyres":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false},"Windows":{"1":true,"2":true,"3":true,"4":false,"5":false,"6":true,"7":true,"0":true},"Doors":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false}},"Gifted":false,"FakePlate":false,"Nitrous":0.0,"Outfits":[],"Flagged":false,"Engine":1000.0,"Waxed":false}', NULL, 0),
+	(12, 'gov_pd', 'polvic', '4Qd734CS', 'EM77VA1V424DYVWU', 'gov_mrpd', 'in', '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}', '{"ModSideSkirt":-1,"ModBackWheels":-1,"ModFrame":1,"ModDoorSpeaker":-1,"ModArchCover":0,"ModOrnaments":0,"ModHood":-1,"TyreSmokeColor":[255,255,255],"ModWindows":0,"ModSeats":-1,"ModHorns":-1,"ModFender":0,"PearlescentColor":0,"ModTank":1,"DashboardColor":0,"ModTransmission":-1,"PlateIndex":4,"ModExtras":[0,0,1,1,1,1,0,1,1,1],"InteriorColor":0,"WheelColor":0,"ModSuspension":-1,"ModBrakes":-1,"ModSpoilers":-1,"ColorOne":112,"ModEngineBlock":-1,"ModFrontBumper":1,"ModPlateHolder":-1,"ModSteeringWheel":-1,"WindowTint":0,"Neon":[false,false,false,false],"ModSmokeEnabled":false,"ModRoof":-1,"ModAirFilter":-1,"ModXenonColor":255,"NeonColor":[3,83,255],"ModAerials":0,"ColorTwo":0,"ModStruts":-1,"ModRightFender":0,"ModAPlate":-1,"ModShifterLeavers":-1,"Wheels":1,"ModExhaust":-1,"ModVanityPlate":-1,"ModTrimB":-1,"ModTrimA":-1,"ModLivery":0,"ModDashboard":0,"ModGrille":-1,"ModTurbo":false,"ModFrontWheels":0,"ModTrunk":0,"ModSpeakers":-1,"ModXenon":false,"ModArmor":-1,"ModRearBumper":-1,"ModEngine":-1,"ModHydrolic":-1,"ModDial":0,"DirtLevel":7.00427865982055}', '{"Body":1000.0,"Fuel":99.4,"WheelFitment":[],"Harness":0.0,"Damage":{"Tyres":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false},"Windows":{"1":true,"2":true,"3":true,"4":false,"5":false,"6":true,"7":true,"0":true},"Doors":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false}},"Gifted":false,"FakePlate":false,"Nitrous":0.0,"Outfits":[],"Flagged":false,"Engine":1000.0,"Waxed":false}', NULL, 0),
+	(14, '2010', 'rhapsody', '2PZ912FF', 'GF14CS0T772ZICNR', 'apartment_1', 'in', '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}', '[]', '{"FakePlate":false,"Waxed":false,"Outfits":[],"WheelFitment":[],"Fuel":95.50000000000004,"Body":1000.0,"Harness":0.0,"Engine":993.0,"Flagged":false,"Gifted":true,"Nitrous":0.0}', NULL, 0),
+	(15, '2011', 'rebel', '3CR773HU', 'XM58IE6W202CNTAM', 'apartment_1', 'in', '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}', '[]', '{"Body":1000.0,"Nitrous":0.0,"Engine":1000.0,"Waxed":false,"Gifted":true,"Flagged":false,"WheelFitment":[],"FakePlate":false,"Fuel":99.10000000000001,"Outfits":[],"Harness":0.0}', NULL, 0),
+	(17, '2013', 'rhapsody', '5DJ657UM', 'ML29OK8J224ARHPK', 'apartment_1', 'in', '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}', '[]', '{"Engine":1000.0,"Flagged":false,"Harness":0.0,"Nitrous":0.0,"WheelFitment":[],"Damage":{"Windows":{"1":true,"2":true,"3":true,"4":false,"5":false,"6":true,"7":true,"0":true},"Tyres":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false},"Doors":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false}},"Gifted":true,"FakePlate":false,"Body":1000.0,"Fuel":94.60000000000005,"Outfits":[],"Waxed":false}', NULL, 0),
+	(18, '2014', 'panto', '6XZ244LU', 'CS48FH0B157AHMLB', 'apartment_1', 'in', '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}', '[]', '{"Engine":1000.0,"Flagged":false,"Harness":0.0,"Nitrous":0.0,"WheelFitment":[],"Gifted":true,"FakePlate":false,"Body":1000.0,"Fuel":99.7,"Outfits":[],"Waxed":false}', NULL, 0),
+	(19, '2015', 'minivan', '8CV333NN', 'ZN24FA9L234MFLYL', 'apartment_1', 'in', '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}', '[]', '{"Body":1000.0,"Gifted":true,"Engine":1000.0,"Fuel":100.0}', NULL, 0);
 /*!40000 ALTER TABLE `player_vehicles` ENABLE KEYS */;
 
--- Dumping structure for table fivem-clarity.police_lockdowns
+-- Structuur van  tabel Polygone.police_lockdowns wordt geschreven
 CREATE TABLE IF NOT EXISTS `police_lockdowns` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` varchar(50) NOT NULL DEFAULT '0',
@@ -1190,9 +1375,9 @@ CREATE TABLE IF NOT EXISTS `police_lockdowns` (
   KEY `lockdown_id` (`lockdown_id`(768)) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.police_lockdowns: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.police_lockdowns: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.prison_cells
+-- Structuur van  tabel Polygone.prison_cells wordt geschreven
 CREATE TABLE IF NOT EXISTS `prison_cells` (
   `cell_id` int(11) NOT NULL,
   `claimee` text NOT NULL,
@@ -1200,9 +1385,9 @@ CREATE TABLE IF NOT EXISTS `prison_cells` (
   PRIMARY KEY (`cell_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.prison_cells: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.prison_cells: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.racing_leaderboard
+-- Structuur van  tabel Polygone.racing_leaderboard wordt geschreven
 CREATE TABLE IF NOT EXISTS `racing_leaderboard` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `track_id` int(11) NOT NULL DEFAULT 0,
@@ -1215,9 +1400,9 @@ CREATE TABLE IF NOT EXISTS `racing_leaderboard` (
   KEY `class` (`class`(768))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.racing_leaderboard: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.racing_leaderboard: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.racing_tracks
+-- Structuur van  tabel Polygone.racing_tracks wordt geschreven
 CREATE TABLE IF NOT EXISTS `racing_tracks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` longtext NOT NULL,
@@ -1230,9 +1415,9 @@ CREATE TABLE IF NOT EXISTS `racing_tracks` (
   KEY `is_gov` (`is_gov`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.racing_tracks: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.racing_tracks: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.server_bans
+-- Structuur van  tabel Polygone.server_bans wordt geschreven
 CREATE TABLE IF NOT EXISTS `server_bans` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -1244,21 +1429,21 @@ CREATE TABLE IF NOT EXISTS `server_bans` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table fivem-clarity.server_bans: 0 rows
+-- Dumpen data van tabel Polygone.server_bans: 0 rows
 /*!40000 ALTER TABLE `server_bans` DISABLE KEYS */;
 /*!40000 ALTER TABLE `server_bans` ENABLE KEYS */;
 
--- Dumping structure for table fivem-clarity.server_config
+-- Structuur van  tabel Polygone.server_config wordt geschreven
 CREATE TABLE IF NOT EXISTS `server_config` (
   `debt_maintenance_date` bigint(20) DEFAULT NULL,
   `taxes` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.server_config: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.server_config: ~1 rows (ongeveer)
 INSERT INTO `server_config` (`debt_maintenance_date`, `taxes`) VALUES
-	(1702519335, '{"Property Tax":"5","Gas":"12","Vehicle Registration Tax":"5","Personal Income":"8","Vehicle Sales":"3","Services":8,"Goods":"8","Clothes":"10"}');
+	(1753440088, '{"Property Tax":"5","Gas":"12","Vehicle Registration Tax":"5","Personal Income":"8","Vehicle Sales":"3","Services":8,"Goods":"19","Clothes":"10"}');
 
--- Dumping structure for table fivem-clarity.server_containers
+-- Structuur van  tabel Polygone.server_containers wordt geschreven
 CREATE TABLE IF NOT EXISTS `server_containers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `owner` longtext NOT NULL,
@@ -1270,7 +1455,7 @@ CREATE TABLE IF NOT EXISTS `server_containers` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.server_containers: ~23 rows (approximately)
+-- Dumpen data van tabel Polygone.server_containers: ~23 rows (ongeveer)
 INSERT INTO `server_containers` (`id`, `owner`, `containerid`, `pincode`, `hack_date`, `coords`, `meta`) VALUES
 	(1, '1001', 'LittleBighornAve1', '1234', 0, '{"x":598.24,"y":-1861.81,"z":24.79,"w":59.62 }', '[]'),
 	(2, '1001', 'LittleBighornAve2', '1234', 0, '{"x":596.67,"y":-1864.2,"z":24.73,"w":59.21 }', '[]'),
@@ -1296,7 +1481,7 @@ INSERT INTO `server_containers` (`id`, `owner`, `containerid`, `pincode`, `hack_
 	(22, '1001', 'OilFields2', '1234', 0, '{"x":1417.08,"y":-2052.58,"z":"52.0,"w":298.74}', '[]'),
 	(23, '1001', 'OilFields3', '1234', 0, '{"x":1415.23,"y":-2050.1,"z":"52.0,"w":298.73}', '[]');
 
--- Dumping structure for table fivem-clarity.server_customtypes
+-- Structuur van  tabel Polygone.server_customtypes wordt geschreven
 CREATE TABLE IF NOT EXISTS `server_customtypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `item_id` varchar(50) NOT NULL DEFAULT '',
@@ -1309,128 +1494,128 @@ CREATE TABLE IF NOT EXISTS `server_customtypes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=349 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.server_customtypes: ~277 rows (approximately)
+-- Dumpen data van tabel Polygone.server_customtypes: ~277 rows (ongeveer)
 INSERT INTO `server_customtypes` (`id`, `item_id`, `type_id`, `label`, `description`, `image`, `craft`, `isExternImage`) VALUES
-	(1, 'foodchain-food-item', 'burger-bacon-cheeseburger', 'Bacon Cheeseburger', 'Sappig, smaakvol, met een twist van het restaurant. De Bacon Cheesburger van Burger Shot - een verrukkelijke traktatie die je niet kunt weerstaan!', 'https://i.imgur.com/dHikom8.png', '[]', 1),
-	(2, 'foodchain-food-item', 'burger-dino-nuggies', 'Dino Nuggies', 'Sappig, verrukkelijk, met een unieke twist van de Burger Shot. Dino Nuggies zijn knapperige, malse kipnuggets waar je niet genoeg van krijgt!', 'https://i.imgur.com/IIQ8c0x.png', '[]', 1),
-	(3, 'foodchain-food-item', 'burger-heart-stopper', 'Heart Stopper', ' Hartstopper Burger: Een sappige, verrukkelijke burger met een geheime saus die je smaakpapillen doet dansen!', 'https://i.imgur.com/W5rypgG.png', '[]', 1),
-	(4, 'foodchain-food-item', 'burger-money-shot', 'Money Shot', 'Smaakvol, verrukkelijk, en vol unieke ingrediënten van Burger Shot. De Money Shot, een sensationele burger die al je smaakpapillen in extase brengt!', 'https://i.imgur.com/zpCQwvN.png', '[]', 1),
-	(5, 'foodchain-food-item', 'burger-bleeder', 'Bleeder', 'Hemels, sappig en onweerstaanbaar van Burger Shot. De Bleeder: een sappige burger die je smaakpapillen betovert!', 'https://i.imgur.com/xOImA8J.png', '[]', 1),
-	(6, 'foodchain-food-item', 'burger-torpedo', 'Torpedo', 'Krachtig, smaakvol, en een Burger Shot meesterwerk. De Torpedo: een sappige, met kaas gevulde burger omhuld in knapperig gefrituurd deeg. Onweerstaanbaar genot in elke hap.', 'https://i.imgur.com/1Np5C2Z.png', '[]', 1),
-	(7, 'foodchain-side-item', 'burger-fries', 'Fries', ' Vullend, heerlijk, met iets bijzonders uit het restaurant. Knapperige friet van Burger Shot, met een onweerstaanbare speciale saus voor de ultieme smaakbeleving.', 'https://i.imgur.com/9sbaCZ7.png', '[]', 1),
-	(8, 'foodchain-side-item', 'burger-union-rings', 'Union Rings', ' Klein, smakelijk, met iets speciaals van Burger Shot. Union Rings - Knapperige, verrukkelijke uienringen, perfect als bijgerecht of tussendoortje.', 'https://i.imgur.com/o1sgDrS.png', '[]', 1),
-	(9, 'foodchain-dessert-item', 'burger-cherry-popper', 'Cherry Popper', 'Vullend, heerlijk, met iets bijzonders uit het restaurant. De Burger Shot\'s Cherry Popper is een verrukkelijke verrassing van romig ijs en sappige kersen, perfect om van te genieten op een warme dag!', 'https://i.imgur.com/PoF0PJ9.png', '[]', 1),
-	(10, 'foodchain-drink-item', 'burger-green-juice', 'Green Juice', ' Verfrissend, gezond en verrassend lekker! De Burger Shot Green Juice zit boordevol natuurlijke ingrediënten die je smaakpapillen zullen verwennen en je energie zullen geven.', 'https://i.imgur.com/o4wUG8J.png', '[]', 1),
-	(11, 'foodchain-drink-item', 'burger-milkshake', 'Milkshake', 'Verfrissend, romig, met een unieke twist van Burger Shot. Een verrukkelijke milkshake die je smaakpapillen verwent met elke slok!', 'https://i.imgur.com/WQdpNVm.png', '[]', 1),
-	(12, 'foodchain-drink-item', 'burger-soda', 'Soda', ' Verfrissend, bruisend, met een unieke twist van Burger Shot. Proef de sprankelende verrassing van onze soda - een smaaksensatie die je dorst lessen en je smaakpapillen verwennen.', 'https://i.imgur.com/Oe1Rmt1.png', '[]', 1),
-	(13, 'foodchain-drink-item', 'burger-strawberry-soda', 'Strawberry Soda', 'Verfrissend, bruisend en vol aardbeiensmaak. De Burger Shot Strawberry Soda is een verleidelijk sprankelende dorstlesser die je smaakpapillen verwent.', 'https://i.imgur.com/M2iZsN7.png', '[]', 1),
-	(14, 'foodchain-drink-item', 'burger-burger-shot-koffie', 'Burger Shot Koffie', 'Hartverwarmend, heerlijk, met iets speciaals van het restaurant. Onze Burger Shot Koffie is een perfect gebalanceerde blend voor een energieke start van je dag!', 'https://i.imgur.com/MIHKOaG.png', '[]', 1),
-	(15, 'foodchain-food-item', 'pizza-pizza-margherita', 'Pizza Margherita', ' Hemelse smaak, klassieke eenvoud. Onze Margherita Pizza, met verse tomatensaus, romige mozzarella en een vleugje basilicum, is puur genot in elke hap.', 'https://i.imgur.com/6eGPXzK.png', '[]', 1),
-	(16, 'foodchain-food-item', 'pizza-pizza-caprese', 'Pizza Caprese', ' Hemels, smaakvol, met een speciale twist van Maldinis Pizza. Geniet van onze Caprese Pizza met verse mozzarella, sappige tomaten en basilicum, perfect gebakken in onze houtgestookte oven.', 'https://i.imgur.com/GVTqQqS.png', '[]', 1),
-	(17, 'foodchain-food-item', 'pizza-pizza-salami', 'Pizza Salami', 'Smakelijk, klassiek, met een vleugje Maldinis. Onze Salami Pizza - een verrukkelijke combinatie van knapperige korst, smeuïge kaas en hartige salami. Onweerstaanbaar genot!', 'https://i.imgur.com/wWHpyIG.png', '[]', 1),
-	(18, 'foodchain-food-item', 'pizza-pizza-hawai', 'Pizza Hawai', 'Smaakvolle en unieke Hawai Pizza van Maldinis Pizza. Een verrukkelijke combinatie van ham, ananas en gesmolten kaas die je niet kan weerstaan!', 'https://i.imgur.com/PXvZZzJ.png', '[]', 1),
-	(19, 'foodchain-food-item', 'pizza-pizza-tonijn', 'Pizza Tonijn', 'Smakelijk, verrukkelijk, met iets bijzonders van Maldinis Pizza. Proef de Tonijn Pizza - sappige tonijn, zongerijpte tomatensaus, gesmolten mozzarella, en een vleugje geheime kruiden. Genieten in elke hap!', 'https://i.imgur.com/MzxBbWL.png', '[]', 1),
-	(20, 'foodchain-food-item', 'pizza-pizza-calzone', 'Pizza Calzone', 'Smakelijk, verrassend, met iets bijzonders uit ons restaurant. Onze Calzone Pizza is een smaakexplosie van gesmolten kaas, hartige vleeswaren en verse groenten, allemaal perfect afgesloten in een knapperige deegomhelzing. Een ware traktatie voor je smaakpapillen!', 'https://i.imgur.com/5JoHa89.png', '[]', 1),
-	(21, 'foodchain-food-item', 'pizza-spaghetti-bolognese', 'Spaghetti Bolognese', 'Hartig, smaakvol, met een unieke twist van Maldinis Pizza. Geniet van hun Spaghetti Bolognese - een klassieker met een verrukkelijke twist die je niet wilt missen!', 'https://i.imgur.com/IdmWfYI.png', '[]', 1),
-	(22, 'foodchain-food-item', 'pizza-pasta-carbonara', 'Pasta Carbonara', 'Romige Pasta Carbonara met een vleugje Italiaanse perfectie - een verrukkelijke klassieker van Maldinis Pizza!', 'https://i.imgur.com/ZcxOPw9.png', '[]', 1),
-	(23, 'foodchain-food-item', 'pizza-lasagne', 'Lasagne', 'Smakelijk, verrukkelijk, met iets bijzonders van het restaurant. Onze Maldinis Lasagne - gelaagd met rijke saus, romige kaas en sappig gehakt - laat je hart sneller kloppen bij elke hap!', 'https://i.imgur.com/Dv63f0L.png', '[]', 1),
-	(24, 'foodchain-side-item', 'pizza-mozzarella-sticks', 'Mozzarella Sticks', 'Smeltend, verrukkelijk, met een vleugje restaurantmagie. Knapperige Mozzarella Sticks die je smaakpapillen verleiden met hun sappige, gesmolten kaasvulling.', 'https://i.imgur.com/gZ1kKYt.png', '[]', 1),
-	(25, 'foodchain-side-item', 'pizza-caeser-salad', 'Caeser Salad', 'Knapperig, verfrissend, met een vleugje Maldini\'s magie. De Caesar Salad is een klassieker met knapperige romaine sla, smaakvolle croutons en romige dressing. Geniet van de perfecte combinatie van smaken!', 'https://i.imgur.com/4qDc0x5.png', '[]', 1),
-	(26, 'foodchain-dessert-item', 'pizza-cannoli', 'Cannoli', 'Knapperige cannoli gevuld met romige mascarpone en ricotta, met een vleugje citrus en een vleugje geheime specerij van Maldinis Pizza.', 'https://i.imgur.com/jhoNrJ8.png', '[]', 1),
-	(27, 'foodchain-dessert-item', 'pizza-tiramisu', 'Tiramisu', 'Romig, verrukkelijk, met een vleugje verfijning van het restaurant. Tiramisu - fluweelzachte lagen van mascarponecrème doordrenkt met koffie en cacaopoeder voor een onweerstaanbaar dessertgenot.', 'https://i.imgur.com/2yeHth4.png', '[]', 1),
-	(28, 'foodchain-drink-item', 'pizza-italian-creme-soda', 'Italian Creme Soda', 'Verfrissend, romig en Italiaans geïnspireerd. Geniet van een sprankelende Italian Creme Soda met een vleugje vanille en vers fruit.', 'https://i.imgur.com/GQLSrkZ.png', '[]', 1),
-	(29, 'foodchain-drink-item', 'pizza-brunello-di-montalcino', 'Brunello Di Montalcino', 'Rijk, heerlijk, met iets bijzonders uit de wijngaarden. Brunello Di Montalcino, een verfijnde rode wijn met diepe smaken die je niet wilt missen!', 'https://i.imgur.com/7sz7jqJ.png', '[]', 1),
-	(30, 'foodchain-drink-item', 'pizza-strawberry-soda', 'Strawberry Soda', 'Verfrissend, zoet, met een verrassende twist. Een Strawberry Soda vol fruitige smaken en bruisend genot.', 'https://i.imgur.com/3N7LdsY.png', '[]', 1),
-	(31, 'foodchain-food-item', 'prison-dienblad-eten', 'Dienblad Eten', 'Een dienblad met eten vers uit de verschrikkelijke keuken van de gevangenis..', 'https://i.imgur.com/fhIwsxN.png', '[]', 1),
-	(32, 'foodchain-drink-item', 'prison-koffie', 'Koffie', 'Slappe oploskoffie', 'https://i.postimg.cc/Mpxddztb/mug-coffee-PNG16849.png', '[]', 1),
-	(44, 'foodchain-food-item', 'prison-tray-met-voedsel', 'Tray met voedsel', 'Droog brood, witte rijst, salade en een gegaarde kippenpoot', 'https://media.discordapp.net/attachments/1140246732320555059/1140276354236031058/Trayfood-1.png', '[]', 1),
-	(45, 'foodchain-food-item', 'prison-tray-met-voedsel2', 'Tray met voedsel', 'Droog brood, aardappelpuree, rauwkost en salami', 'https://media.discordapp.net/attachments/1140246732320555059/1140336401490137178/Trayfood-2.png', '[]', 1),
-	(46, 'foodchain-food-item', 'prison-tray-met-voedsel3', 'Tray met voedsel', 'Croissants, witte rijst, rauwkost en tomaat', 'https://media.discordapp.net/attachments/1140246732320555059/1140336737093173388/Trayfood-3.png', '[]', 1),
-	(47, 'foodchain-side-item', 'prison-tomaat-pompoensoep', 'Tomaat-pompoensoep', 'soep bereid met pompoen uit eigenmoestijn en tomatenpuree', 'https://media.discordapp.net/attachments/1140246732320555059/1140337825124995142/Tomaat.png', '[]', 1),
-	(48, 'foodchain-side-item', 'prison-bruine-bonensoep', 'Bruine bonensoep', 'soep bereid met gedroogde bonen, room, knoflook en ui', 'https://media.discordapp.net/attachments/1140246732320555059/1140338814821351637/Bruinebonen.png', '[]', 1),
-	(49, 'foodchain-side-item', 'prison-romige-champignonsoep', 'Romige champignonsoep', 'soep bereid met champignons, room en ui', 'https://media.discordapp.net/attachments/1140246732320555059/1140339226983022744/Champignon.png', '[]', 1),
-	(50, 'foodchain-side-item', 'prison-groentesoep', 'Groentesoep', 'soep bereid met gedroogde groenten, ui, pompoen en wortel', 'https://media.discordapp.net/attachments/1140246732320555059/1140341008933064775/Groenten.png', '[]', 1),
-	(51, 'foodchain-side-item', 'prison-jay\'s-kippensoep', 'Jay\'s kippensoep', 'traditioneel recept met kip, ui, knoflook en een scheutje vodka', 'https://media.discordapp.net/attachments/1140246732320555059/1140341275728552046/kip.png', '[]', 1),
-	(52, 'foodchain-drink-item', 'prison-multifruit-limonade', 'Multifruit limonade', 'gemaakt met fruit uit de tuin', 'https://media.discordapp.net/attachments/1140246732320555059/1140342479590260736/Siroop.png', '[]', 1),
-	(53, 'foodchain-drink-item', 'prison-chocolademelk', 'Chocolademelk', 'water met cacoa en slagroom', 'https://media.discordapp.net/attachments/1140246732320555059/1140345168806027284/Choco.png', '[]', 1),
-	(54, 'foodchain-drink-item', 'prison-lauwe-koffie', 'Lauwe koffie', 'Koffie met lauw water en eventueel melk', 'https://media.discordapp.net/attachments/1140246732320555059/1140345315220791296/Koffie.png', '[]', 1),
-	(55, 'foodchain-dessert-item', 'prison-mokka-taartje', 'Mokka taartje', 'een taartpuntje met de smaak van mokka', 'https://media.discordapp.net/attachments/1140246732320555059/1140345947822502009/Taart4_zonder.png', '[]', 1),
-	(56, 'foodchain-dessert-item', 'prison-aardbeien-taartje', 'Aardbeien taartje', 'Een taartpuntje met de smaak van aardbeien en slagroom', 'https://media.discordapp.net/attachments/1140246732320555059/1140346120090955797/Taart5_zonder.png', '[]', 1),
-	(57, 'foodchain-dessert-item', 'prison-bosfruit-chocolade-taartje', 'Bosfruit chocolade taartje', 'Een taartpuntje met chocolade en bosfruit', 'https://media.discordapp.net/attachments/1140246732320555059/1140346246956060843/Taart1_zonder.png', '[]', 1),
-	(58, 'foodchain-dessert-item', 'prison-chocolade-slagroom-taartje', 'Chocolade slagroom taartje', 'een taartpuntje met chocolade en slagroom', 'https://media.discordapp.net/attachments/1140246732320555059/1140346437570408568/Taart2_zonder.png', '[]', 1),
-	(86, 'foodchain-drink-item', 'uwu-oreo-frap', 'Oreo Frap', 'Experience the perfect harmony of flavors and textures.', 'https://cdn.discordapp.com/attachments/1140047966120464454/1140693420046811307/Boba20oreo20100x100.png', '[]', 1),
-	(87, 'foodchain-drink-item', 'uwu-boba-kiwi-breeze', 'Boba Kiwi Breeze', 'Energize your senses with our Kiwi Breeze.', 'https://cdn.discordapp.com/attachments/1140047966120464454/1140693081394511973/Boba20220100x100.png', '[]', 1),
-	(101, 'foodchain-food-item', 'uwu-uwu-panda-pancakes', 'UwU Panda Pancakes', 'Soufflé pancakes with whipped cream syrup and blueberries', 'https://cdn.discordapp.com/attachments/1140047966120464454/1142435418999103488/Souffle_pancake20100x100.png', '[]', 1),
-	(104, 'foodchain-drink-item', 'uwu-uwu-espresso-matcha-latte', 'UwU Espresso Matcha Latte', 'Matcha Coffee with milk!', 'https://cdn.discordapp.com/attachments/1140047966120464454/1142452001456783360/Green_tea20100x100.png', '[]', 1),
-	(105, 'foodchain-food-item', 'burger-vega-burger', 'Vega Burger', 'Een heerlijke burger maar voor onze vegetariers!', 'https://cdn.discordapp.com/attachments/1140626481870024715/1142367376952795136/vegastopper.png', '[]', 1),
-	(106, 'foodchain-food-item', 'burger-taco', 'Taco', 'Een kleine gevouwen tortilla die gebakken word op de bakplaat. Heerlijk met vlees en groente ertussen.', 'https://cdn.discordapp.com/attachments/1140626481870024715/1142360577549799434/taco.png', '[]', 1),
-	(107, 'foodchain-dessert-item', 'burger-vanille-ijsje', 'Vanille ijsje', 'Romige vannile ijsje gemaakt met melk en slagroom. ', 'https://cdn.discordapp.com/attachments/1140626481870024715/1142360640942518352/vanilleijsje.png', '[]', 1),
-	(108, 'foodchain-drink-item', 'uwu-watermelon-peach-refresher', 'Watermelon Peach Refresher', 'Refreshing beverage will quench your thirst and leave you feeling revitalized. ', 'https://cdn.discordapp.com/attachments/1140047966120464454/1142574598135746640/Melon20100x100.png', '[]', 1),
-	(114, 'foodchain-side-item', 'pizza-carpaccio', 'Carpaccio', 'Makkelijk en heerlijk klassiek Italiaans voorgerecht van carpaccio met Parmezaanse kaas, pijnboompitten, rucola en een heerlijke dressing', 'https://media.discordapp.net/attachments/1142796098658910218/1142816415724871790/output-onlinepngtools_3.png', '[]', 1),
-	(115, 'foodchain-dessert-item', 'pizza-coupe-aardbei', 'Coupe Aardbei', 'Lekkere zomerse ijscoupe met frisse aardbeien, krokante koekjes en vanille ijs.', 'https://media.discordapp.net/attachments/1142796098658910218/1142816415364173886/output-onlinepngtools_2.png', '[]', 1),
-	(116, 'foodchain-drink-item', 'pizza-mantonico-bianco', 'Mantonico Bianco', 'Een witte Italiaanse wijn die gemaakt wordt in Calabria', 'https://cdn.discordapp.com/attachments/1142796098658910218/1142874972096843837/output-onlinepngtools_4.png', '[]', 1),
+	(1, 'foodchain-food-item', 'burger-bacon-cheeseburger', 'Bacon Cheeseburger', '', 'https://i.imgur.com/dHikom8.png', '[]', 1),
+	(2, 'foodchain-food-item', 'burger-dino-nuggies', 'Dino Nuggies', '', 'https://i.imgur.com/IIQ8c0x.png', '[]', 1),
+	(3, 'foodchain-food-item', 'burger-heart-stopper', 'Heart Stopper', '', 'https://i.imgur.com/W5rypgG.png', '[]', 1),
+	(4, 'foodchain-food-item', 'burger-money-shot', 'Money Shot', '', 'https://i.imgur.com/zpCQwvN.png', '[]', 1),
+	(5, 'foodchain-food-item', 'burger-bleeder', 'Bleeder', '', 'https://i.imgur.com/xOImA8J.png', '[]', 1),
+	(6, 'foodchain-food-item', 'burger-torpedo', 'Torpedo', '', 'https://i.imgur.com/1Np5C2Z.png', '[]', 1),
+	(7, 'foodchain-side-item', 'burger-fries', 'Fries', '', 'https://i.imgur.com/9sbaCZ7.png', '[]', 1),
+	(8, 'foodchain-side-item', 'burger-union-rings', 'Union Rings', '', 'https://i.imgur.com/o1sgDrS.png', '[]', 1),
+	(9, 'foodchain-dessert-item', 'burger-cherry-popper', 'Cherry Popper', '', 'https://i.imgur.com/PoF0PJ9.png', '[]', 1),
+	(10, 'foodchain-drink-item', 'burger-green-juice', 'Green Juice', '', 'https://i.imgur.com/o4wUG8J.png', '[]', 1),
+	(11, 'foodchain-drink-item', 'burger-milkshake', 'Milkshake', '', 'https://i.imgur.com/WQdpNVm.png', '[]', 1),
+	(12, 'foodchain-drink-item', 'burger-soda', 'Soda', '', 'https://i.imgur.com/Oe1Rmt1.png', '[]', 1),
+	(13, 'foodchain-drink-item', 'burger-strawberry-soda', 'Strawberry Soda', '', 'https://i.imgur.com/M2iZsN7.png', '[]', 1),
+	(14, 'foodchain-drink-item', 'burger-burger-shot-koffie', 'Burger Shot Koffie', '', 'https://i.imgur.com/MIHKOaG.png', '[]', 1),
+	(15, 'foodchain-food-item', 'pizza-pizza-margherita', 'Pizza Margherita', '', 'https://i.imgur.com/6eGPXzK.png', '[]', 1),
+	(16, 'foodchain-food-item', 'pizza-pizza-caprese', 'Pizza Caprese', '', 'https://i.imgur.com/GVTqQqS.png', '[]', 1),
+	(17, 'foodchain-food-item', 'pizza-pizza-salami', 'Pizza Salami', '', 'https://i.imgur.com/wWHpyIG.png', '[]', 1),
+	(18, 'foodchain-food-item', 'pizza-pizza-hawai', 'Pizza Hawai', '', 'https://i.imgur.com/PXvZZzJ.png', '[]', 1),
+	(19, 'foodchain-food-item', 'pizza-pizza-tonijn', 'Pizza Tonijn', '', 'https://i.imgur.com/MzxBbWL.png', '[]', 1),
+	(20, 'foodchain-food-item', 'pizza-pizza-calzone', 'Pizza Calzone', '', 'https://i.imgur.com/5JoHa89.png', '[]', 1),
+	(21, 'foodchain-food-item', 'pizza-spaghetti-bolognese', 'Spaghetti Bolognese', '', 'https://i.imgur.com/IdmWfYI.png', '[]', 1),
+	(22, 'foodchain-food-item', 'pizza-pasta-carbonara', 'Pasta Carbonara', '', 'https://i.imgur.com/ZcxOPw9.png', '[]', 1),
+	(23, 'foodchain-food-item', 'pizza-lasagne', 'Lasagne', '', 'https://i.imgur.com/Dv63f0L.png', '[]', 1),
+	(24, 'foodchain-side-item', 'pizza-mozzarella-sticks', 'Mozzarella Sticks', '', 'https://i.imgur.com/gZ1kKYt.png', '[]', 1),
+	(25, 'foodchain-side-item', 'pizza-caeser-salad', 'Caeser Salad', '', 'https://i.imgur.com/4qDc0x5.png', '[]', 1),
+	(26, 'foodchain-dessert-item', 'pizza-cannoli', 'Cannoli', '', 'https://i.imgur.com/jhoNrJ8.png', '[]', 1),
+	(27, 'foodchain-dessert-item', 'pizza-tiramisu', 'Tiramisu', '', 'https://i.imgur.com/2yeHth4.png', '[]', 1),
+	(28, 'foodchain-drink-item', 'pizza-italian-creme-soda', 'Italian Creme Soda', '', 'https://i.imgur.com/GQLSrkZ.png', '[]', 1),
+	(29, 'foodchain-drink-item', 'pizza-brunello-di-montalcino', 'Brunello Di Montalcino', '', 'https://i.imgur.com/7sz7jqJ.png', '[]', 1),
+	(30, 'foodchain-drink-item', 'pizza-strawberry-soda', 'Strawberry Soda', '', 'https://i.imgur.com/3N7LdsY.png', '[]', 1),
+	(31, 'foodchain-food-item', 'prison-dienblad-eten', 'Dienblad Eten', '', 'https://i.imgur.com/fhIwsxN.png', '[]', 1),
+	(32, 'foodchain-drink-item', 'prison-koffie', 'Koffie', '', 'https://i.postimg.cc/Mpxddztb/mug-coffee-PNG16849.png', '[]', 1),
+	(44, 'foodchain-food-item', 'prison-tray-met-voedsel', 'Tray met voedsel', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140276354236031058/Trayfood-1.png', '[]', 1),
+	(45, 'foodchain-food-item', 'prison-tray-met-voedsel2', 'Tray met voedsel', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140336401490137178/Trayfood-2.png', '[]', 1),
+	(46, 'foodchain-food-item', 'prison-tray-met-voedsel3', 'Tray met voedsel', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140336737093173388/Trayfood-3.png', '[]', 1),
+	(47, 'foodchain-side-item', 'prison-tomaat-pompoensoep', 'Tomaat-pompoensoep', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140337825124995142/Tomaat.png', '[]', 1),
+	(48, 'foodchain-side-item', 'prison-bruine-bonensoep', 'Bruine bonensoep', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140338814821351637/Bruinebonen.png', '[]', 1),
+	(49, 'foodchain-side-item', 'prison-romige-champignonsoep', 'Romige champignonsoep', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140339226983022744/Champignon.png', '[]', 1),
+	(50, 'foodchain-side-item', 'prison-groentesoep', 'Groentesoep', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140341008933064775/Groenten.png', '[]', 1),
+	(51, 'foodchain-side-item', 'prison-jay\'s-kippensoep', 'Jay\'s kippensoep', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140341275728552046/kip.png', '[]', 1),
+	(52, 'foodchain-drink-item', 'prison-multifruit-limonade', 'Multifruit limonade', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140342479590260736/Siroop.png', '[]', 1),
+	(53, 'foodchain-drink-item', 'prison-chocolademelk', 'Chocolademelk', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140345168806027284/Choco.png', '[]', 1),
+	(54, 'foodchain-drink-item', 'prison-lauwe-koffie', 'Lauwe koffie', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140345315220791296/Koffie.png', '[]', 1),
+	(55, 'foodchain-dessert-item', 'prison-mokka-taartje', 'Mokka taartje', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140345947822502009/Taart4_zonder.png', '[]', 1),
+	(56, 'foodchain-dessert-item', 'prison-aardbeien-taartje', 'Aardbeien taartje', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140346120090955797/Taart5_zonder.png', '[]', 1),
+	(57, 'foodchain-dessert-item', 'prison-bosfruit-chocolade-taartje', 'Bosfruit chocolade taartje', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140346246956060843/Taart1_zonder.png', '[]', 1),
+	(58, 'foodchain-dessert-item', 'prison-chocolade-slagroom-taartje', 'Chocolade slagroom taartje', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140346437570408568/Taart2_zonder.png', '[]', 1),
+	(86, 'foodchain-drink-item', 'uwu-oreo-frap', 'Oreo Frap', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1140693420046811307/Boba20oreo20100x100.png', '[]', 1),
+	(87, 'foodchain-drink-item', 'uwu-boba-kiwi-breeze', 'Boba Kiwi Breeze', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1140693081394511973/Boba20220100x100.png', '[]', 1),
+	(101, 'foodchain-food-item', 'uwu-uwu-panda-pancakes', 'UwU Panda Pancakes', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1142435418999103488/Souffle_pancake20100x100.png', '[]', 1),
+	(104, 'foodchain-drink-item', 'uwu-uwu-espresso-matcha-latte', 'UwU Espresso Matcha Latte', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1142452001456783360/Green_tea20100x100.png', '[]', 1),
+	(105, 'foodchain-food-item', 'burger-vega-burger', 'Vega Burger', '', 'https://cdn.discordapp.com/attachments/1140626481870024715/1142367376952795136/vegastopper.png', '[]', 1),
+	(106, 'foodchain-food-item', 'burger-taco', 'Taco', '', 'https://cdn.discordapp.com/attachments/1140626481870024715/1142360577549799434/taco.png', '[]', 1),
+	(107, 'foodchain-dessert-item', 'burger-vanille-ijsje', 'Vanille ijsje', '', 'https://cdn.discordapp.com/attachments/1140626481870024715/1142360640942518352/vanilleijsje.png', '[]', 1),
+	(108, 'foodchain-drink-item', 'uwu-watermelon-peach-refresher', 'Watermelon Peach Refresher', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1142574598135746640/Melon20100x100.png', '[]', 1),
+	(114, 'foodchain-side-item', 'pizza-carpaccio', 'Carpaccio', '', 'https://media.discordapp.net/attachments/1142796098658910218/1142816415724871790/output-onlinepngtools_3.png', '[]', 1),
+	(115, 'foodchain-dessert-item', 'pizza-coupe-aardbei', 'Coupe Aardbei', '', 'https://media.discordapp.net/attachments/1142796098658910218/1142816415364173886/output-onlinepngtools_2.png', '[]', 1),
+	(116, 'foodchain-drink-item', 'pizza-mantonico-bianco', 'Mantonico Bianco', '', 'https://cdn.discordapp.com/attachments/1142796098658910218/1142874972096843837/output-onlinepngtools_4.png', '[]', 1),
 	(118, 'foodchain-dessert-item', 'uwu-uwu-panda-cupcake', 'UwU Panda Cupcake', '', 'https://cdn.discordapp.com/attachments/306480762373537794/1143156543890669751/Panda_Cupcake20100x100.png', '[]', 1),
-	(120, 'foodchain-side-item', 'uwu-uwu-panda-healthy-bowl', 'UwU Panda Healthy Bowl', 'with yoghurt delicious pieces of fresh fruit and granola', 'https://cdn.discordapp.com/attachments/306480762373537794/1143157185891807372/Panda20health20bol20100x100.png', '[]', 1),
-	(121, 'foodchain-drink-item', 'uwu-strawberry-milk-bubble', 'Strawberry Milk Bubble', 'Creamy milk infused with fresh strawberry puree for a blissful sip.', 'https://cdn.discordapp.com/attachments/1140047966120464454/1143209407379935312/Strwaberry120100x100.png', '[]', 1),
-	(125, 'foodchain-dessert-item', 'uwu-uwu-panda-macarons', 'UwU Panda Macarons', 'They are beautiful, delicious, and versatile. ', 'https://cdn.discordapp.com/attachments/1140047966120464454/1143563797760573470/Panda20Macaron20100x100.png', '[]', 1),
-	(126, 'foodchain-food-item', 'uwu-uwu-panda-rice-balls', 'UwU Panda Rice Balls', 'Wrapped with nori seaweed.However onigiri is not sushi!', 'https://cdn.discordapp.com/attachments/1140047966120464454/1143625893089116190/Rice_Balls20100x100.png', '[]', 1),
-	(128, 'foodchain-drink-item', 'prison-pinky\'s-', 'Pinky\'s ', 'Heerlijk romig van smaak', 'https://media.discordapp.net/attachments/1140246732320555059/1140371796475002950/Pinky.png', '[]', 1),
-	(129, 'foodchain-dessert-item', 'uwu-uwu-panda-dream', 'UwU Panda Dream', 'It taste good like soul food', 'https://cdn.discordapp.com/attachments/1140047966120464454/1144637777305141368/pandanagerecgtr20100x100.png', '[]', 1),
-	(131, 'foodchain-dessert-item', 'uwu-uwu-mochi-ice-', 'UwU Mochi Ice ', 'Slightly chewy sweet rice dough balls with ice cream.', 'https://cdn.discordapp.com/attachments/1140047966120464454/1142436850565390419/Mochi20ijs20100x100.png', '[]', 1),
-	(133, 'foodchain-drink-item', 'uwu-uwu-panda-soda-', 'Uwu Panda Soda ', 'Bubble Delicious', 'https://cdn.discordapp.com/attachments/1140047966120464454/1145334137276862466/Panda_soda_100x100.png', '[]', 1),
+	(120, 'foodchain-side-item', 'uwu-uwu-panda-healthy-bowl', 'UwU Panda Healthy Bowl', '', 'https://cdn.discordapp.com/attachments/306480762373537794/1143157185891807372/Panda20health20bol20100x100.png', '[]', 1),
+	(121, 'foodchain-drink-item', 'uwu-strawberry-milk-bubble', 'Strawberry Milk Bubble', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1143209407379935312/Strwaberry120100x100.png', '[]', 1),
+	(125, 'foodchain-dessert-item', 'uwu-uwu-panda-macarons', 'UwU Panda Macarons', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1143563797760573470/Panda20Macaron20100x100.png', '[]', 1),
+	(126, 'foodchain-food-item', 'uwu-uwu-panda-rice-balls', 'UwU Panda Rice Balls', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1143625893089116190/Rice_Balls20100x100.png', '[]', 1),
+	(128, 'foodchain-drink-item', 'prison-pinky\'s-', 'Pinky\'s ', '', 'https://media.discordapp.net/attachments/1140246732320555059/1140371796475002950/Pinky.png', '[]', 1),
+	(129, 'foodchain-dessert-item', 'uwu-uwu-panda-dream', 'UwU Panda Dream', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1144637777305141368/pandanagerecgtr20100x100.png', '[]', 1),
+	(131, 'foodchain-dessert-item', 'uwu-uwu-mochi-ice-', 'UwU Mochi Ice ', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1142436850565390419/Mochi20ijs20100x100.png', '[]', 1),
+	(133, 'foodchain-drink-item', 'uwu-uwu-panda-soda-', 'Uwu Panda Soda ', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1145334137276862466/Panda_soda_100x100.png', '[]', 1),
 	(134, 'foodchain-side-item', 'uwu-uwu-panda-frietatjes', 'UwU Panda Frietatjes', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1145334919564890222/Panda_Frietjes_100x100.png', '[]', 1),
-	(135, 'foodchain-food-item', 'uwu-uwu-panda-cheeseburger', 'UwU Panda CheeseBurger', 'FastFood', 'https://cdn.discordapp.com/attachments/1140047966120464454/1145335824272068638/Panda_Burger_100x100.png', '[]', 1),
+	(135, 'foodchain-food-item', 'uwu-uwu-panda-cheeseburger', 'UwU Panda CheeseBurger', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1145335824272068638/Panda_Burger_100x100.png', '[]', 1),
 	(137, 'foodchain-side-item', 'uwu-uwu-panda-noodle-soup', 'UwU Panda Noodle Soup', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1145340862805594152/Panda_soup_100x100.png', '[]', 1),
 	(138, 'foodchain-side-item', 'uwu-uwu-panda-miso-soup-', 'UwU Panda Miso Soup ', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1140272775643267183/Miso20Soup.png', '[]', 1),
 	(139, 'foodchain-food-item', 'uwu-uwu-panda-pokebowl', 'UwU Panda Pokebowl', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1145339770298454036/Pokebowl_100x100.png', '[]', 1),
-	(143, 'foodchain-side-item', 'dragonsden-sushi-rolls', 'Sushi Rolls', 'Een authentieke chinese delicatesse.', 'https://www.google.com/search?q=sushi%20rolls%20png&tbm=isch&tbs=rimg:CXze9ONMKqtSYTLqfzsTevvysgIRCgIIABAAOgQIARAAVWjy1z7AAgDYAgDgAgA&rlz=1C1FHFK_nlNL946NL946&hl=nl&sa=X&ved=0CBoQuIIBahcKEwjorZbL14eBAxUAAAAAHQAAAAAQKQ&biw=1903&bih=923#imgrc=ofbRs-DjH52OOM', '[]', 1),
-	(144, 'foodchain-food-item', 'dragonsden-peking-duck', 'Peking Duck', 'Zou deze eend nog kunnen vliegen?', 'https://www.google.com/search?q=peking+duck+png&tbm=isch&ved=2ahUKEwj5mN3d14eBAxVthP0HHWooCkQQ2-cCegQIABAA&oq=peking+duck+png&gs_lcp=CgNpbWcQAzIHCAAQExCABDoICAAQBxAeEBM6BwgAEIoFEEM6CggAEIoFELEDEEM6CAgAEIAEELEDOgUIABCABDoECAAQHlDcBljEEmCkE2gAcAB4AIABZogBtQaSAQQxNS4xmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=J_HwZLnpF-2I9u8P6tCooAQ&bih=923&biw=1903&rlz=1C1FHFK_nlNL946NL946&hl=nl#imgrc=FMD_ZR4CLJDYNM', '[]', 1),
-	(145, 'foodchain-dessert-item', 'dragonsden-moon-cakes', 'Moon Cakes', 'Als ik deze cakejes eet, kan ik dan dichter bij de maan kijken?', 'https://www.google.com/search?q=moon+cakes+png&tbm=isch&ved=2ahUKEwjm0Y7u3IeBAxUvgf0HHWtGB2YQ2-cCegQIABAA&oq=moon+cakes+png&gs_lcp=CgNpbWcQAzoHCAAQExCABFChBlihBmCkC2gAcAB4AIABLogBV5IBATKYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=h_bwZKbyOK-C9u8P64ydsAY&bih=923&biw=1920&rlz=1C1FHFK_nlNL946NL946&hl=nl#imgrc=uOGJ2kfdkkrlrM', '[]', 1),
-	(146, 'foodchain-drink-item', 'dragonsden-sojaboon-melk', 'Sojaboon Melk', 'Melk is goed voor elk!', 'https://www.google.com/search?sca_esv=561727227&rlz=1C1FHFK_nlNL946NL946&q=soy+milk+png&tbm=isch&source=lnms&sa=X&ved=2ahUKEwiJ_fuz3YeBAxVgg_0HHerIARwQ0pQJegQICBAB&biw=1920&bih=923&dpr=1#imgrc=-OYId4kWaroSPM', '[]', 1),
-	(147, 'foodchain-side-item', 'dragonsden-dumplings', 'Dumplings', 'Lekker met een pikant sausje.', 'https://www.google.com/search?sca_esv=561727227&rlz=1C1FHFK_nlNL946NL946&q=dumplings+png&tbm=isch&source=lnms&sa=X&ved=2ahUKEwi1yv_F3oeBAxUO0gIHHSDOAvAQ0pQJegQIDBAB&biw=1920&bih=923&dpr=1#imgrc=BELJmU-Dwf5CpM', '[]', 1),
-	(149, 'foodchain-food-item', 'dragonsden-peking-eend', 'Peking Eend', '北京烤鴨', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938111813750936/peking-duck-with-ai-generated-free-png-removebg-preview.png', '[]', 1),
-	(150, 'foodchain-food-item', 'dragonsden-babi-pangang', 'Babi Pangang', '寶寶攀鋼', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938088795418745/Babi-pangang-met-babi-pangangsaus_1394997-7-0_560x560-removebg-preview.png', '[]', 1),
-	(151, 'foodchain-food-item', 'dragonsden-chow-mein', 'Chow Mein', '炒麵', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938110119247892/png-clipart-chow-mein-chinese-noodles-lo-mein-fried-noodles-hokkien-mee-catering-food-srvice-chow-mein-chinese-noodles-removebg-preview.png', '[]', 1),
-	(152, 'foodchain-food-item', 'dragonsden-tjap-tjoy', 'Tjap Tjoy', '雜碎', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938088585707670/17bc7535438c9a335cabd2c55a1e8956a2d45fa8-removebg-preview.png', '[]', 1),
-	(153, 'foodchain-side-item', 'dragonsden-sushi-rollen', 'Sushi rollen', '壽司卷', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938088346619934/image-removebg-preview31.png', '[]', 1),
-	(154, 'foodchain-side-item', 'dragonsden-gyoza\'s', 'Gyoza\'s', '水餃', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938134228119676/pngtree-a-basket-of-delicious-winter-solstice-breakfast-steamed-dumplings-png-image_2630861-removebg-preview.png', '[]', 1),
-	(155, 'foodchain-side-item', 'dragonsden-loempia’s', 'Loempia’s', '春捲', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938110328967288/image-removebg-preview41.png', '[]', 1),
-	(156, 'foodchain-side-item', 'dragonsden-chinese-tomatensoep', 'Chinese Tomatensoep', '中式番茄湯', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938089000931439/chinese-tomatensoep-website-removebg-preview2.png', '[]', 1),
-	(157, 'foodchain-dessert-item', 'dragonsden-maancakejes', 'Maancakejes', '月餅', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938111469813831/Naamloos-removebg-preview.png', '[]', 1),
-	(158, 'foodchain-dessert-item', 'dragonsden-sesamijs', 'Sesamijs', '芝麻冰淇淋', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938134442033182/pngtree-cream-ice-cream-dessert-in-a-glass-served-on-a-wooden-image_2527843-removebg-preview.png', '[]', 1),
-	(159, 'foodchain-dessert-item', 'dragonsden-tofu-pudding', 'Tofu Pudding', '豆腐花', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938110823890994/images-removebg-preview.png', '[]', 1),
-	(160, 'foodchain-dessert-item', 'dragonsden-lychee-jelly', 'Lychee Jelly', '荔枝果凍', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938110568058880/image-removebg-preview.png', '[]', 1),
-	(161, 'foodchain-drink-item', 'dragonsden-sojamelk', 'Sojamelk', '豆漿', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938089219047604/image-removebg-preview1.png', '[]', 1),
-	(162, 'foodchain-drink-item', 'dragonsden-chinese-thee', 'Chinese thee', '中國茶', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938111192993822/kisspng-tea-strainer-teapot-mug-u30b9u30c8u30ecu30fcu30cau-tea-vector-5a9ebf04e38128.3643709015203530289319-removebg-preview.png', '[]', 1),
-	(163, 'foodchain-drink-item', 'dragonsden-sour-plum-soda', 'Sour Plum Soda', '酸梅汽水', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938133993234472/sweet-and-sour-plum-juice-removebg-preview1.png', '[]', 1),
-	(164, 'foodchain-drink-item', 'dragonsden-baijiu', 'Baijiu', '白酒', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938089441341524/image-removebg-preview2.png', '[]', 1),
-	(165, 'foodchain-food-item', 'burger-chicken-wrap', 'Chicken Wrap', 'Een heerlijke, malse, chicken wrap, met wat tomaas, sla en Burger Shot saus. Voor onze kip liefhebbers echt aanraader. ', 'https://cdn.discordapp.com/attachments/1140626481870024715/1144221250957365339/kipwrapbs.png', '[]', 1),
-	(166, 'foodchain-drink-item', 'uwu-tjendol', 'Tjendol', 'Hou je van exotische smaken en verfrissende drankjes?', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149647865287811183/Thee20100x100.png', '[]', 1),
+	(143, 'foodchain-side-item', 'dragonsden-sushi-rolls', 'Sushi Rolls', '', 'https://www.google.com/search?q=sushi%20rolls%20png&tbm=isch&tbs=rimg:CXze9ONMKqtSYTLqfzsTevvysgIRCgIIABAAOgQIARAAVWjy1z7AAgDYAgDgAgA&rlz=1C1FHFK_nlNL946NL946&hl=nl&sa=X&ved=0CBoQuIIBahcKEwjorZbL14eBAxUAAAAAHQAAAAAQKQ&biw=1903&bih=923#imgrc=ofbRs-DjH52OOM', '[]', 1),
+	(144, 'foodchain-food-item', 'dragonsden-peking-duck', 'Peking Duck', '', 'https://www.google.com/search?q=peking+duck+png&tbm=isch&ved=2ahUKEwj5mN3d14eBAxVthP0HHWooCkQQ2-cCegQIABAA&oq=peking+duck+png&gs_lcp=CgNpbWcQAzIHCAAQExCABDoICAAQBxAeEBM6BwgAEIoFEEM6CggAEIoFELEDEEM6CAgAEIAEELEDOgUIABCABDoECAAQHlDcBljEEmCkE2gAcAB4AIABZogBtQaSAQQxNS4xmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=J_HwZLnpF-2I9u8P6tCooAQ&bih=923&biw=1903&rlz=1C1FHFK_nlNL946NL946&hl=nl#imgrc=FMD_ZR4CLJDYNM', '[]', 1),
+	(145, 'foodchain-dessert-item', 'dragonsden-moon-cakes', 'Moon Cakes', '', 'https://www.google.com/search?q=moon+cakes+png&tbm=isch&ved=2ahUKEwjm0Y7u3IeBAxUvgf0HHWtGB2YQ2-cCegQIABAA&oq=moon+cakes+png&gs_lcp=CgNpbWcQAzoHCAAQExCABFChBlihBmCkC2gAcAB4AIABLogBV5IBATKYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=h_bwZKbyOK-C9u8P64ydsAY&bih=923&biw=1920&rlz=1C1FHFK_nlNL946NL946&hl=nl#imgrc=uOGJ2kfdkkrlrM', '[]', 1),
+	(146, 'foodchain-drink-item', 'dragonsden-sojaboon-melk', 'Sojaboon Melk', '', 'https://www.google.com/search?sca_esv=561727227&rlz=1C1FHFK_nlNL946NL946&q=soy+milk+png&tbm=isch&source=lnms&sa=X&ved=2ahUKEwiJ_fuz3YeBAxVgg_0HHerIARwQ0pQJegQICBAB&biw=1920&bih=923&dpr=1#imgrc=-OYId4kWaroSPM', '[]', 1),
+	(147, 'foodchain-side-item', 'dragonsden-dumplings', 'Dumplings', '', 'https://www.google.com/search?sca_esv=561727227&rlz=1C1FHFK_nlNL946NL946&q=dumplings+png&tbm=isch&source=lnms&sa=X&ved=2ahUKEwi1yv_F3oeBAxUO0gIHHSDOAvAQ0pQJegQIDBAB&biw=1920&bih=923&dpr=1#imgrc=BELJmU-Dwf5CpM', '[]', 1),
+	(149, 'foodchain-food-item', 'dragonsden-peking-eend', 'Peking Eend', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938111813750936/peking-duck-with-ai-generated-free-png-removebg-preview.png', '[]', 1),
+	(150, 'foodchain-food-item', 'dragonsden-babi-pangang', 'Babi Pangang', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938088795418745/Babi-pangang-met-babi-pangangsaus_1394997-7-0_560x560-removebg-preview.png', '[]', 1),
+	(151, 'foodchain-food-item', 'dragonsden-chow-mein', 'Chow Mein', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938110119247892/png-clipart-chow-mein-chinese-noodles-lo-mein-fried-noodles-hokkien-mee-catering-food-srvice-chow-mein-chinese-noodles-removebg-preview.png', '[]', 1),
+	(152, 'foodchain-food-item', 'dragonsden-tjap-tjoy', 'Tjap Tjoy', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938088585707670/17bc7535438c9a335cabd2c55a1e8956a2d45fa8-removebg-preview.png', '[]', 1),
+	(153, 'foodchain-side-item', 'dragonsden-sushi-rollen', 'Sushi rollen', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938088346619934/image-removebg-preview31.png', '[]', 1),
+	(154, 'foodchain-side-item', 'dragonsden-gyoza\'s', 'Gyoza\'s', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938134228119676/pngtree-a-basket-of-delicious-winter-solstice-breakfast-steamed-dumplings-png-image_2630861-removebg-preview.png', '[]', 1),
+	(155, 'foodchain-side-item', 'dragonsden-loempia’s', 'Loempia’s', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938110328967288/image-removebg-preview41.png', '[]', 1),
+	(156, 'foodchain-side-item', 'dragonsden-chinese-tomatensoep', 'Chinese Tomatensoep', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938089000931439/chinese-tomatensoep-website-removebg-preview2.png', '[]', 1),
+	(157, 'foodchain-dessert-item', 'dragonsden-maancakejes', 'Maancakejes', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938111469813831/Naamloos-removebg-preview.png', '[]', 1),
+	(158, 'foodchain-dessert-item', 'dragonsden-sesamijs', 'Sesamijs', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938134442033182/pngtree-cream-ice-cream-dessert-in-a-glass-served-on-a-wooden-image_2527843-removebg-preview.png', '[]', 1),
+	(159, 'foodchain-dessert-item', 'dragonsden-tofu-pudding', 'Tofu Pudding', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938110823890994/images-removebg-preview.png', '[]', 1),
+	(160, 'foodchain-dessert-item', 'dragonsden-lychee-jelly', 'Lychee Jelly', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938110568058880/image-removebg-preview.png', '[]', 1),
+	(161, 'foodchain-drink-item', 'dragonsden-sojamelk', 'Sojamelk', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938089219047604/image-removebg-preview1.png', '[]', 1),
+	(162, 'foodchain-drink-item', 'dragonsden-chinese-thee', 'Chinese thee', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938111192993822/kisspng-tea-strainer-teapot-mug-u30b9u30c8u30ecu30fcu30cau-tea-vector-5a9ebf04e38128.3643709015203530289319-removebg-preview.png', '[]', 1),
+	(163, 'foodchain-drink-item', 'dragonsden-sour-plum-soda', 'Sour Plum Soda', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938133993234472/sweet-and-sour-plum-juice-removebg-preview1.png', '[]', 1),
+	(164, 'foodchain-drink-item', 'dragonsden-baijiu', 'Baijiu', '', 'https://cdn.discordapp.com/attachments/992117554422218935/1146938089441341524/image-removebg-preview2.png', '[]', 1),
+	(165, 'foodchain-food-item', 'burger-chicken-wrap', 'Chicken Wrap', '', 'https://cdn.discordapp.com/attachments/1140626481870024715/1144221250957365339/kipwrapbs.png', '[]', 1),
+	(166, 'foodchain-drink-item', 'uwu-tjendol', 'Tjendol', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149647865287811183/Thee20100x100.png', '[]', 1),
 	(167, 'foodchain-drink-item', 'uwu-jus-alpukat', 'Jus Alpukat', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149646498548682783/Green20Drink20100x100.png', '[]', 1),
-	(168, 'foodchain-dessert-item', 'uwu-kwee-klepon', 'Kwee Klepon', 'Indonesische Zoete Balletjes', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149660108536696873/Kwee-Klepon20100x100.png', '[]', 1),
+	(168, 'foodchain-dessert-item', 'uwu-kwee-klepon', 'Kwee Klepon', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149660108536696873/Kwee-Klepon20100x100.png', '[]', 1),
 	(169, 'foodchain-dessert-item', 'uwu-spekkoek-pandan', 'Spekkoek Pandan', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149663435743838308/Cake20100x100.png', '[]', 1),
-	(170, 'foodchain-dessert-item', 'uwu-bubur-sumsum', 'Bubur Sumsum', 'Indonesische kokospudding', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149654660882378853/bubur-sumsum-kokos-pudding20bowl20100x100.png', '[]', 1),
-	(171, 'foodchain-side-item', 'uwu-pisang-goreng', 'Pisang Goreng', 'Gebakken Banaan', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149653190233567293/Olie20bollen20100x100.png', '[]', 1),
+	(170, 'foodchain-dessert-item', 'uwu-bubur-sumsum', 'Bubur Sumsum', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149654660882378853/bubur-sumsum-kokos-pudding20bowl20100x100.png', '[]', 1),
+	(171, 'foodchain-side-item', 'uwu-pisang-goreng', 'Pisang Goreng', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149653190233567293/Olie20bollen20100x100.png', '[]', 1),
 	(172, 'foodchain-side-item', 'uwu-javaanse-garnalen', 'Javaanse Garnalen', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149656995666866226/Javaanse-garnalen20100x100.png', '[]', 1),
-	(173, 'foodchain-food-item', 'uwu-rendag', 'Rendag', 'Rundvlees met rijst en pittige boontjes', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149661053509185616/rendang-padang-bbq20100x100.png', '[]', 1),
-	(174, 'foodchain-side-item', 'uwu-indonesische-lemper', 'Indonesische lemper', 'Met kip', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149664608215384124/Lemper_Ajam20100x100.png', '[]', 1),
-	(175, 'foodchain-side-item', 'dragonsden-oriental-pearl', 'Oriental Pearl', '東方明珠', 'https://media.discordapp.net/attachments/889488060650229901/1150061272029724752/755bbd66d1942eee18db8d1e557e4075-removebg-preview1.png', '[]', 1),
-	(176, 'foodchain-side-item', 'dragonsden-buddha-jumps-over-the-wall', 'Buddha Jumps Over The Wall', '佛跳牆', 'https://cdn.discordapp.com/attachments/889488060650229901/1150062640744374282/St.-Regis-Macao-Buddha-Jumps-over-the-Wall-820x1024-removebg-preview1.png', '[]', 1),
-	(177, 'foodchain-side-item', 'dragonsden-yin-yang-scallops', 'Yin Yang Scallops', '陰陽扇貝', 'https://media.discordapp.net/attachments/889488060650229901/1150061272465940511/image-removebg-preview51.png', '[]', 1),
-	(178, 'foodchain-drink-item', 'dragonsden-kweichow-moutai', 'Kweichow Moutai', '貴州茅台', 'https://media.discordapp.net/attachments/889488060650229901/1150061271488667710/moutai-removebg-preview1.png', '[]', 1),
-	(179, 'foodchain-dessert-item', 'burger-vefrissende-salade', 'Vefrissende Salade', 'Verfrissende salade die heerlijk smaakt bij een menu. Fast and tasty!', 'https://cdn.discordapp.com/attachments/1140814530398658741/1151245611446829106/grilled-chicken-salad-png-19.png', '[]', 1),
-	(180, 'foodchain-food-item', 'uwu-uwu-panda-cheeseburger', 'UwU Panda CheeseBurger', 'Fastfood', 'https://cdn.discordapp.com/attachments/1140047966120464454/1145335824272068638/Panda_Burger_100x100.png', '[]', 1),
+	(173, 'foodchain-food-item', 'uwu-rendag', 'Rendag', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149661053509185616/rendang-padang-bbq20100x100.png', '[]', 1),
+	(174, 'foodchain-side-item', 'uwu-indonesische-lemper', 'Indonesische lemper', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149664608215384124/Lemper_Ajam20100x100.png', '[]', 1),
+	(175, 'foodchain-side-item', 'dragonsden-oriental-pearl', 'Oriental Pearl', '', 'https://media.discordapp.net/attachments/889488060650229901/1150061272029724752/755bbd66d1942eee18db8d1e557e4075-removebg-preview1.png', '[]', 1),
+	(176, 'foodchain-side-item', 'dragonsden-buddha-jumps-over-the-wall', 'Buddha Jumps Over The Wall', '', 'https://cdn.discordapp.com/attachments/889488060650229901/1150062640744374282/St.-Regis-Macao-Buddha-Jumps-over-the-Wall-820x1024-removebg-preview1.png', '[]', 1),
+	(177, 'foodchain-side-item', 'dragonsden-yin-yang-scallops', 'Yin Yang Scallops', '', 'https://media.discordapp.net/attachments/889488060650229901/1150061272465940511/image-removebg-preview51.png', '[]', 1),
+	(178, 'foodchain-drink-item', 'dragonsden-kweichow-moutai', 'Kweichow Moutai', '', 'https://media.discordapp.net/attachments/889488060650229901/1150061271488667710/moutai-removebg-preview1.png', '[]', 1),
+	(179, 'foodchain-dessert-item', 'burger-vefrissende-salade', 'Vefrissende Salade', '', 'https://cdn.discordapp.com/attachments/1140814530398658741/1151245611446829106/grilled-chicken-salad-png-19.png', '[]', 1),
+	(180, 'foodchain-food-item', 'uwu-uwu-panda-cheeseburger', 'UwU Panda CheeseBurger', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1145335824272068638/Panda_Burger_100x100.png', '[]', 1),
 	(181, 'foodchain-food-item', 'uwu-uwu-sushi-panda-box-', 'UwU Sushi Panda box ', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1143601978375688344/Sushi20box20100x100.png', '[]', 1),
 	(182, 'foodchain-food-item', 'uwu-uwu-panda-pancakes', 'UwU Panda Pancakes', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1142435418999103488/Souffle_pancake20100x100.png', '[]', 1),
-	(183, 'foodchain-food-item', 'uwu-rendag', 'Rendag', 'Rundvlees met rijst en pittige boontjes', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149661053509185616/rendang-padang-bbq20100x100.png', '[]', 1),
+	(183, 'foodchain-food-item', 'uwu-rendag', 'Rendag', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1149661053509185616/rendang-padang-bbq20100x100.png', '[]', 1),
 	(184, 'foodchain-food-item', 'uwu-uwu-panda-pokebowl', 'UwU Panda Pokebowl', '', 'https://cdn.discordapp.com/attachments/1140047966120464454/1145339770298454036/Pokebowl_100x100.png', '[]', 1),
-	(185, 'foodchain-food-item', 'uwu-spaanse-paella', 'Spaanse Paella', 'rijst, zeevruchten als vis en schaaldieren, stukjes kip, konijn, tomatenbasis, garrofónes, snijbonen en saffraan. ', 'https://cdn.discordapp.com/attachments/1121098337727295628/1151578160895365203/Image20220100x100.png', '[]', 1),
-	(186, 'foodchain-side-item', 'uwu-empanadas', 'Empanadas', 'Met beef', 'https://cdn.discordapp.com/attachments/1121098337727295628/1151581488807170110/Empanadas-met-zoete-aardappelcurry20100x100.png', '[]', 1),
-	(187, 'foodchain-dessert-item', 'uwu-churros-met-chocodip-', 'Churros met chocodip ', 'Spaanse donut', 'https://cdn.discordapp.com/attachments/1121098337727295628/1151653360559194145/churros-met-chocoladesaus20100x100.png', '[]', 1),
+	(185, 'foodchain-food-item', 'uwu-spaanse-paella', 'Spaanse Paella', '', 'https://cdn.discordapp.com/attachments/1121098337727295628/1151578160895365203/Image20220100x100.png', '[]', 1),
+	(186, 'foodchain-side-item', 'uwu-empanadas', 'Empanadas', '', 'https://cdn.discordapp.com/attachments/1121098337727295628/1151581488807170110/Empanadas-met-zoete-aardappelcurry20100x100.png', '[]', 1),
+	(187, 'foodchain-dessert-item', 'uwu-churros-met-chocodip-', 'Churros met chocodip ', '', 'https://cdn.discordapp.com/attachments/1121098337727295628/1151653360559194145/churros-met-chocoladesaus20100x100.png', '[]', 1),
 	(188, 'foodchain-dessert-item', 'uwu-crema-catalana', 'Crema Catalana', '', 'https://cdn.discordapp.com/attachments/1121098337727295628/1151997580285325332/crema-catalana-yemekcom20100x100.png', '[]', 1),
-	(189, 'foodchain-drink-item', 'uwu-sangria-', 'Sangria ', 'Sangria is een Spaanse/Portugese licht-alcoholische drank', 'https://cdn.discordapp.com/attachments/1121098337727295628/1151584669133975673/Drink20100x100.png', '[]', 1),
-	(190, 'foodchain-drink-item', 'uwu-agua-de-valencia', 'Agua de Valencia', 'De cocktail werd voor het eerst gemaakt in 1959 door Constante Gil in de bar Café Madrid de Valencia in Valencia', 'https://cdn.discordapp.com/attachments/1121098337727295628/1152580861095575602/agua-de-valencia-100x100.png', '[]', 1),
-	(191, 'foodchain-side-item', 'dragonsden-sambal', 'Sambal', '叁峇', 'https://i.imgur.com/6BD8shJ.png', '[]', 1),
+	(189, 'foodchain-drink-item', 'uwu-sangria-', 'Sangria ', '', 'https://cdn.discordapp.com/attachments/1121098337727295628/1151584669133975673/Drink20100x100.png', '[]', 1),
+	(190, 'foodchain-drink-item', 'uwu-agua-de-valencia', 'Agua de Valencia', '', 'https://cdn.discordapp.com/attachments/1121098337727295628/1152580861095575602/agua-de-valencia-100x100.png', '[]', 1),
+	(191, 'foodchain-side-item', 'dragonsden-sambal', 'Sambal', '', 'https://i.imgur.com/6BD8shJ.png', '[]', 1),
 	(192, 'foodchain-food-item', 'uwu-pasta-carbonara', 'Pasta Carbonara', '', 'https://cdn.discordapp.com/attachments/1154524619521413261/1154544481689944125/pasta_carbonara20100x100.png', '[]', 1),
 	(193, 'foodchain-food-item', 'uwu-lasagne', 'Lasagne', '', 'https://cdn.discordapp.com/attachments/1154524619521413261/1154550341363322971/Lasagne20100x100.png', '[]', 1),
 	(194, 'foodchain-food-item', 'uwu-lasagne', 'Lasagne', '', 'https://cdn.discordapp.com/attachments/1154524619521413261/1154550341363322971/Lasagne20100x100.png', '[]', 1),
@@ -1442,154 +1627,154 @@ INSERT INTO `server_customtypes` (`id`, `item_id`, `type_id`, `label`, `descript
 	(200, 'foodchain-drink-item', 'uwu-italiaanse-cream-soda-', 'Italiaanse Cream Soda ', '', 'https://cdn.discordapp.com/attachments/1154524619521413261/1154524683413237901/vanilla_raspberry_italian_cream_soda20100x100.png', '[]', 1),
 	(201, 'foodchain-dessert-item', 'uwu-limoncellomousse', 'Limoncellomousse', '', 'https://cdn.discordapp.com/attachments/1154524619521413261/1154524729596727426/mouse_limoncello20100x100.png', '[]', 1),
 	(202, 'foodchain-dessert-item', 'uwu-panna-cotta-', 'Panna Cotta ', '', 'https://cdn.discordapp.com/attachments/1154524619521413261/1154524803160625232/Panna20cotta20z20malinami20100x100.png?ex=651542c3&is=6513f143&hm=449ec2f1b33af6d0bda14b06ccae844776094569640cc2d49cc45def9bbb444c&', '[]', 1),
-	(203, 'foodchain-dessert-item', 'burger-wiet-lollipop', 'Wiet Lollipop', 'Een groene lollie met de smaak van cannabis en fruit.', 'https://cdn.discordapp.com/attachments/1156250277624676464/1156623811706376222/lolly.png?ex=6515a55d&is=651453dd&hm=1006e9fe735542bfa1efa11aaaa68214e0d5b3108f3fda297773b57b79359762&', '[]', 1),
-	(204, 'foodchain-drink-item', 'burger-puff-a-chino', 'Puff A Chino', 'Deze heerlijk romige Cappuccino is gemaakt van verse koffiebonen en verse melk. Om het af te maken hebben wij hem verzorgd met een partoon van een wietblad.', 'https://cdn.discordapp.com/attachments/1156250277624676464/1156624427434393721/kopje_koffie_ouleh.png?ex=6515a5f0&is=65145470&hm=cd06e2a1afa869bdada3223ddc87adae1e49f5234229df421bc61cdd75dc3c9a&', '[]', 1),
+	(203, 'foodchain-dessert-item', 'burger-wiet-lollipop', 'Wiet Lollipop', '', 'https://cdn.discordapp.com/attachments/1156250277624676464/1156623811706376222/lolly.png?ex=6515a55d&is=651453dd&hm=1006e9fe735542bfa1efa11aaaa68214e0d5b3108f3fda297773b57b79359762&', '[]', 1),
+	(204, 'foodchain-drink-item', 'burger-puff-a-chino', 'Puff A Chino', '', 'https://cdn.discordapp.com/attachments/1156250277624676464/1156624427434393721/kopje_koffie_ouleh.png?ex=6515a5f0&is=65145470&hm=cd06e2a1afa869bdada3223ddc87adae1e49f5234229df421bc61cdd75dc3c9a&', '[]', 1),
 	(205, 'foodchain-food-item', 'uwu-fajitas-met-kip', 'Fajitas met kip', '', 'https://cdn.discordapp.com/attachments/1154706892707348480/1157262548014477362/fajitas20kip20100x100.png', '[]', 1),
 	(206, 'foodchain-dessert-item', 'uwu-polvorones', 'Polvorones', '', 'https://cdn.discordapp.com/attachments/1154706892707348480/1157262516594946079/Polvorones20100x100.png', '[]', 1),
 	(207, 'foodchain-dessert-item', 'uwu-mexicaanse-flan', 'Mexicaanse Flan', '', 'https://cdn.discordapp.com/attachments/1154706892707348480/1157264750971998270/rich-creamcheese-flan20100x100.png', '[]', 1),
 	(208, 'foodchain-drink-item', 'uwu-frozen-margarita', 'Frozen Margarita', '', 'https://cdn.discordapp.com/attachments/1154706892707348480/1157266293003657306/Frozen20Margarita20100x100.png', '[]', 1),
 	(209, 'foodchain-drink-item', 'uwu-jarritos-guava', 'Jarritos Guava', '', 'https://cdn.discordapp.com/attachments/1154706892707348480/1157266620239061022/JARRITOS20GUAVA20100x100.png', '[]', 1),
 	(210, 'foodchain-side-item', 'uwu-mexicaanse-chicken-wings', 'Mexicaanse chicken wings', '', 'https://cdn.discordapp.com/attachments/1154706892707348480/1157269317474332792/fajitas_kip-100x100.png', '[]', 1),
-	(211, 'foodchain-drink-item', 'uwu-dom-perignon', 'Dom Perignon', 'ドンペリニヨン', 'https://cdn.discordapp.com/attachments/1157084585457369089/1157454695737065492/Dom20Perignon2020E38389E383B3E3839AE383AAE3838BE383A8E383B320100x100.png', '[]', 1),
-	(212, 'foodchain-drink-item', 'uwu--kikusui-perfect-snow-', ' Kikusui Perfect Snow ', '菊水パーフェクトスノー', 'https://cdn.discordapp.com/attachments/1157084585457369089/1157454786606665758/kikusui-perfect-snow-sake100x100.png', '[]', 1),
-	(213, 'foodchain-food-item', 'uwu-golden-wagyu-beef-burger', 'Golden Wagyu beef burger', '黄金色の和牛バーガー', 'https://cdn.discordapp.com/attachments/1157084585457369089/1157454849433157702/black-gold-burger20100x100.png', '[]', 1),
-	(214, 'foodchain-food-item', 'uwu-tuna-nigiri', 'Tuna Nigiri', 'マグロにぎり', 'https://cdn.discordapp.com/attachments/1157084585457369089/1157454907926913164/Tuna20100x100.png', '[]', 1),
-	(215, 'foodchain-food-item', 'uwu-wagashi', 'Wagashi', '和菓子', 'https://cdn.discordapp.com/attachments/1157084585457369089/1157454971927797870/wagashi20E5928CE88F93E5AD9020100x100.png', '[]', 1),
-	(216, 'foodchain-food-item', 'burger-black-angus-steak', 'Black Angus Steak', 'Deze overheerlijke burger word gemaakt van malse rundvlees hamburger met lichte peper en zout kruiding. Met een rulle structuur en stevige bite, gemaakt met rundvlees van runderen van het Black Angus ras.', 'https://media.discordapp.net/attachments/1146895372644528178/1157747135094214778/Burger_100x100.png?ex=6519bb8a&is=65186a0a&hm=f636b62e71a3531761c60fd721f9842ee522dcf38aee38ae8c4f21389f049320&', '[]', 1),
-	(217, 'foodchain-drink-item', 'burger-whisky-cola', 'Whisky Cola', 'Whisky-cola is een longdrinkcocktail die bestaat uit whisky of bourbon aangelengd met cola. Zoals bij vele cocktails is ijs een vereiste', 'https://media.discordapp.net/attachments/1146895372644528178/1157747145567375370/Drank_100x100.png?ex=6519bb8d&is=65186a0d&hm=ad92a63213c27051644c0813220c5719e7898d15234629adc2c30ba97ff9e0a1&', '[]', 1),
+	(211, 'foodchain-drink-item', 'uwu-dom-perignon', 'Dom Perignon', '', 'https://cdn.discordapp.com/attachments/1157084585457369089/1157454695737065492/Dom20Perignon2020E38389E383B3E3839AE383AAE3838BE383A8E383B320100x100.png', '[]', 1),
+	(212, 'foodchain-drink-item', 'uwu--kikusui-perfect-snow-', ' Kikusui Perfect Snow ', '', 'https://cdn.discordapp.com/attachments/1157084585457369089/1157454786606665758/kikusui-perfect-snow-sake100x100.png', '[]', 1),
+	(213, 'foodchain-food-item', 'uwu-golden-wagyu-beef-burger', 'Golden Wagyu beef burger', '', 'https://cdn.discordapp.com/attachments/1157084585457369089/1157454849433157702/black-gold-burger20100x100.png', '[]', 1),
+	(214, 'foodchain-food-item', 'uwu-tuna-nigiri', 'Tuna Nigiri', '', 'https://cdn.discordapp.com/attachments/1157084585457369089/1157454907926913164/Tuna20100x100.png', '[]', 1),
+	(215, 'foodchain-food-item', 'uwu-wagashi', 'Wagashi', '', 'https://cdn.discordapp.com/attachments/1157084585457369089/1157454971927797870/wagashi20E5928CE88F93E5AD9020100x100.png', '[]', 1),
+	(216, 'foodchain-food-item', 'burger-black-angus-steak', 'Black Angus Steak', '', 'https://media.discordapp.net/attachments/1146895372644528178/1157747135094214778/Burger_100x100.png?ex=6519bb8a&is=65186a0a&hm=f636b62e71a3531761c60fd721f9842ee522dcf38aee38ae8c4f21389f049320&', '[]', 1),
+	(217, 'foodchain-drink-item', 'burger-whisky-cola', 'Whisky Cola', '', 'https://media.discordapp.net/attachments/1146895372644528178/1157747145567375370/Drank_100x100.png?ex=6519bb8d&is=65186a0d&hm=ad92a63213c27051644c0813220c5719e7898d15234629adc2c30ba97ff9e0a1&', '[]', 1),
 	(218, 'foodchain-side-item', 'uwu-mexicaanse-chicken-wings-', 'Mexicaanse Chicken Wings ', '', 'https://cdn.discordapp.com/attachments/1154706892707348480/1157269317474332792/fajitas_kip-100x100.png', '[]', 1),
-	(219, 'foodchain-drink-item', 'dragonsden-cannabis-energy-drink', 'Cannabis Energy Drink', '大麻能量飲料', 'https://imgur.com/MIrQgxq', '[]', 1),
+	(219, 'foodchain-drink-item', 'dragonsden-cannabis-energy-drink', 'Cannabis Energy Drink', '', 'https://imgur.com/MIrQgxq', '[]', 1),
 	(220, 'foodchain-drink-item', 'uwu-fernandes', 'Fernandes', '', 'https://cdn.discordapp.com/attachments/1159461544996909056/1159620568056868905/farnandes-cherry-bouqet20100x100.png', '[]', 1),
 	(221, 'foodchain-drink-item', 'uwu-dawet', 'Dawet', '', 'https://cdn.discordapp.com/attachments/1159461544996909056/1159620472753893416/Dawet20100x100.png', '[]', 1),
 	(222, 'foodchain-dessert-item', 'uwu-maizena-koekjes', 'Maizena Koekjes', '', 'https://cdn.discordapp.com/attachments/1159461544996909056/1159620640979030198/Maizena_koekjes20100x100.png', '[]', 1),
 	(223, 'foodchain-dessert-item', 'uwu-eksi-kuku', 'Eksi Kuku', '', 'https://cdn.discordapp.com/attachments/1159461544996909056/1159620425354063902/eksi_kuku20100x100.png', '[]', 1),
 	(224, 'foodchain-side-item', 'uwu-saoto-soep', 'Saoto Soep', '', 'https://cdn.discordapp.com/attachments/1159461544996909056/1159620809812348998/Saoto_soup-100x100.png', '[]', 1),
 	(225, 'foodchain-food-item', 'uwu-roti-met-kip', 'Roti Met Kip', '', 'https://cdn.discordapp.com/attachments/1159461544996909056/1159620704422084759/Roti_schotel-100x100.png', '[]', 1),
-	(226, 'foodchain-drink-item', 'dragonsden-cannabis-energy-drink', 'Cannabis Energy Drink', '大麻能量飲料', 'https://i.imgur.com/t0Y2U2D.png', '[]', 1),
-	(227, 'foodchain-drink-item', 'uwu-banana-kush-ijs-koffie', 'Banana Kush ijs koffie', 'Ijs koude koffie banana kush flavour met lekkere koffie aromas.', 'https://cdn.discordapp.com/attachments/1159949332116668526/1159989826024636447/Banana_ice_coffee20100x100.png', '[]', 1),
-	(228, 'foodchain-dessert-item', 'uwu-critical-kush-koekjes-', 'Critical Kush koekjes ', 'De overheerlijk koekjes worden gemaakt door koekjes te combineren met de smaken van Critical Kush. ', 'https://cdn.discordapp.com/attachments/1159949332116668526/1159983818976014356/Wiet_cupcake20100x100.png', '[]', 1),
-	(229, 'foodchain-dessert-item', 'uwu-monster-koekie', 'Monster Koekie', 'monstelijk lekker', 'https://cdn.discordapp.com/attachments/1159917196177313855/1160009568634536039/Cookie20monster20cookie20100x100.png', '[]', 1),
-	(230, 'foodchain-dessert-item', 'uwu-critical-kush-cupcake', 'Critical Kush Cupcake', 'De overheerlijk koekjes worden gemaakt door cupcake te combineren met de smaken van Critical Kush.', 'https://cdn.discordapp.com/attachments/1159949332116668526/1159983818976014356/Wiet_cupcake20100x100.png', '[]', 1),
-	(231, 'foodchain-drink-item', 'dragonsden-cannabis-energy-drink', 'Cannabis Energy Drink', '大麻能量飲料', 'https://i.imgur.com/F0iAcSJ.png', '[]', 1),
-	(232, 'foodchain-drink-item', 'dragonsden-energy-drink', 'Energy Drink', '能量飲料', 'https://i.imgur.com/F0iAcSJ.png', '[]', 1),
-	(233, 'foodchain-side-item', 'dragonsden-gelukskoekje', 'Gelukskoekje', '幸運餅乾 吸完煙後 這款餅乾會帶來好運', 'https://i.imgur.com/UwpDJvy.png', '[]', 1),
-	(234, 'foodchain-drink-item', 'dragonsden-chinese-cannabis-thee', 'Chinese Cannabis Thee', '中國大麻茶 古代中藥茶 有大麻味和糖。', 'https://i.imgur.com/qUQbOsH.png', '[]', 1),
-	(235, 'foodchain-side-item', 'burger-bittergarnituur', 'Bittergarnituur', 'Mix van diverse mini snacks zoals bitterballen, vlammetjes, frikandel, mexicano, nasi-balletje, kipnugget', 'https://cdn.discordapp.com/attachments/1149046036296376330/1159992404494012486/bitter_garnituurtje_100x100.png?ex=65330a1c&is=6520951c&hm=10e4e63e41776445913af7fe4cc1a8a008de688373a579655b6f094618c9a236&', '[]', 1),
-	(236, 'foodchain-drink-item', 'burger-wijn', 'Wijn', 'Zoetheid, zuurgraad, tannine, alcohol en body. Deze basiskenmerken identificeer je wanneer de wijn je smaakpapillen raakt. Je proeft een gebalanceerde wijn wanneer er een goede balans is tussen deze bovenstaande kenmerken.', 'https://cdn.discordapp.com/attachments/1149046036296376330/1159992404963762266/wijn_100x100.png?ex=65330a1c&is=6520951c&hm=708c31188c00a0074b36f38d78608157d2ec031d38cd0ffd5ec5a425998da868&', '[]', 1),
-	(237, 'foodchain-drink-item', 'burger-bier', 'Bier', 'Bier is een natuurproduct. Met slechts 4 natuurlijke ingredienten kunnen duizenden verschillende bieren worden gebrouwen. Bier bestaat voor 90% uit water. Graan vormt daarnaast een belangrijk ingrediënt voor de smaak, alcohol en kleur van het bier.', 'https://cdn.discordapp.com/attachments/1149046036296376330/1159992404728877066/Hertog-Jan_100x100.png?ex=65330a1c&is=6520951c&hm=04fa655699301e205504b132e8bf87b6c91f8e7e63c843c4b19179c6fb7bc622&', '[]', 1),
-	(238, 'foodchain-drink-item', 'burger-bier', 'Bier', 'Bier is een natuurproduct. Met slechts 4 natuurlijke ingredienten kunnen duizenden verschillende bieren worden gebrouwen. Bier bestaat voor 90% uit water. Graan vormt daarnaast een belangrijk ingrediënt voor de smaak, alcohol en kleur van het bier.', 'https://cdn.discordapp.com/attachments/1149046036296376330/1159992404728877066/Hertog-Jan_100x100.png?ex=65330a1c&is=6520951c&hm=04fa655699301e205504b132e8bf87b6c91f8e7e63c843c4b19179c6fb7bc622&', '[]', 1),
-	(239, 'foodchain-side-item', 'burger-bittergarnituur', 'Bittergarnituur', 'Mix van diverse mini snacks zoals bitterballen, vlammetjes, frikandel, mexicano, nasi-balletje, kipnugget.', 'https://cdn.discordapp.com/attachments/1149046036296376330/1159992404494012486/bitter_garnituurtje_100x100.png?ex=65330a1c&is=6520951c&hm=10e4e63e41776445913af7fe4cc1a8a008de688373a579655b6f094618c9a236&', '[]', 1),
+	(226, 'foodchain-drink-item', 'dragonsden-cannabis-energy-drink', 'Cannabis Energy Drink', '', 'https://i.imgur.com/t0Y2U2D.png', '[]', 1),
+	(227, 'foodchain-drink-item', 'uwu-banana-kush-ijs-koffie', 'Banana Kush ijs koffie', '', 'https://cdn.discordapp.com/attachments/1159949332116668526/1159989826024636447/Banana_ice_coffee20100x100.png', '[]', 1),
+	(228, 'foodchain-dessert-item', 'uwu-critical-kush-koekjes-', 'Critical Kush koekjes ', '', 'https://cdn.discordapp.com/attachments/1159949332116668526/1159983818976014356/Wiet_cupcake20100x100.png', '[]', 1),
+	(229, 'foodchain-dessert-item', 'uwu-monster-koekie', 'Monster Koekie', '', 'https://cdn.discordapp.com/attachments/1159917196177313855/1160009568634536039/Cookie20monster20cookie20100x100.png', '[]', 1),
+	(230, 'foodchain-dessert-item', 'uwu-critical-kush-cupcake', 'Critical Kush Cupcake', '', 'https://cdn.discordapp.com/attachments/1159949332116668526/1159983818976014356/Wiet_cupcake20100x100.png', '[]', 1),
+	(231, 'foodchain-drink-item', 'dragonsden-cannabis-energy-drink', 'Cannabis Energy Drink', '', 'https://i.imgur.com/F0iAcSJ.png', '[]', 1),
+	(232, 'foodchain-drink-item', 'dragonsden-energy-drink', 'Energy Drink', '', 'https://i.imgur.com/F0iAcSJ.png', '[]', 1),
+	(233, 'foodchain-side-item', 'dragonsden-gelukskoekje', 'Gelukskoekje', '', 'https://i.imgur.com/UwpDJvy.png', '[]', 1),
+	(234, 'foodchain-drink-item', 'dragonsden-chinese-cannabis-thee', 'Chinese Cannabis Thee', '', 'https://i.imgur.com/qUQbOsH.png', '[]', 1),
+	(235, 'foodchain-side-item', 'burger-bittergarnituur', 'Bittergarnituur', '', 'https://cdn.discordapp.com/attachments/1149046036296376330/1159992404494012486/bitter_garnituurtje_100x100.png?ex=65330a1c&is=6520951c&hm=10e4e63e41776445913af7fe4cc1a8a008de688373a579655b6f094618c9a236&', '[]', 1),
+	(236, 'foodchain-drink-item', 'burger-wijn', 'Wijn', '', 'https://cdn.discordapp.com/attachments/1149046036296376330/1159992404963762266/wijn_100x100.png?ex=65330a1c&is=6520951c&hm=708c31188c00a0074b36f38d78608157d2ec031d38cd0ffd5ec5a425998da868&', '[]', 1),
+	(237, 'foodchain-drink-item', 'burger-bier', 'Bier', '', 'https://cdn.discordapp.com/attachments/1149046036296376330/1159992404728877066/Hertog-Jan_100x100.png?ex=65330a1c&is=6520951c&hm=04fa655699301e205504b132e8bf87b6c91f8e7e63c843c4b19179c6fb7bc622&', '[]', 1),
+	(238, 'foodchain-drink-item', 'burger-bier', 'Bier', '', 'https://cdn.discordapp.com/attachments/1149046036296376330/1159992404728877066/Hertog-Jan_100x100.png?ex=65330a1c&is=6520951c&hm=04fa655699301e205504b132e8bf87b6c91f8e7e63c843c4b19179c6fb7bc622&', '[]', 1),
+	(239, 'foodchain-side-item', 'burger-bittergarnituur', 'Bittergarnituur', '', 'https://cdn.discordapp.com/attachments/1149046036296376330/1159992404494012486/bitter_garnituurtje_100x100.png?ex=65330a1c&is=6520951c&hm=10e4e63e41776445913af7fe4cc1a8a008de688373a579655b6f094618c9a236&', '[]', 1),
 	(240, 'foodchain-food-item', 'uwu-iskender', 'Iskender', '', 'https://cdn.discordapp.com/attachments/1161342849669939291/1162176898353352725/iskender20100x100.png', '[]', 1),
 	(241, 'foodchain-side-item', 'uwu-yaprak-sarma', 'Yaprak Sarma', '', 'https://cdn.discordapp.com/attachments/1161342849669939291/1162177031237292032/Yaprak20Sarma20100x100.png', '[]', 1),
 	(242, 'foodchain-dessert-item', 'uwu-kunefe', 'Kunefe', '', 'https://cdn.discordapp.com/attachments/1161342849669939291/1162176925322715216/Kunefe20100x100.png', '[]', 1),
 	(243, 'foodchain-drink-item', 'uwu-turkse-thee', 'Turkse thee', '', 'https://cdn.discordapp.com/attachments/1161342849669939291/1162176995963183164/Turkse20thee20100x100.png', '[]', 1),
 	(244, 'foodchain-drink-item', 'uwu-yayik-ayran', 'Yayik Ayran', '', 'https://cdn.discordapp.com/attachments/1161342849669939291/1162177070126862376/Yayik20Ayran20100x100.png', '[]', 1),
 	(245, 'foodchain-drink-item', 'uwu-ayran', 'Ayran', '', 'https://cdn.discordapp.com/attachments/1161342849669939291/1162177070126862376/Yayik20Ayran20100x100.png', '[]', 1),
-	(246, 'foodchain-food-item', 'dragonsden-tjap-tjoy', 'Tjap Tjoy', '素食主義者-', 'https://i.imgur.com/d3DQjTA.png', '[]', 1),
-	(247, 'foodchain-food-item', 'uwu-berner-platte', 'Berner platte', 'It consists of various meat and sausage varieties such as smoked pork and beef, pork belly, sausage, bacon', 'https://i.imgur.com/7Q2VglP.png', '[]', 1),
-	(248, 'foodchain-drink-item', 'uwu-gazzosa-', 'Gazzosa ', 'Lekker fris drankje', 'https://i.imgur.com/a3xSLUB.png', '[]', 1),
-	(249, 'foodchain-drink-item', 'uwu-rivella', 'Rivella', 'Rivella is een licht sprankelende, lekker verfrissende frisdrank met natuurlijke ingrediënten.', 'https://i.imgur.com/8tZWxFD.png', '[]', 1),
-	(250, 'foodchain-side-item', 'uwu-rösti-met-zalm', 'Rösti met Zalm', 'Wist je dat de rösti – spreek uit: reusjtie – uit Zwitserland komt? ', 'https://i.imgur.com/S4bIWj3.png', '[]', 1),
-	(251, 'foodchain-dessert-item', 'uwu-zuger-kirschtorte', 'Zuger Kirschtorte', 'Zuger Kirschtorte is een Zwitserse laagjescake die bestaat uit lagen notenmeringue, biscuitgebak en botercrème, en op smaak is gebracht met de kersenbrandewijn kirschwasser.', 'https://i.imgur.com/km8O74b.png', '[]', 1),
-	(252, 'foodchain-food-item', 'kebabking-kapsalon', 'kapsalon', 'kapsalon', 'https://i.imgur.com/zY488ub.png', '[]', 1),
-	(253, 'foodchain-food-item', 'kebabking-turkse-pizza', 'turkse pizza', 'Een pizza van een turk', 'https://i.imgur.com/W3ExMfo.png', '[]', 1),
-	(254, 'foodchain-side-item', 'kebabking-friet', 'Friet', 'Friet van de belg', 'https://i.imgur.com/F7SGv6Q.png', '[]', 1),
-	(255, 'foodchain-food-item', 'kebabking-pizza-doner', 'Pizza Doner', 'een pizza met doner', 'https://i.imgur.com/88gzjhK.png', '[]', 1),
-	(256, 'foodchain-food-item', 'kebabking-pizza-margherita', 'pizza margherita', 'pizza van een king', 'https://i.imgur.com/SJBOJMW.png', '[]', 1),
-	(257, 'foodchain-food-item', 'kebabking-kapsalon-kip', 'Kapsalon kip', 'Kapsalon kip', 'https://i.imgur.com/zY488ub.png', '[]', 1),
-	(258, 'foodchain-food-item', 'kebabking-kapsalon-kalf', 'Kapsalon kalf', 'Kapsalon kalf', 'https://i.imgur.com/zY488ub.png', '[]', 1),
-	(259, 'foodchain-food-item', 'kebabking-blabla', 'BLabla', 'DFSDSFCSDF', 'https://i.imgur.com/7w384hy.png', '[]', 1),
-	(260, 'foodchain-food-item', 'kebabking-kappa', 'Kappa', 'Kapsalon ', 'https://i.imgur.com/7w384hy.png', '[]', 1),
-	(261, 'foodchain-food-item', 'kebabking-broodje-doner', 'Broodje Doner', 'Broodje Doner', 'https://i.imgur.com/vmoGuGi.png', '[]', 1),
-	(262, 'foodchain-food-item', 'kebabking-durum-kebab', 'Durum Kebab', 'Durum Kebab', 'https://i.imgur.com/0BAv0kk.png', '[]', 1),
-	(263, 'foodchain-food-item', 'kebabking-sish-kebab', 'sish kebab', 'sish kebab', 'https://i.imgur.com/tntAzWu.png', '[]', 1),
-	(264, 'foodchain-side-item', 'kebabking-bakje-friet', 'bakje friet', 'bakje friet', 'https://i.imgur.com/ovvOQ2a.png', '[]', 1),
-	(265, 'foodchain-food-item', 'kebabking-turkse-pide', 'turkse Pide', 'turkse Pide', 'https://i.imgur.com/T8s3BCL.png', '[]', 1),
-	(266, 'foodchain-side-item', 'kebabking-kip-nuggets', 'kip nuggets', 'kip nuggets', 'https://i.imgur.com/wDXBNH3.png', '[]', 1),
-	(267, 'foodchain-food-item', 'kebabking-pizza-shoarma-', 'pizza shoarma ', 'pizza shoarma ', 'https://i.imgur.com/CQiuWRg.png', '[]', 1),
-	(268, 'foodchain-drink-item', 'kebabking-ayran', 'Ayran', 'Ayran', 'https://i.imgur.com/S4PLPQE.png', '[]', 1),
-	(269, 'foodchain-drink-item', 'kebabking-fernandez', 'Fernandez', 'Fernandez', 'https://i.imgur.com/Nok3hLj.png', '[]', 1),
-	(270, 'foodchain-drink-item', 'kebabking-fernandez-blauw', 'fernandez blauw', 'fernandez blauw', 'https://i.imgur.com/Tr6A1rS.png', '[]', 1),
-	(271, 'foodchain-drink-item', 'kebabking-fernandez-geel', 'fernandez geel', 'fernandez geel', 'https://i.imgur.com/isqQpIN.png', '[]', 1),
-	(272, 'foodchain-food-item', 'kebabking-broodje-cofte', 'broodje cofte', 'broodje cofte', 'https://i.imgur.com/d1O2Kql.png', '[]', 1),
-	(273, 'foodchain-food-item', 'kebabking-sucuk-met-ei', 'sucuk met ei', 'sucuk met ei', 'https://i.imgur.com/afPD6rM.png', '[]', 1),
-	(274, 'foodchain-food-item', 'kebabking-lahmacun', 'lahmacun', 'lahmacun', 'https://i.imgur.com/dOozOG9.png', '[]', 1),
-	(275, 'foodchain-side-item', 'kebabking-borek-kaas', 'borek kaas', 'borek kaas', 'https://i.imgur.com/3GXLl49.png', '[]', 1),
-	(276, 'foodchain-dessert-item', 'kebabking-baklava', 'baklava', 'baklava', 'https://i.imgur.com/lRjqNws.png', '[]', 1),
-	(277, 'foodchain-drink-item', 'kebabking-turkse-thee', 'turkse thee', 'turkse thee', 'https://i.imgur.com/hKcIo6h.png', '[]', 1),
-	(278, 'foodchain-drink-item', 'kebabking-oasis', 'oasis', 'oasis', 'https://i.imgur.com/RQvVaDZ.png', '[]', 1),
-	(279, 'foodchain-dessert-item', 'kebabking-kinder-bueno', 'kinder bueno', 'kinder bueno', 'https://i.imgur.com/uxrXXOO.png', '[]', 1),
-	(280, 'foodchain-side-item', 'kebabking-kip-corn', 'kip corn', 'kip corn', 'https://i.imgur.com/Fnqp2xX.png', '[]', 1),
-	(281, 'foodchain-drink-item', 'kebabking-marrokaanse-thee', 'marrokaanse thee', 'marrokaanse thee', 'https://i.imgur.com/BxiDs5e.png', '[]', 1),
-	(282, 'foodchain-side-item', 'uwu-aubergine-carpaccio-met-rauwe-ham-en-roquefort', 'Aubergine Carpaccio met rauwe ham en roquefort', 'Herfst Menu ', 'https://i.imgur.com/jM7492O.png', '[]', 1),
-	(283, 'foodchain-food-item', 'uwu-varkenshaas-gevuld-met-paddenstoelen', 'Varkenshaas gevuld met paddenstoelen', 'Herfst Menu', 'https://i.imgur.com/v0BzpwY.png', '[]', 1),
-	(284, 'foodchain-dessert-item', 'uwu-herfsttoetje-met-stroopwafels-en-stoofpeertjes', 'Herfsttoetje met stroopwafels en stoofpeertjes', 'Herfst Menu', 'https://i.imgur.com/Bcm7REe.png', '[]', 1),
-	(285, 'foodchain-drink-item', 'uwu-manhattan', 'Manhattan', 'Herfst Menu', 'https://i.imgur.com/FE6OumG.png', '[]', 1),
-	(286, 'foodchain-drink-item', 'uwu-nutella-ijskoffie', 'Nutella ijskoffie', 'Herfst Menu ', 'https://i.imgur.com/SUktqoo.png', '[]', 1),
-	(287, 'foodchain-food-item', 'uwu-vage-bond-spaghetti', 'Vage Bond Spaghetti', 'Spaghetti with Meat Balls', 'https://i.imgur.com/pa3rJij.png', '[]', 1),
-	(288, 'foodchain-dessert-item', 'uwu-browning-brownies', 'Browning Brownies', 'Een brownie of chocolade', 'https://i.imgur.com/GWllzfI.png', '[]', 1),
-	(289, 'foodchain-dessert-item', 'uwu-ellu-bella', 'Ellu Bella', 'is a regional, seasonal festival of Karnataka.', 'https://i.imgur.com/HXWAKTE.png', '[]', 1),
-	(290, 'foodchain-food-item', 'uwu-oesters', 'Oesters', ' Japanse oester', 'https://i.imgur.com/q6hYNZs.png', '[]', 1),
-	(291, 'foodchain-drink-item', 'uwu-pretty-mama-cocktail', 'Pretty Mama cocktail', 'Make it as a punch to keep the party going!', 'https://i.imgur.com/L4VbSY5.png', '[]', 1),
-	(292, 'foodchain-dessert-item', 'uwu-brownings', 'Brownings', ' Brownie of chocoladebrownie', 'https://i.imgur.com/GWllzfI.png', '[]', 1),
-	(293, 'foodchain-drink-item', 'uwu-jaljeera', 'Jaljeera', 'limonade of soortgelijke pittige dranken en jaljira-kruiden,', 'https://i.imgur.com/lLQ28HZ.png', '[]', 1),
-	(294, 'foodchain-drink-item', 'uwu--mango-lassi', ' Mango lassi', 'Lekker zomers en fris op een warme dag en natuurlijk super healthy!', 'https://i.imgur.com/lvbJTvO.png', '[]', 1),
-	(295, 'foodchain-dessert-item', 'uwu-pani-puri', 'Pani Puri', 'Pani puri betekent letterlijk \'water in gefrituurd broo', 'https://i.imgur.com/t9gTukI.png', '[]', 1),
-	(296, 'foodchain-side-item', 'uwu-pav-bhaji', 'Pav Bhaji', ' Is een populaire straatsnack ', 'https://i.imgur.com/QojKyV7.png', '[]', 1),
-	(297, 'foodchain-food-item', 'uwu-butter-chicken-curry-met-basmati-rijst-en-naan', 'Butter chicken curry met basmati rijst en naan', 'Tikka Masala', 'https://i.imgur.com/0g62XRZ.png', '[]', 1),
-	(298, 'foodchain-drink-item', 'undefined-koffie', 'Koffie', 'Een caffeine boost voor de dag', 'https://i.imgur.com/xb2wEOd.png', '[]', 1),
-	(299, 'foodchain-dessert-item', 'undefined-croissantje', 'Croissantje', 'Een lekker goudbruin onbijtbroodje', 'https://i.imgur.com/UKgfS80.png', '[]', 1),
-	(300, 'foodchain-drink-item', 'undefined-ijskoffie', 'Ijskoffie', 'Een koud drankje', 'https://i.imgur.com/slNUR0Y.png', '[]', 1),
-	(301, 'foodchain-drink-item', 'undefined-appelsap', 'Appelsap', 'Vers geperst fruit', 'https://i.imgur.com/phHfxxk.png', '[]', 1),
-	(302, 'foodchain-drink-item', 'undefined-jus-d`-orange', 'Jus d` orange', 'Vers geperst fruit', 'https://i.imgur.com/uQzv8nV.png', '[]', 1),
-	(303, 'foodchain-drink-item', 'undefined-fles-wijn', 'Fles wijn', 'Te veel van dees en je spreekt ook Frans', 'https://i.imgur.com/thbte48.png', '[]', 1),
-	(304, 'foodchain-drink-item', 'undefined-champagne', 'champagne', 'Bubbels met schuim', 'https://i.imgur.com/zy4Z1yF.png', '[]', 1),
-	(305, 'foodchain-dessert-item', 'undefined-donut', 'Donut', 'Das voor agenten of wa ?', 'https://i.imgur.com/IGwlMx4.png', '[]', 1),
-	(306, 'foodchain-dessert-item', 'undefined-macarons', 'macarons', 'Een zoete petitfour', 'https://i.imgur.com/gRoOBl8.png', '[]', 1),
-	(307, 'foodchain-dessert-item', 'undefined-appelflap', 'Appelflap', 'Een geflapte appel', 'https://i.imgur.com/wcVRhkD.png', '[]', 1),
-	(308, 'foodchain-dessert-item', 'undefined-lolly', 'Lolly', 'Iets voor de kindjes', 'https://i.imgur.com/eEmCDHi.png', '[]', 1),
-	(309, 'foodchain-side-item', 'undefined-stokbrood', 'Stokbrood', 'Als het hard is kan je er één mee dood kloppen', 'https://i.imgur.com/4hkYWNX.png', '[]', 1),
-	(310, 'foodchain-dessert-item', 'undefined-muffin', 'Muffin', 'do you know the muffin man', 'https://i.imgur.com/9a5J1S8.png', '[]', 1),
-	(311, 'foodchain-drink-item', 'undefined-jus-d\'orange', 'jus d\'orange', 'Vers geperst jus d\'orange', 'https://i.imgur.com/CSCyLsU.png', '[]', 1),
-	(312, 'foodchain-dessert-item', 'undefined-croissantje---', 'Croissantje   ', 'Een lekker goudbruin onbijtbroodje', 'https://i.imgur.com/Zp6GMtr.png', '[]', 1),
-	(313, 'foodchain-drink-item', 'undefined-wijn', 'Wijn', 'Te veel van dit en je spreek ook Frans', 'https://i.imgur.com/E6HDTjl.png', '[]', 1),
-	(314, 'foodchain-drink-item', 'undefined-schuimwijn', 'Schuimwijn', 'Water met bubbels', 'https://i.imgur.com/a8EDPI0.png', '[]', 1),
-	(315, 'foodchain-food-item', 'undefined-chocolade-muffin', 'Chocolade muffin', 'Do you know the muffin man', 'https://i.imgur.com/FE2sJdV.png', '[]', 1),
-	(316, 'foodchain-drink-item', 'undefined-coffee', 'Coffee', 'Een bakkie pleur ', 'https://i.imgur.com/480H0fG.png', '[]', 1),
-	(317, 'foodchain-food-item', 'undefined-donuts', 'Donuts', 'Een gefrituurd broodje ? Dat is ook niet echt gezond.', 'https://i.imgur.com/qdnmLNB.png', '[]', 1),
-	(318, 'foodchain-food-item', 'undefined-macaron', 'Macaron', 'Een zoete petitfour', 'https://i.imgur.com/YzJLKs0.png', '[]', 1),
-	(319, 'foodchain-food-item', 'undefined-appelgebak', 'Appelgebak', 'Een driehoekig vorm gevuld mengsel. ', 'https://i.imgur.com/WdXSHu4.png', '[]', 1),
-	(320, 'foodchain-dessert-item', 'undefined-lollypop', 'Lollypop', 'Iets voor de kinderen', 'https://i.imgur.com/5lfHm7H.png', '[]', 1),
-	(321, 'foodchain-food-item', 'undefined-baguette', 'Baguette', 'Als dit te oud is kan je er één mee dood kloppen.', 'https://i.imgur.com/RlHXmnx.png', '[]', 1),
-	(322, 'foodchain-food-item', 'undefined-bladerdeeg-koekje', 'Bladerdeeg koekje', 'Een lekker droge koek.', 'https://i.imgur.com/r0c7IIR.png', '[]', 1),
-	(323, 'foodchain-drink-item', 'undefined-chocolade-melk', 'Chocolade Melk', 'Lekker met kaneel.', 'https://i.imgur.com/2yonPy4.png', '[]', 1),
-	(324, 'foodchain-food-item', 'undefined-paris-brest', 'Paris-Brest', 'Een lekker taart met een grappig naam.', 'https://i.imgur.com/QFZ2DVc.png', '[]', 1),
-	(325, 'foodchain-drink-item', 'undefined-iced-coffee', 'Iced coffee', 'Moet dit niet warm zijn ?', 'https://i.imgur.com/NboFFEc.png', '[]', 1),
-	(326, 'foodchain-drink-item', 'undefined-jus-de-pomme', 'jus de pomme', 'Vers geperst appelsap', 'https://i.imgur.com/XjXE48O.png', '[]', 1),
-	(327, 'foodchain-food-item', 'undefined-smos-gezond', 'Smos gezond', 'Is dit echt wel gezond ?', 'https://i.imgur.com/1O2WV9E.png', '[]', 1),
-	(328, 'foodchain-food-item', 'undefined-broodje-kaas-en-hesp', 'Broodje kaas en hesp', 'Is dit gewoon niet een tosti kaas ham ?', 'https://i.imgur.com/Jp64cvW.png', '[]', 1),
-	(329, 'foodchain-food-item', 'undefined-brusselse-wafel', 'Brusselse wafel', 'Lekker met slagroom', 'https://i.imgur.com/t2xvmIr.png', '[]', 1),
-	(330, 'foodchain-food-item', 'undefined-cupcake', 'Cupcake', 'Een klein cakeje', 'https://i.imgur.com/2HRsslw.png', '[]', 1),
-	(331, 'foodchain-food-item', 'undefined-fruittaart', 'Fruittaart', 'Een taart vol fruit ieuww', 'https://i.imgur.com/OSlLM0J.png', '[]', 1),
-	(332, 'foodchain-food-item', 'undefined-kaneelbroodje', 'Kaneelbroodje', 'Lekker broodje kaneel', 'https://i.imgur.com/410pwH8.png', '[]', 1),
-	(333, 'foodchain-drink-item', 'undefined-irish-coffee', 'Irish coffee', 'warme drank van koffie, Ierse whiskey en room.', 'https://i.imgur.com/pobsXoT.png', '[]', 1),
-	(334, 'foodchain-food-item', 'undefined-oliebol', 'Oliebol', 'Een bol vol olie ?', 'https://i.imgur.com/YXv6A6M.png', '[]', 1),
-	(335, 'foodchain-food-item', 'undefined-sandwich', 'Sandwich', 'Een lekker broodje.', 'https://i.imgur.com/PsKK8Cg.png', '[]', 1),
-	(336, 'foodchain-drink-item', 'undefined-slush', 'Slush', 'Bevroren mengsel van water en siroop', 'https://i.imgur.com/HA6KZ8w.png', '[]', 1),
-	(337, 'foodchain-food-item', 'undefined-smos-préparé', 'Smos préparé', 'Lekker broodje gemalen vlees.', 'https://i.imgur.com/GdOCfCc.png', '[]', 1),
-	(338, 'foodchain-drink-item', 'undefined-mint-thee', 'Mint thee', 'Lekker thee met blaadjes', 'https://i.imgur.com/6R5x0uD.png', '[]', 1),
-	(339, 'foodchain-food-item', 'undefined-torres-koekjes', 'Torres koekjes', 'Een geheim recept van Jacques Torres', 'https://i.imgur.com/omD2Gth.png', '[]', 1),
-	(340, 'foodchain-food-item', 'undefined-worstebroodje', 'Worstebroodje', 'Typisch broodje uit de Nederlandse provincie Noord-Brabant', 'https://i.imgur.com/piZ3N3m.png', '[]', 1),
-	(341, 'foodchain-food-item', 'undefined-kerstkoekje', 'Kerstkoekje', 'Is dit niet gingy van die ene film', 'https://i.imgur.com/e6NemJM.png', '[]', 1),
-	(342, 'foodchain-food-item', 'undefined-kerststronk', 'Kerststronk', 'Lekker opgerolde taart ', 'https://i.imgur.com/t88LTdR.png', '[]', 1),
-	(343, 'foodchain-drink-item', 'undefined-freakshake', 'Freakshake', 'Een over-the-top dessert', 'https://i.imgur.com/EoRJ2dq.png', '[]', 1),
-	(344, 'foodchain-drink-item', 'undefined-aardbeien-smoothie', 'aardbeien smoothie', 'Lekker fruit ', 'https://i.imgur.com/UNDpD8X.png', '[]', 1),
-	(345, 'foodchain-drink-item', 'undefined-ananas-smoothie', 'ananas smoothie', 'lekker fruit', 'https://i.imgur.com/l6nnai1.png', '[]', 1),
-	(346, 'foodchain-food-item', 'undefined-luikse-wafels', 'Luikse wafels', 'Wat is het verschil tussen een Luikse en een Brusselse wafel?', 'https://i.imgur.com/ttqV0MA.png', '[]', 1),
-	(347, 'foodchain-food-item', 'undefined-luikse-wafel-met-suiker', 'Luikse wafel met suiker', 'Lekker suiker ', 'https://i.imgur.com/aVT7NwP.png', '[]', 1),
-	(348, 'foodchain-food-item', 'undefined-wafel-met-fruit', 'Wafel met fruit', 'lekker gezond', 'https://i.imgur.com/S7qyFLq.png', '[]', 1);
+	(246, 'foodchain-food-item', 'dragonsden-tjap-tjoy', 'Tjap Tjoy', '', 'https://i.imgur.com/d3DQjTA.png', '[]', 1),
+	(247, 'foodchain-food-item', 'uwu-berner-platte', 'Berner platte', '', 'https://i.imgur.com/7Q2VglP.png', '[]', 1),
+	(248, 'foodchain-drink-item', 'uwu-gazzosa-', 'Gazzosa ', '', 'https://i.imgur.com/a3xSLUB.png', '[]', 1),
+	(249, 'foodchain-drink-item', 'uwu-rivella', 'Rivella', '', 'https://i.imgur.com/8tZWxFD.png', '[]', 1),
+	(250, 'foodchain-side-item', 'uwu-rösti-met-zalm', 'Rösti met Zalm', '', 'https://i.imgur.com/S4bIWj3.png', '[]', 1),
+	(251, 'foodchain-dessert-item', 'uwu-zuger-kirschtorte', 'Zuger Kirschtorte', '', 'https://i.imgur.com/km8O74b.png', '[]', 1),
+	(252, 'foodchain-food-item', 'kebabking-kapsalon', 'kapsalon', '', 'https://i.imgur.com/zY488ub.png', '[]', 1),
+	(253, 'foodchain-food-item', 'kebabking-turkse-pizza', 'turkse pizza', '', 'https://i.imgur.com/W3ExMfo.png', '[]', 1),
+	(254, 'foodchain-side-item', 'kebabking-friet', 'Friet', '', 'https://i.imgur.com/F7SGv6Q.png', '[]', 1),
+	(255, 'foodchain-food-item', 'kebabking-pizza-doner', 'Pizza Doner', '', 'https://i.imgur.com/88gzjhK.png', '[]', 1),
+	(256, 'foodchain-food-item', 'kebabking-pizza-margherita', 'pizza margherita', '', 'https://i.imgur.com/SJBOJMW.png', '[]', 1),
+	(257, 'foodchain-food-item', 'kebabking-kapsalon-kip', 'Kapsalon kip', '', 'https://i.imgur.com/zY488ub.png', '[]', 1),
+	(258, 'foodchain-food-item', 'kebabking-kapsalon-kalf', 'Kapsalon kalf', '', 'https://i.imgur.com/zY488ub.png', '[]', 1),
+	(259, 'foodchain-food-item', 'kebabking-blabla', 'BLabla', '', 'https://i.imgur.com/7w384hy.png', '[]', 1),
+	(260, 'foodchain-food-item', 'kebabking-kappa', 'Kappa', '', 'https://i.imgur.com/7w384hy.png', '[]', 1),
+	(261, 'foodchain-food-item', 'kebabking-broodje-doner', 'Broodje Doner', '', 'https://i.imgur.com/vmoGuGi.png', '[]', 1),
+	(262, 'foodchain-food-item', 'kebabking-durum-kebab', 'Durum Kebab', '', 'https://i.imgur.com/0BAv0kk.png', '[]', 1),
+	(263, 'foodchain-food-item', 'kebabking-sish-kebab', 'sish kebab', '', 'https://i.imgur.com/tntAzWu.png', '[]', 1),
+	(264, 'foodchain-side-item', 'kebabking-bakje-friet', 'bakje friet', '', 'https://i.imgur.com/ovvOQ2a.png', '[]', 1),
+	(265, 'foodchain-food-item', 'kebabking-turkse-pide', 'turkse Pide', '', 'https://i.imgur.com/T8s3BCL.png', '[]', 1),
+	(266, 'foodchain-side-item', 'kebabking-kip-nuggets', 'kip nuggets', '', 'https://i.imgur.com/wDXBNH3.png', '[]', 1),
+	(267, 'foodchain-food-item', 'kebabking-pizza-shoarma-', 'pizza shoarma ', '', 'https://i.imgur.com/CQiuWRg.png', '[]', 1),
+	(268, 'foodchain-drink-item', 'kebabking-ayran', 'Ayran', '', 'https://i.imgur.com/S4PLPQE.png', '[]', 1),
+	(269, 'foodchain-drink-item', 'kebabking-fernandez', 'Fernandez', '', 'https://i.imgur.com/Nok3hLj.png', '[]', 1),
+	(270, 'foodchain-drink-item', 'kebabking-fernandez-blauw', 'fernandez blauw', '', 'https://i.imgur.com/Tr6A1rS.png', '[]', 1),
+	(271, 'foodchain-drink-item', 'kebabking-fernandez-geel', 'fernandez geel', '', 'https://i.imgur.com/isqQpIN.png', '[]', 1),
+	(272, 'foodchain-food-item', 'kebabking-broodje-cofte', 'broodje cofte', '', 'https://i.imgur.com/d1O2Kql.png', '[]', 1),
+	(273, 'foodchain-food-item', 'kebabking-sucuk-met-ei', 'sucuk met ei', '', 'https://i.imgur.com/afPD6rM.png', '[]', 1),
+	(274, 'foodchain-food-item', 'kebabking-lahmacun', 'lahmacun', '', 'https://i.imgur.com/dOozOG9.png', '[]', 1),
+	(275, 'foodchain-side-item', 'kebabking-borek-kaas', 'borek kaas', '', 'https://i.imgur.com/3GXLl49.png', '[]', 1),
+	(276, 'foodchain-dessert-item', 'kebabking-baklava', 'baklava', '', 'https://i.imgur.com/lRjqNws.png', '[]', 1),
+	(277, 'foodchain-drink-item', 'kebabking-turkse-thee', 'turkse thee', '', 'https://i.imgur.com/hKcIo6h.png', '[]', 1),
+	(278, 'foodchain-drink-item', 'kebabking-oasis', 'oasis', '', 'https://i.imgur.com/RQvVaDZ.png', '[]', 1),
+	(279, 'foodchain-dessert-item', 'kebabking-kinder-bueno', 'kinder bueno', '', 'https://i.imgur.com/uxrXXOO.png', '[]', 1),
+	(280, 'foodchain-side-item', 'kebabking-kip-corn', 'kip corn', '', 'https://i.imgur.com/Fnqp2xX.png', '[]', 1),
+	(281, 'foodchain-drink-item', 'kebabking-marrokaanse-thee', 'marrokaanse thee', '', 'https://i.imgur.com/BxiDs5e.png', '[]', 1),
+	(282, 'foodchain-side-item', 'uwu-aubergine-carpaccio-met-rauwe-ham-en-roquefort', 'Aubergine Carpaccio met rauwe ham en roquefort', '', 'https://i.imgur.com/jM7492O.png', '[]', 1),
+	(283, 'foodchain-food-item', 'uwu-varkenshaas-gevuld-met-paddenstoelen', 'Varkenshaas gevuld met paddenstoelen', '', 'https://i.imgur.com/v0BzpwY.png', '[]', 1),
+	(284, 'foodchain-dessert-item', 'uwu-herfsttoetje-met-stroopwafels-en-stoofpeertjes', 'Herfsttoetje met stroopwafels en stoofpeertjes', '', 'https://i.imgur.com/Bcm7REe.png', '[]', 1),
+	(285, 'foodchain-drink-item', 'uwu-manhattan', 'Manhattan', '', 'https://i.imgur.com/FE6OumG.png', '[]', 1),
+	(286, 'foodchain-drink-item', 'uwu-nutella-ijskoffie', 'Nutella ijskoffie', '', 'https://i.imgur.com/SUktqoo.png', '[]', 1),
+	(287, 'foodchain-food-item', 'uwu-vage-bond-spaghetti', 'Vage Bond Spaghetti', '', 'https://i.imgur.com/pa3rJij.png', '[]', 1),
+	(288, 'foodchain-dessert-item', 'uwu-browning-brownies', 'Browning Brownies', '', 'https://i.imgur.com/GWllzfI.png', '[]', 1),
+	(289, 'foodchain-dessert-item', 'uwu-ellu-bella', 'Ellu Bella', '', 'https://i.imgur.com/HXWAKTE.png', '[]', 1),
+	(290, 'foodchain-food-item', 'uwu-oesters', 'Oesters', '', 'https://i.imgur.com/q6hYNZs.png', '[]', 1),
+	(291, 'foodchain-drink-item', 'uwu-pretty-mama-cocktail', 'Pretty Mama cocktail', '', 'https://i.imgur.com/L4VbSY5.png', '[]', 1),
+	(292, 'foodchain-dessert-item', 'uwu-brownings', 'Brownings', '', 'https://i.imgur.com/GWllzfI.png', '[]', 1),
+	(293, 'foodchain-drink-item', 'uwu-jaljeera', 'Jaljeera', '', 'https://i.imgur.com/lLQ28HZ.png', '[]', 1),
+	(294, 'foodchain-drink-item', 'uwu--mango-lassi', ' Mango lassi', '', 'https://i.imgur.com/lvbJTvO.png', '[]', 1),
+	(295, 'foodchain-dessert-item', 'uwu-pani-puri', 'Pani Puri', '', 'https://i.imgur.com/t9gTukI.png', '[]', 1),
+	(296, 'foodchain-side-item', 'uwu-pav-bhaji', 'Pav Bhaji', '', 'https://i.imgur.com/QojKyV7.png', '[]', 1),
+	(297, 'foodchain-food-item', 'uwu-butter-chicken-curry-met-basmati-rijst-en-naan', 'Butter chicken curry met basmati rijst en naan', '', 'https://i.imgur.com/0g62XRZ.png', '[]', 1),
+	(298, 'foodchain-drink-item', 'undefined-koffie', 'Koffie', '', 'https://i.imgur.com/xb2wEOd.png', '[]', 1),
+	(299, 'foodchain-dessert-item', 'undefined-croissantje', 'Croissantje', '', 'https://i.imgur.com/UKgfS80.png', '[]', 1),
+	(300, 'foodchain-drink-item', 'undefined-ijskoffie', 'Ijskoffie', '', 'https://i.imgur.com/slNUR0Y.png', '[]', 1),
+	(301, 'foodchain-drink-item', 'undefined-appelsap', 'Appelsap', '', 'https://i.imgur.com/phHfxxk.png', '[]', 1),
+	(302, 'foodchain-drink-item', 'undefined-jus-d`-orange', 'Jus d` orange', '', 'https://i.imgur.com/uQzv8nV.png', '[]', 1),
+	(303, 'foodchain-drink-item', 'undefined-fles-wijn', 'Fles wijn', '', 'https://i.imgur.com/thbte48.png', '[]', 1),
+	(304, 'foodchain-drink-item', 'undefined-champagne', 'champagne', '', 'https://i.imgur.com/zy4Z1yF.png', '[]', 1),
+	(305, 'foodchain-dessert-item', 'undefined-donut', 'Donut', '', 'https://i.imgur.com/IGwlMx4.png', '[]', 1),
+	(306, 'foodchain-dessert-item', 'undefined-macarons', 'macarons', '', 'https://i.imgur.com/gRoOBl8.png', '[]', 1),
+	(307, 'foodchain-dessert-item', 'undefined-appelflap', 'Appelflap', '', 'https://i.imgur.com/wcVRhkD.png', '[]', 1),
+	(308, 'foodchain-dessert-item', 'undefined-lolly', 'Lolly', '', 'https://i.imgur.com/eEmCDHi.png', '[]', 1),
+	(309, 'foodchain-side-item', 'undefined-stokbrood', 'Stokbrood', '', 'https://i.imgur.com/4hkYWNX.png', '[]', 1),
+	(310, 'foodchain-dessert-item', 'undefined-muffin', 'Muffin', '', 'https://i.imgur.com/9a5J1S8.png', '[]', 1),
+	(311, 'foodchain-drink-item', 'undefined-jus-d\'orange', 'jus d\'orange', '', 'https://i.imgur.com/CSCyLsU.png', '[]', 1),
+	(312, 'foodchain-dessert-item', 'undefined-croissantje---', 'Croissantje   ', '', 'https://i.imgur.com/Zp6GMtr.png', '[]', 1),
+	(313, 'foodchain-drink-item', 'undefined-wijn', 'Wijn', '', 'https://i.imgur.com/E6HDTjl.png', '[]', 1),
+	(314, 'foodchain-drink-item', 'undefined-schuimwijn', 'Schuimwijn', '', 'https://i.imgur.com/a8EDPI0.png', '[]', 1),
+	(315, 'foodchain-food-item', 'undefined-chocolade-muffin', 'Chocolade muffin', '', 'https://i.imgur.com/FE2sJdV.png', '[]', 1),
+	(316, 'foodchain-drink-item', 'undefined-coffee', 'Coffee', '', 'https://i.imgur.com/480H0fG.png', '[]', 1),
+	(317, 'foodchain-food-item', 'undefined-donuts', 'Donuts', '', 'https://i.imgur.com/qdnmLNB.png', '[]', 1),
+	(318, 'foodchain-food-item', 'undefined-macaron', 'Macaron', '', 'https://i.imgur.com/YzJLKs0.png', '[]', 1),
+	(319, 'foodchain-food-item', 'undefined-appelgebak', 'Appelgebak', '', 'https://i.imgur.com/WdXSHu4.png', '[]', 1),
+	(320, 'foodchain-dessert-item', 'undefined-lollypop', 'Lollypop', '', 'https://i.imgur.com/5lfHm7H.png', '[]', 1),
+	(321, 'foodchain-food-item', 'undefined-baguette', 'Baguette', '', 'https://i.imgur.com/RlHXmnx.png', '[]', 1),
+	(322, 'foodchain-food-item', 'undefined-bladerdeeg-koekje', 'Bladerdeeg koekje', '', 'https://i.imgur.com/r0c7IIR.png', '[]', 1),
+	(323, 'foodchain-drink-item', 'undefined-chocolade-melk', 'Chocolade Melk', '', 'https://i.imgur.com/2yonPy4.png', '[]', 1),
+	(324, 'foodchain-food-item', 'undefined-paris-brest', 'Paris-Brest', '', 'https://i.imgur.com/QFZ2DVc.png', '[]', 1),
+	(325, 'foodchain-drink-item', 'undefined-iced-coffee', 'Iced coffee', '', 'https://i.imgur.com/NboFFEc.png', '[]', 1),
+	(326, 'foodchain-drink-item', 'undefined-jus-de-pomme', 'jus de pomme', '', 'https://i.imgur.com/XjXE48O.png', '[]', 1),
+	(327, 'foodchain-food-item', 'undefined-smos-gezond', 'Smos gezond', '', 'https://i.imgur.com/1O2WV9E.png', '[]', 1),
+	(328, 'foodchain-food-item', 'undefined-broodje-kaas-en-hesp', 'Broodje kaas en hesp', '', 'https://i.imgur.com/Jp64cvW.png', '[]', 1),
+	(329, 'foodchain-food-item', 'undefined-brusselse-wafel', 'Brusselse wafel', '', 'https://i.imgur.com/t2xvmIr.png', '[]', 1),
+	(330, 'foodchain-food-item', 'undefined-cupcake', 'Cupcake', '', 'https://i.imgur.com/2HRsslw.png', '[]', 1),
+	(331, 'foodchain-food-item', 'undefined-fruittaart', 'Fruittaart', '', 'https://i.imgur.com/OSlLM0J.png', '[]', 1),
+	(332, 'foodchain-food-item', 'undefined-kaneelbroodje', 'Kaneelbroodje', '', 'https://i.imgur.com/410pwH8.png', '[]', 1),
+	(333, 'foodchain-drink-item', 'undefined-irish-coffee', 'Irish coffee', '', 'https://i.imgur.com/pobsXoT.png', '[]', 1),
+	(334, 'foodchain-food-item', 'undefined-oliebol', 'Oliebol', '', 'https://i.imgur.com/YXv6A6M.png', '[]', 1),
+	(335, 'foodchain-food-item', 'undefined-sandwich', 'Sandwich', '', 'https://i.imgur.com/PsKK8Cg.png', '[]', 1),
+	(336, 'foodchain-drink-item', 'undefined-slush', 'Slush', '', 'https://i.imgur.com/HA6KZ8w.png', '[]', 1),
+	(337, 'foodchain-food-item', 'undefined-smos-préparé', 'Smos préparé', '', 'https://i.imgur.com/GdOCfCc.png', '[]', 1),
+	(338, 'foodchain-drink-item', 'undefined-mint-thee', 'Mint thee', '', 'https://i.imgur.com/6R5x0uD.png', '[]', 1),
+	(339, 'foodchain-food-item', 'undefined-torres-koekjes', 'Torres koekjes', '', 'https://i.imgur.com/omD2Gth.png', '[]', 1),
+	(340, 'foodchain-food-item', 'undefined-worstebroodje', 'Worstebroodje', '', 'https://i.imgur.com/piZ3N3m.png', '[]', 1),
+	(341, 'foodchain-food-item', 'undefined-kerstkoekje', 'Kerstkoekje', '', 'https://i.imgur.com/e6NemJM.png', '[]', 1),
+	(342, 'foodchain-food-item', 'undefined-kerststronk', 'Kerststronk', '', 'https://i.imgur.com/t88LTdR.png', '[]', 1),
+	(343, 'foodchain-drink-item', 'undefined-freakshake', 'Freakshake', '', 'https://i.imgur.com/EoRJ2dq.png', '[]', 1),
+	(344, 'foodchain-drink-item', 'undefined-aardbeien-smoothie', 'aardbeien smoothie', '', 'https://i.imgur.com/UNDpD8X.png', '[]', 1),
+	(345, 'foodchain-drink-item', 'undefined-ananas-smoothie', 'ananas smoothie', '', 'https://i.imgur.com/l6nnai1.png', '[]', 1),
+	(346, 'foodchain-food-item', 'undefined-luikse-wafels', 'Luikse wafels', '', 'https://i.imgur.com/ttqV0MA.png', '[]', 1),
+	(347, 'foodchain-food-item', 'undefined-luikse-wafel-met-suiker', 'Luikse wafel met suiker', '', 'https://i.imgur.com/aVT7NwP.png', '[]', 1),
+	(348, 'foodchain-food-item', 'undefined-wafel-met-fruit', 'Wafel met fruit', '', 'https://i.imgur.com/S7qyFLq.png', '[]', 1);
 
--- Dumping structure for table fivem-clarity.server_extra
+-- Structuur van  tabel Polygone.server_extra wordt geschreven
 CREATE TABLE IF NOT EXISTS `server_extra` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `steam` varchar(50) DEFAULT NULL,
@@ -1600,15 +1785,16 @@ CREATE TABLE IF NOT EXISTS `server_extra` (
   PRIMARY KEY (`id`),
   KEY `steam` (`steam`),
   KEY `license` (`license`)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table fivem-clarity.server_extra: 1 rows
+-- Dumpen data van tabel Polygone.server_extra: 2 rows
 /*!40000 ALTER TABLE `server_extra` DISABLE KEYS */;
 INSERT INTO `server_extra` (`id`, `steam`, `license`, `name`, `permission`, `priority`) VALUES
-	(1, 'STEAM_ID', 'LICENSE_ID', 'STEAM_USERNAME', 'user | admin | god', 100);
+	(1, 'steam:110000139cffd77', 'license:b8d74a1ececd5078486457d4eeea2879817842c1', 'Anykeys', 'god', 100),
+	(61, 'steam:110000135ce0334', 'license:1265e7ab251b73f7d9e5b4306afbfca68aa087a3', 'pphati', 'god', 5);
 /*!40000 ALTER TABLE `server_extra` ENABLE KEYS */;
 
--- Dumping structure for table fivem-clarity.server_vehicles
+-- Structuur van  tabel Polygone.server_vehicles wordt geschreven
 CREATE TABLE IF NOT EXISTS `server_vehicles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `shop` varchar(50) DEFAULT NULL,
@@ -1619,7 +1805,7 @@ CREATE TABLE IF NOT EXISTS `server_vehicles` (
   KEY `shop` (`shop`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1160 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table fivem-clarity.server_vehicles: 547 rows
+-- Dumpen data van tabel Polygone.server_vehicles: 547 rows
 /*!40000 ALTER TABLE `server_vehicles` DISABLE KEYS */;
 INSERT INTO `server_vehicles` (`id`, `shop`, `vehicle`, `stock`, `preset`) VALUES
 	(209, 'pdm', 'club', 2, '[]'),
@@ -2171,7 +2357,7 @@ INSERT INTO `server_vehicles` (`id`, `shop`, `vehicle`, `stock`, `preset`) VALUE
 	(1159, 'pdm', 'stretch', 2, '[]');
 /*!40000 ALTER TABLE `server_vehicles` ENABLE KEYS */;
 
--- Dumping structure for table fivem-clarity.vehicles_impound
+-- Structuur van  tabel Polygone.vehicles_impound wordt geschreven
 CREATE TABLE IF NOT EXISTS `vehicles_impound` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `actor` longtext NOT NULL,
@@ -2186,9 +2372,9 @@ CREATE TABLE IF NOT EXISTS `vehicles_impound` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.vehicles_impound: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.vehicles_impound: ~0 rows (ongeveer)
 
--- Dumping structure for table fivem-clarity.vehicles_ownership
+-- Structuur van  tabel Polygone.vehicles_ownership wordt geschreven
 CREATE TABLE IF NOT EXISTS `vehicles_ownership` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `seller` longtext NOT NULL,
@@ -2197,11 +2383,30 @@ CREATE TABLE IF NOT EXISTS `vehicles_ownership` (
   `price` bigint(20) NOT NULL DEFAULT 0,
   `timestamp` bigint(20) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.vehicles_ownership: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.vehicles_ownership: ~18 rows (ongeveer)
+INSERT INTO `vehicles_ownership` (`id`, `seller`, `buyer`, `plate`, `price`, `timestamp`) VALUES
+	(1, '1001', '2000', '8ZI316EH', 0, 1750764213000),
+	(2, '1001', '2001', '3BX202IL', 0, 1751115563000),
+	(3, '1001', '2002', '7JG319CL', 0, 1751116064000),
+	(4, '1001', '2003', '8MP812NZ', 0, 1751198879000),
+	(5, '1001', '2004', '4KI474AD', 0, 1751199212000),
+	(6, '1001', '2005', '4TG229EN', 0, 1751199753000),
+	(7, '1001', '2006', '1OM228SE', 0, 1751200136000),
+	(8, '1001', '2007', '0JK604TW', 0, 1751200363000),
+	(9, '1001', '2008', '4ZG736IJ', 0, 1751200432000),
+	(10, '1001', 'gov_pd', '8QX749CS', 92000, 1751209761000),
+	(11, '1001', 'gov_pd', '0KA534PB', 92000, 1751209764000),
+	(12, '1001', '2009', '5YU451LJ', 0, 1751556761000),
+	(13, '1001', '2010', '2PZ912FF', 0, 1751615787000),
+	(14, '1001', '2011', '3CR773HU', 0, 1751715215000),
+	(15, '1001', '2012', '0UR964UY', 0, 1751805820000),
+	(16, '1001', '2013', '5DJ657UM', 0, 1751807072000),
+	(17, '1001', '2014', '6XZ244LU', 0, 1751810948000),
+	(18, '1001', '2015', '8CV333NN', 0, 1751891579000);
 
--- Dumping structure for table fivem-clarity.votes_ballots
+-- Structuur van  tabel Polygone.votes_ballots wordt geschreven
 CREATE TABLE IF NOT EXISTS `votes_ballots` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(512) NOT NULL DEFAULT '',
@@ -2212,4 +2417,10 @@ CREATE TABLE IF NOT EXISTS `votes_ballots` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table fivem-clarity.votes_ballots: ~0 rows (approximately)
+-- Dumpen data van tabel Polygone.votes_ballots: ~0 rows (ongeveer)
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;

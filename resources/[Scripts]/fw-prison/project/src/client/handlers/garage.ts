@@ -3,7 +3,7 @@ import { FW } from "../client";
 
 on("fw-prison:Client:PurchaseVehicle", () => {
     if (FW.Functions.GetPlayerData().job.name != 'doc') {
-        return FW.Functions.Notify("Geen toegang..", "error")
+        return FW.Functions.Notify("No access..", "error") // was "Geen toegang.."
     }
 
     let BuyVehicles: Array<any> = [];
@@ -20,7 +20,7 @@ on("fw-prison:Client:PurchaseVehicle", () => {
             SecondMenu: [
                 {
                     Icon: 'user',
-                    Title: 'Bevestig aankoop',
+                    Title: 'Confirm purchase', // was 'Bevestig aankoop'
                     CloseMenu: true,
                     Data: { Event: 'fw-prison:Server:PurchaseVehicle', Vehicle: Model }
                 },
@@ -30,7 +30,7 @@ on("fw-prison:Client:PurchaseVehicle", () => {
         if (FW.Functions.GetPlayerData().metadata.ishighcommand) {
             BuyVehicles[BuyVehicles.length - 1].SecondMenu[1] = {
                 Icon: 'people-arrows',
-                Title: 'Bevestig aankoop (Gezamelijk)',
+                Title: 'Confirm purchase (Shared)', // was 'Bevestig aankoop (Gezamelijk)'
                 CloseMenu: true,
                 Data: { Event: 'fw-prison:Server:PurchaseVehicle', Vehicle: Model, Shared: true }
             }
@@ -54,7 +54,7 @@ setImmediate(() => {
             {
                 Name: "purchase",
                 Icon: "fas fa-garage-car",
-                Label: "Voertuig Aanschaffen",
+                Label: "Purchase Vehicle", // was "Voertuig Aanschaffen"
                 EventType: "Client",
                 EventName: "fw-prison:Client:PurchaseVehicle",
                 EventParams: {},

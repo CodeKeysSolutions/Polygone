@@ -13,7 +13,7 @@ Citizen.CreateThread(function()
             {
                 Name = 'purchase_gang',
                 Icon = 'fas fa-spray-can',
-                Label = 'Koop Gang Spray',
+                Label = 'Buy Gang Spray',
                 EventType = 'Client',
                 EventName = 'fw-graffiti:Client:PurchaseGangSpray',
                 EventParams = {},
@@ -24,7 +24,7 @@ Citizen.CreateThread(function()
             {
                 Name = 'purchase_normal',
                 Icon = 'fas fa-spray-can',
-                Label = 'Koop Normale Spray (' .. exports['fw-businesses']:NumberWithCommas(Config.SprayPrice) .. ')',
+                Label = 'Buy Normal Spray (' .. exports['fw-businesses']:NumberWithCommas(Config.SprayPrice) .. ')',
                 EventType = 'Client',
                 EventName = 'fw-graffiti:Client:PurchaseSpray',
                 EventParams = {},
@@ -35,7 +35,7 @@ Citizen.CreateThread(function()
             {
                 Name = 'purchase_scrub',
                 Icon = 'fas fa-broom',
-                Label = 'Koop Schrobdoek (' .. exports['fw-businesses']:NumberWithCommas(Config.ScrubPrice) .. ')',
+                Label = 'Buy Scrubbing Cloth (' .. exports['fw-businesses']:NumberWithCommas(Config.ScrubPrice) .. ')',
                 EventType = 'Server',
                 EventName = 'fw-graffiti:Server:PurchaseScrubCloth',
                 EventParams = {},
@@ -56,7 +56,7 @@ Citizen.CreateThread(function()
                 {
                     Name = 'scrub',
                     Icon = 'fas fa-soap',
-                    Label = 'Schrobben',
+                    Label = 'Scrub',
                     EventType = 'Client',
                     EventName = 'fw-graffiti:Client:ScrubGraffiti',
                     EventParams = {},
@@ -68,7 +68,7 @@ Citizen.CreateThread(function()
                 {
                     Name = 'claim',
                     Icon = 'fas fa-hand-holding',
-                    Label = 'Graffiti Claimen',
+                    Label = 'Claim Graffiti',
                     EventType = 'Client',
                     EventName = 'fw-graffiti:Client:ClaimGraffiti',
                     EventParams = {},
@@ -82,7 +82,7 @@ Citizen.CreateThread(function()
                 {
                     Name = 'contest',
                     Icon = 'fas fa-hand-holding',
-                    Label = 'Graffiti Veroveren',
+                    Label = 'Contest Graffiti',
                     EventType = 'Client',
                     EventName = 'fw-graffiti:Client:ContestGraffiti',
                     EventParams = {},
@@ -93,7 +93,7 @@ Citizen.CreateThread(function()
                 {
                     Name = 'discover',
                     Icon = 'fas fa-eye',
-                    Label = 'Graffiti Ontdekken',
+                    Label = 'Discover Graffiti',
                     EventType = 'Client',
                     EventName = 'fw-graffiti:Client:DiscoverGraffiti',
                     EventParams = {},

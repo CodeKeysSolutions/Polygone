@@ -36,8 +36,8 @@
         const Hours = Math.floor((Total / (1000 * 60 * 60)) % 24);
         const Days = Math.floor(Total / (1000 * 60 * 60 * 24));
 
-        if (Days > 0) return `${Days} dagen, ${Hours} uren, ${Minutes} minuten`;
-        return `${Hours} uren, ${Minutes} minuten`
+        if (Days > 0) return `${Days} days, ${Hours} hours, ${Minutes} minutes`; // was `${Days} dagen, ${Hours} uren, ${Minutes} minuten`
+        return `${Hours} hours, ${Minutes} minutes`; // was `${Hours} uren, ${Minutes} minuten`
     };
 
     const TimeUntilTimestamp = (timestamp) => {
@@ -95,11 +95,11 @@
     $: {
         modals = {
             vin: {
-                title: "Selecteer type",
+                title: "Select type", // was "Selecteer type"
                 confirmText: scratchTime.done
                     ? "Vin scratch"
-                    : `Vin scratch beschikbaar over: <div>${scratchTime.time}</div>`,
-                cancelText: "Normale aflevering",
+                    : `Vin scratch available in: <div>${scratchTime.time}</div>`, // was `Vin scratch beschikbaar over: <div>${scratchTime.time}</div>`
+                cancelText: "Normal delivery", // was "Normale aflevering"
                 nextModal: "start",
                 onConfirm: async () => {
                     Data.Vin = true;
@@ -107,13 +107,13 @@
                 },
             },
             start: {
-                title: "Contract starten?",
+                title: "Start contract?", // was "Contract starten?"
                 onConfirm: async () => {
                     const result = await FetchNui<{ success: boolean; message: string }>(
                         "fw-laptop",
                         "Boosting/StartContract",
                         { contract: Data, user: UserData },
-                        { success: true, message: "Contract gestart, instructies zijn naar je telefoon gestuurd." }
+                        { success: true, message: "Contract started, instructions have been sent to your phone." } // was "Contract gestart, instructies zijn naar je telefoon gestuurd."
                     );
                     Data.Started = result.success;
                     addResultNotification("Boostin", result);
@@ -128,28 +128,26 @@
                 },
             },
             decline: {
-                title: "Contract weigeren?",
+                title: "Decline contract?", // was "Contract weigeren?"
                 onConfirm: async () => {
                     const result = await FetchNui(
                         "fw-laptop",
                         "Boosting/DeclineContract",
                         { contract: Data },
-                        { success: true, message: "Contract geweigerd!" }
+                        { success: true, message: "Contract declined!" } // was "Contract geweigerd!"
                     );
                     addResultNotification("Boostin", result);
                     return true;
                 },
             },
             cancel: {
-                title: "Contract annuleren?",
+                title: "Cancel contract?", // was "Contract annuleren?"
                 onConfirm: async () => {
-                    // "Boostin" "Succesfully canceled contract" (if no GNE buy-in)
-                    // "Boostin" "You have been refunded your GNE buy in." (if GNE buy-in)
                     const result = await FetchNui<{ success: boolean; message: string }>(
                         "fw-laptop",
                         "Boosting/CancelContract",
                         { contract: Data },
-                        { success: true, message: "Contract geannuleerd, je buy in wordt gerefund." }
+                        { success: true, message: "Contract cancelled, your buy-in will be refunded." } // was "Contract geannuleerd, je buy in wordt gerefund."
                     );
                     Data.Started = !result.success;
                     addResultNotification("Boostin", result);
@@ -157,12 +155,12 @@
                 },
             },
             auction: {
-                title: "Veiling contract",
+                title: "Auction contract", // was "Veiling contract"
                 onConfirm: async () => {
                     if (!AuctioningStartBid || AuctioningStartBid < 1) {
                         addResultNotification("Boostin", {
                             success: false,
-                            message: "Geef een geldig startbod op!",
+                            message: "Please enter a valid starting bid!", // was "Geef een geldig startbod op!"
                         });
                         return false;
                     }
@@ -175,7 +173,7 @@
                         },
                         {
                             success: true,
-                            message: "Contract succesvol geveild!",
+                            message: "Contract successfully auctioned!", // was "Contract succesvol geveild!"
                         }
                     );
                     addResultNotification("Boostin", result);
@@ -183,12 +181,12 @@
                 },
             },
             transfer: {
-                title: "Contract overdragen",
+                title: "Transfer contract", // was "Contract overdragen"
                 onConfirm: async () => {
                     if (!TransferingPlayer || TransferingPlayer < 1) {
                         addResultNotification("Boostin", {
                             success: false,
-                            message: "Geef een geldig ID op!",
+                            message: "Please enter a valid ID!", // was "Geef een geldig ID op!"
                         });
                         return false;
                     }
@@ -201,7 +199,7 @@
                         },
                         {
                             success: true,
-                            message: "Contract succesvol overgedragen!",
+                            message: "Contract successfully transferred!", // was "Contract succesvol overgedragen!"
                         }
                     );
                     addResultNotification("Boostin", result);
@@ -253,7 +251,7 @@
             {/if}
         </p>
         <p class="boosting-card-text boosting-card-expire">
-            Verloopt over:
+            Expires in: 
             <span style="display: block; color: {expires.color};">{expires.time}</span>
         </p>
 
@@ -267,7 +265,7 @@
                 class="boosting-card-buttons__btn {Data.Started && 'disabled'}"
             >
                 <p>
-                    {Data.Started ? "Contract actief" : "Contract starten"}
+                    {Data.Started ? "Contract active" : "Start contract"} 
                 </p>
             </div>
             <div
@@ -278,7 +276,7 @@
                 }}
                 class="boosting-card-buttons__btn {Data.Started && 'disabled'}"
             >
-                <p>Contract overdragen</p>
+                <p>Transfer contract</p> 
             </div>
             <div
                 use:Ripple={{ surface: true, active: true }}
@@ -288,7 +286,7 @@
                 }}
                 class="boosting-card-buttons__btn {Data.Started && 'disabled'}"
             >
-                <p>Contract veilen</p>
+                <p>Auction contract</p> 
             </div>
             {#if !Data.Started}
                 <div
@@ -299,7 +297,7 @@
                     }}
                     class="boosting-card-buttons__btn"
                 >
-                    <p>Contract weigeren</p>
+                    <p>Decline contract</p> 
                 </div>
             {:else}
                 <div
@@ -310,7 +308,7 @@
                     }}
                     class="boosting-card-buttons__btn"
                 >
-                    <p>Contract annuleren</p>
+                    <p>Cancel contract</p> 
                 </div>
             {/if}
         </div>
@@ -323,9 +321,9 @@
         <div class="boosting-card-modal">
             <h1>{modals[currentModal].title}</h1>
             {#if currentModal == "vin"}
-                <p>Als je ervoor kiest om te vin scratchen, kost dit {Data.ScratchPrice} {Data.Crypto} extra om het voertuig op naam te zetten.</p>
+                <p>If you choose to vin scratch, this will cost {Data.ScratchPrice} {Data.Crypto} extra to register the vehicle.</p>
             {:else if currentModal == "start" && !Data.ScratchAllowed}
-                <p>Dit voertuig kan momenteel niet gescratched worden.</p>
+                <p>This vehicle cannot be scratched at this time.</p> 
             {/if}
 
             <div class="boosting-card-buttons">
@@ -333,7 +331,7 @@
                     <div class="boosting-card-buttons__btn">
                         <input
                             bind:value={AuctioningStartBid}
-                            placeholder="Start bod {Data.Crypto}"
+                            placeholder="Starting bid {Data.Crypto}" 
                             type="number"
                             min="1"
                         />
@@ -359,7 +357,7 @@
                         {#if modals[currentModal].confirmText}
                             {@html modals[currentModal].confirmText}
                         {:else}
-                            Doorgaan
+                            Continue <!-- was "Doorgaan" -->
                         {/if}
                     </p>
                 </div>
@@ -369,7 +367,7 @@
                     on:click={onCancel}
                     class="boosting-card-buttons__btn"
                 >
-                    <p>{modals[currentModal].cancelText ?? "Annuleren"}</p>
+                    <p>{modals[currentModal].cancelText ?? "Cancel"}</p> <!-- was "Annuleren" -->
                 </div>
             </div>
         </div>

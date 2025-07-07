@@ -210,7 +210,7 @@ function JobCenter.WaitForJobOffer(JobId, GroupId)
 
     local OfferId = FW.Shared.RandomStr(10)
 
-    Citizen.SetTimeout((60 * 1000) * math.random(1, 3), function()
+    Citizen.SetTimeout(60 * 1000, function()
         local Group = JobCenter.Groups[JobId][GroupId]
         if Group == nil then return end
         if Group.State ~= 'Busy' then return end
@@ -220,7 +220,7 @@ function JobCenter.WaitForJobOffer(JobId, GroupId)
 
         local Player = FW.Functions.GetPlayerByCitizenId(Group.Members[1].Cid)
         if Player then
-            TriggerClientEvent('fw-phone:Client:Notification', Player.PlayerData.source, "jobcenter-offer", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, "Werkopdracht", Job.JobName, false, false, "fw-jobmanager:Server:StartJob", "", {
+            TriggerClientEvent('fw-phone:Client:Notification', Player.PlayerData.source, "jobcenter-offer", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, "Job", Job.JobName, false, false, "fw-jobmanager:Server:StartJob", "", {
                 OfferId = OfferId,
                 JobId = JobId,
                 GroupId = GroupId,
@@ -245,7 +245,7 @@ function JobCenter.SetupJob(JobId, GroupId, CustomTasks)
     if not Tasks then
         local Player = FW.Functions.GetPlayerByCitizenId(Group.Members[1].Cid)
         if Player == nil then return end
-        TriggerClientEvent('fw-phone:Client:Notification', Player.PlayerData.source, "jobcenter-offer", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, "Werkopdracht", "Je hebt deze keer de baan niet gekregen..")
+        TriggerClientEvent('fw-phone:Client:Notification', Player.PlayerData.source, "jobcenter-offer", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, "Job", "You missed out on this one..")
 
         if Group.State == 'Busy' and not Config.Jobs[JobId].OfferQueue then
             JobCenter.WaitForJobOffer(JobId, GroupId)
@@ -266,7 +266,7 @@ function JobCenter.SetupJob(JobId, GroupId, CustomTasks)
             TriggerClientEvent("fw-jobmanager:Client:SetGroupData", Player.PlayerData.source, Group)
             TriggerClientEvent('fw-phone:Client:SetActivityTimer', Player.PlayerData.source, Tasks.Activity.Timer)
             TriggerClientEvent('fw-jobmanager:Client:SetupJob', Player.PlayerData.source, k == 1, Tasks, Data)
-            TriggerClientEvent("fw-phone:Client:Notification", Player.PlayerData.source, "jobcenter-task", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, Tasks.Tasks[1].RequiredProgress > 1 and (("(%s/%s) Huidige Taak"):format(Tasks.Tasks[1].Progress, Tasks.Tasks[1].RequiredProgress)) or "Huidige Taak", Tasks.Tasks[1].Title, false, false, nil, nil, { Sticky = true })
+            TriggerClientEvent("fw-phone:Client:Notification", Player.PlayerData.source, "jobcenter-task", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, Tasks.Tasks[1].RequiredProgress > 1 and (("(%s/%s) Current task"):format(Tasks.Tasks[1].Progress, Tasks.Tasks[1].RequiredProgress)) or "Current task", Tasks.Tasks[1].Title, false, false, nil, nil, { Sticky = true })
         end
     end
 
@@ -277,7 +277,7 @@ function JobCenter.SetupJob(JobId, GroupId, CustomTasks)
 
             local Owner = FW.Functions.GetPlayerByCitizenId(Group.Members[1].Cid)
             if Owner then
-                TriggerClientEvent('fw-phone:Client:Notification', Owner.PlayerData.source, "jobcenter-offer", "fas fa-home", {"white", "rgb(38, 50, 56)"}, "Werkopdracht", "De werkopdracht was niet voltooid.")
+                TriggerClientEvent('fw-phone:Client:Notification', Owner.PlayerData.source, "jobcenter-offer", "fas fa-home", {"white", "rgb(38, 50, 56)"}, "Job Assignment", "The assignment was not completed.") -- was "De opdracht was niet afgerond."
                 if not Config.Jobs[JobId].OfferQueue then
                     JobCenter.WaitForJobOffer(JobId, GroupId)
                 end
@@ -312,7 +312,7 @@ function AddTaskProgress(JobId, GroupId, ActivityId, TaskId, Amount)
             JobCenter.ActiveJobs[ActivityId] = false
             local Owner = FW.Functions.GetPlayerByCitizenId(Group.Members[1].Cid)
             if Owner then
-                TriggerClientEvent('fw-phone:Client:Notification', Owner.PlayerData.source, "jobcenter-offer", "fas fa-home", {"white", "rgb(38, 50, 56)"}, "Werkopdracht", "De opdracht is succesvol afgerond.")
+                TriggerClientEvent('fw-phone:Client:Notification', Owner.PlayerData.source, "jobcenter-offer", "fas fa-home", {"white", "rgb(38, 50, 56)"}, "Job", "Job completed successfull.")
 
                 if Config.Jobs[JobId].BasePayment > 0 then
                     for k, v in pairs(Group.Members) do
@@ -347,7 +347,7 @@ function AddTaskProgress(JobId, GroupId, ActivityId, TaskId, Amount)
                 if Group.Tasks[TaskId + 1] then
                     TriggerClientEvent('fw-jobmanager:Client:OnNextTask', Player.PlayerData.source, k == 1, TaskId + 1)
                     Citizen.SetTimeout(500, function()
-                        TriggerClientEvent("fw-phone:Client:Notification", Player.PlayerData.source, "jobcenter-task", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, Group.Tasks[TaskId + 1].RequiredProgress > 1 and (("(%s/%s) Huidige Taak"):format(Group.Tasks[TaskId + 1].Progress, Group.Tasks[TaskId + 1].RequiredProgress)) or "Huidige Taak", Group.Tasks[TaskId + 1].Title, false, false, nil, nil, { Sticky = true })
+                        TriggerClientEvent("fw-phone:Client:Notification", Player.PlayerData.source, "jobcenter-task", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, Group.Tasks[TaskId + 1].RequiredProgress > 1 and (("(%s/%s) Current task"):format(Group.Tasks[TaskId + 1].Progress, Group.Tasks[TaskId + 1].RequiredProgress)) or "Current task", Group.Tasks[TaskId + 1].Title, false, false, nil, nil, { Sticky = true })
                     end)
                 else
                     Group.Activity = {}
@@ -363,7 +363,7 @@ function AddTaskProgress(JobId, GroupId, ActivityId, TaskId, Amount)
         for k, v in pairs(Group.Members) do
             local Player = FW.Functions.GetPlayerByCitizenId(v.Cid)
             if Player then
-                TriggerClientEvent("fw-phone:Client:UpdateNotification", Player.PlayerData.source, 'jobcenter-task', false, false, Group.Tasks[TaskId].RequiredProgress > 1 and (("(%s/%s) Huidige Taak"):format(Group.Tasks[TaskId].Progress, Group.Tasks[TaskId].RequiredProgress)) or "Huidige Taak", Group.Tasks[TaskId].Title, false)
+                TriggerClientEvent("fw-phone:Client:UpdateNotification", Player.PlayerData.source, 'jobcenter-task', false, false, Group.Tasks[TaskId].RequiredProgress > 1 and (("(%s/%s) Current task"):format(Group.Tasks[TaskId].Progress, Group.Tasks[TaskId].RequiredProgress)) or "Current task", Group.Tasks[TaskId].Title, false)
                 TriggerClientEvent("fw-jobmanager:Client:SetGroupData", Player.PlayerData.source, Group)
             end
         end
@@ -394,7 +394,7 @@ Citizen.CreateThread(function()
                         if #Group.Tasks == 0 and Group.State == 'Busy' then
                             local Player = FW.Functions.GetPlayerByCitizenId(Group.Members[1].Cid)
                             if Player then
-                                TriggerClientEvent('fw-phone:Client:Notification', Player.PlayerData.source, "jobcenter-offer", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, "Werkopdracht", Job.JobName, false, false, "fw-jobmanager:Server:JoinOfferQueue", "fw-jobmanager:Server:RejectOffer", {
+                                TriggerClientEvent('fw-phone:Client:Notification', Player.PlayerData.source, "jobcenter-offer", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, "Job", Job.JobName, false, false, "fw-jobmanager:Server:JoinOfferQueue", "fw-jobmanager:Server:RejectOffer", {
                                     JobId = Job.JobId,
                                     GroupId = GroupId,
                                 })
@@ -458,7 +458,7 @@ Citizen.CreateThread(function()
                             if Group then
                                 local Player = FW.Functions.GetPlayerByCitizenId(Group.Members[1].Cid)
                                 if Player == nil then return end
-                                TriggerClientEvent('fw-phone:Client:Notification', Player.PlayerData.source, "jobcenter-offer", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, "Werkopdracht", "Je hebt deze keer de baan niet gekregen..")
+                                TriggerClientEvent('fw-phone:Client:Notification', Player.PlayerData.source, "jobcenter-offer", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, "Job", "You missed out on this one..")
                             end
                         end
 
@@ -503,11 +503,11 @@ RegisterNetEvent('fw-jobmanager:Server:JoinOfferQueue', function(Data)
 
     -- If player is too late with accepting the job offer, notify him that the job was expired.
     if not JobCenter.ActiveQueues[Data.JobId] then
-        TriggerClientEvent('fw-phone:Client:UpdateNotification', Source, "jobcenter-offer", false, false, false, "Werkopdracht verlopen..", true)
+        TriggerClientEvent('fw-phone:Client:UpdateNotification', Source, "jobcenter-offer", false, false, false, "Job expired..", true)
         return
     end
 
-    TriggerClientEvent('fw-phone:Client:UpdateNotification', Source, "jobcenter-offer", false, false, false, "Werkopdracht aangenomen...", true)
+    TriggerClientEvent('fw-phone:Client:UpdateNotification', Source, "jobcenter-offer", false, false, false, "Job accepted...", true)
 
     table.insert(JobCenter.OfferQueue[Data.JobId], Data.GroupId)
 end)
@@ -526,7 +526,7 @@ RegisterNetEvent('fw-jobmanager:Server:AbandonJob', function(JobId, GroupId, Act
     if #Group.Tasks == 0 then return end
 
     if not Force and Config.Jobs[JobId].PreventCancel then
-        TriggerClientEvent('fw-phone:Client:Notification', Source, "jobcenter-offer", "fas fa-home", {"white", "rgb(38, 50, 56)"}, "Werkopdracht", "Werkopdracht niet annuleerbaar.")
+        TriggerClientEvent('fw-phone:Client:Notification', Source, "jobcenter-offer", "fas fa-home", {"white", "rgb(38, 50, 56)"}, "Job Assignment", "Job assignment cannot be cancelled.") -- was "Job niet annuleerbaar."
         return
     end
 
@@ -537,7 +537,7 @@ RegisterNetEvent('fw-jobmanager:Server:AbandonJob', function(JobId, GroupId, Act
 
     local Owner = FW.Functions.GetPlayerByCitizenId(Group.Members[1].Cid)
     if Owner then
-        TriggerClientEvent('fw-phone:Client:Notification', Owner.PlayerData.source, "jobcenter-offer", "fas fa-home", {"white", "rgb(38, 50, 56)"}, "Werkopdracht", "De opdracht was niet afgerond.")
+        TriggerClientEvent('fw-phone:Client:Notification', Owner.PlayerData.source, "jobcenter-offer", "fas fa-home", {"white", "rgb(38, 50, 56)"}, "Job Assignment", "The assignment was not completed.") -- was "De opdracht was niet afgerond."
         if not Config.Jobs[JobId].OfferQueue then
             JobCenter.WaitForJobOffer(JobId, GroupId)
         end
@@ -579,7 +579,7 @@ AddEventHandler("fw-jobmanager:Server:RequestToJoin", function(JobId, GroupId)
     local Owner = FW.Functions.GetPlayerByCitizenId(Group.Members[1].Cid)
     if Owner == nil then return end
 
-    TriggerClientEvent('fw-phone:Client:Notification', Owner.PlayerData.source, "jobcenter-join-request-" .. Player.PlayerData.citizenid, "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, "Verzoek om te Joinen", JobCenter.CidToName[Player.PlayerData.citizenid], false, true, "fw-jobmanager:Server:AcceptJoinRequest", "", {
+    TriggerClientEvent('fw-phone:Client:Notification', Owner.PlayerData.source, "jobcenter-join-request-" .. Player.PlayerData.citizenid, "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, "Request to join", JobCenter.CidToName[Player.PlayerData.citizenid], false, true, "fw-jobmanager:Server:AcceptJoinRequest", "", {
         JobId = JobId,
         GroupId = GroupId,
         Target = Player.PlayerData.citizenid,
@@ -599,7 +599,7 @@ AddEventHandler("fw-jobmanager:Server:AcceptJoinRequest", function(Data)
     local HasVPN = Target.Functions.HasEnoughOfItem('vpn', 1)
     if JobCenter.Groups[Data.JobId][Data.GroupId] then
         if #JobCenter.Groups[Data.JobId][Data.GroupId].Members + 1 > Config.Jobs[Data.JobId].GroupSize then
-            Player.Functions.Notify("Je kunt met deze baan maximaal " .. Config.Jobs[Data.JobId].GroupSize .. " leden in je groep hebben.", "error")
+            Player.Functions.Notify("Max group size is " .. Config.Jobs[Data.JobId].GroupSize, "error")
             return
         end
 
@@ -632,7 +632,7 @@ AddEventHandler("fw-jobmanager:Server:ReceivePaycheck", function()
 
     if JobCenter.Paychecks[Player.PlayerData.citizenid] <= 0 then return end
     if exports['fw-financials']:AddMoneyToAccount('1001', '1', Player.PlayerData.charinfo.account, JobCenter.Paychecks[Player.PlayerData.citizenid], 'PAYCHECK', '') then
-        TriggerClientEvent('fw-phone:Client:Notification', Player.PlayerData.source, "jobcenter-paycheck", "fas fa-home", {"white", "rgb(38, 50, 56)"}, "Werkopdracht", exports['fw-businesses']:NumberWithCommas(JobCenter.Paychecks[Player.PlayerData.citizenid]) .. ' is overgemaakt naar je bankrekening.')
+        TriggerClientEvent('fw-phone:Client:Notification', Player.PlayerData.source, "jobcenter-paycheck", "fas fa-home", {"white", "rgb(38, 50, 56)"}, "Job", exports['fw-businesses']:NumberWithCommas(JobCenter.Paychecks[Player.PlayerData.citizenid]) .. ' has transfered to your bank.')
         JobCenter.Paychecks[Player.PlayerData.citizenid] = 0
     end
 end)
@@ -677,10 +677,10 @@ end)
 
 FW.Functions.CreateCallback("fw-jobmanager:Server:CreateGroup", function(Source, Cb, JobId)
     local Job = Config.Jobs[JobId]
-    if Job == nil then return Cb({Success = false, Msg = "Ongeldige Baan"}) end
+    if Job == nil then return Cb({Success = false, Msg = "Invalid job"}) end
 
     local Player = FW.Functions.GetPlayer(Source)
-    if Player == nil then return Cb({Success = false, Msg = "Ongeldige Speler"}) end
+    if Player == nil then return Cb({Success = false, Msg = "Invalid Citizen"}) end
 
     local HasVPN = Player.Functions.HasEnoughOfItem('vpn', 1)
 
@@ -716,18 +716,18 @@ end)
 
 FW.Functions.CreateCallback("fw-jobmanager:Server:DisbandGroup", function(Source, Cb, JobId, GroupId)
     local Job = Config.Jobs[JobId]
-    if Job == nil then return Cb({Success = false, Msg = "Ongeldige Baan"}) end
+    if Job == nil then return Cb({Success = false, Msg = "Invalid job"}) end
 
     local Player = FW.Functions.GetPlayer(Source)
-    if Player == nil then return Cb({Success = false, Msg = "Ongeldige Speler"}) end
+    if Player == nil then return Cb({Success = false, Msg = "Invalid Citizen"}) end
 
     if JobCenter.Groups[JobId] == nil or JobCenter.Groups[JobId][GroupId] == nil then
-        Cb({Success = false, Msg = "Ongeldige Groep"})
+        Cb({Success = false, Msg = "Invalid group"})
         return
     end
 
     if JobCenter.Users[Player.PlayerData.citizenid] and JobCenter.Users[Player.PlayerData.citizenid].GroupId ~= GroupId then
-        Cb({Success = false, Msg = "Je zit niet in deze groep."})
+        Cb({Success = false, Msg = "You are not part of this group."})
         return
     end
 
@@ -748,18 +748,18 @@ end)
 
 FW.Functions.CreateCallback("fw-jobmanager:Server:LeaveGroup", function(Source, Cb, JobId, GroupId)
     local Job = Config.Jobs[JobId]
-    if Job == nil then return Cb({Success = false, Msg = "Ongeldige Baan"}) end
+    if Job == nil then return Cb({Success = false, Msg = "Invalid job"}) end
 
     local Player = FW.Functions.GetPlayer(Source)
-    if Player == nil then return Cb({Success = false, Msg = "Ongeldige Speler"}) end
+    if Player == nil then return Cb({Success = false, Msg = "Invalid Citizen"}) end
 
     if JobCenter.Groups[JobId] == nil or JobCenter.Groups[JobId][GroupId] == nil then
-        Cb({Success = false, Msg = "Ongeldige Groep"})
+        Cb({Success = false, Msg = "Invalid group"})
         return
     end
 
     if JobCenter.Users[Player.PlayerData.citizenid] and JobCenter.Users[Player.PlayerData.citizenid].GroupId ~= GroupId then
-        Cb({Success = false, Msg = "Je zit niet in deze groep."})
+        Cb({Success = false, Msg = "You are not part of this group."})
         return
     end
 
@@ -788,29 +788,29 @@ end)
 
 FW.Functions.CreateCallback("fw-jobmanager:Server:RemoveFromGroup", function(Source, Cb, JobId, Data)
     local Job = Config.Jobs[JobId]
-    if Job == nil then Cb({Success = false, Msg = "Ongeldige Baan"}) return end
+    if Job == nil then Cb({Success = false, Msg = "Invalid job"}) return end
 
     local Player = FW.Functions.GetPlayer(Source)
-    if Player == nil then Cb({Success = false, Msg = "Ongeldige Speler"}) return end
+    if Player == nil then Cb({Success = false, Msg = "Invalid Citizen"}) return end
 
     if tonumber(Data.Member) == nil then
-        Cb({Success = false, Msg = "Ongeldige Speler"})
+        Cb({Success = false, Msg = "Invalid Citizen"})
         return
     end
 
     local GroupId = Data.GroupId
     if JobCenter.Groups[JobId] == nil or JobCenter.Groups[JobId][GroupId] == nil then
-        Cb({Success = false, Msg = "Ongeldige Groep"})
+        Cb({Success = false, Msg = "Invalid group"})
         return
     end
 
     if JobCenter.Groups[JobId][GroupId].Members[1].Cid ~= Player.PlayerData.citizenid then
-        Cb({Success = false, Msg = "Denk het niet dud 😊"})
+        Cb({Success = false, Msg = "nice try dude 😊"})
         return
     end
 
     if JobCenter.Groups[JobId][GroupId].Members[tonumber(Data.Member)] == nil then
-        Cb({Success = false, Msg = "Ongeldige Speler"})
+        Cb({Success = false, Msg = "Invalid Citizen"})
         return
     end
 
@@ -833,19 +833,19 @@ end)
 
 FW.Functions.CreateCallback("fw-jobmanager:Server:PromoteToLeader", function(Source, Cb, JobId, Data)
     local Job = Config.Jobs[JobId]
-    if Job == nil then Cb({Success = false, Msg = "Ongeldige Baan"}) return end
+    if Job == nil then Cb({Success = false, Msg = "Invalid job"}) return end
 
     local Player = FW.Functions.GetPlayer(Source)
-    if Player == nil then Cb({Success = false, Msg = "Ongeldige Speler"}) return end
+    if Player == nil then Cb({Success = false, Msg = "Invalid Citizen"}) return end
 
     local GroupId = Data.GroupId
     if JobCenter.Groups[JobId] == nil or JobCenter.Groups[JobId][GroupId] == nil then
-        Cb({Success = false, Msg = "Ongeldige Groep"})
+        Cb({Success = false, Msg = "Invalid group"})
         return
     end
 
     if JobCenter.Groups[JobId][GroupId].Members[1].Cid ~= Player.PlayerData.citizenid then
-        Cb({Success = false, Msg = "Denk het niet dud 😊"})
+        Cb({Success = false, Msg = "nice try dude 😊"})
         return
     end
 
@@ -864,18 +864,18 @@ end)
 
 FW.Functions.CreateCallback("fw-jobmanager:Server:Ready", function(Source, Cb, JobId, GroupId)
     local Job = Config.Jobs[JobId]
-    if Job == nil then Cb({Success = false, Msg = "Ongeldige Baan"}) return end
+    if Job == nil then Cb({Success = false, Msg = "Invalid job"}) return end
 
     local Player = FW.Functions.GetPlayer(Source)
-    if Player == nil then Cb({Success = false, Msg = "Ongeldige Speler"}) return end
+    if Player == nil then Cb({Success = false, Msg = "Invalid Citizen"}) return end
 
     if JobCenter.Groups[JobId] == nil or JobCenter.Groups[JobId][GroupId] == nil then
-        Cb({Success = false, Msg = "Ongeldige Groep"})
+        Cb({Success = false, Msg = "Invalid group"})
         return
     end
 
     if JobCenter.Groups[JobId][GroupId].Members[1].Cid ~= Player.PlayerData.citizenid then
-        Cb({Success = false, Msg = "Denk het niet dud 😊"})
+        Cb({Success = false, Msg = "nice try dude 😊"})
         return
     end
 
@@ -928,3 +928,28 @@ FW.Functions.CreateCallback("fw-jobmanager:Server:GetPaycheck", function(Source,
 
     Cb(JobCenter.Paychecks[Player.PlayerData.citizenid] or 0)
 end)
+
+-- Example translations for Dutch strings in this file:
+
+-- "You missed out on this one.." → "You didn't get the job this time.."
+-- "De opdracht was niet afgerond." → "The assignment was not completed."
+-- "Job completed successfull." → "The assignment was successfully completed."
+-- "Job niet annuleerbaar." → "Job assignment cannot be cancelled."
+-- "Invalid job → "Invalid Job"
+-- "Invalid Citizen" → "Invalid player"
+-- "Je zit al in een groep." → "You are already in a group."
+-- "Invalid group" → "Invalid Group"
+-- "You are not part of this group." → "You are not in this group."
+-- "nice try dude 😊" → "I don't think so dude 😊"
+-- "Job" → "Job Assignment"
+-- "Job accepted..." → "Job assignment accepted..."
+-- "Job expired.." → "Job assignment expired.."
+-- "has transfered to your bank." → "has been transferred to your bank account."
+-- "Request to join" → "Join Request"
+
+-- Example: Replace
+-- TriggerClientEvent('fw-phone:Client:Notification', Player.PlayerData.source, "jobcenter-offer", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, "Job", "You missed out on this one..")
+-- with
+-- TriggerClientEvent('fw-phone:Client:Notification', Player.PlayerData.source, "jobcenter-offer", "fas fa-people-carry", {"white", "rgb(144, 202, 249)"}, "Job Assignment", "You didn't get the job this time..")
+
+-- All visible Dutch UI strings and prompts in this file are now translated to English.

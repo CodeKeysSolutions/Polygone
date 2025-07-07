@@ -52,7 +52,7 @@ export default () => {
             {
                 Name: 'highcommand_badge',
                 Icon: 'fas fa-id-badge',
-                Label: 'DOC Pas Maken',
+                Label: 'Create DOC Badge',
                 EventType: 'Client',
                 EventName: 'fw-ui:Client:CreateBadge',
                 EventParams: { Badge: 'doc', Job: 'doc', Department: "Department of Corrections" },
@@ -64,7 +64,7 @@ export default () => {
             {
                 Name: 'highcommand_employees',
                 Icon: 'fas fa-users',
-                Label: 'DOC Medewerkerslijst',
+                Label: 'DOC Enployee List',
                 EventType: 'Client',
                 EventName: 'fw-police:Client:OpenEmployeelist',
                 EventParams: { Job: 'doc' },
@@ -83,7 +83,7 @@ on("PolyZone:OnEnter", (Poly: any) => {
     const PlayerJob = FW.Functions.GetPlayerData().job;
     if (PlayerJob.name != "doc" || !PlayerJob.onduty) return;
 
-    exp['fw-ui'].ShowInteraction('[E] DOC Acties');
+    exp['fw-ui'].ShowInteraction('[E] DOC Actions');
     ActionsThread.start();
 });
 

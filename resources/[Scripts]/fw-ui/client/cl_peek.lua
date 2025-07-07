@@ -108,7 +108,7 @@ Citizen.CreateThread(function()
     end
 
     -- Create keybinds
-    FW.AddKeybind("eyePeek", "Spelers", "Peek", "LMENU", function(IsPressed)
+    FW.AddKeybind("eyePeek", "players", "Peek", "LMENU", function(IsPressed)
         if IsPressed then
             local PlayerData = FW.Functions.GetPlayerData()
             if PlayerData.metadata == nil or PlayerData.metadata['ishandcuffed'] then return end

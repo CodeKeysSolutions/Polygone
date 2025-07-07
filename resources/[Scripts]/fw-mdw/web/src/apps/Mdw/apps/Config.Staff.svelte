@@ -126,22 +126,22 @@
         const {rank} = $MdwRanks.find(Val => Val.id == rankId);
         if (!rank) return MdwModalsExport.set({
             Show: true,
-            Msg: "Kon geen badge aanmaken: Rank niet gevonden.",
+            Msg: "Could not create badge: Rank not found.",
         });
 
         if (!callsign) return MdwModalsExport.set({
             Show: true,
-            Msg: "Kon geen badge aanmaken: Callsign niet gevonden.",
+            Msg: "Could not create badge: Callsign not found.",
         });
 
         if (!image) return MdwModalsExport.set({
             Show: true,
-            Msg: "Kon geen badge aanmaken: Foto niet gevonden.",
+            Msg: "Could not create badge: Photo not found.",
         });
 
         if (!name) return MdwModalsExport.set({
             Show: true,
-            Msg: "Kon geen badge aanmaken: Naam niet gevonden.",
+            Msg: "Could not create badge: Name not found.",
         });
 
         const callsignSerial = callsign.charAt(0);
@@ -177,7 +177,7 @@
 
         if (!badgeType || !departmentLabel) return MdwModalsExport.set({
             Show: true,
-            Msg: "Kon geen badge aanmaken: Department niet geldig.",
+            Msg: "Could not create badge: Department not valid.",
         });
 
         ShowLoader.set(true);
@@ -187,7 +187,7 @@
 
             MdwModalsExport.set({
                 Show: true,
-                Msg: `Successvol badge aangemaakt voor ${departmentLabel} (#${callsign}) ${name}!`,
+                Msg: `Successfully created badge for ${departmentLabel} (#${callsign}) ${name}!`,
             });
         });
     }
@@ -196,7 +196,7 @@
 <MdwPanel style="margin-top: 1vh; height: 72.5vh;">
     <MdwPanelHeader style="height: 6vh">
         <h6>Certifications</h6>
-        <TextField Title="Zoeken" Icon="search" SubSet={FilterCerts} />
+        <TextField Title="Search" Icon="search" SubSet={FilterCerts} />
     </MdwPanelHeader>
 
     <div style="border-top: 0.3vh solid rgb(30, 30, 30); margin-bottom: 1vh;">
@@ -232,7 +232,7 @@
 <MdwPanel style="margin-top: 1vh; height: 72.5vh;">
     <MdwPanelHeader style="height: 6vh">
         <h6>Roles</h6>
-        <TextField Title="Zoeken" Icon="search" SubSet={FilterRoles} />
+        <TextField Title="Search" Icon="search" SubSet={FilterRoles} />
     </MdwPanelHeader>
 
     <div style="border-top: 0.3vh solid rgb(30, 30, 30); margin-bottom: 1vh;">
@@ -268,7 +268,7 @@
 <MdwPanel style="margin-top: 1vh; height: 72.5vh;">
     <MdwPanelHeader style="height: 6vh">
         <h6>Staff</h6>
-        <TextField Title="Zoeken" Icon="search" SubSet={FilterStaff} />
+        <TextField Title="Search" Icon="search" SubSet={FilterStaff} />
     </MdwPanelHeader>
 
     <div style="border-top: 0.3vh solid rgb(30, 30, 30); margin-bottom: 1vh;">

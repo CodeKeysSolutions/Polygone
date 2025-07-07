@@ -11,7 +11,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'rent_vehicle',
                 Icon = 'fas fa-circle',
-                Label = 'Voertuigen Huren',
+                Label = 'Rent Vehicles',
                 EventType = 'Client',
                 EventName = 'fw-vehicles:Client:OpenRental',
                 EventParams = { Type = "Cars" },
@@ -33,7 +33,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'rent_vehicle',
                 Icon = 'fas fa-circle',
-                Label = 'Boot Huren',
+                Label = 'Rent Boat',
                 EventType = 'Client',
                 EventName = 'fw-vehicles:Client:OpenRental',
                 EventParams = { Type = "Boats" },
@@ -54,7 +54,7 @@ AddEventHandler("fw-vehicles:Client:OpenRental", function(Data)
             Desc = exports['fw-businesses']:NumberWithCommas(FW.Shared.CalculateTax('Vehicle Registration Tax', v.Price)),
             SecondMenu = {
                 {
-                    Title = 'Bevestig aankoop',
+                    Title = 'Confirm purchase',
                     GoBack = false,
                     CloseMenu = true,
                     DoCloseEvent = false,
@@ -77,20 +77,20 @@ AddEventHandler("fw-vehicles:Client:RentalPurchase", function(Data)
     local Plate = ("RN" .. FW.Shared.RandomInt(3) .. FW.Shared.RandomStr(3)):upper()
 
     if not FW.Functions.IsSpawnPointClear(vector3(Config.RentalSpawn[Data.RentalType].x, Config.RentalSpawn[Data.RentalType].y, Config.RentalSpawn[Data.RentalType].z), 1.85) then
-        return FW.Functions.Notify("Er staat een voertuig in de weg..", "error")
+        return FW.Functions.Notify("There is a vehicle in the way..", "error")
     end
 
     local StartRent = GetEntityCoords(PlayerPedId())
-    local Finished = FW.Functions.CompactProgressbar(15000, "Huren, niet bewegen...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = false}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(15000, "Renting, do not move...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = false}, {}, {}, {}, false)
     if not Finished then return end
 
     if #(GetEntityCoords(PlayerPedId()) - StartRent) > 2.0 then
-        return FW.Functions.Notify("Idioot, je bent te ver weg gegaan..", "error")
+        return FW.Functions.Notify("Idiot, you went too far away..", "error")
     end
 
     local Paid = FW.SendCallback("FW:RemoveCash", Data.Price)
     if not Paid then
-        return FW.Functions.Notify("Niet genoeg cash..", "error")
+        return FW.Functions.Notify("Not enough cash..", "error")
     end
 
     local NetId = FW.SendCallback("FW:server:spawn:vehicle", Data.Model, { x = Config.RentalSpawn[Data.RentalType].x, y = Config.RentalSpawn[Data.RentalType].y, z = Config.RentalSpawn[Data.RentalType].z - 1.0, a = Config.RentalSpawn[Data.RentalType].w }, false, Plate)
@@ -115,5 +115,5 @@ end)
 RegisterNetEvent("fw-vehicles:Client:ReceiveRentalKeys")
 AddEventHandler("fw-vehicles:Client:ReceiveRentalKeys", function(Plate)
     exports['fw-vehicles']:SetVehicleKeys(Plate, true, false)
-    FW.Functions.Notify("Je ontving een extra set met sleutels!", "success")
+    FW.Functions.Notify("You received an extra set of keys!", "success")
 end)

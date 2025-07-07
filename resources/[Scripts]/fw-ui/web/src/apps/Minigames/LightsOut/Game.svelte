@@ -37,7 +37,7 @@
         GameData.GameId = GameId;
         
         MinigameVisible = true;
-        SetMessage('database', 'Gegevens beschadigd, reparatie van controlesom vereist..');
+        SetMessage('database', 'Data corrupted, checksum repair required..'); // was 'Gegevens beschadigd, reparatie van controlesom vereist..'
         const Board = GenerateBoard(Amount);
         await Delay(3);
         ClearMessage();
@@ -62,7 +62,7 @@
             const HasWon = await CheckForWin();
             if (HasWon) return;
 
-            SetMessage("database", "Gegevensherstel mislukt");
+            SetMessage("database", "Data recovery failed"); // was "Gegevensherstel mislukt"
             await Delay(2)
             ClearMessage();
             MinigameVisible = false;
@@ -95,7 +95,7 @@
         GameData.Active = false;
         GameData.GameId = 0;
 
-        SetMessage("database", "Gegevensherstel geslaagd");
+        SetMessage("database", "Data recovery successful"); // was "Gegevensherstel geslaagd"
         await Delay(2)
         ClearMessage();
         MinigameVisible = false;

@@ -102,7 +102,7 @@ export const MdwModalsVehicleHistory = writable({
 
 // MDW - Reports
 export const CurrentReport = writable({
-    category: 'Incidenten Rapport',
+    category: 'Accident Rapport',
     title: '',
     report: '',
     evidence: [],

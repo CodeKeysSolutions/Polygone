@@ -28,8 +28,8 @@
 
 <div class="mdw-modal-persons">
     <div class="mdw-modal-persons-container">
-        <p>Persoon Toevoegen</p>
-        <TextField Title='Zoeken' Icon='search' SubSet={FilterPersons} />
+        <p>Add Person</p>
+        <TextField Title='Search' Icon='search' SubSet={FilterPersons} />
         <div class="mdw-modal-persons-list">
             {#each FilteredPersons as Data, Key}
                 {#if !$MdwModalsPerson.IgnoreFilter.includes(Data.id)}
@@ -48,7 +48,7 @@
                     IgnoreFilter: [],
                     Cb: () => {}
                 })
-            }}>Sluiten</Button>
+            }}>Close</Button>
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@ Config.Houses = {}
 Config.BusinessNames = {
     "Dynasty 8",
     "BBV&A",
-    "Quick House Makelaar"
+    "Quick House Real Estate",
 }
 
 Config.TierToModel = {

@@ -7,7 +7,7 @@
 <!-- Hat -->
 {#if $ComponentsValues?.Hat?.MaxComps > 0}
     <ClothingTab
-        Title="Hoed"
+        Title="Hat"
         AmountComponents={$ComponentsValues?.Hat?.MaxComps}
         AmountTextures={$ComponentsValues?.Hat?.MaxTxts}
     >
@@ -19,7 +19,7 @@
 <!-- Hair -->
 {#if $ComponentsValues?.Hair?.MaxComps > 0}
     <ClothingTab
-        Title="Haar"
+        Title="Hair"
         AmountComponents={$ComponentsValues?.Hair?.MaxComps}
         AmountTextures={$ComponentsValues?.Hair?.MaxTxts}
         HasPalette={true}
@@ -34,7 +34,7 @@
 <!-- Jacket -->
 {#if $ComponentsValues?.Jacket?.MaxComps > 0}
     <ClothingTab
-        Title="Jas"
+        Title="Jacket"
         AmountComponents={$ComponentsValues?.Jacket?.MaxComps}
         AmountTextures={$ComponentsValues?.Jacket?.MaxTxts}
     >
@@ -46,7 +46,7 @@
 <!-- Undershirt -->
 {#if $ComponentsValues?.Undershirt?.MaxComps > 0}
     <ClothingTab
-        Title="Ondershirt"
+        Title="Undershirt"
         AmountComponents={$ComponentsValues?.Undershirt?.MaxComps}
         AmountTextures={$ComponentsValues?.Undershirt?.MaxTxts}
     >
@@ -58,7 +58,7 @@
 <!-- Arms / Gloves -->
 {#if $ComponentsValues?.Arms?.MaxComps > 0}
     <ClothingTab
-        Title="Armen / Handschoenen"
+        Title="Arms / gloves"
         AmountComponents={$ComponentsValues?.Arms?.MaxComps}
         AmountTextures={$ComponentsValues?.Arms?.MaxTxts}
     >
@@ -70,7 +70,7 @@
 <!-- Pants -->
 {#if $ComponentsValues?.Pants?.MaxComps > 0}
     <ClothingTab
-        Title="Broeken"
+        Title="Pants"
         AmountComponents={$ComponentsValues?.Pants?.MaxComps}
         AmountTextures={$ComponentsValues?.Pants?.MaxTxts}
     >
@@ -82,7 +82,7 @@
 <!-- Shoes -->
 {#if $ComponentsValues?.Shoes?.MaxComps > 0}
     <ClothingTab
-        Title="Schoenen"
+        Title="Shoes"
         AmountComponents={$ComponentsValues?.Shoes?.MaxComps}
         AmountTextures={$ComponentsValues?.Shoes?.MaxTxts}
     >

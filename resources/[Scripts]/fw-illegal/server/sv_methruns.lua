@@ -46,16 +46,16 @@ AddEventHandler("fw-illegal:Server:Methruns:GetTasks", function()
     if Player == nil then return end
 
     if CurrentCops < 5 then
-        return Player.Functions.Notify("Kan geen opdracht starten..", "error")
+        return Player.Functions.Notify("Cant start missions..", "error")
     end
 
     local Gang = exports['fw-laptop']:GetGangByPlayer(Player.PlayerData.citizenid)
     if not Gang then
-        return Player.Functions.Notify("Kan geen opdracht starten..", "error")
+        return Player.Functions.Notify("Cant start missions..", "error")
     end
 
     if MethrunCooldown then
-        return Player.Functions.Notify("Kan geen opdracht starten..", "error")
+        return Player.Functions.Notify("Cant start missions..", "error")
     end
 
     if GetTasksCooldown then
@@ -87,16 +87,16 @@ AddEventHandler("fw-illegal:Server:Methruns:GetTasks", function()
     end
 
     if #MethItems == 0 then
-        return Player.Functions.Notify("De man zegt 'Als je niks hebt donder je maar op.' en gebaart dat je weg moet gaan.", "error")
+        return Player.Functions.Notify("The men says 'If you have no business here you beter go'.", "error")
     end
 
     if #MethItems < 50 then
-        return Player.Functions.Notify("De man zegt 'Hiermee ga je het niet redden.' en kijkt je van top tot teen aan.", "error")
+        return Player.Functions.Notify("The man says 'Looking like this you not going to make it' While he inspects you.", "error")
     end
 
     MethrunRewardsCache[Player.PlayerData.citizenid] = MethReward
 
-    Player.Functions.Notify("Ziet er goed uit, ready when you are.")
+    Player.Functions.Notify("Looks good, ready when you are.")
 
     MethrunCooldown = true
     Citizen.SetTimeout((60 * 1000) * 120, function()
@@ -128,17 +128,17 @@ AddEventHandler("fw-illegal:Server:MethrunCollect", function()
     if Player == nil then return end
 
     if not MethrunCooldown or not MethrunVehicle then
-        return Player.Functions.Notify("Ik heb niks voor je..", "error")
+        return Player.Functions.Notify("I have nothing for you..", "error")
     end
 
     local Distance = #(GetEntityCoords(MethrunVehicle.Vehicle) - vector3(Config.MethSupplier.x, Config.MethSupplier.y, Config.MethSupplier.z))
     if Distance > 8 then
-        return Player.Functions.Notify("Ik heb niks voor je..", "error")
+        return Player.Functions.Notify("I have nothing for you..", "error")
     end
 
     SuppliesCollected = SuppliesCollected + 1
     if SuppliesCollected > 10 then
-        return Player.Functions.Notify("Je hebt alle spullen, wacht op de locatie van de baas, wees voorzichtig.", "error")
+        return Player.Functions.Notify("You got the stuff, now wait for the sign.", "error")
     end
 
     if SuppliesCollected == 10 then

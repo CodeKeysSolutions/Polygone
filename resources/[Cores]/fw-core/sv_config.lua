@@ -1,7 +1,7 @@
 Config = Config or {}
 
-Config.ServerName = 'Clarity Roleplay'
-Config.DiscordServerBotToken = ''
+Config.ServerName = 'Polygone'
+Config.DiscordServerBotToken = 'Njk3NzM4ODA1MjQzMDE5Mjk1.G4KAGW.GjfH406sW51Yi0QkqT61qEzCkiUtoS_cNQMqlI'
 Config.SpecialMessage = {
     ['STEAM_ID'] = 'SPECIAL CONNECTION MESSAGE',
 }
@@ -13,7 +13,7 @@ Config.ConnectCard = {
     body = {
         {
             type = "TextBlock",
-            text = "Clarity Roleplay",
+            text = "Polygone Roleplay",
             fontType = "Default",
             weight = "Bolder",
             size = "ExtraLarge",

@@ -13,11 +13,11 @@ async function start(duration,puzzlelength,amount){
     const dialing = playSound('assets/dialing.mp3', 0.1)
 
     // mock loading screen
-    setInformationText('VERBINDING MAKEN')
+    setInformationText('Making connection..')
     await delay(10)
-    setInformationText('BEVEILIGING DOORBREKEN..')
+    setInformationText('Bypassing security..')
     await delay(8)
-    setInformationText('BEVEILIGINGS CODE ERROR; HEEFT MENSELIJKE CAPTCHA TEST NODIG..')
+    setInformationText('SECURITY.. Checking for human')
     await delay(3)
 
     // hide text and show squares
@@ -41,7 +41,7 @@ async function start(duration,puzzlelength,amount){
     $('#text-container').classList.remove('hidden')
     
     // display result
-    setInformationText((result) ? 'Het beveiligingssysteem is uitgeschakeld!' : "Het systeem accepteerde jouw antwoord niet..")
+    setInformationText((result) ? 'Security system disabled' : "Access denied..")
     
     if(!result) {
     	$('.spy-icon').src = 'assets/failed.png'

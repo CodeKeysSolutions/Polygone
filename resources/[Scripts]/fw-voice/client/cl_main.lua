@@ -215,13 +215,13 @@ end
 
 function InitKeybinds()
     Citizen.CreateThread(function()
-        FW.AddKeybind("SwitchProx", "VoIP", "Proximity Range Aanpassen", "GRAVE", function(IsPressed)
+        FW.AddKeybind("SwitchProx", "VoIP", "Adjust Proximity Range ", "GRAVE", function(IsPressed)
             if IsPressed then CycleVoiceProximity() end
         end)
-        FW.AddKeybind("UseRadio", "VoIP", "Praten over Radio", "CAPITAL", function(IsPressed)
+        FW.AddKeybind("UseRadio", "VoIP", "Talk over Radio", "CAPITAL", function(IsPressed)
             if IsPressed then StartRadioTransmission() else StopRadioTransmission() end
         end)
-        FW.AddKeybind("UseMegaphone", "Hulpdiensten", "Toggle Megafoon", "", function(IsPressed)
+        FW.AddKeybind("UseMegaphone", "emergency services", "Toggle Megafoon", "", function(IsPressed)
             if not IsPressed then return end
 
             if UsingVehicleMegaphone then

@@ -81,10 +81,16 @@ AddEventHandler("fw-characters:Server:GiveStarterItems", function()
     local Date = os.date("*t", os.time())
     TriggerEvent('fw-phone:Server:Documents:AddDocument', '1001', {
         Type = 1,
-        Title = 'Rijbewijs - ' .. Player.PlayerData.citizenid,
-        Content = exports['fw-cityhall']:GetLicenseTemplate():format((Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname), Player.PlayerData.citizenid, Player.PlayerData.charinfo.gender == 0 and "Man" or "Vrouw", "De Staat", Date.day .. '/' .. Date.month .. '/' .. Date.year .. ' ' .. Date.hour .. ':' .. Date.min),
+        Title = 'Driver License - ' .. Player.PlayerData.citizenid, -- was 'Rijbewijs - ...'
+        Content = exports['fw-cityhall']:GetLicenseTemplate():format(
+            (Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname),
+            Player.PlayerData.citizenid,
+            Player.PlayerData.charinfo.gender == 0 and "Male" or "Female", -- was "Man" or "Vrouw"
+            "The State", -- was "De Staat"
+            Date.day .. '/' .. Date.month .. '/' .. Date.year .. ' ' .. Date.hour .. ':' .. Date.min
+        ),
         Signatures = {
-            { Signed = true, Name = 'De Staat', Timestamp = os.time() * 1000, Cid = '1001' },
+            { Signed = true, Name = 'The State', Timestamp = os.time() * 1000, Cid = '1001' }, -- was 'De Staat'
         },
         Sharees = { Player.PlayerData.citizenid },
         Finalized = 1,
@@ -122,9 +128,18 @@ AddEventHandler("fw-characters:Server:GiveStarterItems", function()
     TriggerEvent('fw-phone:Server:Documents:AddDocument', '1001', {
         Type = 3,
         Title = SharedData.Name .. ' - ' .. Plate,
-        Content = (exports['fw-businesses']:GetVehicleRegistration()):format(SharedData.Name, Model, Plate, VIN, Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname, "De Staat", Date.day .. '/' .. Date.month .. '/' .. Date.year .. ' ' .. Date.hour .. ':' .. Date.min, "Gratis"),
+        Content = (exports['fw-businesses']:GetVehicleRegistration()):format(
+            SharedData.Name,
+            Model,
+            Plate,
+            VIN,
+            Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname,
+            "The State", -- was "De Staat"
+            Date.day .. '/' .. Date.month .. '/' .. Date.year .. ' ' .. Date.hour .. ':' .. Date.min,
+            "Free" -- was "Gratis"
+        ),
         Signatures = {
-            { Signed = true, Name = 'De Staat', Timestamp = os.time() * 1000, Cid = '1001' },
+            { Signed = true, Name = 'The State', Timestamp = os.time() * 1000, Cid = '1001' }, -- was 'De Staat'
             { Signed = true, Name = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname, Timestamp = os.time() * 1000, Cid = Player.PlayerData.citizenid },
         },
         Sharees = { Player.PlayerData.citizenid },
@@ -132,7 +147,13 @@ AddEventHandler("fw-characters:Server:GiveStarterItems", function()
     })
 
     Citizen.SetTimeout(5000, function()
-        TriggerEvent('fw-phone:Server:Mails:AddMail', "De Staat", "Welkom in Los Santos!", ("Welkom in de Staat van San Andreas, %s. Je hebt een gloednieuw voertuig ontvangen als welkomstcadeau door de Staat van San Andreas.<br/><br/>We begrijpen dat de onderhoudskosten van een voertuig een uitdaging kunnen zijn, daarom zal de Staat de onderhoudskosten veroorloven voor dit voertuig."):format(Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname), Player.PlayerData.source)
+        TriggerEvent(
+            'fw-phone:Server:Mails:AddMail',
+            "The State", -- was "De Staat"
+            "Welcome to Los Santos!", -- was "Welkom in Los Santos!"
+            ("Welcome to the State of San Andreas, %s. You have received a brand new vehicle as a welcome gift from the State of San Andreas.<br/><br/>We understand that the maintenance costs of a vehicle can be a challenge, so the State will cover the maintenance costs for this vehicle."):format(Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname), -- was Dutch
+            Player.PlayerData.source
+        )
     end)
 end)
 

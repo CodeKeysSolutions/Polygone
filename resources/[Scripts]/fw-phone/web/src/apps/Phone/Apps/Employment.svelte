@@ -26,10 +26,10 @@
 
     const GetRoleBusiness = (BizId) => {
         const Biz = FilteredBusinesses[BizId];
-        if (!Biz) return "No Biz";
+        if (!Biz) return "No Business";
 
         if (Biz.business_owner == $PlayerData.Cid) {
-            return "Eigenaar";
+            return "Owner";
         }
 
         const Employee = Biz.business_employees.find(
@@ -81,7 +81,7 @@
         if (HasPermission("PayExternal"))
             Retval.push({
                 Icon: "hand-holding-usd",
-                Text: "Persoon Betalen",
+                Text: "Persoon Pay",
                 Cb: BIZ.PayExternal,
             });
 
@@ -152,7 +152,7 @@
     {#if !$CurrentBusiness.id}
         <TextField
             Icon="search"
-            Title="Zoeken"
+            Title="Search"
             SubSet={FilterBusinesses}
             class="phone-misc-input"
         />
@@ -181,7 +181,7 @@
         </div>
 
         <TextField
-            Title="Zoeken"
+            Title="Search"
             Icon="search"
             class="phone-misc-input phone-misc-input2"
             SubSet={FilterEmployees}
@@ -222,7 +222,7 @@
                         <i
                             on:keyup
                             on:click={() => { BIZ.PayEmployee($CurrentBusiness.business_owner) }}
-                            data-tooltip="Werknemer Betalen"
+                            data-tooltip="Werknemer Pay"
                             class="fas fa-hand-holding-usd"
                         />
                     {/if}
@@ -249,7 +249,7 @@
                         <i
                             on:keyup
                             on:click={() => { BIZ.PayEmployee(Data.Cid) }}
-                            data-tooltip="Werknemer Betalen"
+                            data-tooltip="Werknemer Pay"
                             class="fas fa-hand-holding-usd"
                         />
                     {/if}

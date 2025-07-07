@@ -4,7 +4,7 @@
 
     let Visible = false;
     let StreetName = 'Pillbox Hill - Alta Street';
-    let CurrentPlate = 'GEEN KENTEKENPLAAT GESCAND!';
+    let CurrentPlate = 'No Valid Plate Target!';
 
     OnEvent("Helicam", "SetVisibility", (Data) => {
         Visible = Data.Show
@@ -16,11 +16,11 @@
 
     OnEvent("Helicam", "SetPlate", (Data) => {
         if (Data.Cancel) {
-            CurrentPlate = 'GEEN KENTEKENPLAAT GESCAND!';
+            CurrentPlate = 'No Valid Plate Target!';
             return;
         };
 
-        CurrentPlate = `Kenteken: ${Data.Plate}`;
+        CurrentPlate = `Plate: ${Data.Plate}`;
     });
 </script>
 

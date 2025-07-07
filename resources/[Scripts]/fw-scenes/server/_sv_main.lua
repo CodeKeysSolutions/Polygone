@@ -46,7 +46,7 @@ AddEventHandler("fw-scenes:Server:AddScene", function(Data, Coords, Offset)
 
     local Blacklist = json.decode(LoadResourceFile(GetCurrentResourceName(), "data/blacklist.json"))
     if Blacklist[Player.PlayerData.steam] then
-        Player.Functions.Notify("Jij kunt geen scenes plaatsen.. (Reden: " .. Blacklist[Player.PlayerData.steam] .. ")", "error")
+        Player.Functions.Notify("You are blacklisted.. (Reden: " .. Blacklist[Player.PlayerData.steam] .. ")", "error")
         return
     end
 
@@ -74,7 +74,7 @@ AddEventHandler("fw-scenes:Server:RemoveScene", function(SceneId)
     local SceneData = Config.Scenes[SceneId]
 
     if Player.PlayerData.job.name ~= "police" and (not FW.Functions.HasPermission(Src, "admin") and not FW.Functions.HasPermission(Src, "god")) and SceneData.Creator ~= Player.PlayerData.steam then
-        Player.Functions.Notify("Deze scene kan jij niet verwijderen..", "error")
+        Player.Functions.Notify("You cant delete this scene..", "error")
         return
     end
 

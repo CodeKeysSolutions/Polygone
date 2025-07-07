@@ -37,8 +37,8 @@
 <MdwPanel style="width: 100%; background-color: rgb(46, 70, 94);">
     <MdwPanel class="filled" style="width: 98.6%; margin: 0.5vh auto 0px; height: 6vh;">
         <MdwPanelHeader style="width: 98.6%;">
-            <h6>Straffen</h6>
-            <TextField Title='Zoeken' Icon='search' SubSet={FilterCharges} style="width: 20%;" />
+            <h6>Charges</h6>
+            <TextField Title='Search' Icon='search' SubSet={FilterCharges} style="width: 20%;" />
         </MdwPanelHeader>
     </MdwPanel>
 

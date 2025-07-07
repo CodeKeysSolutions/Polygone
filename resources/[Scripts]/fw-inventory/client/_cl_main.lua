@@ -120,7 +120,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-FW.AddKeybind("openInventory", 'Inventory', 'Openen', 'Tab', function(IsPressed)
+FW.AddKeybind("openInventory", 'Inventory', 'Opening', 'Tab', function(IsPressed)
     if not IsPressed then return end
     if HotbarCooldown then return end
     if IsInventoryBusy then return end
@@ -147,7 +147,7 @@ FW.AddKeybind("openInventory", 'Inventory', 'Openen', 'Tab', function(IsPressed)
         MaxSlots, MaxWeight = 65, GetVehicleTrunkWeight(Vehicle)
     elseif NearContainer then
         local ContainerPos = GetEntityCoords(Container)
-        InvType = 'Robijn zijn Leven'
+        InvType = 'Any hes life'
         InvName = 'HiddenContainer-' .. math.floor(ContainerPos.x) .. '/' .. math.floor(ContainerPos.y)
         MaxSlots, MaxWeight = 200, 2000.0
     elseif CurrentDropId then

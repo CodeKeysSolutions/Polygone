@@ -5,7 +5,7 @@ FW.Commands.Add("dutyon", "Ga in dienst.", {}, false, function(Source, Args)
     if Player == nil then return end
 
     if Player.PlayerData.job.name ~= 'ems' and Player.PlayerData.job.name ~= 'police' and Player.PlayerData.job.name ~= 'storesecurity' and Player.PlayerData.job.name ~= 'doc' then
-        return Player.Functions.Notify("Ze herkennen je niet..", "error")
+        return Player.Functions.Notify("Access denied..", "error")
     end
 
     local JobsToMdw = {

@@ -50,9 +50,9 @@
 </script>
 
 <div class="new-ballot">
-    <Button Color="success" style="margin: 0;" on:click={CreateBallot}>Stemming Aanmaken</Button>
+    <Button Color="success" style="margin: 0;" on:click={CreateBallot}>Create Ballot</Button>
 </div>
-<p class="preferences-header">Actief / Aanstaande</p>
+<p class="preferences-header">Active / Upcoming</p>
 
 {#each ActiveBallots as Data, Key}
     <div class="ballot-container">
@@ -64,13 +64,13 @@
         {#each Data.Votes as Nominee, NomineeId}
             <div class="ballot-row">
                 <p>{Nominee.Name}</p>
-                <!-- <p>{Nominee.Votes} {Nominee.Votes == 1 ? "stem" : "stemmen"} ({ Data.TotalVotes == 0 ? 0 : Math.ceil((100 / Data.TotalVotes) * Nominee.Votes) }%)</p> -->
+                <!-- <p>{Nominee.Votes} {Nominee.Votes == 1 ? "vote" : "votes"} ({ Data.TotalVotes == 0 ? 0 : Math.ceil((100 / Data.TotalVotes) * Nominee.Votes) }%)</p> -->
             </div>
         {/each}
     </div>
 {/each}
 
-<p class="preferences-header">Verlopen</p>
+<p class="preferences-header">Expired</p>
 {#each ExpiredBallots as Data, Key}
     <div class="ballot-container">
         <div class="ballot-row">
@@ -81,7 +81,7 @@
         {#each Data.Votes as Nominee, NomineeId}
             <div class="ballot-row">
                 <p>{Nominee.Name}</p>
-                <p>{Nominee.Votes} {Nominee.Votes == 1 ? "stem" : "stemmen"} ({ Data.TotalVotes == 0 ? 0 : Math.ceil((100 / Data.TotalVotes) * Nominee.Votes) }%)</p>
+                <p>{Nominee.Votes} {Nominee.Votes == 1 ? "vote" : "votes"} ({ Data.TotalVotes == 0 ? 0 : Math.ceil((100 / Data.TotalVotes) * Nominee.Votes) }%)</p>
             </div>
         {/each}
     </div>

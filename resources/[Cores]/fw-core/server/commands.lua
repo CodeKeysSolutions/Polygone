@@ -30,30 +30,30 @@ FW.Commands.Refresh = function(source)
 	end
 end
 
-FW.Commands.Add("addpermission", "Geef permissie aan iemand (god/admin)", {{name="id", help="ID van de speler"}, {name="permission", help="Permission level"}}, true, function(source, args)
+FW.Commands.Add("addpermission", "Give someone permissions (god/admin)", {{name="id", help="Player ID"}, {name="permission", help="Permission level"}}, true, function(source, args)
 	local Player = FW.Functions.GetPlayer(tonumber(args[1]))
 	local permission = tostring(args[2]):lower()
 	if Player ~= nil then
 		FW.Functions.AddPermission(Player.PlayerData.source, permission)
 	else
-		TriggerClientEvent('chatMessage', source, "SYSTEM", "error", "Speler is niet online!")	
+		TriggerClientEvent('chatMessage', source, "SYSTEM", "error", "Player is not online!")	
 	end
 end, "god")
 
-FW.Commands.Add("removepermission", "Haal permissie weg van iemand", {{name="id", help="ID van de speler"}}, true, function(source, args)
+FW.Commands.Add("removepermission", "Remove ingame permissions", {{name="id", help="Player ID"}}, true, function(source, args)
 	local Player = FW.Functions.GetPlayer(tonumber(args[1]))
 	if Player ~= nil then
 		FW.Functions.RemovePermission(Player.PlayerData.source)
 	else
-		TriggerClientEvent('chatMessage', source, "SYSTEM", "error", "Speler is niet online!")	
+		TriggerClientEvent('chatMessage', source, "SYSTEM", "error", "Player is not online!")	
 	end
 end, "god")
 
-FW.Commands.Add("refreshpermissions", "Herlaad de permissions", {}, false, function(source, args)
+FW.Commands.Add("refreshpermissions", "Reload permissions", {}, false, function(source, args)
 	FW.Functions.RefreshPerms()
 end, "god")
 
-FW.Commands.Add("ooc", "Lokaal Out Of Character chat bericht (alleen gebruiken wanneer nodig)", {}, false, function(source, args)
+FW.Commands.Add("ooc", "Local Out Of Character chat message (only use when needed)", {}, false, function(source, args)
 	local Player = FW.Functions.GetPlayer(source)
 	if Player == nil then return end
 
@@ -66,11 +66,14 @@ FW.Commands.Add("ooc", "Lokaal Out Of Character chat bericht (alleen gebruiken w
 	end
 end)
 
-FW.Commands.Add("id", "Zie wat je id is.", {}, false, function(source, args)
+FW.Commands.Add("id", "See what your ID is.", {}, false, function(source, args)
 	local Player = FW.Functions.GetPlayer(source)
-	TriggerClientEvent('chatMessage', source, "SYSTEM", "warning", "Jouw id: "..source)
+	TriggerClientEvent('chatMessage', source, "SYSTEM", "warning", "Your ID: "..source)
 end)
 
-FW.Commands.Add("login", "Herlaad je karakter (DEVELOPMENT ENVIRONMENT ONLY, DUS NIET GEBRUIKEN OP LIVE!)", {}, false, function(Source, Args)
-    TriggerClientEvent('FW:Client:OnPlayerLoaded', Source)
-end, "god")
+
+if GetConvar("sv_serverCode") == "dev" then 
+	FW.Commands.Add("login", "Herlaad je karakter (DEVELOPMENT ENVIRONMENT ONLY, DUS NIET GEBRUIKEN OP LIVE!)", {}, false, function(Source, Args)
+		TriggerClientEvent('FW:Client:OnPlayerLoaded', Source)
+	end, "god")
+end

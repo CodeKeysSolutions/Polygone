@@ -28,8 +28,8 @@
 
 <div class="mdw-modal-units">
     <div class="mdw-modal-units-container">
-        <p>Eenheid Toevoegen</p>
-        <TextField Title='Zoeken' Icon='search' SubSet={FilterUnits} />
+        <p>Add unit</p>
+        <TextField Title='Search' Icon='search' SubSet={FilterUnits} />
         <div class="mdw-modal-units-list">
             {#each FilteredUnits as Data, Key}
                 {#if !$MdwModalsUnits.IgnoreFilter.includes(Data.id)}

@@ -87,7 +87,7 @@
                         <Button
                             on:click={() => { ShowingAlertsAmount = ShowingAlertsAmount + 100 }}
                             Color="success"
-                        >Laad Meer</Button>
+                        >Load more</Button>
                     </div>
                 {/if}
             </div>

@@ -17,11 +17,11 @@
     {#each StatusHud as Data, Key}
         <div style="display: flex; justify-content: space-between;">
             <Checkbox
-                Label="Toon {Data[1]}"
+                Label="Show {Data[1]}"
                 bind:Checked={$MyPreferences[`Status.Show${Data[0]}`]}
             />
             <TextField
-                Title="Verberg wanneer meer dan... (100 = nooit verbergen)"
+                Title="Hide if more then... (100 = Never hide)"
                 bind:RealValue={$MyPreferences[`Status.${Data[0]}Value`]}
             />
         </div>
@@ -29,53 +29,53 @@
 
     <div style="display: flex; justify-content: space-between;">
         <Checkbox
-            Label="Toon Stress indien relevant"
+            Label="Show stress when relevant"
             bind:Checked={$MyPreferences['Status.ShowStress']}
         />
         <Checkbox
-            Label="Toon Oxygen indien relevant"
+            Label="Show Oxygen when relevant"
             bind:Checked={$MyPreferences['Status.ShowOxygen']}
         />
         <Checkbox
-            Label="Toon Buffs indien relevant"
+            Label="Show Buffs if relevant"
             bind:Checked={$MyPreferences['Status.ShowBuffs']}
         />
     </div>
 </div>
 
 <TextField
-    Title="Toon Radio Kanaal"
+    Title="Show Radio Channel"
     bind:RealValue={$MyPreferences['Status.RadioVisibility']}
     style="margin-top: 1vh;"
     Select={[
         { Text: "Relevant", Value: "Relevant" },
-        { Text: "Altijd", Value: "Altijd" },
-        { Text: "Nooit", Value: "Nooit" }
+        { Text: "Always", Value: "Always" },
+        { Text: "Never", Value: "Never" }
     ]}
 />
 
 <hr/>
-<p class="preferences-header">Voertuigen</p>
+<p class="preferences-header">Vehicles</p>
 <Checkbox
-    Label="Minimap Outline Ingeschakeld"
+    Label="Enable Minimap Border"
     bind:Checked={$MyPreferences['Vehicle.ShowMapOutline']}
 />
 
 <hr/>
-<p class="preferences-header">Kompas</p>
+<p class="preferences-header">Compass</p>
 <Checkbox
-    Label="Ingeschakeld"
+    Label="Enable"
     bind:Checked={$MyPreferences['Compass.Show']}
 />
 
 <hr/>
-<p class="preferences-header">Zwarte Balken</p>
+<p class="preferences-header">Black border</p>
 <Checkbox
-    Label="Ingeschakeld"
+    Label="Enable"
     bind:Checked={$MyPreferences['BlackBars.Show']}
 />
 <TextField
-    Title="Percentage van scherm"
+    Title="% of the screen"
     Icon="mask"
     bind:RealValue={$MyPreferences['BlackBars.Percentage']}
 />
@@ -83,6 +83,6 @@
 <hr/>
 <p class="preferences-header">Crosshair</p>
 <Checkbox
-    Label="Ingeschakeld"
+    Label="Enable"
     bind:Checked={$MyPreferences['Crosshair.Show']}
 />

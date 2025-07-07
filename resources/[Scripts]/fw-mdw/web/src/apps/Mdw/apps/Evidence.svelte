@@ -48,7 +48,7 @@
             if ($CurrentEvidence.identifier.includes(".discordapp.")) {
                 MdwModalsExport.set({
                     Show: true,
-                    Msg: `cdn.discordapp.com kan niet gebruikt worden als identifier.`,
+                    Msg: `cdn.discordapp.com cannot be used as an identifier.`,
                 });
 
                 return;
@@ -121,8 +121,8 @@
 
 <MdwPanel class="filled">
     <MdwPanelHeader>
-        <h6>Bewijs</h6>
-        <TextField Title='Zoeken' Icon='search' SubSet={FilterEvidence} />
+        <h6>Evidence</h6>
+        <TextField Title='Search' Icon='search' SubSet={FilterEvidence} />
     </MdwPanelHeader>
 
     <MdwPanelList>
@@ -138,19 +138,19 @@
 <MdwPanel class="filled">
     <MdwPanelHeader>
         {#if $CurrentEvidence.id}
-            <h6>Bewijs Bewerken (#{$CurrentEvidence.id})</h6>
+            <h6>Edit Evidence (#{$CurrentEvidence.id})</h6>
         {:else}
-            <h6>Bewijs Toevoegen</h6>
+            <h6>Add Evidence</h6>
         {/if}
 
         {#if !$IsPublic}
             <div class="mdw-box-title-icons">
                 {#if $CurrentEvidence.id}
-                    {#if HasCidPermission("Evidence.Create")} <i on:keyup on:click={() => { OnEvidenceAction("Reset") }} data-tooltip="Nieuw" class="fas fa-sync"></i> {/if}
-                    {#if HasCidPermission("Evidence.Delete")} <i on:keyup on:click={() => { OnEvidenceAction("Delete") }} data-tooltip="Verwijderen" class="fas fa-trash"></i> {/if}
-                    {#if HasCidPermission("Evidence.Edit")} <i on:keyup on:click={() => { OnEvidenceAction("Save") }} data-tooltip="Opslaan" class="fas fa-save"></i> {/if}
+                    {#if HasCidPermission("Evidence.Create")} <i on:keyup on:click={() => { OnEvidenceAction("Reset") }} data-tooltip="New" class="fas fa-sync"></i> {/if}
+                    {#if HasCidPermission("Evidence.Delete")} <i on:keyup on:click={() => { OnEvidenceAction("Delete") }} data-tooltip="Delete" class="fas fa-trash"></i> {/if}
+                    {#if HasCidPermission("Evidence.Edit")} <i on:keyup on:click={() => { OnEvidenceAction("Save") }} data-tooltip="Save" class="fas fa-save"></i> {/if}
                 {:else}
-                    {#if HasCidPermission("Evidence.Create")} <i on:keyup on:click={() => { OnEvidenceAction("Save") }} data-tooltip="Opslaan" class="fas fa-save"></i> {/if}
+                    {#if HasCidPermission("Evidence.Create")} <i on:keyup on:click={() => { OnEvidenceAction("Save") }} data-tooltip="Save" class="fas fa-save"></i> {/if}
                 {/if}
             </div>
         {/if}
@@ -158,9 +158,9 @@
 
     <div style="width: 97%; margin-left: auto; margin-right: auto;">
         <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentEvidence.type} Title='Type' Select={GetEvidenceTypes()} />
-        <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentEvidence.identifier} Title='Identificatie' Icon='fingerprint' />
-        <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentEvidence.description} Title='Beschrijving' Icon='clipboard' />
-        <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentEvidence.citizenid} Title='BSN' Icon='user' />
+        <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentEvidence.identifier} Title='Identifier' Icon='fingerprint' />
+        <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentEvidence.description} Title='Description' Icon='clipboard' />
+        <TextField style="margin-bottom: 0px;" bind:RealValue={$CurrentEvidence.citizenid} Title='SSN' Icon='user' />
     </div>
 </MdwPanel>
 

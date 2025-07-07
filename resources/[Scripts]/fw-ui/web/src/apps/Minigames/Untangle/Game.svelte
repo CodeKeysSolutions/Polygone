@@ -28,15 +28,15 @@
 
     OnEvent("Minigames/Untangle", "StartMinigame", (Data) => {
         if (DoingMinigame) return;
-
-        SplashText = 'Firewall actief... Decodering vereist...';
+    
+        SplashText = 'Firewall active... Decoding required...'; // was 'Firewall actief... Decodering vereist...'
         ShowingSplash = true;
         DoingMinigame = true;
         TimeLeft = 0;
-
+    
         setTimeout(() => {
             GenerateNewCanvas(Data.Dots);
-
+    
             TimeInterval = setInterval(() => {
                 TimeLeft++;
                 if (TimeLeft == 100) {
@@ -272,16 +272,16 @@
         if (Intersections.length == 0) {
             StopMinigameSound();
             PlaySound("beep-success", .2)
-
+    
             if (TimeInterval) {
                 clearInterval(TimeInterval);
             };
-
+    
             clearTimeout(MinigameTimer);
-
-            SplashText = 'Firewall Doorbroken.';
+    
+            SplashText = 'Firewall Breached.'; // was 'Firewall Doorbroken.'
             ShowingSplash = true;
-
+    
             setTimeout(() => {
                 DoingMinigame = false;
                 SendEvent("Minigames/Untangle/Finished", { Success: true })
@@ -290,14 +290,14 @@
             if (TimeLeft >= 100) {
                 StopMinigameSound();
                 PlaySound("beep-fail", .2)
-                SplashText = "Decodering Mislukt.";
+                SplashText = "Decoding Failed."; // was "Decodering Mislukt."
                 ShowingSplash = true;
-
+    
                 setTimeout(() => {
                     DoingMinigame = false;
                     SendEvent("Minigames/Untangle/Finished", { Success: false })
                 }, 5000);
-
+    
                 return
             };
         };

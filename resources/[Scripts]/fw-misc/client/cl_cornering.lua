@@ -26,7 +26,7 @@ AddEventHandler("fw-misc:Client:StartCornering", function(Data, Entity)
         while IsCornering do
             local PlyCoords = GetEntityCoords(PlayerPedId())
             if #(PlyCoords - VehicleCoords) > 50.0 then
-                FW.Functions.Notify("Verkoopt gestopt...")
+                FW.Functions.Notify("Stop selling...")
                 StopCornering()
                 return
             end
@@ -52,7 +52,7 @@ AddEventHandler("fw-misc:Client:StartCornering", function(Data, Entity)
             ::Skip::
 
             if FailCounter > 10 then
-                FW.Functions.Notify("Lijkt dat niemand meer geinteresseerd is hier..")
+                FW.Functions.Notify("No body looks intrested..")
                 StopCornering()
             end
 
@@ -72,7 +72,7 @@ AddEventHandler("fw-misc:Client:CorneringSale", function(Data, Entity)
     local HasDrugs = exports['fw-inventory']:HasEnoughOfItem(CorneringType == 'meth' and '1gmeth' or 'weed-bag', 1)
     if not HasDrugs then
         TaskWanderStandard(Entity, 10.0, 10)
-        return FW.Functions.Notify("Ik heb meer nodig..")
+        return FW.Functions.Notify("You need more..")
     end
 
     RequestAnimDict("mp_safehouselost@")

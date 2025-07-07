@@ -2,7 +2,7 @@ function ScanVehiclePlate(Plate)
     local VehicleData = FW.SendCallback("fw-police:Server:GetVehicleData", Plate)
     TriggerEvent('chat:addMessage', {
         args = {
-            VehicleData.Flagged and "10-60 (Flagged)" or "10-74 (Negatief)",
+            VehicleData.Flagged and "10-60 (Flagged)" or "10-74 (Negative)", -- was "10-74 (Negatief)"
             VehicleData.Owner,
             VehicleData.Phone,
             Plate
@@ -11,8 +11,8 @@ function ScanVehiclePlate(Plate)
             <div class="chat-message error">
                 <div class="chat-message-body">
                     <strong>DISPATCH: {0}</strong><br>
-                    Eigenaar: {1}<br>
-                    Telefoonnmr.: {2}<br>
+                    Owner: {1}<br> <!-- was "Eigenaar" -->
+                    Phone No.: {2}<br> <!-- was "Telefoonnmr." -->
                     Plate: {3}
                 </div>
             </div>
@@ -32,10 +32,10 @@ function ScanVehiclePlate(Plate)
             template = [[
                 <div class="chat-message error">
                     <div class="chat-message-body">
-                        <strong>Gezocht Voertuig: {0}</strong><br>
-                        Uitgever: {1}<br>
-                        Reden: {2}<br>
-                        Datum: {3}
+                        <strong>Flagged vehicle: {0}</strong><br>
+                        Issuer: {1}<br> <!-- was "Uitgever" -->
+                        Reason: {2}<br> <!-- was "Reden" -->
+                        Date: {3} <!-- was "Datum" -->
                     </div>
                 </div>
             ]],
@@ -58,8 +58,8 @@ AddEventHandler("fw-police:Client:FlagPlate", function()
     Citizen.Wait(50)
 
     local Result = exports['fw-ui']:CreateInput({
-        { Label = 'Kentekenplaat', Icon = 'fas fa-id-badge', Name = 'Plate' },
-        { Label = 'Reden', Icon = 'fas fa-comments', Name = 'Reason' },
+        { Label = 'Plate', Icon = 'fas fa-id-badge', Name = 'Plate' },
+        { Label = 'Reason', Icon = 'fas fa-comments', Name = 'Reason' },
     })
 
     if not Result then
@@ -67,11 +67,11 @@ AddEventHandler("fw-police:Client:FlagPlate", function()
     end
 
     if not Result.Plate or #Result.Plate ~= 8 then
-        return FW.Functions.Notify("Ongeldig kenteken.", "error")
+        return FW.Functions.Notify("Invalid plate.", "error")
     end
 
     if not Result.Reason then
-        return FW.Functions.Notify("Geen reden opgegeven.", "error")
+        return FW.Functions.Notify("No reason given.", "error")
     end
 
     FW.TriggerServer("fw-police:Server:FlagPlate", Result)
@@ -89,7 +89,6 @@ AddEventHandler("fw-police:Client:ScanPlate", function(Data, Entity)
     ScanVehiclePlate(Plate)
 end)
 
-
 RegisterNetEvent("fw-police:Client:CheckTampering")
 AddEventHandler("fw-police:Client:CheckTampering", function(Data, Entity)
     local EntityType = GetEntityType(Entity) 
@@ -100,25 +99,25 @@ AddEventHandler("fw-police:Client:CheckTampering", function(Data, Entity)
     local Tampering = exports['fw-vehicles']:GetVehicleTampering(Entity)
 
     if next(Tampering) == nil then
-        return FW.Functions.Notify("Geen sabotage sporen gevonden..")
+        return FW.Functions.Notify("No tampering found..") -- was "No tempering found.."
     end
 
     local TamperingText = {}
     if Tampering.Lockpicked then
-        table.insert(TamperingText, "beschadiging aan sleutelgat")
+        table.insert(TamperingText, "damage to keyhole") -- was "beschadiging aan sleutelgat"
     end
 
     if Tampering.ForcedEntry then
-        table.insert(TamperingText, "tekenen van inbraak")
+        table.insert(TamperingText, "signs of forced entry") -- was "tekenen van inbraak"
     end
 
     if Tampering.Hacked then
-        table.insert(TamperingText, "beschadiging aan boordcomputer")
+        table.insert(TamperingText, "damage to onboard computer") -- was "beschadiging aan boordcomputer"
     end
 
     if Tampering.Blood then
-        table.insert(TamperingText, "bloedspatters op stoel")
+        table.insert(TamperingText, "blood stains on seat") -- was "bloedspatters op stoel"
     end
 
-    TriggerEvent('chatMessage', "Sabotage sporen gevonden", "warning", table.concat(TamperingText, ", "))
+    TriggerEvent('chatMessage', "Tampering traces found", "warning", table.concat(TamperingText, ", ")) -- was "Sabotage sporen gevonden"
 end)

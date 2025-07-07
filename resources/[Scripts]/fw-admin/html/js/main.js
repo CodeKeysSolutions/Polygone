@@ -488,14 +488,14 @@ $(document).on('click', '.admin-menu-sidebar-item', function(e){
         $('.admin-menu-items').fadeIn(250);
         $('.admin-menu-settings').hide();
         $('.admin-menu-players').hide();
-    } else if (Type == 'Speler Lijst') {
+    } else if (Type == 'player List') {
         BuildPlayerList();
         $('.admin-menu-navbar').hide();
         $('.admin-menu-search').show();
         $('.admin-menu-items').hide();
         $('.admin-menu-settings').hide();
         $('.admin-menu-players').fadeIn(250);
-    } else if (Type == 'Instellingen') {
+    } else if (Type == 'Settings') {
         $('.admin-menu-navbar').hide();
         $('.admin-menu-search').hide();
         $('.admin-menu-items').hide();

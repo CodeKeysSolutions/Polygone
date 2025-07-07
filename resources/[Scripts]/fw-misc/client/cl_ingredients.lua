@@ -11,7 +11,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'open_shop',
                 Icon = 'fas fa-list-alt',
-                Label = 'Voorraad bekijken',
+                Label = 'View Stock',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:Farm:ViewStock',
                 EventParams = {},
@@ -22,7 +22,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'buy_seed-bag',
                 Icon = 'fas fa-sack',
-                Label = 'Koop een zak zaad (€ 1.180,00)',
+                Label = 'Buy seed sack ($ 1.180,00)',
                 EventType = 'Server',
                 EventName = 'fw-misc:Server:Farm:PurchaseSeedbag',
                 EventParams = {},
@@ -33,7 +33,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'buy_produce-basket',
                 Icon = 'fas fa-carrot',
-                Label = 'Koop een fruitmandje (€ 1.325,00)',
+                Label = 'Buy fruit basket ($ 1.325,00)',
                 EventType = 'Server',
                 EventName = 'fw-misc:Server:Farm:PurchaseProduceBasket',
                 EventParams = {},
@@ -44,7 +44,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'buy_wateringcan',
                 Icon = 'fas fa-faucet-drip',
-                Label = 'Koop een gieter (€ 720,00)',
+                Label = 'Buy wateringcan ($ 720,00)',
                 EventType = 'Server',
                 EventName = 'fw-misc:Server:Farm:PurchaseWateringCan',
                 EventParams = {},
@@ -55,7 +55,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'buy_pitchfork',
                 Icon = 'fas fa-utensil-fork',
-                Label = 'Koop een hooivork (€ 1.000,00)',
+                Label = 'Buy pitchfork($ 1.000,00)',
                 EventType = 'Server',
                 EventName = 'fw-misc:Server:Farm:PurchasePitchfork',
                 EventParams = {},
@@ -66,7 +66,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'buy_hoe',
                 Icon = 'fas fa-circle',
-                Label = 'Koop een schoffel (€ 1.000,00)',
+                Label = 'Buy hoe ($ 1.000,00)',
                 EventType = 'Server',
                 EventName = 'fw-misc:Server:Farm:PurchaseHoe',
                 EventParams = {},
@@ -88,7 +88,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'open_shop',
                 Icon = 'fas fa-list-alt',
-                Label = 'Voorraad bekijken',
+                Label = 'Check stock',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:Farm:ViewStock',
                 EventParams = { Type = "Prison" },
@@ -99,7 +99,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'buy_seed-bag',
                 Icon = 'fas fa-sack',
-                Label = 'Koop een zak zaad (€ 80,00)',
+                Label = 'Buy seed sack($ 80,00)',
                 EventType = 'Server',
                 EventName = 'fw-misc:Server:Farm:PurchaseSeedbag',
                 EventParams = {},
@@ -110,7 +110,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'buy_produce-basket',
                 Icon = 'fas fa-carrot',
-                Label = 'Koop een fruitmandje (€ 100,00)',
+                Label = 'Buy fruit basket ($ 100,00)',
                 EventType = 'Server',
                 EventName = 'fw-misc:Server:Farm:PurchaseProduceBasket',
                 EventParams = {},
@@ -121,7 +121,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'buy_wateringcan',
                 Icon = 'fas fa-faucet-drip',
-                Label = 'Koop een gieter (€ 50,00)',
+                Label = 'Buy wateringcan($ 50,00)',
                 EventType = 'Server',
                 EventName = 'fw-misc:Server:Farm:PurchaseWateringCan',
                 EventParams = {},
@@ -132,7 +132,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'buy_pitchfork',
                 Icon = 'fas fa-utensil-fork',
-                Label = 'Koop een hooivork (€ 300,00)',
+                Label = 'Buy pitchfork ($ 300,00)',
                 EventType = 'Server',
                 EventName = 'fw-misc:Server:Farm:PurchasePitchfork',
                 EventParams = {},
@@ -143,7 +143,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'buy_hoe',
                 Icon = 'fas fa-circle',
-                Label = 'Koop een schoffel (€ 300,00)',
+                Label = 'Buy hoe($ 300,00)',
                 EventType = 'Server',
                 EventName = 'fw-misc:Server:Farm:PurchaseHoe',
                 EventParams = {},
@@ -154,7 +154,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'refill_wateringcan',
                 Icon = 'fas fa-faucet-drip',
-                Label = 'Gieter bijvullen..',
+                Label = 'Refill wateringcan..',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:Farm:RefillWateringcan',
                 EventParams = {},
@@ -171,8 +171,8 @@ AddEventHandler("fw-misc:Client:Farm:ViewStock", function(Data)
     local MenuItems = {
         {
             Icon = 'farm',
-            Title = 'Voorraad',
-            Desc = 'Alles voor je eigen verbouwde tuintjes!',
+            Title = 'Stock',
+            Desc = 'For own use!',
             Data = { Event = '', Type = '' }
         }
     }
@@ -183,11 +183,11 @@ AddEventHandler("fw-misc:Client:Farm:ViewStock", function(Data)
         MenuItems[#MenuItems + 1] = {
             Icon = 'seedling',
             Title = v,
-            Desc = 'Op voorraad: ' .. Stock,
+            Desc = 'In Stock: ' .. Stock,
             SecondMenu = {
                 {
-                    Title = 'Aankoop bevestigen',
-                    Desc = Data.Type == "Prison" and "Gratis" or exports['fw-businesses']:NumberWithCommas((Stock < 40 and Stock or 40) * 8),
+                    Title = 'Restock',
+                    Desc = Data.Type == "Prison" and "Free" or exports['fw-businesses']:NumberWithCommas((Stock < 40 and Stock or 40) * 8),
                     Data = { Event = 'fw-misc:Server:PurchaseStock', Type = 'Server', Category = k, IsPrison = Data.Type == "Prison" },
                     CloseMenu = true
                 }
@@ -215,19 +215,19 @@ AddEventHandler("fw-misc:Client:Farm:RefillWateringcan", function()
     if not Item then return end
 
     local Quality = exports['fw-inventory']:CalculateQuality(Item.Item, Item.CreateDate)
-    if Quality <= 10 then return FW.Functions.Notify("Dat ding is lekker verroest.. Weg ermee!", "error") end
+    if Quality <= 10 then return FW.Functions.Notify("Destroyed!", "error") end
 
     exports['fw-inventory']:SetBusyState(true)
     exports['fw-assets']:AddProp('wateringcan')
 
-    local Finished = FW.Functions.CompactProgressbar(8500, "Gieter vullen met water...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = 'fire', animDict = 'weapon@w_sp_jerrycan', flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(8500, "Refilling canr...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = 'fire', animDict = 'weapon@w_sp_jerrycan', flags = 49 }, {}, {}, false)
     exports['fw-inventory']:SetBusyState(false)
     exports['fw-assets']:RemoveProp()
 
     if Finished then
         TriggerServerEvent("fw-misc:Server:Farming:SetWateringCanCapacity", Item.Slot, 100.0)
-        FW.Functions.Notify("Die gieter zit weer vol!", "success")
+        FW.Functions.Notify("Full!", "success")
     else
-        FW.Functions.Notify("Geannuleerd..", "error")
+        FW.Functions.Notify("Canceled..", "error")
     end
 end)

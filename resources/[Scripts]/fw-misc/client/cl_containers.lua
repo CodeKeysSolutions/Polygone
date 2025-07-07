@@ -29,7 +29,7 @@ AddEventHandler("fw-misc:Client:OpenContainer", function(Data)
 
     Citizen.SetTimeout(250, function()
         local Result = exports['fw-ui']:CreateInput({
-            { Label = 'Container Pincode', Icon = 'fas fa-ellipsis-h', Name = 'Code', Type = 'password' },
+            { Label = 'Container Pin', Icon = 'fas fa-ellipsis-h', Name = 'Code', Type = 'password' },
         })
 
         if Result and Result.Code and ContainerData.Pin == Result.Code then
@@ -39,8 +39,8 @@ AddEventHandler("fw-misc:Client:OpenContainer", function(Data)
             local ContainerWeight = 0
 
             local PromptOptions = {
-                { Value = "Add", Text = "Materialen toevoegen" },
-                { Value = "WithdrawAll", Text = "Alle materialen opnemen" },
+                { Value = "Add", Text = "Add Material" },
+                { Value = "WithdrawAll", Text = "Withdraw all" },
             }
 
             for k, v in pairs(ContainerMeta) do
@@ -49,19 +49,19 @@ AddEventHandler("fw-misc:Client:OpenContainer", function(Data)
                     ContainerWeight = ContainerWeight + (ItemData.Weight * v)
                     table.insert(PromptOptions, {
                         Value = "Withdraw:" .. k,
-                        Text = "Opnemen: " .. ItemData.Label .. " - " .. v
+                        Text = "Withdraw: " .. ItemData.Label .. " - " .. v
                     })
                 end
             end
 
             local Result = exports['fw-ui']:CreateInput({
                 {
-                    Label = "Actie",
+                    Label = "Action",
                     Name = "Action",
                     Choices = PromptOptions,
                 },
                 {
-                    Label = "Aantal",
+                    Label = "Amount",
                     Name = "Value"
                 }
             })
@@ -82,7 +82,7 @@ AddEventHandler("fw-misc:Client:OpenContainer", function(Data)
                         DepositWeight = DepositWeight + (ItemData.Weight * DepositQuantity)
 
                         if (ContainerWeight + DepositWeight) > MaxContainerWeight then
-                            return FW.Functions.Notify("Je kan maar maximaal 1000 kg aan materialen in deze container stoppen..", "error")
+                            return FW.Functions.Notify("Container reached its max..", "error")
                         end
 
                         local DidRemove = FW.SendCallback("FW:RemoveItem", k, DepositQuantity)
@@ -92,7 +92,7 @@ AddEventHandler("fw-misc:Client:OpenContainer", function(Data)
                     end
                 end
 
-                FW.Functions.Notify("Materialen toegevoegd!", "success")
+                FW.Functions.Notify("Materials added", "success")
                 FW.TriggerServer("fw-misc:Server:SaveContainerMeta", Data.ContainerId, ContainerMeta)
             elseif Result.Action == "WithdrawAll" then
                 local AddItems = {}
@@ -131,13 +131,13 @@ AddEventHandler("fw-misc:Client:ChangePincode", function(Data)
     if ContainerData == nil then return end
 
     if not exports['fw-businesses']:HasRolePermission("Cortainer", "StashAccess") then
-        return FW.Functions.Notify("Geen toegang..", "error")
+        return FW.Functions.Notify("No access", "error")
     end
     
     Citizen.SetTimeout(250, function()
         local Result = exports['fw-ui']:CreateInput({
-            { Label = 'Huidige Pincode', Icon = 'fas fa-ellipsis-h', Name = 'Code', Type = 'password' },
-            { Label = 'Nieuwe Pincode', Icon = 'fas fa-ellipsis-h', Name = 'NewCode', Type = 'password' },
+            { Label = 'Current Pincode', Icon = 'fas fa-ellipsis-h', Name = 'Code', Type = 'password' },
+            { Label = 'New Pincode', Icon = 'fas fa-ellipsis-h', Name = 'NewCode', Type = 'password' },
         })
 
         if Result and Result.Code and ContainerData.Pin == Result.Code then
@@ -155,7 +155,7 @@ end)
 --     if ContainerData == nil then return end
 
 --     if not exports['fw-businesses']:HasRolePermission("Cortainer", "StashAccess") then
---         return FW.Functions.Notify("Geen toegang..", "error")
+--         return FW.Functions.Notify("No access", "error")
 --     end
 
 --     local Result = exports['fw-ui']:CreateInput({
@@ -176,7 +176,7 @@ end)
 --     local ContainerData = Config.Containers[Data.ContainerId]
 --     if ContainerData == nil then return end
 
---     if CurrentCops < Config.RequiredCopsContainerHack then return FW.Functions.Notify("Je kan dit nu niet doen..", "error") end
+--     if CurrentCops < Config.RequiredCopsContainerHack then return FW.Functions.Notify("Cant do this right now..", "error") end
 
 --     local CanRobContainer = FW.SendCallback("fw-misc:Server:IsContainerRobbable", Data.ContainerId)
 --     if not CanRobContainer then return FW.Functions.Notify("Je kijkt naar de container en merkt dat het slot al beschadigd is..", "error") end
@@ -232,7 +232,7 @@ function SetupContainers()
                 {
                     Name = 'open',
                     Icon = 'fas fa-box-open',
-                    Label = 'Container Openen',
+                    Label = 'Open Container',
                     EventType = 'Client',
                     EventName = 'fw-misc:Client:OpenContainer',
                     EventParams = { ContainerId = k },
@@ -243,7 +243,7 @@ function SetupContainers()
                 {
                     Name = 'change_pin',
                     Icon = 'fas fa-circle',
-                    Label = 'Pincode Veranderen',
+                    Label = 'Edit Pincode',
                     EventType = 'Client',
                     EventName = 'fw-misc:Client:ChangePincode',
                     EventParams = { ContainerId = k },

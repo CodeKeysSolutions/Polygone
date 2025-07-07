@@ -55,7 +55,7 @@ FW.Functions.CreateCallback("fw-mdw:Server:Reports:Export", function(Source, Cb,
     if Player == nil then return end
 
     if not Data.id then
-        return Cb({Msg = "Het rapport dat je wilt exporteren bestaat niet.", Url = false})
+        return Cb({Msg = "Rapport doesnt exist.", Url = false})
     end
 
     local Result = exports['ghmattimysql']:executeSync("SELECT `title`, `report` FROM `mdw_reports` WHERE `id` = @Id", {

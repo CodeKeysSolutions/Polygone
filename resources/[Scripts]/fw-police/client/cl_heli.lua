@@ -39,13 +39,13 @@ end)
 -- Functions
 
 Citizen.CreateThread(function()
-	FW.AddKeybind('enableHelicam', 'Helikopter', 'Politie Camera', '', function(IsPressed)
+	FW.AddKeybind('enableHelicam', 'Heli', 'Police Camera', '', function(IsPressed)
 		if not IsPressed then return end
         if not HasHelicam() then return end
         ToggleHeliCamera(not HasHeliCamera)
     end, function()end)
     
-    FW.AddKeybind('heliSpotlight', 'Helikopter', 'Camera Spotlight', '', function(IsPressed)
+    FW.AddKeybind('heliSpotlight', 'Heli', 'Camera Spotlight', '', function(IsPressed)
 		if not IsPressed then return end
         if not HasHelicam() then return end
         if not HasHeliCamera then return end

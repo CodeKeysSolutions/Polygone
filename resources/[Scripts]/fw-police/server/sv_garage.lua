@@ -28,8 +28,8 @@ AddEventHandler('fw-police:Server:PurchaseVehicle', function(Data)
             os.time() * 1000
         })
 
-        TriggerClientEvent('FW:Notify', Player.PlayerData.source, "Je hebt een " .. SharedData.Name .. " gekocht..", "success")
+        TriggerClientEvent('FW:Notify', Player.PlayerData.source, "You have bought " .. SharedData.Name .. "..", "success")
     else
-        Player.Functions.Notify("Niet genoeg geld..", "error")
+        Player.Functions.Notify("Not enough cash..", "error")
     end
 end)

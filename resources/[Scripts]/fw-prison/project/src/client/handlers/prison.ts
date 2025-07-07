@@ -38,13 +38,13 @@ onNet("fw-prison:Client:SetJail", async (PlaySound: boolean) => {
 
     if (!FW.Functions.GetPlayerData().metadata.islifer) {
         if (!EscapeThread.running) EscapeThread.start();
-        emit('chatMessage', "DOJ", "warning", `Je moet nog ${FW.Functions.GetPlayerData().metadata.jailtime} maand(en) zitten.`);
+        emit('chatMessage', "DOJ", "warning", `You still have ${FW.Functions.GetPlayerData().metadata.jailtime} month(s) left to serve.`);
     };
 });
 
 onNet("fw-prison:Client:ReleaseJail", async () => {
     if (FW.Functions.GetPlayerData().metadata.jailtime > 1) {
-        return FW.Functions.Notify("Je staf is nog niet over.. Ik denk dat je nog even moet zitten..", "error")
+        return FW.Functions.Notify("Your sentence is not over yet.. I think you need to stay a bit longer..", "error")
     };
 
     ResetJail();
@@ -63,7 +63,7 @@ onNet("fw-prison:Client:ReleaseJail", async () => {
 });
 
 onNet("fw-prison:Client:CheckPrisonTime", () => {
-    emit('chatMessage', "DOJ", "warning", `Je moet nog ${FW.Functions.GetPlayerData().metadata.jailtime} maand(en) zitten.`);
+    emit('chatMessage', "DOJ", "warning", `You still have ${FW.Functions.GetPlayerData().metadata.jailtime} month(s) left to serve.`);
 });
 
 onNet("fw-prison:Client:OpenSeizedPossessions", () => {

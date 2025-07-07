@@ -78,14 +78,14 @@ AddEventHandler("fw-jobmanager:Server:FishingSell", function()
                     end
                 end
             else
-                Player.Functions.Notify('Kom je vannacht even terug? Ik ga dit soort dingen niet overdag aannemen..', 'error')
+                Player.Functions.Notify('Can you come back at night? I am not going to accept these kinds of things during the day..', 'error')
             end
         end
     end
 
     if TotalReceive > 0 then
-        Player.Functions.Notify('Toegevoegd op bank balans.')
-        exports['fw-financials']:AddMoneyToAccount('1001', '1', Player.PlayerData.charinfo.account, TotalReceive, 'SALES', 'Baan: Vis Verkoop')
+        Player.Functions.Notify('Added to bank balance.')
+        exports['fw-financials']:AddMoneyToAccount('1001', '1', Player.PlayerData.charinfo.account, TotalReceive, 'SALES', 'Job: Fish Sale')
     end
 
     if MoneyRolls > 0 then

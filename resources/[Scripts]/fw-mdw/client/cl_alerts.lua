@@ -1,4 +1,4 @@
-FW.AddKeybind("openDispatch", "Hulpdiensten", "Focus Meldingen", "", function(IsPressed)
+FW.AddKeybind("openDispatch", "emergency services", "Focus dispatch", "", function(IsPressed)
     if not IsPressed then return end
     if not LoggedIn then return end
 

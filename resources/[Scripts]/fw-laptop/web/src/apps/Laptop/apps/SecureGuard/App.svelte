@@ -132,14 +132,14 @@
             <div class="loader">
                 <div class="loader__bar"/>
             </div>
-            <p style="font-size: 1.5vh; margin-top: 1vh;">Laden...</p>
+            <p style="font-size: 1.5vh; margin-top: 1vh;">Loading...</p> <!-- was "Laden..." -->
         </div>
     {:else if ShowSplash}
         <div style="height: 100%; display: flex; align-items: center;">
             <p style="margin-top: 0; user-select: text; font-size: 3vh;">{SplashText}</p>
         </div>
     {:else}
-        <p>{BlocksRemaining} Resterende Blokken - {Clicks} / {MaxClicks}</p>
+        <p>{BlocksRemaining} Blocks Remaining - {Clicks} / {MaxClicks}</p> <!-- was "Resterende Blokken" -->
 
         <div class="grid-wrapper">
             <div class="grid">

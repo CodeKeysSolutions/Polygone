@@ -8,7 +8,7 @@ AddEventHandler("fw-misc:Server:PurchaseJobVehicle", function(Data)
     local SharedData = FW.Shared.HashVehicles[GetHashKey(Data.Vehicle)]
     if SharedData == nil then return end
 
-    TriggerClientEvent("fw-phone:Client:Notification", Source, "purchase-vehicle-" .. Data.Vehicle, "fas fa-car", { "white", "rgb(38, 50, 56)" }, "Voertuig Kopen", exports['fw-businesses']:NumberWithCommas(FW.Shared.CalculateTax('Vehicle Registration Tax', tonumber(SharedData.Price))) .. " incl. tax", false, true, "fw-misc:Server:AcceptJobVehicle", "fw-phone:Client:RemoveNotificationById", { Id = "purchase-vehicle-" .. Data.Vehicle, Model = Data.Vehicle })
+    TriggerClientEvent("fw-phone:Client:Notification", Source, "purchase-vehicle-" .. Data.Vehicle, "fas fa-car", { "white", "rgb(38, 50, 56)" }, "Buy vehicle", exports['fw-businesses']:NumberWithCommas(FW.Shared.CalculateTax('Vehicle Registration Tax', tonumber(SharedData.Price))) .. " incl. tax", false, true, "fw-misc:Server:AcceptJobVehicle", "fw-phone:Client:RemoveNotificationById", { Id = "purchase-vehicle-" .. Data.Vehicle, Model = Data.Vehicle })
 end)
 
 RegisterNetEvent('fw-misc:Server:AcceptJobVehicle')
