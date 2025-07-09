@@ -1,8 +1,7 @@
 Config = Config or {}
 
 Config.ServerName = 'Polygone'
-Config.DiscordServerBotToken = 'Njk3NzM4ODA1MjQzMDE5Mjk1.G4KAGW.GjfH406sW51Yi0QkqT61qEzCkiUtoS_cNQMqlI'
-Config.SpecialMessage = {
+Config.DiscordServerBotToken =  GetConvar("DISCORD_TOKEN", '')
     ['STEAM_ID'] = 'SPECIAL CONNECTION MESSAGE',
 }
 

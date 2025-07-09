@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `businesses_dishes` (
   KEY `foodchain` (`foodchain`(768))
 ) ENGINE=InnoDB AUTO_INCREMENT=349 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumpen data van tabel Polygone.businesses_dishes: ~153 rows (ongeveer)
+
 INSERT INTO `businesses_dishes` (`id`, `foodchain`, `type`, `dish_id`, `ingredients`) VALUES
 	(1, 'Burger Shot', 'Main', 'burger-bacon-cheeseburger', '["beef","grain","dairy","oil","seasoning"]'),
 	(2, 'Burger Shot', 'Main', 'burger-dino-nuggies', '["seasoning","beef","oil","dairy","seasoning"]'),
@@ -276,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `laptop_boosting` (
 CREATE TABLE IF NOT EXISTS `laptop_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` varchar(50) NOT NULL DEFAULT '',
-  `boosting` longtext NOT NULL DEFAULT '{}',
+  `boosting` longtext NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cid` (`cid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -313,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `laptop_gangs_chat` (
   `sender` text NOT NULL,
   `message` longtext NOT NULL,
   `attachments` longtext NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT curtime(),
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP(),
   PRIMARY KEY (`id`) USING BTREE,
   KEY `gang_id` (`gang_id`(768)) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -361,7 +361,7 @@ INSERT INTO `laptop_sprays` (`id`, `gang_id`, `type`, `position`, `rotation`) VA
 CREATE TABLE IF NOT EXISTS `mdw_certs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `certificate` longtext NOT NULL,
-  `color` longtext NOT NULL DEFAULT '#ffffff',
+  `color` longtext NOT NULL,
   `deleted` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -599,7 +599,7 @@ CREATE TABLE IF NOT EXISTS `mdw_evidence` (
   `identifier` longtext NOT NULL,
   `description` longtext NOT NULL,
   `citizenid` longtext NOT NULL,
-  `tags` longtext NOT NULL DEFAULT '[]',
+  `tags` longtext NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -609,7 +609,7 @@ CREATE TABLE IF NOT EXISTS `mdw_evidence` (
 CREATE TABLE IF NOT EXISTS `mdw_evidence_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` longtext NOT NULL,
-  `color` longtext NOT NULL DEFAULT '#ffffff',
+  `color` longtext NOT NULL,
   `deleted` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -630,7 +630,7 @@ CREATE TABLE IF NOT EXISTS `mdw_legislation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` longtext NOT NULL,
   `content` longtext NOT NULL,
-  `tags` longtext NOT NULL DEFAULT '[]',
+  `tags` longtext NOT NULL,
   `updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`) USING BTREE
@@ -645,7 +645,7 @@ CREATE TABLE IF NOT EXISTS `mdw_profiles` (
   `name` longtext NOT NULL,
   `notes` longtext NOT NULL,
   `image` longtext NOT NULL,
-  `tags` longtext NOT NULL DEFAULT '[]',
+  `tags` longtext NOT NULL,
   `wanted` int(11) NOT NULL DEFAULT 0,
   `updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -710,12 +710,12 @@ CREATE TABLE IF NOT EXISTS `mdw_reports` (
   `category` varchar(256) DEFAULT NULL,
   `title` varchar(256) DEFAULT NULL,
   `report` longtext DEFAULT NULL,
-  `evidence` text DEFAULT '[]',
-  `tags` longtext DEFAULT '[]',
-  `officers` longtext DEFAULT '[]',
-  `persons` longtext DEFAULT '[]',
-  `vehicles` longtext DEFAULT '[]',
-  `scums` longtext DEFAULT '[]',
+  `evidence` text NOT NULL,
+  `tags` longtext DEFAULT (JSON_OBJECT()),
+  `officers` longtext DEFAULT (JSON_OBJECT()),
+  `persons` longtext DEFAULT (JSON_OBJECT()),
+  `vehicles` longtext DEFAULT (JSON_OBJECT()),
+  `scums` longtext DEFAULT (JSON_OBJECT()),
   `updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`) USING BTREE
@@ -754,9 +754,9 @@ CREATE TABLE IF NOT EXISTS `mdw_staff` (
   `phonenumber` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `department` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `rank` int(11) NOT NULL DEFAULT 0,
-  `certs` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '[]',
-  `strikes` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '[]',
-  `roles` longtext NOT NULL DEFAULT '[]',
+  `certs` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT (JSON_OBJECT()),
+  `strikes` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT (JSON_OBJECT()),
+  `roles` longtext NOT NULL DEFAULT (JSON_OBJECT()),
   `deleted` int(11) NOT NULL DEFAULT 0,
   `updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -769,7 +769,7 @@ CREATE TABLE IF NOT EXISTS `mdw_staff` (
 CREATE TABLE IF NOT EXISTS `mdw_tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tag` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `color` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '#ffffff',
+  `color` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `icon` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `deleted` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
@@ -818,8 +818,8 @@ CREATE TABLE IF NOT EXISTS `phone_businesses` (
   `business_owner` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `business_name` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `business_account` text CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
-  `business_employees` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '[]',
-  `business_ranks` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '[]',
+  `business_employees` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT (JSON_OBJECT()),
+  `business_ranks` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT (JSON_OBJECT()),
   PRIMARY KEY (`id`) USING BTREE,
   KEY `business_owner` (`business_owner`(1024)),
   KEY `business_employees` (`business_employees`(1024)),
@@ -929,8 +929,8 @@ CREATE TABLE IF NOT EXISTS `phone_documents` (
   `type` int(11) DEFAULT NULL,
   `title` text CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `signatures` longtext CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '[]',
-  `sharees` longtext CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '[]',
+  `signatures` longtext CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT (JSON_OBJECT()),
+  `sharees` longtext CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT (JSON_OBJECT()),
   `finalized` int(11) DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `citizenid` (`citizenid`),
@@ -978,8 +978,8 @@ CREATE TABLE IF NOT EXISTS `phone_messages` (
   `from_phone` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `to_phone` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `message` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `attachments` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '[]',
-  `timestamp` timestamp NOT NULL DEFAULT curtime(),
+  `attachments` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT (JSON_OBJECT()),
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP(),
   `unread` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `from_phone` (`from_phone`(1024)),
@@ -1005,7 +1005,7 @@ CREATE TABLE IF NOT EXISTS `phone_newsarticles` (
 -- Structuur van  tabel Polygone.phone_tierup wordt geschreven
 CREATE TABLE IF NOT EXISTS `phone_tierup` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `members` longtext NOT NULL DEFAULT '[]',
+  `members` longtext NOT NULL DEFAULT (JSON_OBJECT()),
   `experience` bigint(20) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `members` (`members`(768))
@@ -1020,7 +1020,7 @@ CREATE TABLE IF NOT EXISTS `phone_wenmo` (
   `to_citizenid` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `amount` bigint(20) DEFAULT NULL,
   `comment` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `timestamp` timestamp NULL DEFAULT curtime(),
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP(),
   PRIMARY KEY (`id`) USING BTREE,
   KEY `from_citizenid` (`from_citizenid`(768)),
   KEY `to_citizenid` (`to_citizenid`(768))
@@ -1085,7 +1085,7 @@ CREATE TABLE IF NOT EXISTS `player_financials` (
   `accountid` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
   `balance` bigint(20) NOT NULL DEFAULT 0,
   `type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'Business Account',
-  `authorized` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '[]',
+  `authorized` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT (JSON_OBJECT()),
   `active` int(11) NOT NULL DEFAULT 1,
   `monitored` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
@@ -1186,8 +1186,8 @@ INSERT INTO `player_financials` (`id`, `citizenid`, `name`, `accountid`, `balanc
 CREATE TABLE IF NOT EXISTS `player_houses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
-  `keyholders` longtext DEFAULT '[]',
-  `business` longtext DEFAULT '[]',
+  `keyholders` longtext DEFAULT (JSON_OBJECT()),
+  `business` longtext DEFAULT (JSON_OBJECT()),
   `selling` int(11) DEFAULT 0,
   `name` longtext DEFAULT NULL,
   `adress` longtext DEFAULT NULL,
@@ -1195,9 +1195,9 @@ CREATE TABLE IF NOT EXISTS `player_houses` (
   `tier` int(11) DEFAULT 1,
   `price` bigint(20) DEFAULT 125000,
   `coords` longtext DEFAULT NULL,
-  `garage` longtext DEFAULT '{}',
-  `locations` longtext DEFAULT '{}',
-  `decorations` longtext DEFAULT '[]',
+  `garage` longtext DEFAULT (JSON_OBJECT()),
+  `locations` longtext DEFAULT (JSON_OBJECT()),
+  `decorations` longtext DEFAULT (JSON_OBJECT()),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1210,7 +1210,7 @@ CREATE TABLE IF NOT EXISTS `player_inventories` (
   `item_name` text NOT NULL,
   `custom_type` text NOT NULL DEFAULT '',
   `slot` int(11) NOT NULL DEFAULT 0,
-  `info` longtext NOT NULL DEFAULT '[]',
+  `info` longtext NOT NULL DEFAULT (JSON_OBJECT()),
   `createdate` bigint(20) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `slot` (`slot`),
@@ -1336,7 +1336,7 @@ CREATE TABLE IF NOT EXISTS `player_vehicles` (
   `garage` varchar(50) NOT NULL DEFAULT 'apartment_1',
   `state` varchar(50) DEFAULT 'in',
   `parts` varchar(300) DEFAULT '{"Engine":100,"Axle":100,"Transmission":100,"FuelInjectors":100,"Clutch":100,"Brakes":100}',
-  `mods` text DEFAULT '[]',
+  `mods` text DEFAULT (JSON_OBJECT()),
   `metadata` varchar(1000) DEFAULT '{"Engine":1000.0,"Body":1000.0,"Fuel":100.0}',
   `impounddata` longtext DEFAULT NULL,
   `vinscratched` int(11) NOT NULL DEFAULT 0,
@@ -1385,7 +1385,6 @@ CREATE TABLE IF NOT EXISTS `prison_cells` (
   PRIMARY KEY (`cell_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumpen data van tabel Polygone.prison_cells: ~0 rows (ongeveer)
 
 -- Structuur van  tabel Polygone.racing_leaderboard wordt geschreven
 CREATE TABLE IF NOT EXISTS `racing_leaderboard` (
@@ -1489,7 +1488,7 @@ CREATE TABLE IF NOT EXISTS `server_customtypes` (
   `label` varchar(50) NOT NULL DEFAULT '',
   `description` longtext NOT NULL,
   `image` longtext NOT NULL,
-  `craft` longtext NOT NULL DEFAULT '[]',
+  `craft` longtext NOT NULL DEFAULT (JSON_OBJECT()),
   `isExternImage` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=349 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -1800,7 +1799,7 @@ CREATE TABLE IF NOT EXISTS `server_vehicles` (
   `shop` varchar(50) DEFAULT NULL,
   `vehicle` varchar(50) DEFAULT NULL,
   `stock` int(11) DEFAULT NULL,
-  `preset` longtext DEFAULT '[]',
+  `preset` longtext DEFAULT (JSON_OBJECT()),
   PRIMARY KEY (`id`),
   KEY `shop` (`shop`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1160 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -2412,8 +2411,8 @@ CREATE TABLE IF NOT EXISTS `votes_ballots` (
   `label` varchar(512) NOT NULL DEFAULT '',
   `multiple_choice` int(1) NOT NULL DEFAULT 0,
   `nominees` longtext NOT NULL,
-  `start_timestamp` date NOT NULL DEFAULT curdate(),
-  `end_timestamp` date NOT NULL DEFAULT curdate(),
+  `start_timestamp` date NOT NULL DEFAULT (CURRENT_TIMESTAMP),
+  `end_timestamp` date NOT NULL DEFAULT (CURRENT_TIMESTAMP),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

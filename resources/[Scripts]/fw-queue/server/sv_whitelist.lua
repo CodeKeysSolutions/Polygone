@@ -1,6 +1,5 @@
-local DiscordServerBotToken = 'Njk3NzM4ODA1MjQzMDE5Mjk1.G4KAGW.GjfH406sW51Yi0QkqT61qEzCkiUtoS_cNQMqlI'
-
-local DiscordServerId = 1057628945257865248
+local DiscordServerBotToken = GetConvar("DISCORD_TOKEN", '')
+local DiscordServerId = GetConvar("DISCORD_BUILD", '1057628945257865248')
 local DiscordRoles = {
     1057631677255536711, -- Whitelisted
     -- 1128027903930675220, -- PD
