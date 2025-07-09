@@ -23,8 +23,11 @@ end
 AddEventHandler("playerConnecting", function(Name, KickReason, Deferral)
     local Source = source
     local Name, SteamId = GetPlayerName(Source), GetPlayerIdentifiers(Source)[1]
-    local SpecialMessage = Config.SpecialMessage[SteamId] ~= nil and Config.SpecialMessage[SteamId] or ('👋 Welcome %s, Lets check everything and see if their is space...'):format(Name)
-
+    local SpecialMessage = ('👋 Welcome %s, Lets check everything and see if their is space...'):format(Name)
+    if Config.SpecialMessage[SteamId] ~- nil then 
+        SpecialMessage = Config.SpecialMessage[SteamId] 
+    end
+   
     Deferral.defer()
     
     Config.ConnectCard.body[2].text = 'Checking you name..'

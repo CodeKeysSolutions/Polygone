@@ -391,7 +391,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'grab_left',
                 Icon = 'fas fa-circle',
-                Label = 'Grab left Keycard,
+                Label = 'Grab left Keycard',
                 EventType = 'Server',
                 EventName = 'fw-heists:Server:Vault:GrabKeycard',
                 EventParams = { Type = 'Left' },

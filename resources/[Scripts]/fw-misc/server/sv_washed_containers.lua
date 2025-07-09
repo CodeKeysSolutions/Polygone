@@ -137,7 +137,7 @@ FW.RegisterServer("fw-misc:Server:SetStrandedContainerState", function(Source, S
     if State == 2 then
         local Player = FW.Functions.GetPlayer(Source)
         if Player == nil then return end
-        Player.Functions.Notify("Probeer de deuren over een aantal minuten te openen!")
+        Player.Functions.Notify("Please wait an minute!")
 
         Citizen.SetTimeout((1000 * 60) * math.random(5, 8), function()
             ContainerState = 3
@@ -248,8 +248,8 @@ function SpawnStrandedContainer(ContainerData)
             TriggerClientEvent("fw-misc:Client:SetStrandedContainerBlip", v.ServerId, ContainerData[2] + vector3(XOffset, YOffset, 0.0))
             TriggerClientEvent('fw-phone:Client:Mails:AddMail', v.ServerId, {
                 From = "Anonymous",
-                Subject = 'Aangespoelde container gevonden!',
-                Msg = "Er zijn signalen van een mogelijk aangespoelde container gevonden met " .. TypeLabels[ContainerType] .. ", bekijk je map je om te zien waar de container ongeveer ligt..",
+                Subject = 'Stranded container found',
+                Msg = "Sigals found of posible stranded container " .. TypeLabels[ContainerType] .. ", i put the location on your map..",
                 Timestamp = os.time() * 1000
             })
         end

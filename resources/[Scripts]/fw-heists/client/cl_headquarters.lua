@@ -186,7 +186,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'loot',
                 Icon = 'fas fa-plug',
-                Label = 'Deliver USBs,
+                Label = 'Deliver USBs',
                 EventType = 'Server',
                 EventName = 'fw-heists:Server:TradeUSBs',
                 EventParams = {},
