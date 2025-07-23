@@ -1,4 +1,5 @@
-**Does not come with Assets **
+**Does not contain all assets but its an beginning**
+[Assets download](https://mega.nz/file/395CwbhZ#j5xnWccoXj6Xv04JPjkTRemGZh4aI5crwDrqj1umVBQ)
 
 
 ***PREVIEW***
