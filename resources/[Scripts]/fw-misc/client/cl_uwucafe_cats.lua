@@ -41,7 +41,7 @@ AddEventHandler("fw-ui:Ready", function()
                     {
                         Name = 'pay_payment',
                         Icon = 'fas fa-paw-claws',
-                        Label = 'Poesje Kriebelen',
+                        Label = 'Pat Cat',
                         EventType = 'Client',
                         EventName = 'fw-businesses:Client:Foodchain:UwU:Pat',
                         EventParams = {},

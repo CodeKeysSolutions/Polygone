@@ -56,7 +56,7 @@ AddEventHandler("fw-fx:Client:DrugEffect", function(DrugType, Data)
         DrugEffectTime = QualityMulti * 6
 
         if Data.Purity and Data.Purity < 40 then
-            FW.Functions.Notify("Deze kwaliteit is echt net stront.", "error")
+            FW.Functions.Notify("Shit quality.", "error")
         end
 
         TriggerServerEvent('fw-ui:Server:remove:stress', math.random(15, 100) / 10)

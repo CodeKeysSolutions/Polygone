@@ -11,7 +11,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'rob',
                 Icon = 'fas fa-circle',
-                Label = 'Container Openbreken',
+                Label = 'Rob Container',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:OpenStrandedContainer',
                 EventParams = {},
@@ -30,7 +30,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'loot',
                 Icon = 'fas fa-circle',
-                Label = 'Loot pakken',
+                Label = 'Loot',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:LootStrandedContainer',
                 EventParams = {},
@@ -58,16 +58,16 @@ RegisterNetEvent("fw-misc:Client:OpenStrandedContainer")
 AddEventHandler("fw-misc:Client:OpenStrandedContainer", function()
     local Item = exports['fw-inventory']:GetItemByName("heavy-cutters")
     if not Item then
-        return FW.Functions.Notify("Je mist een betonschaar.", "error")
+        return FW.Functions.Notify("You missing heavy cutter.", "error")
     end
 
     local ContainerState = FW.SendCallback("fw-misc:Server:GetStrandedContainerState")
     if ContainerState == 1 then
-        return FW.Functions.Notify("Iemand anders is de container al aan het openbreken..", "error")
+        return FW.Functions.Notify("Someone was here first..", "error")
     end
 
     if ContainerState >= 2 then
-        return FW.Functions.Notify("De container is al opengebroken..", "error")
+        return FW.Functions.Notify("Someone was here first..", "error")
     end
 
     FW.TriggerServer("fw-misc:Server:SetStrandedContainerState", 1)
@@ -86,7 +86,7 @@ AddEventHandler("fw-misc:Client:OpenStrandedContainer", function()
 
     local NewContainerState = FW.SendCallback("fw-misc:Server:GetStrandedContainerState")
     if NewContainerState == 2 then
-        return FW.Functions.Notify("Iemand anders heeft de container al opengebroken..", "error")
+        return FW.Functions.Notify("Someone was here first..", "error")
     end
 
     FW.TriggerServer("fw-misc:Server:SetStrandedContainerState", 2)
@@ -96,15 +96,15 @@ RegisterNetEvent("fw-misc:Client:LootStrandedContainer")
 AddEventHandler("fw-misc:Client:LootStrandedContainer", function()
     local ContainerState = FW.SendCallback("fw-misc:Server:GetStrandedContainerState")
     if ContainerState == 1 then
-        return FW.Functions.Notify("Iemand anders is de container al aan het openbreken..", "error")
+        return FW.Functions.Notify("Looks like someone is already on it..", "error")
     end
 
     if ContainerState == 2 then
-        return FW.Functions.Notify("Nog even wachten..", "error")
+        return FW.Functions.Notify("Plz wait an minute..", "error")
     end
 
     if ContainerState == 4 then
-        return FW.Functions.Notify("Container is al leeggetrokken..", "error")
+        return FW.Functions.Notify("Container is empty..", "error")
     end
 
     if ContainerState ~= 3 then
@@ -113,7 +113,7 @@ AddEventHandler("fw-misc:Client:LootStrandedContainer", function()
 
     local Stealing = true
     exports['fw-assets']:AddProp('HeistBag')
-    FW.Functions.Progressbar("rob", "Stelen..", 60000, false, true, {
+    FW.Functions.Progressbar("rob", "Looting is magic..", 60000, false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,

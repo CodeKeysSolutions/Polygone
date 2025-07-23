@@ -76,6 +76,7 @@ FW.Functions.CreateCallback("fw-mdw:Server:Staff:RemoveCert", function(Source, C
     Cb(true)
 end)
 
+
 FW.Functions.CreateCallback("fw-mdw:Server:Staff:AddRole", function(Source, Cb, Data)
     if not Data.Id or not Data.Role then return Cb(false) end
 
@@ -153,7 +154,7 @@ FW.Commands.Add("strike", "Issue a strike.", {
     })
 end)
 
-FW.Commands.Add("verwijderstrike", "Remove a strike from someone.", {
+FW.Commands.Add("remotestrike", "Remove a strike from someone.", {
     { name = "bsn", help = "SSN of the person whose strike will be removed." },
     { name = "strikeId", help = "Strike ID you want to remove" },
 }, false, function(Source, Args)

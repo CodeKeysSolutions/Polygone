@@ -57,15 +57,15 @@ AddEventHandler("fw-misc:Client:SellMaterials", function()
         MenuItems[#MenuItems + 1] = {
             Icon = 'info-circle',
             Title = exports['fw-businesses']:NumberWithCommas(v * 4),
-            Desc = "voor " .. v .. "x " .. ItemData.Label:lower(),
+            Desc = "Price " .. v .. "x " .. ItemData.Label:lower(),
             Data = { Event = '', Type = 'Client'},
         }
     end
 
     MenuItems[#MenuItems + 1] = {
         Icon = 'dollar-sign',
-        Title = "Verkopen",
-        Desc = "Totaal: " .. exports['fw-businesses']:NumberWithCommas(Result.Total * 4),
+        Title = "Sell",
+        Desc = "Total: " .. exports['fw-businesses']:NumberWithCommas(Result.Total * 4),
         Data = { Event = 'fw-misc:Server:SellMaterials', Type = 'Server' },
         Disabled = Result.Total == 0
     }
@@ -88,15 +88,15 @@ AddEventHandler("fw-misc:Client:SellIngredients", function()
         MenuItems[#MenuItems + 1] = {
             Icon = 'info-circle',
             Title = exports['fw-businesses']:NumberWithCommas(v * 12),
-            Desc = "voor " .. v .. "x " .. ItemData.Label:lower(),
+            Desc = "Price " .. v .. "x " .. ItemData.Label:lower(),
             Data = { Event = '', Type = 'Client'},
         }
     end
 
     MenuItems[#MenuItems + 1] = {
         Icon = 'dollar-sign',
-        Title = "Verkopen",
-        Desc = "Totaal: " .. exports['fw-businesses']:NumberWithCommas(Result.Total * 12),
+        Title = "Sell",
+        Desc = "Total: " .. exports['fw-businesses']:NumberWithCommas(Result.Total * 12),
         Data = { Event = 'fw-misc:Server:SellIngredients', Type = 'Server' },
         Disabled = Result.Total == 0
     }

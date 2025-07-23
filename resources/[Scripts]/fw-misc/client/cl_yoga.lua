@@ -42,7 +42,7 @@ AddEventHandler('fw-interactions:client:yoga', function(Data, Entity)
         end
     end)
 
-    FW.Functions.Progressbar("yoga", "Adem in..", 25000, false, true, {
+    FW.Functions.Progressbar("yoga", "Be one with mother earth..", 25000, false, true, {
         disableMovement = true,
         disableCarMovement = false,
         disableMouse = false,
@@ -52,7 +52,7 @@ AddEventHandler('fw-interactions:client:yoga', function(Data, Entity)
         ClearPedTasks(PlayerPedId())
     end, function()
         DoingYoga = false
-        FW.Functions.Notify("Geannuleerd..", "error")
+        FW.Functions.Notify("Canceled..", "error")
         ClearPedTasks(PlayerPedId())
     end, true)
 end)

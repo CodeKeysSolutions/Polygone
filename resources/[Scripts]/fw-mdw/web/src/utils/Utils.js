@@ -149,7 +149,7 @@ export const GetCertById = Id => {
 }
 
 export const GetRoleById = Id => {
-    return get(MdwRoles).filter(Val => Val.id == Id)[0] || { name: "Ongeldig", Icon: "exclamation-circle", color: "#ff0000", permissions: {} };
+    return get(MdwRoles).filter(Val => Val.id == Id)[0] || { name: "Incorrect", Icon: "exclamation-circle", color: "#ff0000", permissions: {} };
 }
 
 export const GetTagById = Id => {

@@ -25,7 +25,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'call_payphone',
                     Icon = 'fas fa-phone-volume',
-                    Label = 'CAll someone ($ 150.00)',
+                    Label = 'Call someone ($ 150.00)',
                     EventType = 'Client',
                     EventName = 'fw-misc:Client:Payphones:Call',
                     EventParams = { Costs = 150, Caller = 'Telefooncel', Phone = "69" .. tostring(FW.Shared.RandomInt(9)) },

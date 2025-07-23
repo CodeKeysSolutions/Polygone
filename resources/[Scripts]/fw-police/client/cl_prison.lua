@@ -77,7 +77,7 @@
 --                 ReduceJailTime(1)
 --             end, function()
 --                 ClearPedTasks(PlayerPedId())
---                 FW.Functions.Notify("Geannuleerd..", "error")
+--                 FW.Functions.Notify("Canceled..", "error")
 --             end)
 --         elseif Data.Job == 'SortScrap' then
 --             if PrisonJob.Data.HasScraps then
@@ -103,7 +103,7 @@
 --                 end
 --             end, function()
 --                 ClearPedTasks(PlayerPedId())
---                 FW.Functions.Notify("Geannuleerd..", "error")
+--                 FW.Functions.Notify("Canceled..", "error")
 --             end)
 --         elseif Data.Job == 'DeliverScrap' then
 --             if not PrisonJob.Data.HasScraps then
@@ -124,7 +124,7 @@
 --                 if DoesBlipExist(TaskBlip) then RemoveBlip(TaskBlip) end
 --             end, function()
 --                 ClearPedTasks(PlayerPedId())
---                 FW.Functions.Notify("Geannuleerd..", "error")
+--                 FW.Functions.Notify("Canceled..", "error")
 --             end)
 --         end
 --     elseif Data.Task == 'Keuken' then
@@ -143,7 +143,7 @@
 --                 ReduceJailTime(2)
 --             end, function()
 --                 StopAnimTask(PlayerPedId(), "missexile3", "ex03_dingy_search_case_a_michael", 1.0)
---                 FW.Functions.Notify("Geannuleerd..", "error")
+--                 FW.Functions.Notify("Canceled..", "error")
 --             end)
 --         elseif Data.Job == 'CleanTable' then
 --             FW.Functions.Progressbar("prison_task", "Tafel schoonmaken", 10000, false, true, {
@@ -160,7 +160,7 @@
 --                 ReduceJailTime(1)
 --             end, function()
 --                 StopAnimTask(PlayerPedId(), "timetable@maid@cleaning_surface@base", "base", 1.0)
---                 FW.Functions.Notify("Geannuleerd..", "error")
+--                 FW.Functions.Notify("Canceled..", "error")
 --             end)
 --         end
 --     end
@@ -199,7 +199,7 @@
 --     end, function()
 --         StopAnimTask(PlayerPedId(), "amb@world_human_hang_out_street@female_hold_arm@idle_a", "idle_a", 1.0)
 --         exports['fw-inventory']:SetBusyState(false)
---         FW.Functions.Notify("Geannuleerd..", "error")
+--         FW.Functions.Notify("Canceled..", "error")
 --     end)
 -- end)
 

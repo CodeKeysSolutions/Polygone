@@ -27,7 +27,7 @@ function InitTea()
                 {
                     Name = 'kettle',
                     Icon = 'fas fa-mug-hot',
-                    Label = 'Zet de ketel op',
+                    Label = 'Make tea',
                     EventType = 'Client',
                     EventName = 'fw-misc:Client:MakeTea',
                     EventParams = { Coords = vector3(v.x, v.y, v.z) },
@@ -44,13 +44,13 @@ RegisterNetEvent("fw-misc:Client:MakeTea")
 AddEventHandler("fw-misc:Client:MakeTea", function(Data, Entity)
     local HasWater = exports['fw-inventory']:HasEnoughOfItem('water_bottle', 1)
     if not HasWater then
-        return FW.Functions.Notify("Je hebt water nodig voor de ketel.")
+        return FW.Functions.Notify("Need water.")
     end
 
     TaskTurnPedToFaceCoord(PlayerPedId(), Data.Coords, 1000)
     Citizen.Wait(1000)
 
-    local Finished = FW.Functions.CompactProgressbar(30000, "Een kopje thee zetten...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = "fullcut_cycle_v6_cokecutter", animDict = "anim@amb@business@coc@coc_unpack_cut@", flags = 0 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(30000, "Brewing something sweet...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = "fullcut_cycle_v6_cokecutter", animDict = "anim@amb@business@coc@coc_unpack_cut@", flags = 0 }, {}, {}, false)
 
     StopAnimTask(PlayerPedId(), "anim@amb@business@coc@coc_unpack_cut@", "fullcut_cycle_v6_cokecutter", 1.0)
     if not Finished then return end
@@ -69,7 +69,7 @@ AddEventHandler("fw-misc:Client:UsedTea", function(Item)
     local Removed = FW.SendCallback("FW:RemoveItem", 'mugoftea', 1)
     if not Removed then return end
 
-    FW.Functions.Notify("Gebruik E om een slokje thee te drinken")
+    FW.Functions.Notify("E to drink tea")
     exports['fw-assets']:AddProp('tea')
 
     while not HasAnimDictLoaded("amb@world_human_drinking@coffee@male@idle_a") do
@@ -86,7 +86,7 @@ AddEventHandler("fw-misc:Client:UsedTea", function(Item)
             -- Sip
             if IsControlJustPressed(0, 38) then
                 if Drinks <= 0 then
-                    FW.Functions.Notify("Kopje thee is leeg..")
+                    FW.Functions.Notify("Cup is empty..")
                     goto Skip
                 end
 

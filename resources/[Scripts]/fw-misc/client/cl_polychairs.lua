@@ -32,7 +32,7 @@ function InitPolychairs()
                 {
                     Name = 'sit',
                     Icon = 'fas fa-chair',
-                    Label = 'Zitten',
+                    Label = 'Sit',
                     EventType = 'Client',
                     EventName = 'fw-misc:Client:SitOnPolyChair',
                     EventParams = { Center = v.Center, zOffset = v.zOffset, Anim = v.Anim },

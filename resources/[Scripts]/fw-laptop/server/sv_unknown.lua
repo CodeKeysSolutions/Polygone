@@ -235,17 +235,17 @@ FW.Functions.CreateCallback("fw-laptop:Server:Unknown:GetCraftingName", function
     local Gang = GetGangByPlayer(Player.PlayerData.citizenid)
     if not Gang then return Cb(false) end
 
-    if Gang.TotalSprays >= 54 then
+    if Gang.TotalSprays >= 6 then
         return Cb('Powerful')
-    elseif Gang.TotalSprays >= 36 then
+    elseif Gang.TotalSprays >= 5 then
         return Cb('Feared')
-    elseif Gang.TotalSprays >= 24 then
-        return Cb('Respected')
-    elseif Gang.TotalSprays >= 16 then
-        return Cb('Established')
-    elseif Gang.TotalSprays >= 8 then
-        return Cb('WellKnown')
     elseif Gang.TotalSprays >= 4 then
+        return Cb('Respected')
+    elseif Gang.TotalSprays >= 3 then
+        return Cb('Established')
+    elseif Gang.TotalSprays >= 2 then
+        return Cb('WellKnown')
+    elseif Gang.TotalSprays >= 1 then
         return Cb('Known')
     end
 

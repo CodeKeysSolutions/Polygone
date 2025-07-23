@@ -272,7 +272,7 @@ AddEventHandler('Admin:Set:High:Command', function(Result)
     
     local TPlayer = FW.Functions.GetPlayer(tonumber(Result.player))
     if TPlayer == nil then return end
-
+    
     if Result.state:lower() == 'true' then
         TPlayer.Functions.SetMetaData("ishighcommand", true)
         TriggerClientEvent('FW:Notify', TPlayer.PlayerData.source, 'You are now a high command!', 'success')

@@ -163,7 +163,7 @@ AddEventHandler("fw-police:Client:OpenClosedCompartment", function()
     }, {}, {}, {}, function() -- Done
         FW.TriggerServer('fw-inventory:Server:OpenInventory', 'Stash', "riflerack_" .. GetVehicleNumberPlateText(Vehicle), 10, 75)
     end, function()
-        FW.Functions.Notify("Cancelled..", "error") -- was "Geannuleerd.."
+        FW.Functions.Notify("Cancelled..", "error") -- was "Canceled.."
     end)
 end)
 

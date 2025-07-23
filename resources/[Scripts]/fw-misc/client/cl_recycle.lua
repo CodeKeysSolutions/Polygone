@@ -28,7 +28,7 @@ AddEventHandler("fw-ui:Ready", function()
     exports['fw-ui']:AddEyeEntry("recycle-deliver", {
         Type = 'Zone',
         SpriteDistance = 10.0,
-        Distance = 2.0,
+        Distance = 5.0,
         ZoneData = {
             Center = vector3(997.27, -3091.94, -39.0),
             Length = 1.25,
@@ -43,7 +43,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'grab',
                 Icon = 'fas fa-circle',
-                Label = 'Materiaal Inleveren',
+                Label = 'Deposit material',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:DeliverRecycle',
                 EventParams = {},
@@ -94,7 +94,7 @@ function SpawnRecycleProps()
         exports['fw-ui']:AddEyeEntry("recycle-grab-" .. k, {
             Type = 'Zone',
             SpriteDistance = 10.0,
-            Distance = 2.0,
+            Distance = 5.0,
             ZoneData = {
                 Center = vector3(Coords.x, Coords.y, Coords.z),
                 Length = 2.0,
@@ -109,7 +109,7 @@ function SpawnRecycleProps()
                 {
                     Name = 'grab',
                     Icon = 'fas fa-circle',
-                    Label = 'Materiaal Pakken',
+                    Label = 'Grab materials',
                     EventType = 'Client',
                     EventName = 'fw-misc:Client:GrabRecycle',
                     EventParams = {},
@@ -134,7 +134,7 @@ end
 
 RegisterNetEvent("fw-misc:Client:GrabRecycle")
 AddEventHandler("fw-misc:Client:GrabRecycle", function()
-    local Finished = FW.Functions.CompactProgressbar(math.random(5000, 8000), "Pakketje oppakken...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = "fixing_a_ped", animDict = "mini@repair", flags = 0 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(math.random(5000, 8000), "Grabbing...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = "fixing_a_ped", animDict = "mini@repair", flags = 0 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "mini@repair" ,"fixing_a_ped", 1.0)
 
     TriggerEvent("fw-emotes:Client:PlayEmote", "box", false, true)
@@ -147,7 +147,7 @@ AddEventHandler("fw-misc:Client:DeliverRecycle", function()
 
     TriggerEvent("fw-emotes:Client:CancelEmote", true)
 
-    local Finished = FW.Functions.CompactProgressbar(math.random(8000, 15000), "Pakketje inleveren...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = "car_bomb_mechanic", animDict = "mp_car_bomb", flags = 16 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(math.random(8000, 15000), "Delevering...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = "car_bomb_mechanic", animDict = "mp_car_bomb", flags = 16 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "mp_car_bomb", "car_bomb_mechanic", 1.0)
     SelectRandomRecycle()
     HasPackage = false

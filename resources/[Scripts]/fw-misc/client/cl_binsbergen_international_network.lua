@@ -33,7 +33,7 @@ Citizen.CreateThread(function()
             {
                 Name = 'changeEntitySet',
                 Icon = 'fas fa-circle',
-                Label = 'Decor aanpassen',
+                Label = 'Edit Decor',
                 EventType = 'Client',
                 EventName = 'fw-misc:Client:EditBinDecor',
                 EventParams = { ContainerId = k },
@@ -62,7 +62,7 @@ AddEventHandler("fw-misc:Client:EditBinDecor", function()
     FW.Functions.OpenMenu({
         MainMenuItems = {
             {
-                Title = "Decor Aanpassen",
+                Title = "Edit Decor",
                 Icon = "home-alt"
             },
             {

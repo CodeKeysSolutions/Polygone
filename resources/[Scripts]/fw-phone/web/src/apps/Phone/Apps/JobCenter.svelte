@@ -209,7 +209,7 @@
         {/if}
 
         <PaperList style={$JobManager.CurrentGroup.State == "Busy" ? "top: 14vh; height: 34.4vh;" : "top: 2.2vh; height: 46vh;"}>
-            <p style="margin-bottom: 1.4vh; font-size: 1.5vh; font-family: Roboto; font-weight: 400; line-height: 1.43; letter-spacing: 0.005vh;">Leider</p>
+            <p style="margin-bottom: 1.4vh; font-size: 1.5vh; font-family: Roboto; font-weight: 400; line-height: 1.43; letter-spacing: 0.005vh;">Leader</p>
             <Paper
                 Icon="user-graduate"
                 Title={$JobManager.CurrentGroup.Members[0].Name}
@@ -226,12 +226,12 @@
                         HasActions={$JobManager.CurrentGroup.Members[0].Cid == $PlayerData.Cid}
                     >
                         <i 
-                            data-tooltip="Verwijder van Groep"
+                            data-tooltip="Kicked From Group"
                             class="fas fa-user-minus"
                             on:keyup on:click={() => { JOB.KickFromGroup(Id + 2) }} 
                         />
                         <i 
-                            data-tooltip="Promoveren naar Leider"
+                            data-tooltip="Promote to Leader"
                             class="fas fa-user-graduate"
                             on:keyup on:click={() => { JOB.PromoteToLeader(Id + 2) }} 
                         />
@@ -242,10 +242,10 @@
 
         <div class="phone-jobcenter-members-buttons">
             {#if $JobManager.CurrentGroup.Members[0].Cid == $PlayerData.Cid}
-                <Button Color="success" on:click={JOB.ToggleReady}>{$JobManager.CurrentGroup.State == "Busy" ? "Niet" : ""} Klaar om te Werken</Button>
+                <Button Color="success" on:click={JOB.ToggleReady}>{$JobManager.CurrentGroup.State == "Busy" ? "Niet" : ""} Ready To Work</Button>
                 <Button Color="success" on:click={JOB.DeleteGroup}>Groep Verwijderen</Button>
             {:else}
-                <Button Color="success" on:click={JOB.LeaveGroup}>Groep Verlaten</Button>
+                <Button Color="success" on:click={JOB.LeaveGroup}>Cancel Job</Button>
             {/if}
         </div>
     {:else}
@@ -255,7 +255,7 @@
                     <div class="phone-jobcenter-tasks-activity-title">{$JobManager.CurrentGroup.Activity.Title}</div>
                     <div class="phone-jobcenter-tasks-activity-abandon">
                         <i
-                            data-tooltip="Werkopdracht Annuleren"
+                            data-tooltip="Adandon Job"
                             data-position="left"
                             class="fas fa-times-circle"
                             on:keyup on:click={JOB.AbandonJob}
